@@ -1,6 +1,6 @@
 export const getAnswer = async (prompt, maxTokens) => {
   const url = "https://api.openai.com/v1/chat/completions";
-  const apiKey = "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";
+  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
   const messages = [
     {
       role: "system",
