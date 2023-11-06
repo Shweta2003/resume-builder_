@@ -1,0 +1,21 @@
+.header {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+.buttons {
+  display: flex;
+  gap: 3rem;
+}
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.icon {
+  cursor: pointer;
+  height: fit-content;
+}

@@ -1,0 +1,215 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.enhanceButtons {
+  height: 100%;
+  position: relative;
+}
+.aboutEnhanceButton {
+  cursor: pointer;
+  position: absolute;
+  top: 13rem;
+}
+.aboutEnhanceButton button {
+  cursor: pointer;
+  position: absolute;
+}
+.workExperiencesEnhanceButtons {
+  bottom: 3.4rem;
+  cursor: pointer;
+  position: absolute;
+  top: 26rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+.resume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.design {
+  background-color: #c4e2e6;
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+.name textarea {
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.title input {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.educationHeading {
+  display: flex;
+  gap: 0.5rem;
+}
+.educationHeading input {
+  font-weight: bold;
+}
+.educationDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.educationDetail {
+  display: flex;
+  flex-direction: column;
+}
+.left {
+  width: 40%;
+}
+.right {
+  width: 60%;
+}
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+}
+.right {
+  justify-content: space-around;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.phone,
+.email,
+.address {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.skillHeading input {
+  font-weight: bold;
+}
+.skillDetails {
+  display: flex;
+  flex-direction: column;
+}
+.skill {
+  display: flex;
+  gap: 0.9em;
+  align-items: center;
+}
+.skills input {
+  width: 8rem;
+}
+.picture {
+  display: flex;
+  justify-content: center;
+}
+.about{
+  width: 100%;
+  /* border: 2px solid rgb(91, 143, 188); */
+}
+.about input {
+  word-break: break-all;
+  /* height: 10rem; */
+  /* width: 100%; */
+  text-align: justify;
+}
+.workExperiences {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.workExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5workExperiencesrem;
+}
+.workExperienceHeading input {
+  font-weight: bold;
+}
+.workExperienceDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.workExperienceDetails textarea {
+  width: 100%;
+  text-align: justify;
+}
+.college,
+.school,
+.workExperience {
+  display: flex;
+  flex-direction: column;
+}
+.workExperience {
+  gap: 0.5rem;
+}
+.progress {
+  cursor: pointer;
+}
+button {
+  border: none;
+  background-color: rgb(91, 143, 188);
+  color: white;
+  /* padding: 0.5rem 1rem; */
+  cursor: pointer;
+}
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  justify-content: flex-end;
+}
+.line {
+  background-color: rgb(91, 143, 188);
+  width: 5px;
+  height: 8rem;
+}
+.circle {
+  width: 15px;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: rgb(91, 143, 188);
+}
+.background {
+  height: 2rem;
+}
+
+@media (max-width: 1280px) {
+  .aboutEnhanceButton,
+  .workExperiencesEnhanceButtons {
+    right: 12rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutEnhanceButton,
+  .workExperiencesEnhanceButtons {
+    right: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  * {
+    font-size: 8px;
+  }
+  .aboutEnhanceButton,
+  .workExperiencesEnhanceButtons {
+    right: 10px;
+  }
+}
