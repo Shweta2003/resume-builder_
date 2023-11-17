@@ -8,6 +8,7 @@ body {
   /* overflow: hidden; */
 }
 input {
+  padding-bottom: 5px;
   border: none;
   background-color: #c4e2e6;
   border: 2px solid #c4e2e6;

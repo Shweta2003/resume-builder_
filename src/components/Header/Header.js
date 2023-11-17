@@ -20,6 +20,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Design3 from "../../Designs/Design3/Design3";
+import { PDFDocument, rgb } from "pdf-lib";
 
 const Header = ({
   setImg,
@@ -128,14 +129,80 @@ const Header = ({
     fileInputRef.current.click();
   };
 
+  // const downloadPDF = () => {
+  //   const input = pdfRef;
+  //   html2canvas(input,{ logging: false, useCORS: true, scrollY: -window.scrollY }).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/png");
+  //     const pdf = new jsPDF("p", "mm", "a4", true);
+  //     const pdfWidth = pdf.internal.pageSize.getWidth();
+  //     const pdfHeight = pdf.internal.pageSize.getHeight();
+  //     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+  //     pdf.save("download.pdf");
+  //   });
+  // };
+
+  // const downloadPDF = async () => {
+  //   const input = pdfRef;
+
+  //   const scale = window.devicePixelRatio || 1;
+
+  //   const canvas = await html2canvas(input, {
+  //     scale: scale,
+  //     useCORS: true,
+  //     scrollY: -window.scrollY,
+  //     windowWidth: document.documentElement.offsetWidth,
+  //     windowHeight: document.documentElement.offsetHeight,
+  //   });
+
+  //   const imgData = canvas.toDataURL("image/jpeg", 3.0);
+
+  //   const pdfDoc = await PDFDocument.create();
+  //   const page = pdfDoc.addPage();
+  //   const pdfWidth = page.getWidth();
+  //   const pdfHeight = page.getHeight();
+
+  //   // Add the image to the PDF with the correct dimensions
+  //   const image = await pdfDoc.embedJpg(imgData);
+  //   page.drawImage(image, {
+  //     x: pdfWidth / 2 - image.width / 2,
+  //     y: pdfHeight - image.height,
+  //     width: image.width,
+  //     height: image.height,
+  //   });
+
+  //   // Save the PDF with the desired filename
+  //   const pdfBytes = await pdfDoc.save();
+  //   const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
+
+  //   const link = document.createElement("a");
+  //   link.href = URL.createObjectURL(pdfBlob);
+  //   link.download = "download.pdf";
+  //   link.click();
+  // };
+
   const downloadPDF = () => {
     const input = pdfRef;
-    html2canvas(input,{ logging: false, useCORS: true, scrollY: -window.scrollY }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4", true);
+
+    const scale = window.devicePixelRatio || 1;
+
+    html2canvas(input, {
+      scale: scale,
+      useCORS: true, // Enable CORS to load images from external sources
+      scrollY: -window.scrollY,
+      windowWidth: document.documentElement.offsetWidth,
+      windowHeight: document.documentElement.offsetHeight,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/jpeg", 1.0); // Adjust the image quality (0.0 - 1.0)
+      const pdf = new jsPDF("p", "mm", "a4");
+
+      // Calculate the width and height based on the page size
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+      // Add the image to the PDF with the correct dimensions
+      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+
+      // Save the PDF with the desired filename
       pdf.save("download.pdf");
     });
   };

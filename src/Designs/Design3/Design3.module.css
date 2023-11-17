@@ -32,17 +32,20 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 .design {
+  width: 43%;
   background-color: #c4e2e6;
   display: flex;
   gap: 1rem;
   padding: 0.5rem 1rem;
 }
-.name textarea {
+.name input {
   font-weight: bold;
   width: 100%;
   text-align: center;
+  /* padding-top: 1rem; */
 }
 .title input {
   font-size: 1rem;
@@ -117,15 +120,8 @@
   display: flex;
   justify-content: center;
 }
-.about{
+.about {
   width: 100%;
-  /* border: 2px solid rgb(91, 143, 188); */
-}
-.about input {
-  word-break: break-all;
-  /* height: 10rem; */
-  /* width: 100%; */
-  text-align: justify;
 }
 .workExperiences {
   display: flex;

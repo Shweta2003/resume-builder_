@@ -167,7 +167,7 @@ const Design3 = () => {
         <div className={style.design} ref={pdfRef} style={fontStyleInput}>
           <div className={style.left}>
             <div className={style.name}>
-              <textarea
+              <input
                 type="text"
                 rows={2}
                 name="title"
@@ -370,7 +370,12 @@ const Design3 = () => {
             <div className={style.about}>
               {!contentEditable ? (
                 <div
-                  style={{ ...fontSizeInput, ...fontStyleInput }}
+                  style={{
+                    ...fontSizeInput,
+                    ...fontStyleInput,
+                    // width: "20rem",
+                    // width: "15rem",
+                  }}
                   onClick={() => {
                     setContentEditable(true);
                   }}
@@ -386,7 +391,11 @@ const Design3 = () => {
                   onChange={(e) => {
                     setData({ ...data, about: e.target.value });
                   }}
-                  style={{ ...fontSizeInput, ...fontStyleInput }}
+                  style={{
+                    ...fontSizeInput,
+                    ...fontStyleInput,
+                    // width: "20rem",
+                  }}
                 >
                   {data.about}
                 </div>
@@ -457,6 +466,7 @@ const Design3 = () => {
                       rows={5}
                       name="workExperiences"
                       value={data.workExperiences[index].description}
+                      maxLength="420"
                       onChange={(e) => {
                         const newWorkExperiences = [...data.workExperiences];
                         newWorkExperiences[index].description = e.target.value;
