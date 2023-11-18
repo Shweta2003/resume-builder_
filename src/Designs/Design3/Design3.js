@@ -125,7 +125,7 @@ const Design3 = () => {
     setProgress((prevProgress) =>
       prevProgress > 100 ? 0 : prevProgress + 33.33333333333333
     );
-    console.log(progress);
+  
     if (key === "about") {
       setData((prevData) => ({
         ...prevData,
