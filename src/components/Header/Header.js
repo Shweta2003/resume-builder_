@@ -52,7 +52,7 @@ const Header = ({
   };
   const handleClickFontStyle = (e) => {
     setFontStyleOption(e.target.innerText);
-    console.log(fontStyleOption);
+    
     handleClose();
   };
 
@@ -118,7 +118,6 @@ const Header = ({
   }
 
   const handleFileChange = (e) => {
-    console.log(e.target.files[0]);
     const file = e.target.files[0];
     if (file) {
       setImg(URL.createObjectURL(file));
