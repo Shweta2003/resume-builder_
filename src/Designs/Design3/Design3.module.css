@@ -41,10 +41,11 @@
   padding: 0.5rem 1rem;
 }
 .name input {
-   border: none;
+  /* border: 2px solid red; */
   outline: none;
   width: 144%;
   font-weight: bold;
+  /* padding: 1rem 0; */
   text-align: unset;
 }
 .title input {

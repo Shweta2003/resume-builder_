@@ -38,7 +38,7 @@ const Design3 = () => {
   const fontSizeName = {
     fontSize:
       fontSizeOption === "small"
-        ? "30px"
+        ? "25px"
         : fontSizeOption === "large"
         ? "40px"
         : "35px",
@@ -125,7 +125,7 @@ const Design3 = () => {
     setProgress((prevProgress) =>
       prevProgress > 100 ? 0 : prevProgress + 33.33333333333333
     );
-  
+
     if (key === "about") {
       setData((prevData) => ({
         ...prevData,
@@ -164,7 +164,7 @@ const Design3 = () => {
         fontStyleOption={fontStyleOption}
       />
       <div className={style.resume}>
-        <div className={style.design} ref={pdfRef} style={fontStyleInput}>
+        <div className={style.design} id="res" ref={pdfRef} style={fontStyleInput}>
           <div className={style.left}>
             <div className={style.name}>
               <input
@@ -175,7 +175,12 @@ const Design3 = () => {
                 onChange={(e) =>
                   setData({ ...data, name: e.target.value.toUpperCase() })
                 }
-                style={{ ...fontSizeName, ...fontStyleInput }}
+                style={{
+                  ...fontSizeName,
+                  ...fontStyleInput,
+                  width: "20rem",
+                  height: "3rem",
+                }}
               />
             </div>
             <div className={style.title}>
