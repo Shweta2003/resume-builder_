@@ -34,8 +34,8 @@
   width: 100%;
 }
 .design {
-  width: 43%;
-  background-color: #c4e2e6;
+  width: 40%;
+  background-color: #c4e2e6;  
   display: flex;
   gap: 1rem;
   padding: 0.5rem 1rem;

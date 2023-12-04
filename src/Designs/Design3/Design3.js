@@ -33,7 +33,7 @@ const Design3 = () => {
         ? "12px"
         : fontSizeOption === "large"
         ? "24px"
-        : "16px",
+        : "20px",
   };
   const fontSizeName = {
     fontSize:
@@ -164,8 +164,17 @@ const Design3 = () => {
         fontStyleOption={fontStyleOption}
       />
       <div className={style.resume}>
-        <div className={style.design} id="res" ref={pdfRef} style={fontStyleInput}>
+        <div
+          className={style.design}
+          id="res"
+          ref={pdfRef}
+          style={fontStyleInput}
+        >
           <div className={style.left}>
+            <div contentEditable="true" style={{ fontSize: "14px" }}>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt,
+              amet!
+            </div>
             <div className={style.name}>
               <input
                 type="text"
