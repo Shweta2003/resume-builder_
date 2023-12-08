@@ -6,8 +6,9 @@ import Header from "./components/Header/Header";
 const Layout = () => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <div style={{ display: "flex" }}>
+        <Form />
         <Outlet />
       </div>
     </>

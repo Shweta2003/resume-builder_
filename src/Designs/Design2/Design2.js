@@ -1,32 +1,27 @@
 import Header from "../../components/Header/Header";
 import styles from "./Design2.module.css";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import { useSelector } from "react-redux";
 
 export const Design2 = () => {
-  const styles = StyleSheet.create({
-    page: {
-      flexDirection: "row",
-      backgroundColor: "#E4E4E4",
-    },
-    section: {
-      margin: 10,
-      padding: 10,
-      flexGrow: 1,
-    },
-  });
+  const resume = useSelector((state) => state.resume);
+  const links = resume.personalInformation.links;
+  // console.log(resume);
+  // console.log(links);
   return (
     <div>
-      <Header />
-      <Document>
-        <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text>Section #1</Text>
-          </View>
-          <View style={styles.section}>
-            <Text>Section #2</Text>
-          </View>
-        </Page>
-      </Document>
+      <div className={styles.container}>{resume.personalInformation.name}</div>
+      <div className={styles.container}>{resume.personalInformation.email}</div>
+      <div className={styles.container}>{resume.personalInformation.phone}</div>
+      <div>
+        {links.map((link, key) => {
+          return (
+            <div className={styles.container} key={key}>
+              {link.name}
+              {link.url}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

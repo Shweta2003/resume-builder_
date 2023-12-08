@@ -6,17 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import { getAnswer } from "../Backend";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-import { usePDF } from "react-to-pdf";
-import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { styled } from "@mui/material/styles";
-import fontFamily from "../../assets/font-family.svg";
-import fontSize from "../../assets/font-size.svg";
-import Header from "../../components/Header/Header";
+import { useSelector, useDispatch } from "react-redux";
 
 const Design3 = () => {
   const [loading, setLoading] = useState(false);
@@ -26,6 +16,8 @@ const Design3 = () => {
   const [fontSizeOption, setFontSizeOption] = useState("medium");
   const [fontStyleOption, setFontStyleOption] = useState("normal");
   const [contentEditable, setContentEditable] = useState(false);
+
+  const dispatch = useDispatch();
 
   const fontSizeInput = {
     fontSize:
@@ -155,14 +147,14 @@ const Design3 = () => {
 
   return (
     <div className={style.container}>
-      <Header
+      {/* <Header
         pdfRef={pdfRef.current}
         setImg={setImg}
         setFontSizeOption={setFontSizeOption}
         fontSizeOption={fontSizeOption}
         setFontStyleOption={setFontStyleOption}
         fontStyleOption={fontStyleOption}
-      />
+      /> */}
       <div className={style.resume}>
         <div
           className={style.design}
@@ -171,10 +163,6 @@ const Design3 = () => {
           style={fontStyleInput}
         >
           <div className={style.left}>
-            <div contentEditable="true" style={{ fontSize: "14px" }}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt,
-              amet!
-            </div>
             <div className={style.name}>
               <input
                 type="text"
@@ -182,7 +170,10 @@ const Design3 = () => {
                 name="title"
                 value={data.name}
                 onChange={(e) =>
-                  setData({ ...data, name: e.target.value.toUpperCase() })
+                  dispatch({
+                    type: "setPersonalDetails",
+                    payload: e.target.value,
+                  })
                 }
                 style={{
                   ...fontSizeName,

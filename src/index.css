@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
   /* font-family: 
     "Ubuntu", "Roboto"
     sans-serif; */
@@ -8,11 +10,10 @@ body {
   /* overflow: hidden; */
 }
 input {
-  /* padding-bottom: auto; */
-  /* height: 20px; */
-  border: none;
-  background-color: #c4e2e6;
-  border: 2px solid #c4e2e6;
+  border: 1px solid #ffffff;
+}
+input:hover {
+  border: 1px solid rgb(9, 9, 9);
 }
 /* input {
   padding-bottom: 5px;

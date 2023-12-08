@@ -160,8 +160,8 @@
 }
 button {
   border: none;
-  background-color: rgb(91, 143, 188);
-  color: white;
+  /* background-color: rgb(91, 143, 188); */
+  /* color: white; */
   /* padding: 0.5rem 1rem; */
   cursor: pointer;
 }
