@@ -1,16 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Education.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addEducation } from "../../../redux/reducers/resumeSlice";
+import {
+  addEducation,
+  addOrUpdateCgpa,
+  addOrUpdateCourse,
+  addOrUpdateDegree,
+  addOrUpdateEndDate,
+  addOrUpdateInstitution,
+  addOrUpdateStartDate,
+  deleteEducation,
+} from "../../../redux/reducers/resumeSlice";
 import { v4 as uuidv4 } from "uuid";
 
 const Education = () => {
   const dispatch = useDispatch();
-  const education = useSelector((state) => state.education);
+  const educationDetails = useSelector(
+    (state) => state.resume.education.educationDetails
+  );
+  const handleAddEducation = () => {
+    dispatch({
+      type: addEducation,
+      payload: {
+        _id: uuidv4(),
+        institution: "",
+        degree: "",
+        course: "",
+        startDate: "",
+        endDate: "",
+        cgpa: "",
+      },
+    });
+    console.log(educationDetails);
+  };
+
+  useEffect(() => {
+    console.log(educationDetails);
+  }, [educationDetails]);
+
   return (
     <div>
-      <h1>Education</h1>
-      {/* {educationDetails?.map((educationDetail, key) => {
+      {educationDetails.map((educationDetail, key) => {
         return (
           <div key={key}>
             <input
@@ -19,9 +49,9 @@ const Education = () => {
               value={educationDetail.institution}
               onChange={(e) => {
                 dispatch({
-                  type: addEducation,
+                  type: addOrUpdateInstitution,
                   payload: {
-                    ...educationDetail,
+                    _id: educationDetail._id,
                     institution: e.target.value,
                   },
                 });
@@ -33,9 +63,9 @@ const Education = () => {
               value={educationDetail.degree}
               onChange={(e) => {
                 dispatch({
-                  type: addEducation,
+                  type: addOrUpdateDegree,
                   payload: {
-                    ...educationDetail,
+                    _id: educationDetail._id,
                     degree: e.target.value,
                   },
                 });
@@ -47,9 +77,9 @@ const Education = () => {
               value={educationDetail.course}
               onChange={(e) => {
                 dispatch({
-                  type: addEducation,
+                  type: addOrUpdateCourse,
                   payload: {
-                    ...educationDetail,
+                    _id: educationDetail._id,
                     course: e.target.value,
                   },
                 });
@@ -61,9 +91,9 @@ const Education = () => {
               value={educationDetail.startDate}
               onChange={(e) => {
                 dispatch({
-                  type: addEducation,
+                  type: addOrUpdateStartDate,
                   payload: {
-                    ...educationDetail,
+                    _id: educationDetail._id,
                     startDate: e.target.value,
                   },
                 });
@@ -75,9 +105,9 @@ const Education = () => {
               value={educationDetail.endDate}
               onChange={(e) => {
                 dispatch({
-                  type: addEducation,
+                  type: addOrUpdateEndDate,
                   payload: {
-                    ...educationDetail,
+                    _id: educationDetail._id,
                     endDate: e.target.value,
                   },
                 });
@@ -89,34 +119,31 @@ const Education = () => {
               value={educationDetail.cgpa}
               onChange={(e) => {
                 dispatch({
-                  type: addEducation,
+                  type: addOrUpdateCgpa,
                   payload: {
-                    ...educationDetail,
+                    _id: educationDetail._id,
                     cgpa: e.target.value,
                   },
                 });
               }}
             />
+            <div>
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: deleteEducation,
+                    payload: { _id: educationDetail._id },
+                  })
+                }
+              >
+                Delete
+              </button>
+            </div>
           </div>
         );
-      })} */}
+      })}
 
-      <button
-        onClick={dispatch({
-          type: addEducation,
-          payload: {
-            _id: uuidv4(),
-            institution: "",
-            degree: "",
-            course: "",
-            startDate: "",
-            endDate: "",
-            cgpa: "",
-          },
-        })}
-      >
-        Add Education
-      </button>
+      <button onClick={handleAddEducation}>Add Education</button>
     </div>
   );
 };

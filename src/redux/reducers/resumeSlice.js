@@ -15,6 +15,7 @@ const initialState = {
   },
   experiences: {
     showDetails: false,
+    experienceDetails: [],
   },
   skills: {
     showDetails: false,
@@ -74,6 +75,98 @@ const resumeSlice = createSlice({
     addEducation: (state, action) => {
       state.education.educationDetails.push(action.payload);
     },
+    addOrUpdateInstitution: (state, action) => {
+      state.education.educationDetails.forEach((educationDetail) => {
+        if (educationDetail._id === action.payload._id) {
+          educationDetail.institution = action.payload.institution;
+        }
+      });
+    },
+    addOrUpdateDegree: (state, action) => {
+      state.education.educationDetails.forEach((educationDetail) => {
+        if (educationDetail._id === action.payload._id) {
+          educationDetail.degree = action.payload.degree;
+        }
+      });
+    },
+    addOrUpdateCourse: (state, action) => {
+      state.education.educationDetails.forEach((educationDetail) => {
+        if (educationDetail._id === action.payload._id) {
+          educationDetail.course = action.payload.course;
+        }
+      });
+    },
+    addOrUpdateStartDate: (state, action) => {
+      state.education.educationDetails.forEach((educationDetail) => {
+        if (educationDetail._id === action.payload._id) {
+          educationDetail.startDate = action.payload.startDate;
+        }
+      });
+    },
+    addOrUpdateEndDate: (state, action) => {
+      state.education.educationDetails.forEach((educationDetail) => {
+        if (educationDetail._id === action.payload._id) {
+          educationDetail.endDate = action.payload.endDate;
+        }
+      });
+    },
+    addOrUpdateCgpa: (state, action) => {
+      state.education.educationDetails.forEach((educationDetail) => {
+        if (educationDetail._id === action.payload._id) {
+          educationDetail.cgpa = action.payload.cgpa;
+        }
+      });
+    },
+    deleteEducation: (state, action) => {
+      state.education.educationDetails =
+        state.education.educationDetails.filter(
+          (educationDetail) => educationDetail._id !== action.payload._id
+        );
+    },
+    addExperience: (state, action) => {
+      state.experiences.experienceDetails.push(action.payload);
+    },
+    addOrUpdateCompany: (state, action) => {
+      state.experiences.experienceDetails.forEach((experienceDetail) => {
+        if (experienceDetail._id === action.payload._id) {
+          experienceDetail.company = action.payload.company;
+        }
+      });
+    },
+    addOrUpdateJobTitle: (state, action) => {
+      state.experiences.experienceDetails.forEach((experienceDetail) => {
+        if (experienceDetail._id === action.payload._id) {
+          experienceDetail.jobTitle = action.payload.jobTitle;
+        }
+      });
+    },
+    addOrUpdateStartDateJob: (state, action) => {
+      state.experiences.experienceDetails.forEach((experienceDetail) => {
+        if (experienceDetail._id === action.payload._id) {
+          experienceDetail.startDate = action.payload.startDate;
+        }
+      });
+    },
+    addOrUpdateEndDateJob: (state, action) => {
+      state.experiences.experienceDetails.forEach((experienceDetail) => {
+        if (experienceDetail._id === action.payload._id) {
+          experienceDetail.endDate = action.payload.endDate;
+        }
+      });
+    },
+    addOrUpdateDescription: (state, action) => {
+      state.experiences.experienceDetails.forEach((experienceDetail) => {
+        if (experienceDetail._id === action.payload._id) {
+          experienceDetail.description = action.payload.description;
+        }
+      });
+    },
+    deleteExperience: (state, action) => {
+      state.experiences.experienceDetails =
+        state.experiences.experienceDetails.filter(
+          (experienceDetail) => experienceDetail._id !== action.payload._id
+        );
+    },
   },
 });
 
@@ -88,6 +181,20 @@ export const {
   AddOrUpdateLinkUrl,
   deleteLink,
   addEducation,
+  addOrUpdateInstitution,
+  addOrUpdateDegree,
+  addOrUpdateCourse,
+  addOrUpdateStartDate,
+  addOrUpdateEndDate,
+  addOrUpdateCgpa,
+  deleteEducation,
+  addExperience,
+  addOrUpdateCompany,
+  addOrUpdateJobTitle,
+  addOrUpdateStartDateJob,
+  addOrUpdateEndDateJob,
+  addOrUpdateDescription,
+  deleteExperience,
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;
