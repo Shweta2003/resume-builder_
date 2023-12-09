@@ -1,17 +1,18 @@
-import React from "react";
 import styles from "./PersonalInformation.module.css";
 import { useSelector, useDispatch } from "react-redux";
+import { useCallback, useEffect } from "react";
 import {
   addEmail,
   addJobTitle,
   addLink,
   addName,
   addPhone,
-  addLinkName,
-  saveUpdatedLink,
+  AddOrUpdateLinkName,
+  AddOrUpdateLinkUrl,
   deleteLink,
 } from "../../../redux/reducers/resumeSlice";
-import DeleteIcon from "@mui/icons-material/Delete";
+import CrossIcon from "../../../assets/cross.svg";
+import { v4 as uuidv4 } from "uuid";
 
 const PersonalInformation = () => {
   const resume = useSelector((state) => state.resume);
@@ -19,19 +20,15 @@ const PersonalInformation = () => {
   const links = resume.personalInformation.links;
 
   const handleAddLink = () => {
-    dispatch({ type: addLink, payload: { name: "", url: "" } });
-    console.log(resume.personalInformation.links);
+    dispatch({
+      type: addLink,
+      payload: { _id: uuidv4(), name: "", url: "" },
+    });
   };
-  const handleLinkName = (name) => {
-    dispatch({ type: addLinkName, payload: { name, url: "" } });
-  };
-  const handleAddLinkUrl = (name, url) => {
-    dispatch({ type: saveUpdatedLink, payload: { name, url } });
-  };
-  const handleDeleteLink = (name) => {
-    dispatch({ type: deleteLink, payload: name });
-    console.log(resume.personalInformation.name);
-  };
+
+  useEffect(() => {
+    console.log(links);
+  }, [links]);
 
   return (
     <div>
@@ -61,25 +58,43 @@ const PersonalInformation = () => {
         <h5>Links</h5>
         {links.map((link, key) => {
           return (
-            <div className={styles.linkInput} key={key}>
+            <div key={key}>
               <select
-                value={link.name}
-                onChange={(e) => handleLinkName(e.target.value)}
+                name={link.name}
+                id=""
+                onChange={(e) =>
+                  dispatch({
+                    type: AddOrUpdateLinkName,
+                    payload: { name: e.target.value, _id: link._id },
+                  })
+                }
               >
-                <option>Select</option>
-                <option>LinkedIn</option>
-                <option>Github</option>
-                <option>Portfolio</option>
+                <option value="" disabled selected>
+                  Select...
+                </option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="GitHub">GitHub</option>
+                <option value="Portfolio">Portfolio</option>
               </select>
               <input
-                type="url"
-                placeholder="Link"
-                value={link.url}
-                onChange={(e) => handleAddLinkUrl(, e.target.value)}
+                name={link.url}
+                type="text"
+                placeholder="Your Link here"
+                onChange={(e) =>
+                  dispatch({
+                    type: AddOrUpdateLinkUrl,
+                    payload: { url: e.target.value, _id: link._id },
+                  })
+                }
               />
-              <div onClick={() => handleDeleteLink(link.name)}>
-                <DeleteIcon />
-              </div>
+              <button
+                onClick={() =>
+                  dispatch({ type: deleteLink, payload: { _id: link._id } }) &&
+                  console.log(link._id)
+                }
+              >
+                <img src={CrossIcon} alt="" />
+              </button>
             </div>
           );
         })}

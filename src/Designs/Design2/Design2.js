@@ -14,12 +14,7 @@ export const Design2 = () => {
       <div className={styles.container}>{resume.personalInformation.phone}</div>
       <div>
         {links.map((link, key) => {
-          return (
-            <div className={styles.container} key={key}>
-              {link.name}
-              {link.url}
-            </div>
-          );
+          return <div key={key}>{link.name}</div>;
         })}
       </div>
     </div>

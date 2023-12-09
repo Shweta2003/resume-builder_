@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialLinkState = {
-  name: "",
-  url: "",
-};
-
 const initialState = {
   personalInformation: {
     showDetails: true,
@@ -16,6 +11,7 @@ const initialState = {
   },
   education: {
     showDetails: false,
+    educationDetails: [],
   },
   experiences: {
     showDetails: false,
@@ -55,26 +51,28 @@ const resumeSlice = createSlice({
     },
     addLink: (state, action) => {
       state.personalInformation.links.push(action.payload);
-      // console.log(state.personalInformation.links);
     },
-    addLinkName: (state, action) => {
-      state.personalInformation.links.push(action.payload);
-      // console.log(state.personalInformation.links);
+    AddOrUpdateLinkName: (state, action) => {
+      state.personalInformation.links.forEach((link) => {
+        if (link._id === action.payload._id) {
+          link.name = action.payload.name;
+        }
+      });
     },
-    saveUpdatedLink: (state, action) => {
-      // console.log(typeof state.personalInformation.links);
-      state.personalInformation.links.map((link) => {
-        if (link.name === action.payload.name) {
+    AddOrUpdateLinkUrl: (state, action) => {
+      state.personalInformation.links.forEach((link) => {
+        if (link._id === action.payload._id) {
           link.url = action.payload.url;
         }
       });
-      console.log(state.personalInformation.links.length);
     },
     deleteLink: (state, action) => {
-      console.log(action.payload);
-      state.personalInformation.links.filter(
-        (link) => link.name !== action.payload
+      state.personalInformation.links = state.personalInformation.links.filter(
+        (link) => link._id !== action.payload._id
       );
+    },
+    addEducation: (state, action) => {
+      state.education.educationDetails.push(action.payload);
     },
   },
 });
@@ -86,9 +84,10 @@ export const {
   addPhone,
   addJobTitle,
   addLink,
-  addLinkName,
-  saveUpdatedLink,
+  AddOrUpdateLinkName,
+  AddOrUpdateLinkUrl,
   deleteLink,
+  addEducation,
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;
