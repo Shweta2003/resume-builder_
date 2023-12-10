@@ -19,6 +19,10 @@ const initialState = {
   },
   skills: {
     showDetails: false,
+    languages: [],
+    frameworks: [],
+    tools: [],
+    databases: [],
   },
   projects: {
     showDetails: false,
@@ -167,6 +171,38 @@ const resumeSlice = createSlice({
           (experienceDetail) => experienceDetail._id !== action.payload._id
         );
     },
+    addLanguage: (state, action) => {
+      state.skills.languages.push(action.payload);
+    },
+  },
+  deleteLanguage: (state, action) => {
+    state.skills.languages = state.skills.languages.filter(
+      (language) => language._id !== action.payload._id
+    );
+  },
+  addFramework: (state, action) => {
+    state.skills.frameworks.push(action.payload);
+  },
+  deleteFramework: (state, action) => {
+    state.skills.frameworks = state.skills.frameworks.filter(
+      (framework) => framework._id !== action.payload._id
+    );
+  },
+  addTool: (state, action) => {
+    state.skills.tools.push(action.payload);
+  },
+  deleteTool: (state, action) => {
+    state.skills.tools = state.skills.tools.filter(
+      (tool) => tool._id !== action.payload._id
+    );
+  },
+  addDatabase: (state, action) => {
+    state.skills.databases.push(action.payload);
+  },
+  deleteDatabase: (state, action) => {
+    state.skills.databases = state.skills.databases.filter(
+      (database) => database._id !== action.payload._id
+    );
   },
 });
 
@@ -195,6 +231,14 @@ export const {
   addOrUpdateEndDateJob,
   addOrUpdateDescription,
   deleteExperience,
+  addLanguage,
+  deleteLanguage,
+  addFramework,
+  deleteFramework,
+  addTool,
+  deleteTool,
+  addDatabase,
+  deleteDatabase,
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;

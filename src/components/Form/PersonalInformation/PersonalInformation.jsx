@@ -60,7 +60,7 @@ const PersonalInformation = () => {
           return (
             <div key={key}>
               <select
-                name={link.name}
+                value={link.name}
                 id=""
                 onChange={(e) =>
                   dispatch({
@@ -77,7 +77,7 @@ const PersonalInformation = () => {
                 <option value="Portfolio">Portfolio</option>
               </select>
               <input
-                name={link.url}
+                value={link.url}
                 type="text"
                 placeholder="Your Link here"
                 onChange={(e) =>
