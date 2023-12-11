@@ -8,7 +8,7 @@ import Education from "./Education/Education";
 import Experience from "./Experience/Experience";
 import Skills from "./Skills/Skills";
 import Projects from "./Projects/Projects";
-import Achievements from "./Achievements/Achievements";
+import Certifications from "./Certifications/Certifications";
 import AdditionalInformation from "./AdditionalInformation/AdditionalInformation";
 import { toggleDetails } from "../../redux/reducers/resumeSlice";
 import personalLogo from "../../assets/personal.svg";
@@ -32,7 +32,7 @@ const Form = () => {
     experiences: [<Experience />, experienceLogo, "Experience"],
     skills: [<Skills />, skillsLogo, "Skills"],
     projects: [<Projects />, projectsLogo, "Projects"],
-    achievements: [<Achievements />, achievementsLogo, "Achievements"],
+    certificates: [<Certifications />, achievementsLogo, "Certifications"],
     additionalInformation: [
       <AdditionalInformation />,
       additionalInformationLogo,
@@ -48,7 +48,7 @@ const Form = () => {
     <div className={styles.container}>
       <h3>Resume Details</h3>
       <ul>
-        {Object.keys(sections).map((section,key) => {
+        {Object.keys(sections).map((section, key) => {
           return (
             <ul key={key}>
               <li key={section} onClick={() => handleToggleDetails(section)}>

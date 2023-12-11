@@ -1,9 +1,51 @@
-import React from 'react'
+import React from "react";
+import style from "./AdditionalInformation.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import {
+  addAward,
+  addOrUpdateAward,
+  deleteAward,
+} from "../../../redux/reducers/resumeSlice";
 
 const AdditionalInformation = () => {
-  return (
-    <div>AdditionalInformation</div>
-  )
-}
+  const dispatch = useDispatch();
+  const resume = useSelector((state) => state.resume);
+  const awards = resume.additionalInformation.additionalInformationDetails;
 
-export default AdditionalInformation
+  const handleAddAward = () => {
+    dispatch(addAward({ _id: uuidv4(), award: "" }));
+  };
+
+  return (
+    <div className={style.container}>
+      <h5>Honors & Awards</h5>
+      {awards.map((award, key) => {
+        return (
+          <div key={key}>
+            <input
+              type="text"
+              value={award.award}
+              placeholder="Won XYZ Award"
+              onChange={(e) =>
+                dispatch(
+                  addOrUpdateAward({ _id: award._id, award: e.target.value })
+                )
+              }
+            />
+            <button
+              onClick={() =>
+                dispatch(deleteAward({ _id: award._id, award: award.award }))
+              }
+            >
+              Delete
+            </button>
+          </div>
+        );
+      })}
+      <button onClick={handleAddAward}>Add Award</button>
+    </div>
+  );
+};
+
+export default AdditionalInformation;

@@ -5,9 +5,8 @@ import {
   addExperience,
   addOrUpdateCompany,
   addOrUpdateDescription,
-  addOrUpdateEndDateJob,
+  addOrUpdateJobDuration,
   addOrUpdateJobTitle,
-  addOrUpdateStartDateJob,
   deleteExperience,
 } from "../../../redux/reducers/resumeSlice";
 
@@ -22,8 +21,7 @@ const Experience = () => {
         _id: uuidv4(),
         company: "",
         jobTitle: "",
-        startDate: "",
-        endDate: "",
+        duration: "",
         description: "",
       },
     });
@@ -68,28 +66,14 @@ const Experience = () => {
             />
             <input
               type="text"
-              placeholder="Start Date"
-              value={experienceDetail.startDate}
+              placeholder="Duration"
+              value={experienceDetail.duration}
               onChange={(e) => {
                 dispatch({
-                  type: addOrUpdateStartDateJob,
+                  type: addOrUpdateJobDuration,
                   payload: {
                     _id: experienceDetail._id,
-                    startDate: e.target.value,
-                  },
-                });
-              }}
-            />
-            <input
-              type="text"
-              placeholder="End Date"
-              value={experienceDetail.endDate}
-              onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateEndDateJob,
-                  payload: {
-                    _id: experienceDetail._id,
-                    endDate: e.target.value,
+                    duration: e.target.value,
                   },
                 });
               }}

@@ -57,19 +57,21 @@ const Skills = () => {
   };
 
   useEffect(() => {
-    console.log(languages);
-  }, [languages, language]);
+    console.log(frameworks);
+  }, [languages, frameworks, tools, databases, language]);
   return (
     <div>
       <div className={style.languages}>
         <h5>Languages</h5>
-        <input
-          type="text"
-          value={language}
-          placeholder="C++,Java,JavaScript"
-          onChange={(e) => setLanguage(e.target.value)}
-        />
-        <img src={AddIcon} alt="Add" onClick={handleAddLanguage} />
+        <div className={style.addInput}>
+          <input
+            type="text"
+            value={language}
+            placeholder="C++,Java,JavaScript"
+            onChange={(e) => setLanguage(e.target.value)}
+          />
+          <img src={AddIcon} alt="Add" onClick={handleAddLanguage} />
+        </div>
         {languages.map((language, key) => {
           return (
             <Chip
@@ -77,26 +79,25 @@ const Skills = () => {
               label={language.language}
               variant="outlined"
               onClick={() => setLanguage(language.language)}
-              onDelete={() =>
-                dispatch({
-                  type: deleteLanguage,
-                  payload: { _id: language._id },
-                })
-              }
+              onDelete={() => {
+                dispatch(deleteLanguage({ _id: language._id }));
+              }}
             />
           );
         })}
       </div>
       <div className={style.frameworks}>
         <h5>Frameworks</h5>
-        <input
-          type="text"
-          value={framework}
-          placeholder="React,Node,Express"
-          onChange={(e) => setFramework(e.target.value)}
-        />
-        <img src={AddIcon} alt="Add" onClick={handleAddFramework} />
-        {/* {frameworks.map((framework, key) => {
+        <div className={style.addInput}>
+          <input
+            type="text"
+            value={framework}
+            placeholder="React,Node,Express"
+            onChange={(e) => setFramework(e.target.value)}
+          />
+          <img src={AddIcon} alt="Add" onClick={handleAddFramework} />
+        </div>
+        {frameworks.map((framework, key) => {
           return (
             <Chip
               key={key}
@@ -111,17 +112,19 @@ const Skills = () => {
               }
             />
           );
-        })} */}
+        })}
       </div>
       <div className={style.tools}>
         <h5>Tools</h5>
-        <input
-          type="text"
-          value={tool}
-          placeholder="Git,VS Code"
-          onChange={(e) => setTool(e.target.value)}
-        />
-        <img src={AddIcon} alt="Add" onClick={handleAddTool} />
+        <div className={style.addInput}>
+          <input
+            type="text"
+            value={tool}
+            placeholder="Git,VS Code"
+            onChange={(e) => setTool(e.target.value)}
+          />
+          <img src={AddIcon} alt="Add" onClick={handleAddTool} />
+        </div>
         {tools.map((tool, key) => {
           return (
             <Chip
@@ -141,13 +144,15 @@ const Skills = () => {
       </div>
       <div className={style.databases}>
         <h5>Databases</h5>
-        <input
-          type="text"
-          value={database}
-          placeholder="MongoDB,MySQL"
-          onChange={(e) => setDatabase(e.target.value)}
-        />
-        <img src={AddIcon} alt="Add" onClick={handleAddDatabase} />
+        <div className={style.addInput}>
+          <input
+            type="text"
+            value={database}
+            placeholder="MongoDB,MySQL"
+            onChange={(e) => setDatabase(e.target.value)}
+          />
+          <img src={AddIcon} alt="Add" onClick={handleAddDatabase} />
+        </div>
         {databases.map((database, key) => {
           return (
             <Chip

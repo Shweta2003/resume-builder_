@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", height: "90vh", border: "2px solid" }}>
         <Form />
         <Outlet />
       </div>

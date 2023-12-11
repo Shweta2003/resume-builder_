@@ -1,0 +1,8 @@
+/* .languages {
+  display: flex;
+  flex-direction: column;
+} */
+.addInput {
+  display: flex;
+  align-items: center;
+}

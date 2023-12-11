@@ -5,6 +5,15 @@
   overflow-y: auto;
   /* scroll-behavior: smooth; */
 }
+.container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.container::-webkit-scrollbar {
+  width: 5px;
+}
+
+
 ul {
   display: flex;
   flex-direction: column;

@@ -26,12 +26,15 @@ const initialState = {
   },
   projects: {
     showDetails: false,
+    projectDetails: [],
   },
-  achievements: {
+  certificates: {
     showDetails: false,
+    certificatesDetails: [],
   },
   additionalInformation: {
     showDetails: false,
+    additionalInformationDetails: [],
   },
 };
 
@@ -144,17 +147,10 @@ const resumeSlice = createSlice({
         }
       });
     },
-    addOrUpdateStartDateJob: (state, action) => {
+    addOrUpdateJobDuration: (state, action) => {
       state.experiences.experienceDetails.forEach((experienceDetail) => {
         if (experienceDetail._id === action.payload._id) {
-          experienceDetail.startDate = action.payload.startDate;
-        }
-      });
-    },
-    addOrUpdateEndDateJob: (state, action) => {
-      state.experiences.experienceDetails.forEach((experienceDetail) => {
-        if (experienceDetail._id === action.payload._id) {
-          experienceDetail.endDate = action.payload.endDate;
+          experienceDetail.duration = action.payload.duration;
         }
       });
     },
@@ -174,35 +170,129 @@ const resumeSlice = createSlice({
     addLanguage: (state, action) => {
       state.skills.languages.push(action.payload);
     },
-  },
-  deleteLanguage: (state, action) => {
-    state.skills.languages = state.skills.languages.filter(
-      (language) => language._id !== action.payload._id
-    );
-  },
-  addFramework: (state, action) => {
-    state.skills.frameworks.push(action.payload);
-  },
-  deleteFramework: (state, action) => {
-    state.skills.frameworks = state.skills.frameworks.filter(
-      (framework) => framework._id !== action.payload._id
-    );
-  },
-  addTool: (state, action) => {
-    state.skills.tools.push(action.payload);
-  },
-  deleteTool: (state, action) => {
-    state.skills.tools = state.skills.tools.filter(
-      (tool) => tool._id !== action.payload._id
-    );
-  },
-  addDatabase: (state, action) => {
-    state.skills.databases.push(action.payload);
-  },
-  deleteDatabase: (state, action) => {
-    state.skills.databases = state.skills.databases.filter(
-      (database) => database._id !== action.payload._id
-    );
+
+    deleteLanguage: (state, action) => {
+      state.skills.languages = state.skills.languages.filter(
+        (language) => language._id !== action.payload._id
+      );
+    },
+    addFramework: (state, action) => {
+      state.skills.frameworks.push(action.payload);
+    },
+    deleteFramework: (state, action) => {
+      state.skills.frameworks = state.skills.frameworks.filter(
+        (framework) => framework._id !== action.payload._id
+      );
+    },
+    addTool: (state, action) => {
+      state.skills.tools.push(action.payload);
+    },
+    deleteTool: (state, action) => {
+      state.skills.tools = state.skills.tools.filter(
+        (tool) => tool._id !== action.payload._id
+      );
+    },
+    addDatabase: (state, action) => {
+      state.skills.databases.push(action.payload);
+    },
+    deleteDatabase: (state, action) => {
+      state.skills.databases = state.skills.databases.filter(
+        (database) => database._id !== action.payload._id
+      );
+    },
+    addProject: (state, action) => {
+      state.projects.projectDetails.push(action.payload);
+    },
+    addOrUpdateProjectName: (state, action) => {
+      state.projects.projectDetails.forEach((projectDetail) => {
+        if (projectDetail._id === action.payload._id) {
+          projectDetail.name = action.payload.name;
+        }
+      });
+    },
+    addOrUpdateProjectTechnologies: (state, action) => {
+      state.projects.projectDetails.forEach((projectDetail) => {
+        if (projectDetail._id === action.payload._id) {
+          projectDetail.technologies = action.payload.technologies;
+        }
+      });
+    },
+    addOrUpdateProjectDescription: (state, action) => {
+      state.projects.projectDetails.forEach((projectDetail) => {
+        if (projectDetail._id === action.payload._id) {
+          projectDetail.description = action.payload.description;
+        }
+      });
+    },
+    addOrUpdateProjectLink: (state, action) => {
+      state.projects.projectDetails.forEach((projectDetail) => {
+        if (projectDetail._id === action.payload._id) {
+          projectDetail.link = action.payload.link;
+        }
+      });
+    },
+    addOrUpdateProjectGithub: (state, action) => {
+      state.projects.projectDetails.forEach((projectDetail) => {
+        if (projectDetail._id === action.payload._id) {
+          projectDetail.github = action.payload.github;
+        }
+      });
+    },
+    deleteProject: (state, action) => {
+      state.projects.projectDetails = state.projects.projectDetails.filter(
+        (projectDetail) => projectDetail._id !== action.payload._id
+      );
+    },
+    addCertificate: (state, action) => {
+      state.certificates.certificatesDetails.push(action.payload);
+    },
+    addOrUpdateCertificateName: (state, action) => {
+      state.certificates.certificatesDetails.forEach((certificateDetail) => {
+        if (certificateDetail._id === action.payload._id) {
+          certificateDetail.name = action.payload.name;
+        }
+      });
+    },
+    addOrUpdateCertificateAuthority: (state, action) => {
+      state.certificates.certificatesDetails.forEach((certificateDetail) => {
+        if (certificateDetail._id === action.payload._id) {
+          certificateDetail.authority = action.payload.authority;
+        }
+      });
+    },
+    addOrUpdateCertificateLink: (state, action) => {
+      state.certificates.certificatesDetails.forEach((certificateDetail) => {
+        if (certificateDetail._id === action.payload._id) {
+          certificateDetail.link = action.payload.link;
+        }
+      });
+    },
+    deleteCertificate: (state, action) => {
+      state.certificates.certificatesDetails =
+        state.certificates.certificatesDetails.filter(
+          (certificateDetail) => certificateDetail._id !== action.payload._id
+        );
+    },
+    addAward: (state, action) => {
+      state.additionalInformation.additionalInformationDetails.push(
+        action.payload
+      );
+    },
+    addOrUpdateAward: (state, action) => {
+      state.additionalInformation.additionalInformationDetails.forEach(
+        (awardDetail) => {
+          if (awardDetail._id === action.payload._id) {
+            awardDetail.award = action.payload.award;
+          }
+        }
+      );
+    },
+    deleteAward: (state, action) => {
+      state.additionalInformation.additionalInformationDetails =
+        state.additionalInformation.additionalInformationDetails.filter(
+          (awardDetail) => awardDetail._id !== action.payload._id
+        );
+    },
   },
 });
 
@@ -227,8 +317,7 @@ export const {
   addExperience,
   addOrUpdateCompany,
   addOrUpdateJobTitle,
-  addOrUpdateStartDateJob,
-  addOrUpdateEndDateJob,
+  addOrUpdateJobDuration,
   addOrUpdateDescription,
   deleteExperience,
   addLanguage,
@@ -239,6 +328,21 @@ export const {
   deleteTool,
   addDatabase,
   deleteDatabase,
+  addProject,
+  addOrUpdateProjectName,
+  addOrUpdateProjectTechnologies,
+  addOrUpdateProjectDescription,
+  addOrUpdateProjectLink,
+  addOrUpdateProjectGithub,
+  deleteProject,
+  addCertificate,
+  addOrUpdateCertificateName,
+  addOrUpdateCertificateAuthority,
+  addOrUpdateCertificateLink,
+  deleteCertificate,
+  addAward,
+  addOrUpdateAward,
+  deleteAward,
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;
