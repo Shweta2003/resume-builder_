@@ -19,9 +19,8 @@ const Education = () => {
     (state) => state.resume.education.educationDetails
   );
   const handleAddEducation = () => {
-    dispatch({
-      type: addEducation,
-      payload: {
+    dispatch(
+      addEducation({
         _id: uuidv4(),
         institution: "",
         degree: "",
@@ -29,9 +28,8 @@ const Education = () => {
         startDate: "",
         endDate: "",
         cgpa: "",
-      },
-    });
-    console.log(educationDetails);
+      })
+    );
   };
 
   useEffect(() => {
@@ -48,13 +46,12 @@ const Education = () => {
               placeholder="Institution"
               value={educationDetail.institution}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateInstitution,
-                  payload: {
+                dispatch(
+                  addOrUpdateInstitution({
                     _id: educationDetail._id,
                     institution: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -62,13 +59,12 @@ const Education = () => {
               placeholder="Degree"
               value={educationDetail.degree}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateDegree,
-                  payload: {
+                dispatch(
+                  addOrUpdateDegree({
                     _id: educationDetail._id,
                     degree: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -76,13 +72,12 @@ const Education = () => {
               placeholder="Course"
               value={educationDetail.course}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateCourse,
-                  payload: {
+                dispatch(
+                  addOrUpdateCourse({
                     _id: educationDetail._id,
                     course: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -90,13 +85,12 @@ const Education = () => {
               placeholder="Start Date"
               value={educationDetail.startDate}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateStartDate,
-                  payload: {
+                dispatch(
+                  addOrUpdateStartDate({
                     _id: educationDetail._id,
                     startDate: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -104,13 +98,12 @@ const Education = () => {
               placeholder="End Date"
               value={educationDetail.endDate}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateEndDate,
-                  payload: {
+                dispatch(
+                  addOrUpdateEndDate({
                     _id: educationDetail._id,
                     endDate: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -118,22 +111,18 @@ const Education = () => {
               placeholder="CGPA"
               value={educationDetail.cgpa}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateCgpa,
-                  payload: {
+                dispatch(
+                  addOrUpdateCgpa({
                     _id: educationDetail._id,
                     cgpa: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <div>
               <button
                 onClick={() =>
-                  dispatch({
-                    type: deleteEducation,
-                    payload: { _id: educationDetail._id },
-                  })
+                  dispatch(deleteEducation({ _id: educationDetail._id }))
                 }
               >
                 Delete

@@ -20,10 +20,7 @@ const PersonalInformation = () => {
   const links = resume.personalInformation.links;
 
   const handleAddLink = () => {
-    dispatch({
-      type: addLink,
-      payload: { _id: uuidv4(), name: "", url: "" },
-    });
+    dispatch(addLink({ _id: uuidv4(), name: "", url: "" }));
   };
 
   useEffect(() => {
@@ -35,24 +32,22 @@ const PersonalInformation = () => {
       <input
         type="text"
         placeholder={resume.personalInformation.name}
-        onChange={(e) => dispatch({ type: addName, payload: e.target.value })}
+        onChange={(e) => dispatch(addName(e.target.value))}
       />
       <input
         type="text"
         placeholder={resume.personalInformation.email}
-        onChange={(e) => dispatch({ type: addEmail, payload: e.target.value })}
+        onChange={(e) => dispatch(addEmail(e.target.value))}
       />
       <input
         type="text"
         placeholder={resume.personalInformation.phone}
-        onChange={(e) => dispatch({ type: addPhone, payload: e.target.value })}
+        onChange={(e) => dispatch(addPhone(e.target.value))}
       />
       <input
         type="text"
         placeholder={resume.personalInformation.jobTitle}
-        onChange={(e) =>
-          dispatch({ type: addJobTitle, payload: e.target.value })
-        }
+        onChange={(e) => dispatch(addJobTitle({ jobTitle: e.target.value }))}
       />
       <div>
         <h5>Links</h5>
@@ -63,10 +58,9 @@ const PersonalInformation = () => {
                 value={link.name}
                 id=""
                 onChange={(e) =>
-                  dispatch({
-                    type: AddOrUpdateLinkName,
-                    payload: { name: e.target.value, _id: link._id },
-                  })
+                  dispatch(
+                    AddOrUpdateLinkName({ name: e.target.value, _id: link._id })
+                  )
                 }
               >
                 <option value="" disabled selected>
@@ -81,16 +75,18 @@ const PersonalInformation = () => {
                 type="text"
                 placeholder="Your Link here"
                 onChange={(e) =>
-                  dispatch({
-                    type: AddOrUpdateLinkUrl,
-                    payload: { url: e.target.value, _id: link._id },
-                  })
+                  dispatch(
+                    AddOrUpdateLinkUrl({ url: e.target.value, _id: link._id })
+                  )
                 }
               />
               <button
                 onClick={() =>
-                  dispatch({ type: deleteLink, payload: { _id: link._id } }) &&
-                  console.log(link._id)
+                  dispatch(
+                    deleteLink({
+                      _id: link._id,
+                    })
+                  )
                 }
               >
                 <img src={CrossIcon} alt="" />

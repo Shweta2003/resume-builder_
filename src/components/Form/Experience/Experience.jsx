@@ -15,16 +15,15 @@ const Experience = () => {
   const resume = useSelector((state) => state.resume);
   const experienceDetails = resume.experiences.experienceDetails;
   const handleAddExperience = () => {
-    dispatch({
-      type: addExperience,
-      payload: {
+    dispatch(
+      addExperience({
         _id: uuidv4(),
         company: "",
         jobTitle: "",
         duration: "",
         description: "",
-      },
-    });
+      })
+    );
   };
 
   useEffect(() => {
@@ -41,13 +40,12 @@ const Experience = () => {
               placeholder="Company"
               value={experienceDetail.company}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateCompany,
-                  payload: {
+                dispatch(
+                  addOrUpdateCompany({
                     _id: experienceDetail._id,
                     company: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -55,13 +53,12 @@ const Experience = () => {
               placeholder="Job Title"
               value={experienceDetail.jobTitle}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateJobTitle,
-                  payload: {
+                dispatch(
+                  addOrUpdateJobTitle({
                     _id: experienceDetail._id,
                     jobTitle: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -69,13 +66,12 @@ const Experience = () => {
               placeholder="Duration"
               value={experienceDetail.duration}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateJobDuration,
-                  payload: {
+                dispatch(
+                  addOrUpdateJobDuration({
                     _id: experienceDetail._id,
                     duration: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <input
@@ -83,23 +79,17 @@ const Experience = () => {
               placeholder="Description"
               value={experienceDetail.description}
               onChange={(e) => {
-                dispatch({
-                  type: addOrUpdateDescription,
-                  payload: {
+                dispatch(
+                  addOrUpdateDescription({
                     _id: experienceDetail._id,
                     description: e.target.value,
-                  },
-                });
+                  })
+                );
               }}
             />
             <button
               onClick={() => {
-                dispatch({
-                  type: deleteExperience,
-                  payload: {
-                    _id: experienceDetail._id,
-                  },
-                });
+                dispatch(deleteExperience({ _id: experienceDetail._id }));
               }}
             >
               Delete Experience
