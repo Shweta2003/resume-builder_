@@ -6,7 +6,9 @@
   align-items: center;
 }
 .resume {
-  width: 80%;
+  width: 70%;
+  height: 100%;
+  border: 2px solid;
 }
 .personalDetails {
   border: 2px solid;
@@ -87,3 +89,5 @@ min-height: 200px;
 .certificates{
 min-height: 200px;
 }
+
+

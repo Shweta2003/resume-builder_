@@ -1,6 +1,6 @@
 import styles from "./PersonalInformation.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import {
   addEmail,
   addJobTitle,
