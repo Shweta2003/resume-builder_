@@ -7,7 +7,9 @@
   /* justify-content: center; */
 }
 .resume {
-  width: 80%;
+  width: 70%;
+  height: 100%;
+  border: 2px solid;
 }
 .personalDetails {
   border: 2px solid;
@@ -27,4 +29,14 @@
 .subtitle {
   font-size: 1rem;
   font-weight: 600;
+}
+.details {
+  height: 100%;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid;
+  width: 50%;
 }

@@ -29,10 +29,7 @@ const Skills = () => {
 
   const handleAddLanguage = () => {
     setLanguage("");
-    dispatch({
-      type: addLanguage,
-      payload: { language: language, _id: uuidv4() },
-    });
+    dispatch(addLanguage({ language: language, _id: uuidv4() }));
   };
   const handleAddFramework = () => {
     setFramework("");
