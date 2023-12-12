@@ -33,24 +33,15 @@ const Skills = () => {
   };
   const handleAddFramework = () => {
     setFramework("");
-    dispatch({
-      type: addFramework,
-      payload: { framework: framework, _id: uuidv4() },
-    });
+    dispatch(addFramework({ framework: framework, _id: uuidv4() }));
   };
   const handleAddTool = () => {
     setTool("");
-    dispatch({
-      type: addTool,
-      payload: { tool: tool, _id: uuidv4() },
-    });
+    dispatch(addTool({ tool: tool, _id: uuidv4() }));
   };
   const handleAddDatabase = () => {
     setDatabase("");
-    dispatch({
-      type: addDatabase,
-      payload: { database: database, _id: uuidv4() },
-    });
+    dispatch(addDatabase({ database: database, _id: uuidv4() }));
   };
 
   useEffect(() => {

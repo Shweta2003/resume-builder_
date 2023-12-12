@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 .resume {
   width: 70%;
@@ -14,29 +13,81 @@
 .personalDetails {
   border: 2px solid;
   display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
 }
+.title{
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.name{
+  padding-bottom: 5px;
+  border-bottom: 2px solid black;
+}
+
 .languages,
 .frameworks,
 .tools,
 .databases {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.xp{
+  padding: 10px;
+}
+.personalInfo{
+  display: flex;
+  flex-direction: column;
 }
 .details {
   display: flex;
+  padding: 10px;
+  padding-top: 40px;
   justify-content: space-between;
 }
 .subtitle {
   font-size: 1rem;
   font-weight: 600;
+  display: inline;
+  font-weight: bolder;
 }
-.details {
-  height: 100%;
+.language,.framework,.tool,.database{
+  display: inline;
+  padding: 0px 2px;
 }
-.left {
+.left{
+  border-right:2px solid black;
+  width:50%
+}
+.AboutSection{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border: 2px solid;
-  width: 50%;
+  align-items: center;
+  padding: 10px;
 }
+.ProfileTitle{
+  padding:10px;
+}
+.right{
+  /* border:2px solid black; */
+  width:50%;
+  padding-left: 10px;
+}
+.edu{
+  padding:10px;
+}
+.education{
+min-height: 200px;
+}
+.skills{
+min-height: 200px;
+
+}
+.certificates{
+min-height: 200px;
+}
+
+
