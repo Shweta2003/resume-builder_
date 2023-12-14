@@ -46,14 +46,34 @@ const Form = () => {
 
   return (
     <div className={styles.container}>
-      <h3>Resume Details</h3>
+      <h3 style={{ textAlign: "center" }}>Resume Details</h3>
       <ul>
         {Object.keys(sections).map((section, key) => {
           return (
             <ul key={key}>
-              <li key={section} onClick={() => handleToggleDetails(section)}>
-                <img src={sections[section][1]} alt="section logo" />
-                <span>{sections[section][2]}</span>
+              <li
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "80%",
+                  margin: "0 auto",
+                  cursor: "pointer",
+                  padding: "1rem 0",
+                  borderBottom: "1px solid #ccc",
+                }}
+                key={section}
+                onClick={() => handleToggleDetails(section)}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: ".5rem",
+                  }}
+                >
+                  <img src={sections[section][1]} alt="section logo" />
+                  <span>{sections[section][2]}</span>
+                </div>
 
                 <img
                   src={resume[section]?.showDetails ? DownArrow : UpArrow}

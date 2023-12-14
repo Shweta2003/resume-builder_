@@ -37,3 +37,7 @@ textarea {
 textarea:hover {
   border: 2px solid rgb(9, 9, 9);
 } */
+a {
+  text-decoration: none;
+  color: black;
+}

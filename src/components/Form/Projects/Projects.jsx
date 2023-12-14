@@ -11,6 +11,7 @@ import {
   addProject,
   deleteProject,
 } from "../../../redux/reducers/resumeSlice";
+import AddButton from "../../../utils/AddButton";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -117,7 +118,7 @@ const Projects = () => {
           </div>
         );
       })}
-      <button onClick={handleAddProject}>Add Project</button>
+      <AddButton field="PROJECT" handleAdd={handleAddProject} />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
   addOrUpdateAward,
   deleteAward,
 } from "../../../redux/reducers/resumeSlice";
+import AddButton from "../../../utils/AddButton";
 
 const AdditionalInformation = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const AdditionalInformation = () => {
           </div>
         );
       })}
-      <button onClick={handleAddAward}>Add Award</button>
+      <AddButton field="AWARD" handleAdd={handleAddAward} />
     </div>
   );
 };

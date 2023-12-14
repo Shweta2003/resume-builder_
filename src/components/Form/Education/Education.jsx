@@ -12,6 +12,7 @@ import {
   deleteEducation,
 } from "../../../redux/reducers/resumeSlice";
 import { v4 as uuidv4 } from "uuid";
+import AddButton from "../../../utils/AddButton";
 
 const Education = () => {
   const dispatch = useDispatch();
@@ -131,8 +132,7 @@ const Education = () => {
           </div>
         );
       })}
-
-      <button onClick={handleAddEducation}>Add Education</button>
+      <AddButton field="EDUCATION" handleAdd={handleAddEducation} />
     </div>
   );
 };

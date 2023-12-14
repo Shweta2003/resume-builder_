@@ -9,6 +9,7 @@ import {
   addOrUpdateJobTitle,
   deleteExperience,
 } from "../../../redux/reducers/resumeSlice";
+import AddButton from "../../../utils/AddButton";
 
 const Experience = () => {
   const dispatch = useDispatch();
@@ -97,7 +98,7 @@ const Experience = () => {
           </div>
         );
       })}
-      <button onClick={handleAddExperience}>Add Experience</button>
+      <AddButton field="EXPERIENCE" handleAdd={handleAddExperience} />
     </div>
   );
 };

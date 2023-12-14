@@ -10,9 +10,11 @@ import {
   AddOrUpdateLinkName,
   AddOrUpdateLinkUrl,
   deleteLink,
+  addAbout,
 } from "../../../redux/reducers/resumeSlice";
 import CrossIcon from "../../../assets/cross.svg";
 import { v4 as uuidv4 } from "uuid";
+import AddButton from "../../../utils/AddButton";
 
 const PersonalInformation = () => {
   const resume = useSelector((state) => state.resume);
@@ -49,7 +51,7 @@ const PersonalInformation = () => {
         placeholder={resume.personalInformation.jobTitle}
         onChange={(e) => dispatch(addJobTitle({ jobTitle: e.target.value }))}
       />
-      <div>
+      <div className={styles.links}>
         <h5>Links</h5>
         {links.map((link, key) => {
           return (
@@ -94,7 +96,21 @@ const PersonalInformation = () => {
             </div>
           );
         })}
-        <button onClick={handleAddLink}>Add Link</button>
+        <AddButton field="LINK" handleAdd={handleAddLink} />
+      </div>
+      <div className={styles.about}>
+        <h5>About</h5>
+        <textarea
+          className={styles.textarea}
+          onChange={(e) => dispatch(addAbout(e.target.value))}
+          name=""
+          id=""
+          cols="40"
+          rows="10"
+          placeholder="Dedicated software engineer with [X years] of experience in designing and implementing scalable and efficient solutions.Proficient in JavaScript and passionate about leveraging innovative technologies to solve complex problems. Committed to continuous learning to deliver high-quality software solutions."
+        >
+          {resume.personalInformation.about}
+        </textarea>
       </div>
     </div>
   );

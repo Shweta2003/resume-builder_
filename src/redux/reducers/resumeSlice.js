@@ -8,6 +8,7 @@ const initialState = {
     phone: "1234567890",
     jobTitle: "Software Engineer",
     links: [],
+    about: "",
   },
   education: {
     showDetails: false,
@@ -55,7 +56,7 @@ const resumeSlice = createSlice({
       state.personalInformation.phone = action.payload;
     },
     addJobTitle: (state, action) => {
-      state.personalInformation.jobTitle = action.payload;
+      state.personalInformation.jobTitle = action.payload.jobTitle;
     },
     addLink: (state, action) => {
       state.personalInformation.links.push(action.payload);
@@ -78,6 +79,9 @@ const resumeSlice = createSlice({
       state.personalInformation.links = state.personalInformation.links.filter(
         (link) => link._id !== action.payload._id
       );
+    },
+    addAbout: (state, action) => {
+      state.personalInformation.about = action.payload;
     },
     addEducation: (state, action) => {
       state.education.educationDetails.push(action.payload);
@@ -306,6 +310,7 @@ export const {
   AddOrUpdateLinkName,
   AddOrUpdateLinkUrl,
   deleteLink,
+  addAbout,
   addEducation,
   addOrUpdateInstitution,
   addOrUpdateDegree,

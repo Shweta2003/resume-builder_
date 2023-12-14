@@ -9,6 +9,7 @@ import {
   addOrUpdateCertificateName,
   deleteCertificate,
 } from "../../../redux/reducers/resumeSlice";
+import AddButton from "../../../utils/AddButton";
 
 const Certifications = () => {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ const Certifications = () => {
           </div>
         );
       })}
-      <button onClick={handleAddCertificate}>Add Certificate</button>
+      <AddButton field="CERTIFICATE" handleAdd={handleAddCertificate} />
     </div>
   );
 };

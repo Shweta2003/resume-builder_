@@ -8,10 +8,12 @@ import LinkedinIcon from "../../assets/linkedin.svg";
 import PortfolioIcon from "../../assets/portfolio.png";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { useOutletContext } from "react-router-dom";
 
 const Design6 = () => {
   const resume = useSelector((state) => state.resume);
-  const ref = useRef(null);
+  const ref = useRef();
+  const [resumeRef] = useOutletContext();
   const handleDownload = () => {
     const input = ref.current;
 
@@ -41,8 +43,7 @@ const Design6 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resume}>
-        {/* <button onClick={handleDownload}>Downlaod</button> */}
+      <div className={styles.resume} ref={resumeRef}>
         <div className={styles.left}>
           <div className={styles.contacts}>
             <div className={styles.title}>Contacts</div>
@@ -72,7 +73,7 @@ const Design6 = () => {
                         ? PortfolioIcon
                         : ""
                     }
-                    alt="icon"
+                    alt=""
                   />
                   {link.name}
                 </div>

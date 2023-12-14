@@ -21,10 +21,14 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Design3 from "../../Designs/Design3/Design3";
 import { PDFDocument, rgb } from "pdf-lib";
+import Design5 from "../../Designs/Design5/Design5";
+import ReactToPrint from "react-to-print";
 
 const Header = ({
+  resumeRef,
   setImg,
   pdfRef,
+  onDownload,
   setFontSizeOption,
   fontSizeOption,
   setFontStyleOption,
@@ -128,32 +132,32 @@ const Header = ({
     fileInputRef.current.click();
   };
 
-  const downloadPDF = () => {
-    const input = pdfRef;
+  // const downloadPDF = () => {
+  //   const input = pdfRef;
 
-    const scale = window.devicePixelRatio || 1;
+  //   const scale = window.devicePixelRatio || 1;
 
-    html2canvas(input, {
-      scale: scale,
-      useCORS: true, // Enable CORS to load images from external sources
-      scrollY: -window.scrollY,
-      windowWidth: document.documentElement.offsetWidth,
-      windowHeight: document.documentElement.offsetHeight,
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/jpeg", 1.0); // Adjust the image quality (0.0 - 1.0)
-      const pdf = new jsPDF("p", "mm", "a4");
+  //   html2canvas(input, {
+  //     scale: scale,
+  //     useCORS: true, // Enable CORS to load images from external sources
+  //     scrollY: -window.scrollY,
+  //     windowWidth: document.documentElement.offsetWidth,
+  //     windowHeight: document.documentElement.offsetHeight,
+  //   }).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/jpeg", 1.0); // Adjust the image quality (0.0 - 1.0)
+  //     const pdf = new jsPDF("p", "mm", "a4");
 
-      // Calculate the width and height based on the page size
-      const pdfWidth = pdf.internal.pageSize.getWidth() + 10;
-      const pdfHeight = pdf.internal.pageSize.getHeight();
+  //     // Calculate the width and height based on the page size
+  //     const pdfWidth = pdf.internal.pageSize.getWidth() + 10;
+  //     const pdfHeight = pdf.internal.pageSize.getHeight();
 
-      // Add the image to the PDF with the correct dimensions
-      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+  //     // Add the image to the PDF with the correct dimensions
+  //     pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
 
-      // Save the PDF with the desired filename
-      pdf.save("download.pdf");
-    });
-  };
+  //     // Save the PDF with the desired filename
+  //     pdf.save("download.pdf");
+  //   });
+  // };
 
   return (
     <div className={style.header}>
@@ -267,9 +271,12 @@ const Header = ({
           onChange={handleFileChange}
           style={{ display: "none" }}
         />
-        <Button onClick={downloadPDF} variant="contained">
-          Download PDF
-        </Button>
+        <ReactToPrint
+          trigger={() => {
+            return <Button variant="contained">Download Resume</Button>;
+          }}
+          content={() => resumeRef.current}
+        />
       </div>
     </div>
   );
