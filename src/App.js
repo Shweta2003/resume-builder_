@@ -23,9 +23,9 @@ const App = () => {
           <Route path="design/1" element={<Design1 />} />
           <Route path="design/2" element={<Design2 />} />
           <Route path="design/3" element={<Design3 />} />
-          <Route path="design/4" element={<Design4 />} />
+          {/* <Route path="design/4" element={<Design4 />} />
           <Route path="design/5" element={<Design5 />} />
-          <Route path="design/6" element={<Design6 />} />
+          <Route path="design/6" element={<Design6 />} /> */}
         </Route>
       </>
     )

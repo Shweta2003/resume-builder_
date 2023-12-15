@@ -1,7 +1,5 @@
 import React from "react";
 import style from "./Header.module.css";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import { useRef, useState } from "react";
 import fontFamily from "../../assets/font-family.svg";
 import fontSize from "../../assets/font-size.svg";
@@ -11,18 +9,15 @@ import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Fade from "@mui/material/Fade";
-import IconButton from "@mui/material/IconButton";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Design3 from "../../Designs/Design3/Design3";
-import { PDFDocument, rgb } from "pdf-lib";
-import Design5 from "../../Designs/Design5/Design5";
 import ReactToPrint from "react-to-print";
+import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
+import Design1 from "../../assets/Templates/1.svg";
+import Design2 from "../../assets/Templates/2.png";
+import Design3 from "../../assets/Templates/3.png";
 
 const Header = ({
   resumeRef,
@@ -38,6 +33,10 @@ const Header = ({
   const [fontFamilyMenuOpen, setFontFamilyMenuOpen] = useState(false);
   const [fontSizeMenuOpen, setFontSizeMenuOpen] = useState(false);
   const fileInputRef = useRef(null);
+  const [open, setOpen] = React.useState(false);
+  const handleOpenResumeModal = () => setOpen(true);
+  const handleCloseResumeModal = () => setOpen(false);
+  const navigate = useNavigate();
 
   const handleClick = (event, menuType) => {
     setAnchorEl(event.currentTarget);
@@ -61,6 +60,11 @@ const Header = ({
   };
 
   const options = ["Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway"];
+  const templates = {
+    Design1: Design1,
+    Design2: Design2,
+    Design3: Design3,
+  };
 
   const ITEM_HEIGHT = 48;
 
@@ -125,7 +129,7 @@ const Header = ({
     const file = e.target.files[0];
     if (file) {
       setImgUrl(URL.createObjectURL(file));
-      console.log(URL.createObjectURL(file))
+      console.log(URL.createObjectURL(file));
     }
   };
 
@@ -134,36 +138,49 @@ const Header = ({
     console.log(fileInputRef);
   };
 
-  // const downloadPDF = () => {
-  //   const input = pdfRef;
-
-  //   const scale = window.devicePixelRatio || 1;
-
-  //   html2canvas(input, {
-  //     scale: scale,
-  //     useCORS: true, // Enable CORS to load images from external sources
-  //     scrollY: -window.scrollY,
-  //     windowWidth: document.documentElement.offsetWidth,
-  //     windowHeight: document.documentElement.offsetHeight,
-  //   }).then((canvas) => {
-  //     const imgData = canvas.toDataURL("image/jpeg", 1.0); // Adjust the image quality (0.0 - 1.0)
-  //     const pdf = new jsPDF("p", "mm", "a4");
-
-  //     // Calculate the width and height based on the page size
-  //     const pdfWidth = pdf.internal.pageSize.getWidth() + 10;
-  //     const pdfHeight = pdf.internal.pageSize.getHeight();
-
-  //     // Add the image to the PDF with the correct dimensions
-  //     pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-
-  //     // Save the PDF with the desired filename
-  //     pdf.save("download.pdf");
-  //   });
-  // };
-
   return (
     <div className={style.header}>
-      <div style={{ width: "15rem" }}></div>
+      <div className={style.resume}>
+        <button onClick={handleOpenResumeModal}>Select Resume</button>
+        <Modal
+          open={open}
+          onClose={handleCloseResumeModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            width: "30vw",
+          }}
+        >
+          <div className={style.modal} onClick={handleCloseResumeModal}>
+            <div className={style.modalTitle}>Select Resume</div>
+            <div className={style.modalContent}>
+              {Object.keys(templates).map((template, key) => {
+                return (
+                  <div
+                    key={key}
+                    className={style.template}
+                    onClick={() => {
+                      navigate(
+                        `/resume/design/${template.charAt(template.length - 1)}`
+                      );
+                    }}
+                  >
+                    <img
+                      src={templates[template]}
+                      alt=""
+                      className={style.templateImage}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Modal>
+      </div>
       <div className={style.iconContainer}>
         <Tooltip title="Font Family" placement="bottom">
           <img

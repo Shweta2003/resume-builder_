@@ -1,55 +1,50 @@
 import React from "react";
 import styles from "./Design1.module.css";
 import { useSelector } from "react-redux";
-import EmailIcon from "../../assets/email.svg";
-import PhoneIcon from "../../assets/phone.svg";
-import GithubIcon from "../../assets/github.svg";
-import LinkedinIcon from "../../assets/linkedin.svg";
-// import PortfolioIcon from "../../assets/portfolio.png";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
 import PortfolioIcon from "../../assets/dp.jpg";
 import { useOutletContext } from "react-router-dom";
 
-const Design5 = () => {
+const Design1 = () => {
   const resume = useSelector((state) => state.resume);
-  const [resumeRef,imgUrl] = useOutletContext();
+  const [resumeRef, imgUrl] = useOutletContext();
 
   return (
     <div className={styles.resume} ref={resumeRef}>
       <div className={styles.left}>
         <div className={styles.dp}>
-          <img src={(imgUrl)?imgUrl:PortfolioIcon} />
+          <img src={imgUrl ? imgUrl : PortfolioIcon} />
         </div>
         <div className={styles.personalInfo}>
-          <div className={styles.email}>
-            <img src={EmailIcon} alt className={styles.icon} />
-            <div>{resume.personalInformation.email}</div>
-          </div>
+          <div className={styles.title}>Contacts</div>
           <div className={styles.phone}>
-            <img src={PhoneIcon} alt className={styles.icon} />
-            <div>{resume.personalInformation.phone}</div>
+            <PhoneIcon sx={{ width: "1rem" }} />
+            {resume.personalInformation.phone}
           </div>
-          {resume.personalInformation.links.map((link, key) => {
-            return (
-              <div key={key}>
-                <a href={link.url} target="_blank" className={styles.link}>
-                  <img
-                    className={styles.icon}
-                    src={
-                      link.name === "GitHub"
-                        ? GithubIcon
-                        : link.name === "LinkedIn"
-                        ? LinkedinIcon
-                        : link.name === "Portfolio"
-                        ? PortfolioIcon
-                        : ""
-                    }
-                    alt
-                  />
-                  {link.name}
-                </a>
-              </div>
-            );
-          })}
+          <div className={styles.email}>
+            <EmailIcon sx={{ width: "1rem" }} />
+            {resume.personalInformation.email}
+          </div>
+          <div className={styles.links}>
+            {resume.personalInformation.links.map((link) => (
+              <a href={link.url} target="_blank" className={styles.link}>
+                {link.name === "GitHub" ? (
+                  <GitHubIcon sx={{ width: "1rem" }} />
+                ) : link.name === "LinkedIn" ? (
+                  <LinkedInIcon sx={{ width: "1rem" }} />
+                ) : link.name === "Portfolio" ? (
+                  <CoPresentIcon sx={{ width: "1rem" }} />
+                ) : (
+                  ""
+                )}
+                {link.name}
+              </a>
+            ))}
+          </div>
         </div>
         <div className={styles.certificates}>
           <div className={styles.title}>CERTIFICATES</div>
@@ -183,4 +178,4 @@ const Design5 = () => {
   );
 };
 
-export default Design5;
+export default Design1;

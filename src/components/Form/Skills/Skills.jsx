@@ -48,7 +48,7 @@ const Skills = () => {
     console.log(frameworks);
   }, [languages, frameworks, tools, databases, language]);
   return (
-    <div>
+    <div className={style.container}>
       <div className={style.languages}>
         <h5>Languages</h5>
         <div className={style.addInput}>

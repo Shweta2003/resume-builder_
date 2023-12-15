@@ -1,234 +1,533 @@
-import React, { useRef } from "react";
-import styles from "./Design6.module.css";
-import { useSelector } from "react-redux";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import CoPresentIcon from "@mui/icons-material/CoPresent";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-import { useOutletContext } from "react-router-dom";
+import style from "./Design6.module.css";
+import phone from "../../assets/phone.svg";
+import email from "../../assets/email.svg";
+import address from "../../assets/address.svg";
+import { useRef, useState, useEffect } from "react";
+import Slider from "@mui/material/Slider";
+import Box from "@mui/material/Box";
+import { getAnswer } from "../Backend";
+import { useSelector, useDispatch } from "react-redux";
 
 const Design6 = () => {
-  const resume = useSelector((state) => state.resume);
-  const ref = useRef();
-  const [resumeRef] = useOutletContext();
-  const handleDownload = () => {
-    const input = ref.current;
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const pdfRef = useRef();
+  const [img, setImg] = useState(null);
+  const [fontSizeOption, setFontSizeOption] = useState("medium");
+  const [fontStyleOption, setFontStyleOption] = useState("normal");
+  const [contentEditable, setContentEditable] = useState(false);
 
-    const scale = window.devicePixelRatio || 1;
+  const dispatch = useDispatch();
 
-    html2canvas(input, {
-      scale: scale,
-      useCORS: true, // Enable CORS to load images from external sources
-      scrollY: -window.scrollY,
-      windowWidth: document.documentElement.offsetWidth,
-      windowHeight: document.documentElement.offsetHeight,
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/jpeg", 1.0); // Adjust the image quality (0.0 - 1.0)
-      const pdf = new jsPDF("p", "mm", "a4");
-
-      // Calculate the width and height based on the page size
-      const pdfWidth = pdf.internal.pageSize.getWidth() + 10;
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-
-      // Add the image to the PDF with the correct dimensions
-      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-
-      // Save the PDF with the desired filename
-      pdf.save("download.pdf");
-    });
+  const fontSizeInput = {
+    fontSize:
+      fontSizeOption === "small"
+        ? "12px"
+        : fontSizeOption === "large"
+        ? "24px"
+        : "20px",
+  };
+  const fontSizeName = {
+    fontSize:
+      fontSizeOption === "small"
+        ? "25px"
+        : fontSizeOption === "large"
+        ? "40px"
+        : "35px",
+  };
+  const fontSizeHeading = {
+    fontSize:
+      fontSizeOption === "small"
+        ? "12px"
+        : fontSizeOption === "large"
+        ? "24px"
+        : "16px",
+  };
+  const fontStyleInput = {
+    fontFamily:
+      fontStyleOption === "Ubuntu"
+        ? "Ubuntu"
+        : fontStyleOption === "Nunito"
+        ? "Nunito"
+        : fontStyleOption === "Poppins"
+        ? "Poppins"
+        : fontStyleOption === "Raleway"
+        ? "Raleway"
+        : "Roboto",
   };
 
-  return (
-    <div className={styles.resume} ref={resumeRef}>
-      <div className={styles.left}>
-        <div className={styles.contacts}>
-          <div className={styles.title}>Contacts</div>
-          <div className={styles.phone}>
-            <PhoneIcon sx={{ width: "1rem" }} />
-            {resume.personalInformation.phone}
-          </div>
-          <div className={styles.email}>
-            <EmailIcon sx={{ width: "1rem" }} />
-            {resume.personalInformation.email}
-          </div>
-          <div className={styles.links}>
-            {resume.personalInformation.links.map((link) => (
-              <a href={link.url} target="_blank" className={styles.link}>
-                {link.name === "GitHub" ? (
-                  <GitHubIcon sx={{ width: "1rem" }} />
-                ) : link.name === "LinkedIn" ? (
-                  <LinkedInIcon sx={{ width: "1rem" }} />
-                ) : link.name === "Portfolio" ? (
-                  <CoPresentIcon sx={{ width: "1rem" }} />
-                ) : (
-                  ""
-                )}
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className={styles.education}>
-          <div className={styles.title}>Education</div>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-          >
-            {resume.education.educationDetails.map((educationDetail, key) => {
-              return (
-                <div key={key}>
-                  <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div className={styles.duration}>
-                      {educationDetail.startDate} - {educationDetail.endDate}
-                    </div>
-                    {educationDetail.cgpa && (
-                      <div className={styles.cgpa}>
-                        CGPA : {educationDetail.cgpa}
-                      </div>
-                    )}
-                  </div>
-                  <div
-                    style={{ display: "flex", gap: "1rem", fontWeight: "800" }}
-                  >
-                    <div className={styles.degree}>
-                      {educationDetail.degree}
-                    </div>
-                    <div className={styles.course}>
-                      {educationDetail.course}
-                    </div>
-                  </div>
-                  <div className={styles.institute}>
-                    {educationDetail.institution}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className={styles.skills}>
-          <div className={styles.title}>Skills</div>
-          <div className={styles.languages}>
-            {resume.skills.languages.length > 0 && (
-              <div className={styles.subtitle}>Languages : </div>
-            )}
-            {resume.skills.languages.map((language, key) => {
-              return (
-                <div key={key} className={styles.language}>
-                  {language.language}
-                  {key === resume.skills.languages.length - 1 ? "" : ","}
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.frameworks}>
-            {resume.skills.frameworks.length > 0 && (
-              <div className={styles.subtitle}>Frameworks : </div>
-            )}
-            {resume.skills.frameworks.map((framework, key) => {
-              return (
-                <div key={key} className={styles.framework}>
-                  {framework.framework}
-                  {key === resume.skills.frameworks.length - 1 ? "" : ","}
-                </div>
-              );
-            })}
-          </div>
+  const [data, setData] = useState({
+    name: "SAMIRA HADID",
+    title: "Graphic Designer",
+    phone: "123-456-7890",
+    address: "123 Anywhere St., Any City",
+    email: "hello@reallygreatsite.com",
+    education: "Education".toUpperCase(),
+    educationDetails: [
+      {
+        year: "2014",
+        college: "Borcelle University",
+        degree: "Bachelor of Arts in Graphic Design",
+      },
+      {
+        year: "2018",
+        college: "Fradel and Spies Academy",
+        degree: "Bachelor of Arts in Graphic Design",
+      },
+    ],
+    skills: "SKILLS",
+    skillsDetails: [
+      {
+        skill: "JavaScript",
+      },
+      {
+        skill: "Css",
+      },
+      {
+        skill: "React",
+      },
+      {
+        skill: "Machine Learning",
+      },
+      {
+        skill: "Python",
+      },
+    ],
+    about:
+      "As a computer science engineering student, I am passionate about solving complex problems through technology. I possess a strong foundation in programming and a drive to continuously learn and adapt in this ever-evolving field.",
+    workExperience: "WORK EXPERIENCE",
+    workExperiences: [
+      {
+        year: "2014-2016",
+        company: "ABC Company",
+        position: "Graphic Designer",
+        description: "I am a software engineer ",
+      },
+      {
+        year: "2014-2016",
+        company: "ABC Company",
+        position: "Graphic Designer",
+        description: "I am a cab driver",
+      },
+    ],
+  });
 
-          <div className={styles.tools}>
-            {resume.skills.tools.length > 0 && (
-              <div className={styles.subtitle}>Tools : </div>
-            )}
-            {resume.skills.tools.map((tool, key) => {
-              return (
-                <div key={key} className={styles.tool}>
-                  {tool.tool}
-                  {key === resume.skills.tools.length - 1 ? "" : ","}
-                </div>
-              );
-            })}
+  const enhanceSection = async (key, inputState, index, maxTokens) => {
+    const enhancedInput = await getAnswer(inputState, maxTokens);
+    setProgress((prevProgress) =>
+      prevProgress > 100 ? 0 : prevProgress + 33.33333333333333
+    );
+
+    if (key === "about") {
+      setData((prevData) => ({
+        ...prevData,
+        [key]: enhancedInput.evaluation,
+      }));
+    }
+    if (key === "workExperiences") {
+      const newWorkExperiences = [...data.workExperiences];
+      newWorkExperiences[index].description = enhancedInput.evaluation;
+      setData((prevData) => ({
+        ...prevData,
+        [key]: newWorkExperiences,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 0 : prevProgress + 1
+      );
+    }, 800);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <div className={style.container}>
+      {/* <Header
+        pdfRef={pdfRef.current}
+        setImg={setImg}
+        setFontSizeOption={setFontSizeOption}
+        fontSizeOption={fontSizeOption}
+        setFontStyleOption={setFontStyleOption}
+        fontStyleOption={fontStyleOption}
+      /> */}
+      <div className={style.resume}>
+        <div
+          className={style.design}
+          id="res"
+          ref={pdfRef}
+          style={fontStyleInput}
+        >
+          <div className={style.left}>
+            <div className={style.name}>
+              <input
+                type="text"
+                rows={2}
+                name="title"
+                value={data.name}
+                onChange={(e) =>
+                  dispatch({
+                    type: "setPersonalDetails",
+                    payload: e.target.value,
+                  })
+                }
+                style={{
+                  ...fontSizeName,
+                  ...fontStyleInput,
+                  width: "20rem",
+                  height: "3rem",
+                }}
+              />
+            </div>
+            <div className={style.title}>
+              <input
+                type="text"
+                name="title"
+                value={data.title}
+                onChange={(e) => setData({ ...data, title: e.target.value })}
+                style={{ ...fontSizeHeading, ...fontStyleInput }}
+              />
+            </div>
+            <div className={style.details}>
+              <div className={style.phone}>
+                <img src={phone} alt="" />
+                <input
+                  type="text"
+                  name="phone"
+                  value={data.phone}
+                  onChange={(e) => setData({ ...data, phone: e.target.value })}
+                  style={{ ...fontSizeInput, ...fontStyleInput }}
+                />
+              </div>
+              <div className={style.email}>
+                <img src={email} alt="" />
+                <input
+                  type="email"
+                  name="email"
+                  value={data.email}
+                  onChange={(e) => {
+                    setData({ ...data, email: e.target.value });
+                  }}
+                  style={{ ...fontSizeInput, ...fontStyleInput }}
+                />
+              </div>
+              <div className={style.address}>
+                <img src={address} alt="" />
+                <input
+                  type="text"
+                  name="address"
+                  value={data.address}
+                  onChange={(e) => {
+                    setData({ ...data, address: e.target.value });
+                  }}
+                  style={{ ...fontSizeInput, ...fontStyleInput }}
+                />
+              </div>
+            </div>
+            <div className={style.education}>
+              <div className={style.educationHeading}>
+                <input
+                  type="text"
+                  name="education"
+                  value={data.education}
+                  onChange={(e) =>
+                    setData({
+                      ...data,
+                      education: e.target.value.toUpperCase(),
+                    })
+                  }
+                  style={{ ...fontSizeHeading, ...fontStyleInput }}
+                />
+              </div>
+              <div className={style.educationDetails}>
+                {data.educationDetails.map((educationDetail, index) => (
+                  <div key={index} className={style.educationDetail}>
+                    <input
+                      type="text"
+                      name="educationDetails"
+                      value={data.educationDetails[index].year}
+                      onChange={(e) => {
+                        const newEducationDetails = [...data.educationDetails];
+                        newEducationDetails[index].year = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [educationDetail]: newEducationDetails,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                    <input
+                      type="text"
+                      name="educationDetails"
+                      value={data.educationDetails[index].college}
+                      onChange={(e) => {
+                        const newEducationDetails = [...data.educationDetails];
+                        newEducationDetails[index].college = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [educationDetail]: newEducationDetails,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                    <input
+                      type="text"
+                      name="educationDetails"
+                      value={data.educationDetails[index].degree}
+                      onChange={(e) => {
+                        const newEducationDetails = [...data.educationDetails];
+                        newEducationDetails[index].degree = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [educationDetail]: newEducationDetails,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={style.skills}>
+              <div className={style.skillHeading}>
+                <input
+                  type="text"
+                  name="skills"
+                  value={data.skills}
+                  onChange={(e) =>
+                    setData({ ...data, skills: e.target.value.toUpperCase() })
+                  }
+                  style={{ ...fontSizeHeading, ...fontStyleInput }}
+                />
+              </div>
+              <div className={style.skillDetails}>
+                {data.skillsDetails.map((skill, index) => (
+                  <div key={index} className={style.skill}>
+                    <input
+                      type="text"
+                      name="skillsDetails"
+                      value={data.skillsDetails[index].skill}
+                      onChange={(e) => {
+                        const newSkillDetails = [...data.skillsDetails];
+                        newSkillDetails[index].skill = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [skill]: newSkillDetails,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                    <Box sx={{ width: 100 }}>
+                      <Slider
+                        aria-label="Temperature"
+                        defaultValue={30}
+                        size="small"
+                        valueLabelDisplay="auto"
+                        step={10}
+                        min={0}
+                        max={100}
+                        sx={{ color: "grey", height: 4 }}
+                      />
+                    </Box>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className={styles.databases}>
-            {resume.skills.databases.length > 0 && (
-              <div className={styles.subtitle}>Databases : </div>
-            )}
-            {resume.skills.databases.map((database, key) => {
-              return (
-                <div key={key} className={styles.database}>
-                  {database.database}
-                  {key === resume.skills.databases.length - 1 ? "" : ","}
+          <div className={style.divider}>
+            <div className={style.line}></div>
+            <div className={style.circle}></div>
+            <div className={style.line}></div>
+            <div className={style.circle}></div>
+            <div className={style.line}></div>
+          </div>
+          <div className={style.right}>
+            {/* <div className={style.background}></div> */}
+            <div className={style.picture}>
+              {img ? (
+                <div>
+                  <img
+                    src={img}
+                    alt="Uploaded"
+                    style={{
+                      width: "10rem",
+                      borderRadius: "50%",
+                      height: "10rem",
+                    }}
+                  />
                 </div>
-              );
-            })}
+              ) : (
+                <img
+                  src="https://media-public.canva.com/e4VII/MAEnbbe4VII/1/tl.jpg"
+                  alt=""
+                  style={{
+                    width: "10rem",
+                    borderRadius: "50%",
+                    height: "10rem",
+                  }}
+                />
+              )}
+            </div>
+            <div className={style.about}>
+              {!contentEditable ? (
+                <div
+                  style={{
+                    ...fontSizeInput,
+                    ...fontStyleInput,
+                    // width: "20rem",
+                    // width: "15rem",
+                  }}
+                  onClick={() => {
+                    setContentEditable(true);
+                  }}
+                >
+                  {data.about}
+                </div>
+              ) : (
+                <div
+                  contentEditable={true}
+                  type="text"
+                  name="about"
+                  value={data.about}
+                  onChange={(e) => {
+                    setData({ ...data, about: e.target.value });
+                  }}
+                  style={{
+                    ...fontSizeInput,
+                    ...fontStyleInput,
+                    // width: "20rem",
+                  }}
+                >
+                  {data.about}
+                </div>
+              )}
+            </div>
+
+            <div className={style.workExperiences}>
+              <div className={style.workExperienceHeading}>
+                <input
+                  type="text"
+                  name="workExperience"
+                  value={data.workExperience}
+                  onChange={(e) => setData({ ...data, about: e.target.value })}
+                  style={{ ...fontSizeHeading, ...fontStyleInput }}
+                />
+              </div>
+              <div className={style.workExperience} style={fontSizeInput}>
+                {data.workExperiences.map((workExperience, index) => (
+                  <div
+                    key={index}
+                    className={style.workExperienceDetails}
+                    style={{ ...fontSizeInput, ...fontStyleInput }}
+                  >
+                    <input
+                      type="text"
+                      name="workExperiences"
+                      value={data.workExperiences[index].year}
+                      onChange={(e) => {
+                        const newWorkExperiences = [...data.workExperiences];
+                        newWorkExperiences[index].year = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [workExperience]: newWorkExperiences,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                    <input
+                      type="text"
+                      name="workExperiences"
+                      value={data.workExperiences[index].company}
+                      onChange={(e) => {
+                        const newWorkExperiences = [...data.workExperiences];
+                        newWorkExperiences[index].company = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [workExperience]: newWorkExperiences,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                    <input
+                      type="text"
+                      name="workExperiences"
+                      value={data.workExperiences[index].position}
+                      onChange={(e) => {
+                        const newWorkExperiences = [...data.workExperiences];
+                        newWorkExperiences[index].position = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [workExperience]: newWorkExperiences,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                    <textarea
+                      type="text"
+                      rows={5}
+                      name="workExperiences"
+                      value={data.workExperiences[index].description}
+                      maxLength="420"
+                      onChange={(e) => {
+                        const newWorkExperiences = [...data.workExperiences];
+                        newWorkExperiences[index].description = e.target.value;
+                        setData((prevData) => ({
+                          ...prevData,
+                          [workExperience]: newWorkExperiences,
+                        }));
+                      }}
+                      style={{ ...fontSizeInput, ...fontStyleInput }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div className={styles.certifications}>
-          <div className={styles.title}>Certifications</div>
-          {resume.certificates.certificatesDetails.map((certificateDetail) => (
-            <div className={styles.certificatesDetails}>
-              <a
-                className={styles.certificateDetaillink}
-                href={certificateDetail.link}
+        <div className={style.enhanceButtons}>
+          <div className={style.aboutEnhanceButton}>
+            <button
+              onClick={() => {
+                enhanceSection("about", data.about, 0, 85);
+              }}
+            >
+              Enhance
+            </button>
+          </div>
+          <div className={style.workExperiencesEnhanceButtons}>
+            <div className={style.workExperiencesEnhanceButton}>
+              <button
+                onClick={() => {
+                  enhanceSection(
+                    "workExperiences",
+                    data.workExperiences[0].description,
+                    0,
+                    120
+                  );
+                }}
               >
-                {certificateDetail.name}
-              </a>
-              <div className={styles.certificateDetailAuthority}>
-                {certificateDetail.authority}
-              </div>
+                Enhance
+              </button>
             </div>
-          ))}
-        </div>
-        <div className={styles.languages}>
-          <div className={styles.title}>Languages</div>
-          {resume.languages.languagesDetails.map((languageDetail) => (
-            <div className={styles.languageDetail}>
-              {languageDetail.language}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.personalInfo}>
-          <div className={styles.name}>{resume.personalInformation.name}</div>
-          <div className={styles.jobTitle}>
-            {resume.personalInformation.jobTitle}
-          </div>
-          <div className={styles.aboutSection}>
-            <div className={styles.about}>
-              {resume.personalInformation.about}
+            <div className={style.workExperiencesEnhanceButton}>
+              <button
+                onClick={(prevData) => {
+                  enhanceSection(
+                    "workExperiences",
+                    data.workExperiences[1].description,
+                    1,
+                    120
+                  );
+                }}
+              >
+                Enhance
+              </button>
             </div>
           </div>
-        </div>
-        <div className={styles.personalInfo}></div>
-        <div className={styles.experiences}>
-          <div className={styles.title}>Experience</div>
-          {resume.experiences.experienceDetails.map((experienceDetail, key) => {
-            return (
-              <div className={styles.exp} key={key}>
-                <div className={styles.expBorder}>
-                  <div className={styles.circle}></div>
-                  <div className={styles.line}></div>
-                </div>
-                <div className={styles.expDetail}>
-                  <div className={styles.company}>
-                    {experienceDetail.company}
-                  </div>
-                  <div className={styles.jobTitle}>
-                    {experienceDetail.jobTitle}
-                  </div>
-                  <div className={styles.duration}>
-                    {experienceDetail.duration}
-                  </div>
-                  <div className={styles.description}>
-                    {experienceDetail.description}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
     </div>

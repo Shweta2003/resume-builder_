@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Design5.module.css";
+import styles from "./Design3.module.css";
 import { useSelector } from "react-redux";
-import EmailIcon from "../../assets/email.svg";
-import PhoneIcon from "../../assets/phone.svg";
-import GithubIcon from "../../assets/github.svg";
-import LinkedinIcon from "../../assets/linkedin.svg";
-import PortfolioIcon from "../../assets/portfolio.png";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
 import { useOutletContext } from "react-router-dom";
 
 const Design3 = () => {
@@ -23,13 +23,13 @@ const Design3 = () => {
             {resume.personalInformation.jobTitle}
           </div>
         </div>
-        <div className={styles.personalInfo}>
+        {/* <div className={styles.personalInfo}>
           <div className={styles.email}>
-            <img src={EmailIcon} alt="" className={styles.icon} />
+            <EmailIcon sx={{ width: "1rem" }} />
             {resume.personalInformation.email}
           </div>
           <div className={styles.phone}>
-            <img src={PhoneIcon} alt="" className={styles.icon} />
+            <PhoneIcon sx={{ width: "1rem" }} />
             {resume.personalInformation.phone}
           </div>
           {resume.personalInformation.links.map((link, key) => {
@@ -54,6 +54,32 @@ const Design3 = () => {
               </div>
             );
           })}
+        </div> */}
+        <div className={styles.contacts}>
+          <div className={styles.phone}>
+            {resume.personalInformation.phone}
+            <PhoneIcon sx={{ width: "1rem" }} />
+          </div>
+          <div className={styles.email}>
+            {resume.personalInformation.email}
+            <EmailIcon sx={{ width: "1rem" }} />
+          </div>
+          <div className={styles.links}>
+            {resume.personalInformation.links.map((link) => (
+              <a href={link.url} target="_blank" className={styles.link}>
+                {link.name}
+                {link.name === "GitHub" ? (
+                  <GitHubIcon sx={{ width: "1rem" }} />
+                ) : link.name === "LinkedIn" ? (
+                  <LinkedInIcon sx={{ width: "1rem" }} />
+                ) : link.name === "Portfolio" ? (
+                  <CoPresentIcon sx={{ width: "1rem" }} />
+                ) : (
+                  ""
+                )}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
       <div className={styles.aboutSection}>
