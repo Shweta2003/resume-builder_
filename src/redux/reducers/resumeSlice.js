@@ -33,6 +33,10 @@ const initialState = {
     showDetails: false,
     certificatesDetails: [],
   },
+  languages: {
+    showDetails: false,
+    languagesDetails: [],
+  },
   additionalInformation: {
     showDetails: false,
     additionalInformationDetails: [],
@@ -297,6 +301,15 @@ const resumeSlice = createSlice({
           (awardDetail) => awardDetail._id !== action.payload._id
         );
     },
+    addCommunicationLanguage: (state, action) => {
+      state.languages.languagesDetails.push(action.payload);
+    },
+    deleteCommunicationLanguage: (state, action) => {
+      state.languages.languagesDetails =
+        state.languages.languagesDetails.filter(
+          (language) => language._id !== action.payload._id
+        );
+    },
   },
 });
 
@@ -348,6 +361,8 @@ export const {
   addAward,
   addOrUpdateAward,
   deleteAward,
+  addCommunicationLanguage,
+  deleteCommunicationLanguage,
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;
