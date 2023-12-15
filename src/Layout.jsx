@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Form from "./components/Form/Form";
 import Header from "./components/Header/Header";
@@ -8,11 +8,12 @@ import ReactToPrint from "react-to-print";
 
 const Layout = () => {
   const resumeRef = React.useRef();
+  const [imgUrl,setImgUrl]=useState("");
   // const { toPDF, targetRef: resumeRef } = usePDF({ filename: "page.pdf" });
 
   return (
     <>
-      <Header resumeRef={resumeRef} />
+      <Header resumeRef={resumeRef} setImgUrl={setImgUrl} />
       <div
         style={{
           display: "flex",
@@ -22,7 +23,7 @@ const Layout = () => {
         }}
       >
         <Form />
-        <Outlet context={[resumeRef]} />
+        <Outlet context={[resumeRef,imgUrl]} />
       </div>
     </>
   );
