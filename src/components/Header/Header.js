@@ -26,7 +26,7 @@ import ReactToPrint from "react-to-print";
 
 const Header = ({
   resumeRef,
-  setImg,
+  setImgUrl,
   pdfRef,
   onDownload,
   setFontSizeOption,
@@ -124,12 +124,14 @@ const Header = ({
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImg(URL.createObjectURL(file));
+      setImgUrl(URL.createObjectURL(file));
+      console.log(URL.createObjectURL(file))
     }
   };
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
+    console.log(fileInputRef);
   };
 
   // const downloadPDF = () => {
