@@ -1,0 +1,7 @@
+.language {
+  display: flex;
+  justify-content: space-between;
+}
+.languageInput {
+  display: flex;
+}

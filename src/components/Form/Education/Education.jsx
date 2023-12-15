@@ -82,8 +82,8 @@ const Education = () => {
               }}
             />
             <input
-              type="date"
-              placeholder="Start Date"
+              type="text"
+              placeholder="Start Year"
               value={educationDetail.startDate}
               onChange={(e) => {
                 dispatch(
@@ -95,8 +95,8 @@ const Education = () => {
               }}
             />
             <input
-              type="date"
-              placeholder="End Date"
+              type="text"
+              placeholder="End Year"
               value={educationDetail.endDate}
               onChange={(e) => {
                 dispatch(

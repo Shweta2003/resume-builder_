@@ -13,14 +13,13 @@ const Design5 = () => {
   const [resumeRef] = useOutletContext();
 
   return (
-    // <div className={styles.container}>
     <div className={styles.resume} ref={resumeRef}>
       <div className={styles.personalDetails}>
-        <div className={styles.title}>
+        <div className={styles.designation}>
           <div className={styles.name}>
             {resume.personalInformation.name.toUpperCase()}
           </div>
-          <div className={styles.jobTitle}>
+          <div className={styles.currnetJob}>
             {resume.personalInformation.jobTitle}
           </div>
         </div>
@@ -57,7 +56,7 @@ const Design5 = () => {
           })}
         </div>
       </div>
-      <div className={styles.AboutSection}>
+      <div className={styles.aboutSection}>
         <div className={styles.title}>ABOUT</div>
         <div className={styles.about}>{resume.personalInformation.about}</div>
       </div>
@@ -189,7 +188,6 @@ const Design5 = () => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 

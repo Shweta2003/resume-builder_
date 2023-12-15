@@ -16,8 +16,10 @@ import educationLogo from "../../assets/education.svg";
 import experienceLogo from "../../assets/experience.svg";
 import skillsLogo from "../../assets/skills.svg";
 import projectsLogo from "../../assets/projects.svg";
+import languagesLogo from "../../assets/language.svg";
 import achievementsLogo from "../../assets/achievements.svg";
 import additionalInformationLogo from "../../assets/additionalInformation.svg";
+import Languages from "./Languages/Languages";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ const Form = () => {
     skills: [<Skills />, skillsLogo, "Skills"],
     projects: [<Projects />, projectsLogo, "Projects"],
     certificates: [<Certifications />, achievementsLogo, "Certifications"],
+    languages: [<Languages />, languagesLogo, "Languages"],
     additionalInformation: [
       <AdditionalInformation />,
       additionalInformationLogo,
