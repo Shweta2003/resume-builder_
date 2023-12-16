@@ -7,7 +7,9 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 import PortfolioIcon from "../../assets/dp.jpg";
+import SchoolIcon from "@mui/icons-material/School";
 import { useOutletContext } from "react-router-dom";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);
@@ -19,31 +21,34 @@ const Design1 = () => {
         <div className={styles.dp}>
           <img src={imgUrl ? imgUrl : PortfolioIcon} />
         </div>
-        <div style={{ width: "100%", paddingLeft: "20px" }}>
+        <div className={styles.details}>
           <div className={styles.personalInfo}>
-            <div className={styles.phone}>
-              <PhoneIcon sx={{ width: "1rem" }} />
-              {resume.personalInformation.phone}
-            </div>
-            <div className={styles.email}>
-              <EmailIcon sx={{ width: "1rem" }} />
-              {resume.personalInformation.email}
-            </div>
-            <div className={styles.links}>
-              {resume.personalInformation.links.map((link) => (
-                <a href={link.url} target="_blank" className={styles.link}>
-                  {link.name === "GitHub" ? (
-                    <GitHubIcon sx={{ width: "1rem" }} />
-                  ) : link.name === "LinkedIn" ? (
-                    <LinkedInIcon sx={{ width: "1rem" }} />
-                  ) : link.name === "Portfolio" ? (
-                    <CoPresentIcon sx={{ width: "1rem" }} />
-                  ) : (
-                    ""
-                  )}
-                  {link.name}
-                </a>
-              ))}
+            <div className={styles.title}>CONTACTS</div>
+            <div className={styles.info}>
+              <div className={styles.phone}>
+                <PhoneIcon sx={{ width: "1rem" }} />
+                {resume.personalInformation.phone}
+              </div>
+              <div className={styles.email}>
+                <EmailIcon sx={{ width: "1rem" }} />
+                {resume.personalInformation.email}
+              </div>
+              <div className={styles.links}>
+                {resume.personalInformation.links.map((link) => (
+                  <a href={link.url} target="_blank" className={styles.link}>
+                    {link.name === "GitHub" ? (
+                      <GitHubIcon sx={{ width: "1rem" }} />
+                    ) : link.name === "LinkedIn" ? (
+                      <LinkedInIcon sx={{ width: "1rem" }} />
+                    ) : link.name === "Portfolio" ? (
+                      <CoPresentIcon sx={{ width: "1rem" }} />
+                    ) : (
+                      ""
+                    )}
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
           <div className={styles.certificates}>
@@ -52,13 +57,15 @@ const Design1 = () => {
               (certificateDetail, key) => {
                 return (
                   <div key={key}>
-                    <div className={styles.certificateName}>
+                    <a
+                      className={styles.certificateName}
+                      href={certificateDetail.link}
+                    >
                       {certificateDetail.name}
-                    </div>
+                    </a>
                     <div className={styles.issuer}>
                       {certificateDetail.authority}
                     </div>
-                    <div className={styles.link}>{certificateDetail.link}</div>
                   </div>
                 );
               }
@@ -69,21 +76,24 @@ const Design1 = () => {
             {resume.education.educationDetails.map((educationDetail, key) => {
               return (
                 <div className={styles.edu} key={key}>
-                  <div className={styles.institute}>
-                    {educationDetail.institution}
-                  </div>
-                  <div style={{ display: "flex", gap: "1rem" }}>
-                    <div className={styles.degree}>
-                      {educationDetail.degree}
+                  <SchoolIcon sx={{ width: "1rem", paddingRight: "5px" }} />
+                  <div style={{ wordBreak: "break-word", width: "80%" }}>
+                    <div className={styles.institute}>
+                      {educationDetail.institution}
                     </div>
-                    <div className={styles.course}>
-                      {educationDetail.course}
+                    <div style={{ display: "flex", gap: "1rem" }}>
+                      <div className={styles.degree}>
+                        {educationDetail.degree}
+                      </div>
+                      <div className={styles.course}>
+                        {educationDetail.course}
+                      </div>
                     </div>
+                    <div className={styles.duration}>
+                      {educationDetail.startDate} - {educationDetail.endDate}
+                    </div>
+                    <div className={styles.cgpa}>{educationDetail.cgpa}</div>
                   </div>
-                  <div className={styles.duration}>
-                    {educationDetail.startDate} - {educationDetail.endDate}
-                  </div>
-                  <div className={styles.cgpa}>{educationDetail.cgpa}</div>
                 </div>
               );
             })}
