@@ -29,10 +29,15 @@
   color: #ffffff;
 }
 .right {
+  display: flex;
+  flex-direction: column;
+  font-family: Krub;
+  gap: 1.1rem;
   width: 70%;
-  height: 100%;
+  height: 100vh;
   padding: 2rem 1.5rem;
   background-color: #fff;
+  color: #575757;
 }
 .contacts {
   min-height: auto;
@@ -96,6 +101,8 @@
 }
 .aboutSection {
   min-height: 1rem;
+  display: flex;
+  text-align: justify;
 }
 .exp {
   display: flex;
@@ -128,6 +135,9 @@
 .jobTitle {
   font-size: 1.2rem;
   font-weight: 600;
+  letter-spacing: 7.7px;
+  color: #402B54;
+  word-wrap: break-word;
 }
 .cgpa {
   font-size: 0.8rem;

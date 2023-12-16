@@ -141,7 +141,9 @@ const Header = ({
   return (
     <div className={style.header}>
       <div className={style.resume}>
-        <button onClick={handleOpenResumeModal}>Select Resume</button>
+        <Button onClick={handleOpenResumeModal} variant="contained">
+          Select Resume
+        </Button>
         <Modal
           open={open}
           onClose={handleCloseResumeModal}
@@ -181,7 +183,7 @@ const Header = ({
           </div>
         </Modal>
       </div>
-      <div className={style.iconContainer}>
+      {/* <div className={style.iconContainer}>
         <Tooltip title="Font Family" placement="bottom">
           <img
             src={fontFamily}
@@ -273,7 +275,7 @@ const Header = ({
             />
           </RadioGroup>
         </Menu>
-      </div>
+      </div> */}
       <div className={style.buttons}>
         <Button
           component="label"

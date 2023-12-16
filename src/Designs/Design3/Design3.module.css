@@ -10,6 +10,7 @@
   flex-direction: column;
   overflow-y: auto;
   gap: 10px;
+  font-family: "Karma";
 }
 .resume::-webkit-scrollbar-thumb {
   background-color: #ccc;
@@ -35,9 +36,9 @@
   background-color: #e4f5ec;
   border-bottom: 2px solid #385848;
   display: flex;
-  
   justify-content: space-between;
-  padding: 15px 80px;
+  min-height: 6.5rem;
+  padding: 10px 50px;
   align-items: center;
   color: #385848;
 }
@@ -48,8 +49,10 @@
   width: max-content !important;
   flex-direction: column;
   font-weight: 500;
-  font-size: 32px;
-  font-family: "Karma";
+  font-size: 1.3rem;
+  letter-spacing: 3.2px;
+  font-family: Karma;
+
   word-wrap: break-word;
 }
 .name {
@@ -64,8 +67,21 @@
   font-weight: 600;
   color: #385848;
 }
-jobTitle {
+.jobTitle {
   font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.91px;
+  word-wrap: break-word;
+}
+.description {
+  display: flex;
+  text-align: justify;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .languages,
@@ -74,10 +90,10 @@ jobTitle {
 .databases {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 10px 0px;
 }
 .xp {
-  padding: 10px;
+  padding: 10px 0px;
 }
 .personalInfo {
   display: flex;
@@ -86,12 +102,12 @@ jobTitle {
 .details {
   height: 100%;
   display: flex;
-  padding: 40px;
+  padding: 10px 50px;
   justify-content: space-between;
 }
 .subtitle {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   display: inline;
   font-weight: bolder;
 }
@@ -103,15 +119,20 @@ jobTitle {
   padding: 0px 2px;
 }
 .left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   border-right: 2px solid;
   width: 50%;
   height: 100%;
+  padding-right: 20px;
 }
 .aboutSection {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   align-items: center;
-  padding: 10px;
+  padding: 0px 50px;
 }
 .ProfileTitle {
   padding: 10px;
@@ -121,13 +142,28 @@ jobTitle {
   padding-left: 40px;
 }
 .edu {
-  padding: 10px;
+  padding: 10px 0px;
 }
 .education,
 .skills,
 .certificates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   min-height: 13rem;
   color: #385848;
+}
+.certificateName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.91px;
+  word-wrap: break-word;
+  color: #385848;
+}
+.institute {
+  font-weight: 700;
+  line-height: 23px;
+  word-wrap: break-word;
 }
 .experiences {
   color: #385848;
@@ -137,4 +173,7 @@ jobTitle {
   text-align: justify;
   color: #575757;
   font-family: Jaldi;
+  font-weight: 400;
+  line-height: 23px;
+  word-wrap: break-word;
 }

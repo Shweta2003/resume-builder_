@@ -59,7 +59,7 @@ const Form = () => {
                   display: "flex",
                   justifyContent: "space-between",
                   width: "80%",
-                  margin: "0 auto",
+                  // margin: "0 auto",
                   cursor: "pointer",
                   padding: "1rem 0",
                   borderBottom: "1px solid #ccc",

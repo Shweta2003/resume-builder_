@@ -19,70 +19,75 @@ const Design1 = () => {
         <div className={styles.dp}>
           <img src={imgUrl ? imgUrl : PortfolioIcon} />
         </div>
-        <div className={styles.personalInfo}>
-          <div className={styles.title}>Contacts</div>
-          <div className={styles.phone}>
-            <PhoneIcon sx={{ width: "1rem" }} />
-            {resume.personalInformation.phone}
+        <div style={{ width: "100%", paddingLeft: "20px" }}>
+          <div className={styles.personalInfo}>
+            <div className={styles.phone}>
+              <PhoneIcon sx={{ width: "1rem" }} />
+              {resume.personalInformation.phone}
+            </div>
+            <div className={styles.email}>
+              <EmailIcon sx={{ width: "1rem" }} />
+              {resume.personalInformation.email}
+            </div>
+            <div className={styles.links}>
+              {resume.personalInformation.links.map((link) => (
+                <a href={link.url} target="_blank" className={styles.link}>
+                  {link.name === "GitHub" ? (
+                    <GitHubIcon sx={{ width: "1rem" }} />
+                  ) : link.name === "LinkedIn" ? (
+                    <LinkedInIcon sx={{ width: "1rem" }} />
+                  ) : link.name === "Portfolio" ? (
+                    <CoPresentIcon sx={{ width: "1rem" }} />
+                  ) : (
+                    ""
+                  )}
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className={styles.email}>
-            <EmailIcon sx={{ width: "1rem" }} />
-            {resume.personalInformation.email}
+          <div className={styles.certificates}>
+            <div className={styles.title}>CERTIFICATES</div>
+            {resume.certificates.certificatesDetails.map(
+              (certificateDetail, key) => {
+                return (
+                  <div key={key}>
+                    <div className={styles.certificateName}>
+                      {certificateDetail.name}
+                    </div>
+                    <div className={styles.issuer}>
+                      {certificateDetail.authority}
+                    </div>
+                    <div className={styles.link}>{certificateDetail.link}</div>
+                  </div>
+                );
+              }
+            )}
           </div>
-          <div className={styles.links}>
-            {resume.personalInformation.links.map((link) => (
-              <a href={link.url} target="_blank" className={styles.link}>
-                {link.name === "GitHub" ? (
-                  <GitHubIcon sx={{ width: "1rem" }} />
-                ) : link.name === "LinkedIn" ? (
-                  <LinkedInIcon sx={{ width: "1rem" }} />
-                ) : link.name === "Portfolio" ? (
-                  <CoPresentIcon sx={{ width: "1rem" }} />
-                ) : (
-                  ""
-                )}
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className={styles.certificates}>
-          <div className={styles.title}>CERTIFICATES</div>
-          {resume.certificates.certificatesDetails.map(
-            (certificateDetail, key) => {
+          <div className={styles.education}>
+            <div className={styles.title}>EDUCATION</div>
+            {resume.education.educationDetails.map((educationDetail, key) => {
               return (
-                <div key={key}>
-                  <div className={styles.certificateName}>
-                    {certificateDetail.name}
+                <div className={styles.edu} key={key}>
+                  <div className={styles.institute}>
+                    {educationDetail.institution}
                   </div>
-                  <div className={styles.issuer}>
-                    {certificateDetail.authority}
+                  <div style={{ display: "flex", gap: "1rem" }}>
+                    <div className={styles.degree}>
+                      {educationDetail.degree}
+                    </div>
+                    <div className={styles.course}>
+                      {educationDetail.course}
+                    </div>
                   </div>
-                  <div className={styles.link}>{certificateDetail.link}</div>
+                  <div className={styles.duration}>
+                    {educationDetail.startDate} - {educationDetail.endDate}
+                  </div>
+                  <div className={styles.cgpa}>{educationDetail.cgpa}</div>
                 </div>
               );
-            }
-          )}
-        </div>
-        <div className={styles.education}>
-          <div className={styles.title}>EDUCATION</div>
-          {resume.education.educationDetails.map((educationDetail, key) => {
-            return (
-              <div className={styles.edu} key={key}>
-                <div className={styles.institute}>
-                  {educationDetail.institution}
-                </div>
-                <div style={{ display: "flex", gap: "1rem" }}>
-                  <div className={styles.degree}>{educationDetail.degree}</div>
-                  <div className={styles.course}>{educationDetail.course}</div>
-                </div>
-                <div className={styles.duration}>
-                  {educationDetail.startDate} - {educationDetail.endDate}
-                </div>
-                <div className={styles.cgpa}>{educationDetail.cgpa}</div>
-              </div>
-            );
-          })}
+            })}
+          </div>
         </div>
       </div>
       <div className={styles.right}>

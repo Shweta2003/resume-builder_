@@ -23,38 +23,6 @@ const Design3 = () => {
             {resume.personalInformation.jobTitle}
           </div>
         </div>
-        {/* <div className={styles.personalInfo}>
-          <div className={styles.email}>
-            <EmailIcon sx={{ width: "1rem" }} />
-            {resume.personalInformation.email}
-          </div>
-          <div className={styles.phone}>
-            <PhoneIcon sx={{ width: "1rem" }} />
-            {resume.personalInformation.phone}
-          </div>
-          {resume.personalInformation.links.map((link, key) => {
-            return (
-              <div key={key}>
-                <a href={link.url} target="_blank" className={styles.link}>
-                  <img
-                    className={styles.icon}
-                    src={
-                      link.name === "GitHub"
-                        ? GithubIcon
-                        : link.name === "LinkedIn"
-                        ? LinkedinIcon
-                        : link.name === "Portfolio"
-                        ? PortfolioIcon
-                        : ""
-                    }
-                    alt=""
-                  />
-                  {link.name}
-                </a>
-              </div>
-            );
-          })}
-        </div> */}
         <div className={styles.contacts}>
           <div className={styles.phone}>
             {resume.personalInformation.phone}
@@ -93,9 +61,19 @@ const Design3 = () => {
             {resume.education.educationDetails.map((educationDetail, key) => {
               return (
                 <div className={styles.edu} key={key}>
-                  <div className={styles.institute}>
-                    {educationDetail.institution}
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <div className={styles.institute}>
+                      {educationDetail.institution}
+                    </div>
+                    {educationDetail.cgpa && (
+                      <div className={styles.cgpa}>
+                        CGPA : {educationDetail.cgpa}
+                      </div>
+                    )}
                   </div>
+
                   <div style={{ display: "flex", gap: "1rem" }}>
                     <div className={styles.degree}>
                       {educationDetail.degree}
@@ -107,7 +85,6 @@ const Design3 = () => {
                   <div className={styles.duration}>
                     {educationDetail.startDate} - {educationDetail.endDate}
                   </div>
-                  <div className={styles.cgpa}>{educationDetail.cgpa}</div>
                 </div>
               );
             })}
@@ -174,13 +151,15 @@ const Design3 = () => {
               (certificateDetail, key) => {
                 return (
                   <div key={key}>
-                    <div className={styles.certificateName}>
+                    <a
+                      className={styles.certificateName}
+                      href={certificateDetail.link}
+                    >
                       {certificateDetail.name}
-                    </div>
+                    </a>
                     <div className={styles.issuer}>
                       {certificateDetail.authority}
                     </div>
-                    <div className={styles.link}>{certificateDetail.link}</div>
                   </div>
                 );
               }
@@ -194,11 +173,11 @@ const Design3 = () => {
               (experienceDetail, key) => {
                 return (
                   <div className={styles.xp} key={key}>
-                    <div className={styles.company}>
-                      {experienceDetail.company}
-                    </div>
                     <div className={styles.jobTitle}>
                       {experienceDetail.jobTitle}
+                    </div>
+                    <div className={styles.company}>
+                      {experienceDetail.company}
                     </div>
                     <div className={styles.duration}>
                       {experienceDetail.duration}

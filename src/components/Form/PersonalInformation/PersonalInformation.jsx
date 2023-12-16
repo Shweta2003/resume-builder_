@@ -15,6 +15,7 @@ import {
 import CrossIcon from "../../../assets/cross.svg";
 import { v4 as uuidv4 } from "uuid";
 import AddButton from "../../../utils/AddButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const PersonalInformation = () => {
   const resume = useSelector((state) => state.resume);
@@ -55,7 +56,7 @@ const PersonalInformation = () => {
         <h5>Links</h5>
         {links.map((link, key) => {
           return (
-            <div key={key}>
+            <div key={key} style={{ display: "flex", alignItems: "center" }}>
               <select
                 value={link.name}
                 id=""
@@ -82,7 +83,7 @@ const PersonalInformation = () => {
                   )
                 }
               />
-              <button
+              <DeleteIcon
                 onClick={() =>
                   dispatch(
                     deleteLink({
@@ -92,7 +93,7 @@ const PersonalInformation = () => {
                 }
               >
                 <img src={CrossIcon} alt="" />
-              </button>
+              </DeleteIcon>
             </div>
           );
         })}

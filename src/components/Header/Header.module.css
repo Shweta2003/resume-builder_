@@ -1,9 +1,10 @@
 .header {
   width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding-top: 1rem;
+  background-color: rgb(95, 99, 101);
+  height: 4rem;
 }
 .buttons {
   display: flex;
