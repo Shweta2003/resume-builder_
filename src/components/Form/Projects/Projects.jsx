@@ -12,6 +12,7 @@ import {
   deleteProject,
 } from "../../../redux/reducers/resumeSlice";
 import AddButton from "../../../utils/AddButton";
+import { getAnswer } from "../../../Designs/Backend";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,16 @@ const Projects = () => {
         github: "",
       },
     });
+  };
+
+  const handleEnhance = async (inputStateId, inputState, maxTokens) => {
+    const enhancedInput = await getAnswer(inputState, maxTokens);
+    dispatch(
+      addOrUpdateProjectDescription({
+        description: enhancedInput.evaluation,
+        _id: inputStateId,
+      })
+    );
   };
 
   useEffect(() => {}, [projects]);
@@ -67,19 +78,6 @@ const Projects = () => {
             />
             <input
               type="text"
-              placeholder="Project Description"
-              value={project.description}
-              onChange={(e) => {
-                dispatch(
-                  addOrUpdateProjectDescription({
-                    _id: project._id,
-                    description: e.target.value,
-                  })
-                );
-              }}
-            />
-            <input
-              type="text"
               placeholder="Project Link"
               value={project.link}
               onChange={(e) => {
@@ -104,6 +102,33 @@ const Projects = () => {
                 );
               }}
             />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <textarea
+                type="text"
+                className={style.textarea}
+                placeholder="Project Description"
+                value={project.description}
+                onChange={(e) => {
+                  dispatch(
+                    addOrUpdateProjectDescription({
+                      _id: project._id,
+                      description: e.target.value,
+                    })
+                  );
+                }}
+              />
+              <button
+                onClick={() => {
+                  handleEnhance(
+                    project._id,
+                    resume.projects.projectDetails.description,
+                    100
+                  );
+                }}
+              >
+                Enhance
+              </button>
+            </div>
             <button
               onClick={() =>
                 dispatch(

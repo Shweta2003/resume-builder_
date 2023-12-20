@@ -8,7 +8,7 @@ import ReactToPrint from "react-to-print";
 
 const Layout = () => {
   const resumeRef = React.useRef();
-  const [imgUrl,setImgUrl]=useState("");
+  const [imgUrl, setImgUrl] = useState("");
   // const { toPDF, targetRef: resumeRef } = usePDF({ filename: "page.pdf" });
 
   return (
@@ -20,10 +20,12 @@ const Layout = () => {
           width: "100%",
           gap: "5rem",
           padding: "1rem",
+          justifyContent: "center",
+          boxSizing: "border-box",
         }}
       >
         <Form />
-        <Outlet context={[resumeRef,imgUrl]} />
+        <Outlet context={[resumeRef, imgUrl]} />
       </div>
     </>
   );

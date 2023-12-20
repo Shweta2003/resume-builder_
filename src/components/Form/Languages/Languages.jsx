@@ -25,7 +25,7 @@ const Languages = () => {
   };
 
   useEffect(() => {
-    console.log(languages);
+    console.log(resume);
   }, [languages]);
 
   return (

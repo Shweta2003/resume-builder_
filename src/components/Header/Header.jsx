@@ -6,18 +6,19 @@ import fontSize from "../../assets/font-size.svg";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
-import Tooltip from "@mui/material/Tooltip";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import ReactToPrint from "react-to-print";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
-import Design1 from "../../assets/Templates/1.svg";
+import Design1 from "../../assets/Templates/1.png";
 import Design2 from "../../assets/Templates/2.png";
 import Design3 from "../../assets/Templates/3.png";
+import Design4 from "../../assets/Templates/4.png";
+import { getAnswerForTailered } from "../../Designs/Backend";
+import { useDispatch } from "react-redux";
+import { addAbout } from "../../redux/reducers/resumeSlice";
 
 const Header = ({
   resumeRef,
@@ -34,9 +35,12 @@ const Header = ({
   const [fontSizeMenuOpen, setFontSizeMenuOpen] = useState(false);
   const fileInputRef = useRef(null);
   const [open, setOpen] = React.useState(false);
+  const [tailorOpen, setTailorOpen] = React.useState(false);
+  const [JD, setJD] = useState("");
   const handleOpenResumeModal = () => setOpen(true);
   const handleCloseResumeModal = () => setOpen(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClick = (event, menuType) => {
     setAnchorEl(event.currentTarget);
@@ -59,11 +63,25 @@ const Header = ({
     handleClose();
   };
 
+  const enhanceSection = ["about", "experience", "skills"];
+
+  const handleJD = async () => {
+    const enhancedAbout = await getAnswerForTailered(JD, 70, "about");
+    dispatch(addAbout(enhancedAbout.evaluation));
+    const enhancedExperience = await getAnswerForTailered(
+      JD,
+      100,
+      "experience"
+    );
+    setTailorOpen(false);
+  };
+
   const options = ["Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway"];
   const templates = {
     Design1: Design1,
     Design2: Design2,
     Design3: Design3,
+    Design4: Design4,
   };
 
   const ITEM_HEIGHT = 48;
@@ -180,6 +198,33 @@ const Header = ({
                 );
               })}
             </div>
+          </div>
+        </Modal>
+      </div>
+      <div>
+        <Button onClick={() => setTailorOpen(true)} variant="contained">
+          Tailored Resume
+        </Button>
+        <Modal
+          open={tailorOpen}
+          // onClose={() => setTailorOpen(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            width: "30vw",
+          }}
+        >
+          <div className={style.modal}>
+            <textarea
+              placeholder="Enter Job Description"
+              className={style.textarea}
+              onChange={(e) => setJD(e.target.value)}
+            />
+            <button onClick={handleJD}>Done</button>
           </div>
         </Modal>
       </div>

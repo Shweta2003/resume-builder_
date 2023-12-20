@@ -8,10 +8,12 @@ import {
   addDatabase,
   addFramework,
   addLanguage,
+  addOtherSkill,
   addTool,
   deleteDatabase,
   deleteFramework,
   deleteLanguage,
+  deleteOtherSkill,
   deleteTool,
 } from "../../../redux/reducers/resumeSlice";
 
@@ -20,11 +22,13 @@ const Skills = () => {
   const [framework, setFramework] = useState("");
   const [tool, setTool] = useState("");
   const [database, setDatabase] = useState("");
+  const [other, setOther] = useState("");
   const resume = useSelector((state) => state.resume);
   const languages = resume.skills.languages;
   const frameworks = resume.skills.frameworks;
   const tools = resume.skills.tools;
   const databases = resume.skills.databases;
+  const otherSkills = resume.skills.otherSkills;
   const dispatch = useDispatch();
 
   const handleAddLanguage = () => {
@@ -42,6 +46,11 @@ const Skills = () => {
   const handleAddDatabase = () => {
     setDatabase("");
     dispatch(addDatabase({ database: database, _id: uuidv4() }));
+  };
+  const handleAddOtherSkill = () => {
+    console.log(other);
+    setOther("");
+    dispatch(addOtherSkill({ otherSkill: other, _id: uuidv4() }));
   };
 
   useEffect(() => {
@@ -153,6 +162,31 @@ const Skills = () => {
                   type: deleteDatabase,
                   payload: { _id: database._id },
                 })
+              }
+            />
+          );
+        })}
+      </div>
+      <div className={style.otherSkills}>
+        <h5>Other Skills</h5>
+        <div className={style.addInput}>
+          <input
+            type="text"
+            value={other}
+            placeholder="Leadership,Communication"
+            onChange={(e) => setOther(e.target.value)}
+          />
+          <img src={AddIcon} alt="Add" onClick={handleAddOtherSkill} />
+        </div>
+        {otherSkills?.map((otherSkill, key) => {
+          return (
+            <Chip
+              key={key}
+              label={otherSkill.otherSkill}
+              variant="outlined"
+              onClick={() => setOther(otherSkill.otherSkill)}
+              onDelete={() =>
+                dispatch(deleteOtherSkill({ _id: otherSkill._id }))
               }
             />
           );

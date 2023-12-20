@@ -1,11 +1,211 @@
+* {
+  box-sizing: border-box;
+}
 .container {
-  width: auto;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.resume {
+  border: 2px solid #4390e8;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+.resume::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.resume::-webkit-scrollbar {
+  width: 5px;
+}
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.name {
+  color: rgba(22.39, 2.09, 48.22, 0.8);
+  font-size: 48px;
+  font-family: Rubik;
+  font-weight: 400;
+  line-height: 46.32px;
+  letter-spacing: 0.48px;
+  word-wrap: break-word;
+}
+.currentJob {
+  color: #0379bc;
+  font-size: 25px;
+  font-family: Rubik;
+  font-weight: 400;
+  letter-spacing: 0.75px;
+  word-wrap: break-word;
+}
+.about {
+  text-align: justify;
+  color: #575757;
+  font-size: 19px;
+  font-family: Rubik;
+  font-weight: 500;
+  line-height: 23.5px;
+  word-wrap: break-word;
+}
+.contacts {
+  background-color: #160230cc;
+  border-radius: 10px;
+  color: #ffffff;
+  height: 6rem;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.phone,
+.email {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.link {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.links {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.title {
+  color: rgba(22.39, 2.09, 48.22, 0.8);
+  font-size: 30px;
+  font-family: Rubik;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  word-wrap: break-word;
+}
+.subtitle {
+  color: rgba(22.39, 2.09, 48.22, 0.8);
+  font-size: 25px;
+  font-family: Rubik;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  word-wrap: break-word;
+}
+.skills {
+  color: #575757;
+  font-size: 19px;
+  font-family: Rubik;
+  font-weight: 500;
+  line-height: 54px;
+  word-wrap: break-word;
+  min-height: 10rem;
+}
+.skills .languages {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.frameworks,
+.tools,
+.databases {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.horLine {
+  display: flex;
+  width: 100%;
+}
+.purple {
+  background-color: #160230cc;
+  width: 33%;
+  height: 4px;
+}
+.blue {
+  background-color: #0379bc;
+  width: 34%;
+  height: 4px;
+}
+.sky {
+  background-color: #94ceef;
+  width: 33%;
+  height: 4px;
+}
+.exp {
+  display: flex;
+  gap: 0.8rem;
+}
+.expBorder {
+  padding-top: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  height: 100%;
 }
-.resume {
+.circle {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #0379bc;
+}
+.line {
+  width: 2px;
+  height: 100%;
+  background-color: #16023080;
+}
+.duration {
+  word-wrap: break-word;
+  line-height: 23px;
+}
+.experiences {
   display: flex;
-  width: 40%;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 10rem;
+}
+.expDetail {
+  color: #575757;
+}
+.company {
+  color: #0379bc;
+  font-size: 21px;
+  font-family: Rubik;
+  font-weight: 600;
+  line-height: 23px;
+  word-wrap: break-word;
+}
+
+.jobTitle {
+  color: #575757;
+  font-size: 24px;
+  font-family: Rubik;
+  font-weight: 800;
+  word-wrap: break-word;
+}
+.duration {
+  color: #0379bc;
+  font-size: 19px;
+  font-family: Rubik;
+  font-weight: 500;
+  line-height: 23px;
+  word-wrap: break-word;
+}
+.cgpa {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.description {
+  font-size: 0.8rem;
+  line-height: 23px;
+  display: flex;
+  flex-wrap: wrap;
+
+  height: 2rem;
 }

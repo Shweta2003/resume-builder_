@@ -1,131 +1,31 @@
 .resume {
-  background-color: #f1fef7;
-  min-width: 700px;
-  max-width: 850px;
-  margin: 0 auto;
-  flex: 1.2;
-  height: fit-content;
-  min-height: 900px;
-  box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.icon {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-.phone,
-.email,
-.link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: #385848;
-}
-.personalDetails {
-  background-color: #e4f5ec;
-  border-bottom: 5px solid #385848;
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 80px;
-  align-items: center;
-  color: #385848;
-}
-.title {
-  display: flex;
-  color: #385848;
-  border-bottom: 2px solid #385848;
-  width: max-content !important;
-  flex-direction: column;
-  font-weight: 500;
-  font-size: 32px;
-  font-family: "Karma";
-  word-wrap: break-word;
-}
-.name {
-  color: #385848;
-  font-family: Karma;
-  font-size: 2.5rem;
-  border-bottom: 2px solid black;
-  margin-bottom: 10px;
-}
-.currentJob {
-  font-size: 0.51rem;
-  font-weight: 600;
-  color: #385848;
-}
-jobTitle {
-  font-size: 1.2rem;
-}
-
-.languages,
-.frameworks,
-.tools,
-.databases {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-}
-.xp {
-  padding: 10px;
-}
-.personalInfo {
-  display: flex;
-  flex-direction: column;
-}
-.details {
-  height: 100%;
-  display: flex;
-  padding: 40px;
-  justify-content: space-between;
-}
-.subtitle {
-  font-size: 1rem;
-  font-weight: 600;
-  display: inline;
-  font-weight: bolder;
-}
-.language,
-.framework,
-.tool,
-.database {
-  display: inline;
-  padding: 0px 2px;
-}
-.left {
-  border-right: 2px solid;
-  width: 50%;
-  height: 100%;
-}
-.aboutSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-}
-.ProfileTitle {
-  padding: 10px;
-}
-.right {
-  width: 50%;
-  padding-left: 40px;
-}
-.edu {
-  padding: 10px;
-}
-.education,
-.skills,
-.certificates {
-  min-height: 13rem;
-  color: #385848;
-}
-.experiences {
-  color: #385848;
-}
-.about {
-  min-height: 2rem;
-  text-align: justify;
-  color: #575757;
-  font-family: Jaldi;
-}
+    border: 2px solid #ccc;
+    width: 50%;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  .personalInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .name {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .phoneEmail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  

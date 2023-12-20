@@ -9,7 +9,6 @@ import CoPresentIcon from "@mui/icons-material/CoPresent";
 import PortfolioIcon from "../../assets/dp.jpg";
 import SchoolIcon from "@mui/icons-material/School";
 import { useOutletContext } from "react-router-dom";
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);

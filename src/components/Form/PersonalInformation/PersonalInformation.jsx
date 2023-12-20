@@ -16,6 +16,7 @@ import CrossIcon from "../../../assets/cross.svg";
 import { v4 as uuidv4 } from "uuid";
 import AddButton from "../../../utils/AddButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { getAnswer } from "../../../Designs/Backend";
 
 const PersonalInformation = () => {
   const resume = useSelector((state) => state.resume);
@@ -26,9 +27,12 @@ const PersonalInformation = () => {
     dispatch(addLink({ _id: uuidv4(), name: "", url: "" }));
   };
 
-  useEffect(() => {
-    console.log(links);
-  }, [links]);
+  const handleEnhance = async (inputState, maxTokens) => {
+    const enhancedInput = await getAnswer(inputState, maxTokens);
+    dispatch(addAbout(enhancedInput.evaluation));
+  };
+
+  useEffect(() => {}, [links]);
 
   return (
     <div>
@@ -105,6 +109,7 @@ const PersonalInformation = () => {
           className={styles.textarea}
           onChange={(e) => dispatch(addAbout(e.target.value))}
           name=""
+          value={resume.personalInformation.about}
           id=""
           cols="40"
           rows="10"
@@ -112,6 +117,13 @@ const PersonalInformation = () => {
         >
           {resume.personalInformation.about}
         </textarea>
+        <button
+          onClick={() => {
+            handleEnhance(resume.personalInformation.about, 100);
+          }}
+        >
+          Enhance
+        </button>
       </div>
     </div>
   );

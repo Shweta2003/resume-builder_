@@ -24,6 +24,7 @@ const initialState = {
     frameworks: [],
     tools: [],
     databases: [],
+    otherSkills: [],
   },
   projects: {
     showDetails: false,
@@ -208,6 +209,14 @@ const resumeSlice = createSlice({
         (database) => database._id !== action.payload._id
       );
     },
+    addOtherSkill: (state, action) => {
+      state.skills.otherSkills.push(action.payload);
+    },
+    deleteOtherSkill: (state, action) => {
+      state.skills.otherSkills = state.skills.otherSkills.filter(
+        (otherSkill) => otherSkill._id !== action.payload._id
+      );
+    },
     addProject: (state, action) => {
       state.projects.projectDetails.push(action.payload);
     },
@@ -346,6 +355,8 @@ export const {
   deleteTool,
   addDatabase,
   deleteDatabase,
+  addOtherSkill,
+  deleteOtherSkill,
   addProject,
   addOrUpdateProjectName,
   addOrUpdateProjectTechnologies,
