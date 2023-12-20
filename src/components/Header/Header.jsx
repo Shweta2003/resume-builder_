@@ -19,6 +19,7 @@ import Design4 from "../../assets/Templates/4.png";
 import { getAnswerForTailered } from "../../Designs/Backend";
 import { useDispatch } from "react-redux";
 import { addAbout } from "../../redux/reducers/resumeSlice";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Header = ({
   resumeRef,
@@ -66,6 +67,7 @@ const Header = ({
   const enhanceSection = ["about", "experience", "skills"];
 
   const handleJD = async () => {
+    setTailorOpen(false);
     const enhancedAbout = await getAnswerForTailered(JD, 70, "about");
     dispatch(addAbout(enhancedAbout.evaluation));
     const enhancedExperience = await getAnswerForTailered(
@@ -73,7 +75,6 @@ const Header = ({
       100,
       "experience"
     );
-    setTailorOpen(false);
   };
 
   const options = ["Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway"];
@@ -218,13 +219,25 @@ const Header = ({
             width: "30vw",
           }}
         >
-          <div className={style.modal}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <textarea
               placeholder="Enter Job Description"
               className={style.textarea}
               onChange={(e) => setJD(e.target.value)}
             />
-            <button onClick={handleJD}>Done</button>
+            <div className={style.closeIcon}>
+              <CloseIcon onClick={() => setTailorOpen(false)} />
+            </div>
+            <Button variant="contained" onClick={handleJD}>
+              Done
+            </Button>
           </div>
         </Modal>
       </div>

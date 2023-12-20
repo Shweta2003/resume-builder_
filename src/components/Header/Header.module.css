@@ -55,4 +55,11 @@
   border: none;
   outline: none;
   color: rgb(65, 54, 54);
+  position: relative;
+}
+.closeIcon {
+  position: absolute;
+  top: 10rem;
+  right: 2rem;
+  cursor: pointer;
 }
