@@ -79,8 +79,14 @@ const Form = () => {
                 </div>
 
                 <img
-                  src={resume[section]?.showDetails ? DownArrow : UpArrow}
+                  src={DownArrow}
                   alt="Not Found"
+                  style={{
+                    transform: resume[section]?.showDetails
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                    transition: "all .4s ease",
+                  }}
                 />
               </li>
               {resume[section]?.showDetails && (
