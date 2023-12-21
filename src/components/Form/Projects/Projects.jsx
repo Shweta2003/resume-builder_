@@ -102,7 +102,9 @@ const Projects = () => {
                 );
               }}
             />
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "95%" }}
+            >
               <textarea
                 type="text"
                 className={style.textarea}

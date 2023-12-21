@@ -12,6 +12,7 @@ import {
 } from "../../../redux/reducers/resumeSlice";
 import AddButton from "../../../utils/AddButton";
 import { getAnswer } from "../../../Designs/Backend";
+import { Delete } from "@mui/icons-material";
 
 const Experience = () => {
   const dispatch = useDispatch();
@@ -91,8 +92,7 @@ const Experience = () => {
             <div
               style={{
                 display: "felx",
-                flexDirection: "row",
-                alignItems: "center",
+                flexDirection: "column",
               }}
             >
               <textarea
@@ -117,16 +117,19 @@ const Experience = () => {
                     100
                   );
                 }}
+                style={{ width: "95%" }}
               >
                 Enhance
               </button>
             </div>
             <button
+              style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
               onClick={() => {
                 dispatch(deleteExperience({ _id: experienceDetail._id }));
               }}
             >
-              Delete Experience
+              Delete
+              <Delete sx={{ width: "1rem" }} />
             </button>
           </div>
         );

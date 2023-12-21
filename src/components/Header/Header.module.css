@@ -25,7 +25,6 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -47,7 +46,7 @@
 }
 .textarea {
   padding: 1rem;
-  width: 25rem;
+  width: 55rem;
   height: 25rem;
   resize: none;
   font-size: 1.5rem;
@@ -59,7 +58,7 @@
 }
 .closeIcon {
   position: absolute;
-  top: 10rem;
-  right: 2rem;
   cursor: pointer;
+  top: 10rem;
+  right: 50%;
 }

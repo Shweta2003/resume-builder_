@@ -23,7 +23,7 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 35%;
-  height: 110vh;
+  height: 120vh;
   padding: 2rem;
   background-color: #402b54;
   color: #ffffff;
@@ -34,7 +34,7 @@
   font-family: Krub;
   gap: 1.1rem;
   width: 70%;
-  height: 100vh;
+  height: 120vh;
   padding: 2rem 1.5rem;
   background-color: #fff;
   color: #575757;
@@ -51,11 +51,7 @@
 .certifications {
   min-height: 10rem;
 }
-.skills .languages {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-}
+.languages,
 .frameworks,
 .tools,
 .databases {
@@ -136,7 +132,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 7.7px;
-  color: #402B54;
+  color: #402b54;
   word-wrap: break-word;
 }
 .cgpa {

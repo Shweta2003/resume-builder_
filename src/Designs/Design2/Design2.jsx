@@ -181,7 +181,7 @@ const Design2 = () => {
             </div>
           ))}
         </div>
-        <div className={styles.languages}>
+        <div className={styles.languagesCom}>
           <div className={styles.title}>Languages</div>
           {resume.languages.languagesDetails.map((languageDetail) => (
             <div className={styles.languageDetail}>

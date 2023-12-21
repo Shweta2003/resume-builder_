@@ -34,7 +34,7 @@
 }
 .personalDetails {
   background-color: #e4f5ec;
-  border-bottom: 2px solid #385848;
+  border-bottom: 8px solid #385848;
   display: flex;
   justify-content: space-between;
   min-height: 6.5rem;

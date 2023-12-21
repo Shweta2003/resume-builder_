@@ -160,7 +160,11 @@ const Header = ({
   return (
     <div className={style.header}>
       <div className={style.resume}>
-        <Button onClick={handleOpenResumeModal} variant="contained">
+        <Button
+          onClick={handleOpenResumeModal}
+          variant="contained"
+          style={{ fontFamily: "kamra" }}
+        >
           Select Resume
         </Button>
         <Modal
@@ -173,7 +177,7 @@ const Header = ({
             alignItems: "center",
             justifyContent: "center",
             height: "100vh",
-            width: "30vw",
+            width: "100vw",
           }}
         >
           <div className={style.modal} onClick={handleCloseResumeModal}>
@@ -203,12 +207,16 @@ const Header = ({
         </Modal>
       </div>
       <div>
-        <Button onClick={() => setTailorOpen(true)} variant="contained">
+        <Button
+          onClick={() => setTailorOpen(true)}
+          variant="contained"
+          style={{ fontFamily: "kamra" }}
+        >
           Tailored Resume
         </Button>
         <Modal
           open={tailorOpen}
-          // onClose={() => setTailorOpen(false)}
+          onClose={() => setTailorOpen(false)}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
           sx={{
@@ -216,7 +224,7 @@ const Header = ({
             alignItems: "center",
             justifyContent: "center",
             height: "100vh",
-            width: "30vw",
+            width: "100vw",
           }}
         >
           <div
@@ -228,14 +236,17 @@ const Header = ({
             }}
           >
             <textarea
-              placeholder="Enter Job Description"
+              placeholder="Enter Job Description here only after you have filled all the details in the form"
               className={style.textarea}
               onChange={(e) => setJD(e.target.value)}
             />
-            <div className={style.closeIcon}>
-              <CloseIcon onClick={() => setTailorOpen(false)} />
-            </div>
-            <Button variant="contained" onClick={handleJD}>
+            <Button
+              disabled={!JD}
+              variant="contained"
+              onClick={handleJD}
+              style={{ fontFamily: "kamra" }}
+              sx={{ width: "100%" }}
+            >
               Done
             </Button>
           </div>
@@ -340,6 +351,7 @@ const Header = ({
           variant="contained"
           startIcon={<CloudUploadIcon />}
           onClick={handleUploadClick}
+          style={{ fontFamily: "kamra" }}
         >
           Upload photo
         </Button>
@@ -352,7 +364,11 @@ const Header = ({
         />
         <ReactToPrint
           trigger={() => {
-            return <Button variant="contained">Download Resume</Button>;
+            return (
+              <Button variant="contained" style={{ fontFamily: "kamra" }}>
+                Download Resume
+              </Button>
+            );
           }}
           content={() => resumeRef.current}
         />
