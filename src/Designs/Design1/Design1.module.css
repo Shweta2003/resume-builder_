@@ -97,7 +97,7 @@
 }
 .right {
   width: 60%;
-  height: 100vh;
+  height: max-content;
   padding-left: 30px;
   display: flex;
   flex-direction: column;
@@ -146,10 +146,7 @@
 .skills,
 .certificates {
   min-height: 13rem;
-  /* color: #385848; */
-  /* border: 2px solid red; */
   width: 90%;
-  /* padding: 10px; */
 }
 .certificates {
   display: flex;
@@ -157,18 +154,16 @@
   align-items: center;
 }
 .certificate {
-  /* border: 2px solid red; */
   display: flex;
   width: 100%;
   padding-bottom: 10px;
 }
 .about {
-  min-height: 2rem;
+  min-height: 4rem;
   text-align: justify;
   color: #575757;
   font-family: Jaldi;
   word-wrap: break-word;
-  /* border:2px solid red; */
   width: 90%;
 }
 .dp {
@@ -183,6 +178,6 @@
   object-fit: cover;
 }
 .experiences {
-  min-height: 10rem;
-  max-height: 20rem;
+  min-height: 20rem;
+  /* border: 2px solid #cbcbd1; */
 }

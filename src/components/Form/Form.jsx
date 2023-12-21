@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Form.module.css";
-import UpArrow from "../../assets/upArrow.svg";
 import DownArrow from "../../assets/downArrow.svg";
 import { useSelector, useDispatch } from "react-redux";
 import PersonalInformation from "./PersonalInformation/PersonalInformation";
@@ -58,10 +57,9 @@ const Form = () => {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  width: "80%",
-                  // margin: "0 auto",
+                  width: "95%",
                   cursor: "pointer",
-                  padding: "1rem 0",
+                  padding: "1rem",
                   borderBottom: "1px solid #ccc",
                 }}
                 key={section}
@@ -90,7 +88,12 @@ const Form = () => {
                 />
               </li>
               {resume[section]?.showDetails && (
-                <div className={styles.section}>{sections[section][0]}</div>
+                <div
+                  style={{ transition: "all 0.4 ease" }}
+                  className={styles.section}
+                >
+                  {sections[section][0]}{" "}
+                </div>
               )}
             </ul>
           );
