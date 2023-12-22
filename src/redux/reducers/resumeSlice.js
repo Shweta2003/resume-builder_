@@ -8,7 +8,8 @@ const initialState = {
     phone: "1234567890",
     jobTitle: "Software Engineer",
     links: [],
-    about: "",
+    about:
+      "Dedicated software engineer with [X years] of experience in designing and implementing scalable and efficient solutions.Proficient in JavaScript and passionate about leveraging innovative technologies to solve complex problems. Committed to continuous learning to deliver high-quality software solutions.",
   },
   education: {
     showDetails: false,
