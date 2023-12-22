@@ -8,7 +8,6 @@ export const getAnswer = async (prompt, maxTokens) => {
       content: `Write the following text in a concise, professional, and impactful manner. Ensure the language is refined and the response is ${maxTokens} words long: "${prompt}"`,
     },
   ];
-
   const body = {
     model: "gpt-3.5-turbo",
     messages,
