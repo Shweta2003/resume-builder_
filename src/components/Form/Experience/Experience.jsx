@@ -12,7 +12,7 @@ import {
 } from "../../../redux/reducers/resumeSlice";
 import AddButton from "../../../utils/AddButton";
 import { getAnswer, getAnswerForExperience } from "../../../Designs/Backend";
-import { Delete } from "@mui/icons-material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Experience = () => {
   const [smartAnswer1, setSmartAnswer1] = useState("");
@@ -45,15 +45,16 @@ const Experience = () => {
     );
   };
 
-  useEffect(() => {}, [experienceDetails]);
+  useEffect(() => { }, [experienceDetails]);
 
   return (
-    <div>
+    <div className={styles.make}>
       {experienceDetails.map((experienceDetail, key) => {
         return (
-          <div key={key}>
-            <div>
+          <div key={key} className={styles.container}>
+            <div className={styles.part1}>
               <input
+                className={styles.inp}
                 type="text"
                 placeholder="Company"
                 value={experienceDetail.company}
@@ -67,6 +68,7 @@ const Experience = () => {
                 }}
               />
               <input
+                className={styles.inp}
                 type="text"
                 placeholder="Job Title"
                 value={experienceDetail.jobTitle}
@@ -79,7 +81,11 @@ const Experience = () => {
                   );
                 }}
               />
+
+            </div>
+            <div className={styles.part2}>
               <input
+                className={styles.inp}
                 type="text"
                 placeholder="Duration"
                 value={experienceDetail.duration}
@@ -94,10 +100,11 @@ const Experience = () => {
               />
             </div>
             <div
-              style={{
-                display: "felx",
-                flexDirection: "column",
-              }}
+
+            >
+            </div>
+            <div
+              className={styles.part2}
             >
               {isSmart ? (
                 <div>
@@ -135,30 +142,31 @@ const Experience = () => {
                 />
               )}
 
-              <button
-                onClick={() => {
-                  handleEnhance(
-                    experienceDetail._id,
-                    isSmart
-                      ? smartAnswer1 + smartAnswer2
-                      : resume.experiences.experienceDetails.description,
-                    100
-                  );
-                }}
-                style={{ width: "95%" }}
-              >
-                Enhance
-              </button>
+              <div className={styles.adjust}>
+                <button
+                  className={styles.enhance}
+                  onClick={() => {
+                    handleEnhance(
+                      experienceDetail._id,
+                      resume.experiences.experienceDetails.description,
+                      100
+                    );
+                  }}
+
+                >
+                  Enhance <span className="material-symbols-outlined edit">edit_note</span>
+                </button>
+                <button
+                  className={styles.delete}
+                  onClick={() => {
+                    dispatch(deleteExperience({ _id: experienceDetail._id }));
+                  }}
+                >
+                  Delete<span className={styles.temp}><DeleteIcon>
+                  </DeleteIcon></span>
+                </button>
+              </div>
             </div>
-            <button
-              style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-              onClick={() => {
-                dispatch(deleteExperience({ _id: experienceDetail._id }));
-              }}
-            >
-              Delete
-              <Delete sx={{ width: "1rem" }} />
-            </button>
           </div>
         );
       })}

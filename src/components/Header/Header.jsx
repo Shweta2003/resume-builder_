@@ -24,8 +24,7 @@ import Design9 from "../../assets/Templates/9.png";
 import Design10 from "../../assets/Templates/10.png";
 import { getAnswerForTailered } from "../../Designs/Backend";
 import { useDispatch } from "react-redux";
-import { addAbout, addOrUpdateDescription } from "../../redux/reducers/resumeSlice";
-import CloseIcon from "@mui/icons-material/Close";
+import { addAbout, addOrUpdateDescription, toggleIsSmart } from "../../redux/reducers/resumeSlice";
 import { useSelector } from "react-redux";
 
 const Header = ({
@@ -53,6 +52,7 @@ const Header = ({
   const dispatch = useDispatch();
 
   const resume = useSelector((state) => state.resume);
+  const isSmart = resume.isSmart;
 
   const handleClick = (event, menuType) => {
     setAnchorEl(event.currentTarget);
@@ -204,7 +204,8 @@ const Header = ({
   fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
   border: "1px solid rgba(194, 178, 178, 0.605)",
   marginLeft:"10px",
-  marginRight:"750px"
+  marginRight:"600px",
+  width:"max-content"
           }}
         ><span class="material-symbols-outlined icons">
         widgets
@@ -253,6 +254,24 @@ const Header = ({
           </div>
         </Modal>
       </div>
+
+      <div>
+        <Button
+          variant="contained"
+          style={{
+            background: "none",
+  padding: "8px 20px",
+  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  border: "1px solid rgba(194, 178, 178, 0.605)",
+  marginRight: "20px",
+  width:"max-content"
+          }}
+          onClick={() => dispatch(toggleIsSmart(!isSmart))}
+        >
+          Smart Resume
+        </Button>
+      </div>
+
       <div>
         <Button
           onClick={() => setTailorOpen(true)}
@@ -262,7 +281,8 @@ const Header = ({
   padding: "8px 20px",
   fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
   border: "1px solid rgba(194, 178, 178, 0.605)",
-  marginRight: "20px"
+  marginRight: "20px",
+  width:"max-content"
           }}
         >
           Tailored Resume
@@ -410,7 +430,8 @@ const Header = ({
   padding: "8px 20px",
   fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
   border: "1px solid rgba(194, 178, 178, 0.605)",
-  marginRight: "35px"
+  marginRight: "35px",
+  width:"max-content"
           }}
         >
           Upload photo

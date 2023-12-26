@@ -16,8 +16,6 @@ const Layout = () => {
           display: "flex",
           width: "100%",
           height: "100%",
-          gap: "5rem",
-          padding: "1rem",
           justifyContent: "center",
           boxSizing: "border-box",
         }}

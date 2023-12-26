@@ -12,7 +12,6 @@ import {
   deleteLink,
   addAbout,
 } from "../../../redux/reducers/resumeSlice";
-import CrossIcon from "../../../assets/cross.svg";
 import { v4 as uuidv4 } from "uuid";
 import AddButton from "../../../utils/AddButton";
 import DeleteIcon from "@mui/icons-material/Delete";
