@@ -1,0 +1,43 @@
+.language {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #b2b2b7;
+  margin: 10px 0px;
+  border-radius: 10px;
+  padding: 10px;
+  color: black;
+}
+.languageInput {
+  display: flex;
+  width: 100%;
+}
+
+.addInput {
+  display: flex;
+  width: 93%;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.input{
+  width: 90%;
+  border: none;
+  border-radius: 4px;
+  background-color: #ececf1e4;
+  font-size: 15px;
+  margin-bottom: 30px;
+  padding: 10px 5px;
+}
+
+.addLanguage{
+  margin-left: 20px;
+}
+
+.mark{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+}

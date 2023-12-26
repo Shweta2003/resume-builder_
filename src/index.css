@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+  /* font-family: 
+    "Ubuntu", "Roboto"
+    sans-serif; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+  /* overflow: hidden; */
+}
+input {
+  border: 1px solid #ffffff;
+}
+input:hover {
+  border: 1px solid rgb(9, 9, 9);
+}
+/* input {
+  padding-bottom: 5px;
+  border: none;
+  background-color: #c4e2e6;
+  border: 2px solid #c4e2e6;
+}
+input:hover {
+  border: 2px solid rgb(9, 9, 9);
+}
+input:focus {
+  border: 2px solid rgb(9, 9, 9);
+}
+textarea {
+  border: none;
+  background-color: #c4e2e6;
+  border: 2px solid #c4e2e6;
+  overflow: hidden;
+  resize: none;
+}
+textarea:hover {
+  border: 2px solid rgb(9, 9, 9);
+} */
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,341 @@
+.resume {
+  background-color: #f1fef7;
+  min-width: 700px;
+  max-width: 850px;
+  margin: 0 auto;
+  flex: 1.2;
+  height: 100vh;
+  flex-direction: column;
+  /* font-family: "Karma"; */
+  font-family: 'Arvo', serif;
+  width: 100%;
+  margin-top: 5vh;
+  height: 85vh;
+  box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  /* font-family: Inria Sans; */
+  /* font-weight: 700; */
+  word-wrap: break-word;
+  overflow-y: auto;
+  right: 100px;
+}
+.resume::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.resume::-webkit-scrollbar {
+  width: 5px;
+}
+.icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.phone,
+.email,
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #385848;
+}
+.personalDetails {
+  width: 100%;
+  min-height: max-content;
+  background-color: #e4f5ec;
+  padding: 20px 0px;
+  border-bottom: 8px solid #385848;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  align-items: flex-end;
+  height: max-content;
+  color: #385848;
+}
+.title , .title2, .title3{
+  display: flex;
+  color: #385848;
+  border-bottom: 2px solid #385848;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 1.3rem;
+  font-family: 'Arvo', serif;
+  letter-spacing: 3.2px;
+  padding-bottom: 13px;
+  word-wrap: break-word;
+}
+
+.title2{
+  text-align: center;
+  margin-top: 40px;
+  width: 60%;
+}
+.name {
+  color: #385848;
+  font-size: 2.5rem;
+  word-spacing: 10px;
+  margin-top: 40px;
+  padding: 0px 8px;
+  border-bottom: 2px solid #385848;
+  margin-bottom: 10px;
+}
+.currnetJob {
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-left: 8px;
+  color: #385848;
+}
+.jobTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.91px;
+  word-wrap: break-word;
+}
+.description {
+  display: flex;
+  text-align: justify;
+  padding-left: 15px;
+}
+
+.designation{
+  margin-bottom: 20px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px;
+}
+
+.languages,
+.frameworks,
+.tools,
+.databases {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+.xp {
+  padding: 10px 0px;
+  line-height: 23px;
+  font-size: 17px;
+  font-family: 'Jaldi', sans-serif;
+}
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+}
+.details {
+  height: max-content;
+  display: flex;
+  margin-bottom: 40px;
+  padding: 10px 50px;
+  justify-content: space-between;
+}
+.subtitle {
+  font-family: 'Jaldi', sans-serif;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+}
+.language, .framework, .tool, .database{
+  display: inline;
+  font-family: 'Jaldi', sans-serif;
+  font-weight: 300;
+  margin-right: 20px;
+  margin-bottom: 6px;
+  line-height: 20px;
+  font-size: 17px;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 2px solid;
+  width: 40%;
+  height: 100%;
+  padding-right: 50px;
+}
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 0px 50px;
+}
+.ProfileTitle {
+  padding: 10px;
+}
+.right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  align-items: center;
+}
+.edu {
+  margin-bottom: 20px;
+  line-height: 20px;
+  font-size: 17px;
+  font-family: 'Jaldi', sans-serif;
+}
+.education,
+.skills,
+.certificates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+  min-height: 13rem;
+  color: #385848;
+}
+.certificateName {
+  font-size: 20px;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: 0.91px;
+  line-height: 20px;
+  word-wrap: break-word;
+  color: #385848;
+  text-align: justify;
+  margin-bottom: 7px;
+  font-family: 'Jaldi', sans-serif;
+}
+.institute {
+  font-weight: 700;
+  line-height: 23px;
+  font-size: 20px;
+  word-wrap: break-word;
+}
+.experiences {
+  color: #385848;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.about {
+  min-height: 100px;
+  text-align: center;
+  font-family: 'Jaldi', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  color: #575757;
+  font-weight: 400;
+  width: 100%;
+  line-height: 23px;
+  word-wrap: break-word;
+
+}
+
+.temp{
+  display: flex;
+  word-wrap: break-word;
+  align-items: flex-start;
+}
+
+.title3{
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #385848;
+  color: #385848;
+  background: none;
+  margin-bottom: 10px;
+}
+
+.cet, .ceta, .cetak{
+  align-items: flex-start;
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+  width: 98%;
+  font-family: 'Jaldi', sans-serif;
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 300;
+  word-break: break-all;
+}
+
+.cet{
+  margin-bottom: 20px;
+}
+
+.project{
+  width: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: 'Jaldi', sans-serif;
+  margin-top: 10px;
+  display: flex;
+}
+
+.pro{
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  word-wrap: break-word;
+}
+
+.proc{
+  width: 80%;
+  font-size:17px;
+  font-weight: 600;
+  margin-left: 35px;
+  color: #385848
+}
+
+.prod{
+  width: 85%;
+  margin-top: 3px;
+  margin-left: 35px;
+  font-weight: 400;
+  text-align: justify;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.issuer{
+  font-size: 17px;
+  font-family: 'Jaldi', sans-serif;
+  line-height: 20px;
+  
+
+}
+
+.check{
+  font-size: 20px;
+}
+
+.award{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  font-size: 17px;
+  font-family: 'Jaldi', sans-serif;
+  font-weight: 500;
+  color: #402b54;
+}
+
+.back{
+  width: 100%;
+}
+
+.comp1{
+  width: max-content;
+}
+
+@media print {
+  .title3{
+    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  }
+}
+
+
