@@ -6,7 +6,7 @@ import { useRef, useState, useEffect } from "react";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import { getAnswer } from "../Backend";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Design6 = () => {
   const [loading, setLoading] = useState(false);

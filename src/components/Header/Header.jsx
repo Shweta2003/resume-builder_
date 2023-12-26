@@ -17,19 +17,16 @@ import Design2 from "../../assets/Templates/2.png";
 import Design3 from "../../assets/Templates/3.png";
 import Design4 from "../../assets/Templates/4.png";
 import { getAnswerForTailered } from "../../Designs/Backend";
-import { useDispatch } from "react-redux";
-import { addAbout } from "../../redux/reducers/resumeSlice";
+import { addAbout, toggleIsSmart } from "../../redux/reducers/resumeSlice";
 import CloseIcon from "@mui/icons-material/Close";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = ({
   resumeRef,
   setImgUrl,
-  pdfRef,
-  onDownload,
-  setFontSizeOption,
   fontSizeOption,
+  setFontSizeOption,
   setFontStyleOption,
-  fontStyleOption,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [fontFamilyMenuOpen, setFontFamilyMenuOpen] = useState(false);
@@ -38,10 +35,13 @@ const Header = ({
   const [open, setOpen] = React.useState(false);
   const [tailorOpen, setTailorOpen] = React.useState(false);
   const [JD, setJD] = useState("");
+
   const handleOpenResumeModal = () => setOpen(true);
   const handleCloseResumeModal = () => setOpen(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const resume = useSelector((state) => state.resume);
+  const isSmart = resume.isSmart;
 
   const handleClick = (event, menuType) => {
     setAnchorEl(event.currentTarget);
@@ -53,11 +53,13 @@ const Header = ({
       setFontFamilyMenuOpen(false);
     }
   };
+
   const handleClose = () => {
     setFontFamilyMenuOpen(false);
     setFontSizeMenuOpen(false);
     setAnchorEl(null);
   };
+
   const handleClickFontStyle = (e) => {
     setFontStyleOption(e.target.innerText);
 
@@ -205,6 +207,14 @@ const Header = ({
             </div>
           </div>
         </Modal>
+      </div>
+      <div>
+        <Button
+          variant="contained"
+          onClick={() => dispatch(toggleIsSmart(!isSmart))}
+        >
+          Smart Resume
+        </Button>
       </div>
       <div>
         <Button

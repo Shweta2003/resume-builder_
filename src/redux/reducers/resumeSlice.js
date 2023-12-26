@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  isSmart: false,
   personalInformation: {
     showDetails: true,
     name: "John Doe",
@@ -49,6 +50,9 @@ const resumeSlice = createSlice({
   name: "resume",
   initialState,
   reducers: {
+    toggleIsSmart: (state, action) => {
+      state.isSmart = !state.isSmart;
+    },
     toggleDetails: (state, action) => {
       state[action.payload].showDetails = !state[action.payload].showDetails;
     },
@@ -324,6 +328,7 @@ const resumeSlice = createSlice({
 });
 
 export const {
+  toggleIsSmart,
   toggleDetails,
   addName,
   addEmail,
