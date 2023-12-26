@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Experience.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
@@ -11,13 +11,17 @@ import {
   deleteExperience,
 } from "../../../redux/reducers/resumeSlice";
 import AddButton from "../../../utils/AddButton";
-import { getAnswer } from "../../../Designs/Backend";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { getAnswer, getAnswerForExperience } from "../../../Designs/Backend";
+import { Delete } from "@mui/icons-material";
 
 const Experience = () => {
+  const [smartAnswer1, setSmartAnswer1] = useState("");
+  const [smartAnswer2, setSmartAnswer2] = useState("");
+
   const dispatch = useDispatch();
   const resume = useSelector((state) => state.resume);
   const experienceDetails = resume.experiences.experienceDetails;
+  const isSmart = resume.isSmart;
 
   const handleAddExperience = () => {
     dispatch(
@@ -32,7 +36,7 @@ const Experience = () => {
   };
 
   const handleEnhance = async (inputStateId, inputState, maxTokens) => {
-    const enhancedInput = await getAnswer(inputState, maxTokens);
+    const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
     dispatch(
       addOrUpdateDescription({
         description: enhancedInput.evaluation,
@@ -44,13 +48,12 @@ const Experience = () => {
   useEffect(() => {}, [experienceDetails]);
 
   return (
-    <div className={styles.make}>
+    <div>
       {experienceDetails.map((experienceDetail, key) => {
         return (
-          <div key={key} className={styles.container}>
-            <div className={styles.part1}>
+          <div key={key}>
+            <div>
               <input
-              className={styles.inp}
                 type="text"
                 placeholder="Company"
                 value={experienceDetail.company}
@@ -64,7 +67,6 @@ const Experience = () => {
                 }}
               />
               <input
-              className={styles.inp}
                 type="text"
                 placeholder="Job Title"
                 value={experienceDetail.jobTitle}
@@ -77,11 +79,7 @@ const Experience = () => {
                   );
                 }}
               />
-              
-              </div>
-              <div className={styles.part2}>
               <input
-              className={styles.inp}
                 type="text"
                 placeholder="Duration"
                 value={experienceDetail.duration}
@@ -94,49 +92,73 @@ const Experience = () => {
                   );
                 }}
               />
-              </div>
+            </div>
             <div
-              className={styles.part2}
+              style={{
+                display: "felx",
+                flexDirection: "column",
+              }}
             >
-              <textarea
-                className={styles.textarea}
-                type="text"
-                placeholder="Description"
-                value={experienceDetail.description}
-                onChange={(e) => {
-                  dispatch(
-                    addOrUpdateDescription({
-                      _id: experienceDetail._id,
-                      description: e.target.value,
-                    })
-                  );
-                }}
-              />
-              <div className={styles.adjust}>
+              {isSmart ? (
+                <div>
+                  <div className={styles.question}>Question1</div>
+                  <textarea
+                    name=""
+                    id=""
+                    rows="6"
+                    className={styles.textarea}
+                    onChange={(e) => setSmartAnswer1(e.target.value)}
+                  ></textarea>
+                  <div className={styles.question}>Question2</div>
+                  <textarea
+                    name=""
+                    id=""
+                    rows="6"
+                    className={styles.textarea}
+                    onChange={(e) => setSmartAnswer2(e.target.value)}
+                  ></textarea>
+                </div>
+              ) : (
+                <textarea
+                  className={styles.textarea}
+                  type="text"
+                  placeholder="Description"
+                  value={experienceDetail.description}
+                  onChange={(e) => {
+                    dispatch(
+                      addOrUpdateDescription({
+                        _id: experienceDetail._id,
+                        description: e.target.value,
+                      })
+                    );
+                  }}
+                />
+              )}
+
               <button
-                className={styles.enhance}
                 onClick={() => {
                   handleEnhance(
                     experienceDetail._id,
-                    resume.experiences.experienceDetails.description,
+                    isSmart
+                      ? smartAnswer1 + smartAnswer2
+                      : resume.experiences.experienceDetails.description,
                     100
                   );
                 }}
-
+                style={{ width: "95%" }}
               >
-                Enhance <span className="material-symbols-outlined edit">edit_note</span>
+                Enhance
               </button>
+            </div>
             <button
-              className={styles.delete}
+              style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
               onClick={() => {
                 dispatch(deleteExperience({ _id: experienceDetail._id }));
               }}
             >
-              Delete<span className={styles.temp}><DeleteIcon>
-              </DeleteIcon></span>
+              Delete
+              <Delete sx={{ width: "1rem" }} />
             </button>
-            </div>
-          </div>
           </div>
         );
       })}
@@ -144,5 +166,4 @@ const Experience = () => {
     </div>
   );
 };
-
 export default Experience;

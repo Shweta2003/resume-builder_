@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Form from "./components/Form/Form";
 import Header from "./components/Header/Header";
-import { downloadPDF } from "./utils/downloadPdf";
-import { usePDF } from "react-to-pdf";
-import ReactToPrint from "react-to-print";
 
 const Layout = () => {
   const resumeRef = React.useRef();
   const [imgUrl, setImgUrl] = useState("");
-  // const { toPDF, targetRef: resumeRef } = usePDF({ filename: "page.pdf" });
+  const [isSmart, setIsSmart] = useState(false);
 
   return (
     <>
@@ -19,8 +16,9 @@ const Layout = () => {
           display: "flex",
           width: "100%",
           height: "100%",
-          alignItems:"flex-start",
-          justifyContent: "space-between",
+          gap: "5rem",
+          padding: "1rem",
+          justifyContent: "center",
           boxSizing: "border-box",
         }}
       >
