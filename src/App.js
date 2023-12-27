@@ -13,19 +13,20 @@ import Design5 from "./Designs/Design5/Design5";
 import Design6 from "./Designs/Design6/Design6";
 import Layout from "./Layout";
 import { useRef } from "react";
+import Header from "./components/Header/Header";
 
 const App = () => {
   const resumeRef = useRef();
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/resume/" element={<Layout />}>
-          <Route path="design/1" element={<Design1 />} />
-          <Route path="design/2" element={<Design2 />} />
-          <Route path="design/3" element={<Design3 />} />
-          <Route path="design/4" element={<Design4 />} />
-          <Route path="design/5" element={<Design5 />} />
-          <Route path="design/6" element={<Design6 />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/design/1" element={<Design1 />} />
+          <Route path="/design/2" element={<Design2 />} />
+          <Route path="/design/3" element={<Design3 />} />
+          <Route path="/design/4" element={<Design4 />} />
+          <Route path="/design/5" element={<Design5 />} />
+          <Route path="/design/6" element={<Design6 />} />
         </Route>
       </>
     )

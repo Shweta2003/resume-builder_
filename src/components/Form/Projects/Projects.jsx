@@ -13,6 +13,7 @@ import {
 } from "../../../redux/reducers/resumeSlice";
 import AddButton from "../../../utils/AddButton";
 import { getAnswer } from "../../../Designs/Backend";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -20,17 +21,14 @@ const Projects = () => {
   const projects = resume.projects.projectDetails;
 
   const handleAddProject = () => {
-    dispatch({
-      type: addProject,
-      payload: {
+    dispatch(addProject({
         _id: uuidv4(),
         name: "",
         technologies: "",
         description: "",
         link: "",
         github: "",
-      },
-    });
+    }));
   };
 
   const handleEnhance = async (inputStateId, inputState, maxTokens) => {
@@ -49,8 +47,9 @@ const Projects = () => {
     <div className={style.container}>
       {projects.map((project, key) => {
         return (
-          <div key={key}>
+          <div key={key} className={style.main}>
             <input
+              className={style.input}
               type="text"
               placeholder="Project Name"
               value={project.name}
@@ -64,6 +63,7 @@ const Projects = () => {
               }}
             />
             <input
+              className={style.input}
               type="text"
               placeholder="Project Technologies"
               value={project.technologies}
@@ -77,6 +77,7 @@ const Projects = () => {
               }}
             />
             <input
+              className={style.input}
               type="text"
               placeholder="Project Link"
               value={project.link}
@@ -90,6 +91,7 @@ const Projects = () => {
               }}
             />
             <input
+              className={style.input}
               type="text"
               placeholder="Project Github"
               value={project.github}
@@ -103,7 +105,7 @@ const Projects = () => {
               }}
             />
             <div
-              style={{ display: "flex", flexDirection: "column", width: "95%" }}
+              style={{ display: "flex", flexDirection: "column", width: "93%" , marginLeft:"10px"}}
             >
               <textarea
                 type="text"
@@ -119,7 +121,9 @@ const Projects = () => {
                   );
                 }}
               />
+              <div className={style.adjust}>
               <button
+                className={style.enhance}
                 onClick={() => {
                   handleEnhance(
                     project._id,
@@ -128,10 +132,10 @@ const Projects = () => {
                   );
                 }}
               >
-                Enhance
+                Enhance<span className="material-symbols-outlined edit">edit_note</span>
               </button>
-            </div>
             <button
+              className={style.delete}
               onClick={() =>
                 dispatch(
                   deleteProject({
@@ -140,8 +144,11 @@ const Projects = () => {
                 )
               }
             >
-              Delete
+              Delete<span className={style.temp}><DeleteIcon>
+              </DeleteIcon></span>
             </button>
+            </div>
+            </div>
           </div>
         );
       })}

@@ -12,7 +12,6 @@ import {
   deleteLink,
   addAbout,
 } from "../../../redux/reducers/resumeSlice";
-import CrossIcon from "../../../assets/cross.svg";
 import { v4 as uuidv4 } from "uuid";
 import AddButton from "../../../utils/AddButton";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -32,52 +31,60 @@ const PersonalInformation = () => {
     dispatch(addAbout(enhancedInput.evaluation));
   };
 
-  useEffect(() => {}, [links]);
+  useEffect(() => { }, [links]);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder={resume.personalInformation.name}
-        onChange={(e) => dispatch(addName(e.target.value))}
-      />
-      <input
-        type="text"
-        placeholder={resume.personalInformation.email}
-        onChange={(e) => dispatch(addEmail(e.target.value))}
-      />
-      <input
-        type="text"
-        placeholder={resume.personalInformation.phone}
-        onChange={(e) => dispatch(addPhone(e.target.value))}
-      />
-      <input
-        type="text"
-        placeholder={resume.personalInformation.jobTitle}
-        onChange={(e) => dispatch(addJobTitle({ jobTitle: e.target.value }))}
-      />
+    <div className={styles.main}>
+      <div className={styles.cat}>
+        <input
+          type="text"
+          placeholder={resume.personalInformation.name}
+          onChange={(e) => dispatch(addName(e.target.value))}
+          className={styles.input}
+        />
+        <input
+          type="text"
+          placeholder={resume.personalInformation.email}
+          onChange={(e) => dispatch(addEmail(e.target.value))}
+          className={styles.input}
+        />
+        <input
+          type="text"
+          placeholder={resume.personalInformation.phone}
+          onChange={(e) => dispatch(addPhone(e.target.value))}
+          className={styles.input}
+        />
+        <input
+          type="text"
+          placeholder={resume.personalInformation.jobTitle}
+          onChange={(e) => dispatch(addJobTitle({ jobTitle: e.target.value }))}
+          className={styles.input}
+        />
+      </div>
       <div className={styles.links}>
-        <h5>Links</h5>
+        <h5 className={styles.kl}>Links</h5>
         {links.map((link, key) => {
           return (
-            <div key={key} style={{ display: "flex", alignItems: "center" }}>
+            <div key={key} className={styles.link_cat}>
               <select
                 value={link.name}
                 id=""
+                className={styles.link_desc}
                 onChange={(e) =>
                   dispatch(
                     AddOrUpdateLinkName({ name: e.target.value, _id: link._id })
                   )
                 }
               >
-                <option value="" disabled selected>
+                <option value="" disabled selected className={styles.option}>
                   Select...
                 </option>
-                <option value="LinkedIn">LinkedIn</option>
-                <option value="GitHub">GitHub</option>
-                <option value="Portfolio">Portfolio</option>
+                <option value="LinkedIn" className={styles.option}>LinkedIn</option>
+                <option value="GitHub" className={styles.option}>GitHub</option>
+                <option value="Portfolio" className={styles.option}>Portfolio</option>
               </select>
               <input
+                className={styles.inp}
                 value={link.url}
                 type="text"
                 placeholder="Your Link here"
@@ -96,15 +103,14 @@ const PersonalInformation = () => {
                   )
                 }
               >
-                <img src={CrossIcon} alt="" />
               </DeleteIcon>
             </div>
           );
         })}
-        <AddButton field="LINK" handleAdd={handleAddLink} />
+        <div className={styles.adjust}><AddButton field="LINK" handleAdd={handleAddLink} /></div>
       </div>
-      <div className={styles.about}>
-        <h5>About</h5>
+      <div className={styles.links}>
+        <h5 className={styles.kl}>About</h5>
         <textarea
           className={styles.textarea}
           onChange={(e) => dispatch(addAbout(e.target.value))}
@@ -117,13 +123,16 @@ const PersonalInformation = () => {
         >
           {resume.personalInformation.about}
         </textarea>
+        <div className={styles.adjust}>
         <button
           onClick={() => {
             handleEnhance(resume.personalInformation.about, 100);
           }}
+          className={styles.enhance}
         >
           Enhance
         </button>
+        </div>
       </div>
     </div>
   );

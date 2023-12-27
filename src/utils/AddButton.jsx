@@ -1,5 +1,4 @@
 import React from "react";
-import PlusIcon from "../assets/add.svg";
 
 const AddButton = ({ field, handleAdd }) => {
   return (
@@ -11,12 +10,16 @@ const AddButton = ({ field, handleAdd }) => {
           gap: "1rem",
           fontSize: "1rem",
           fontWeight: "bold",
-          fontFamily: "Karla",
+          fontFamily: "sans-serif",
+          color: "#1976d2",
+          background:"none",
+          border:"none",
+          padding:"5px 10px"
+      
         }}
         onClick={handleAdd}
       >
-        ADD {field}
-        <img src={PlusIcon} alt="" />
+        <span class="material-symbols-outlined">add</span>ADD {field}
       </button>
     </div>
   );

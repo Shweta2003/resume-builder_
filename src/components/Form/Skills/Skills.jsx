@@ -59,34 +59,44 @@ const Skills = () => {
   return (
     <div className={style.container}>
       <div className={style.languages}>
-        <h5>Languages</h5>
+        <h5 className={style.kl}>Languages</h5>
         <div className={style.addInput}>
           <input
             type="text"
+            className={style.input}
             value={language}
             placeholder="C++,Java,JavaScript"
             onChange={(e) => setLanguage(e.target.value)}
           />
           <img src={AddIcon} alt="Add" onClick={handleAddLanguage} />
         </div>
-        {languages.map((language, key) => {
-          return (
-            <Chip
-              key={key}
-              label={language.language}
-              variant="outlined"
-              onClick={() => setLanguage(language.language)}
-              onDelete={() => {
-                dispatch(deleteLanguage({ _id: language._id }));
-              }}
-            />
-          );
-        })}
+        <div className={style.div}>
+          {languages.map((language, key) => {
+            return (
+              <div className={style.nm}>
+                <Chip
+                  style={{
+                    marginRight: "10px",
+                    marginBottom: "10px"
+                  }}
+                  key={key}
+                  label={language.language}
+                  variant="outlined"
+                  onClick={() => setLanguage(language.language)}
+                  onDelete={() => {
+                    dispatch(deleteLanguage({ _id: language._id }));
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <div className={style.frameworks}>
-        <h5>Frameworks</h5>
+      <div className={style.languages}>
+        <h5 className={style.kl}>Frameworks</h5>
         <div className={style.addInput}>
           <input
+            className={style.input}
             type="text"
             value={framework}
             placeholder="React,Node,Express"
@@ -94,27 +104,31 @@ const Skills = () => {
           />
           <img src={AddIcon} alt="Add" onClick={handleAddFramework} />
         </div>
-        {frameworks.map((framework, key) => {
-          return (
-            <Chip
-              key={key}
-              label={framework.framework}
-              variant="outlined"
-              onClick={() => setFramework(framework.framework)}
-              onDelete={() =>
-                dispatch({
-                  type: deleteFramework,
-                  payload: { _id: framework._id },
-                })
-              }
-            />
-          );
-        })}
+        <div className={style.div}>
+          {frameworks.map((framework, key) => {
+            return (
+              <Chip
+                style={{
+                  marginRight: "10px",
+                  marginBottom: "10px"
+                }}
+                key={key}
+                label={framework.framework}
+                variant="outlined"
+                onClick={() => setFramework(framework.framework)}
+                onDelete={() => {
+                  dispatch(deleteFramework({ _id: framework._id }));
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div className={style.tools}>
-        <h5>Tools</h5>
+      <div className={style.languages}>
+        <h5 className={style.kl}>Tools</h5>
         <div className={style.addInput}>
           <input
+            className={style.input}
             type="text"
             value={tool}
             placeholder="Git,VS Code"
@@ -122,27 +136,31 @@ const Skills = () => {
           />
           <img src={AddIcon} alt="Add" onClick={handleAddTool} />
         </div>
-        {tools.map((tool, key) => {
-          return (
-            <Chip
-              key={key}
-              label={tool.tool}
-              variant="outlined"
-              onClick={() => setTool(tool.tool)}
-              onDelete={() =>
-                dispatch({
-                  type: deleteTool,
-                  payload: { _id: tool._id },
-                })
-              }
-            />
-          );
-        })}
+        <div className={style.div}>
+          {tools.map((tool, key) => {
+            return (
+              <Chip
+                style={{
+                  marginRight: "10px",
+                  marginBottom: "10px"
+                }}
+                key={key}
+                label={tool.tool}
+                variant="outlined"
+                onClick={() => setTool(tool.tool)}
+                onDelete={() => {
+                  dispatch(deleteTool({ _id: tool._id }));
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div className={style.databases}>
-        <h5>Databases</h5>
+      <div className={style.languages}>
+        <h5 className={style.kl}>Databases</h5>
         <div className={style.addInput}>
           <input
+            className={style.input}
             type="text"
             value={database}
             placeholder="MongoDB,MySQL"
@@ -150,27 +168,31 @@ const Skills = () => {
           />
           <img src={AddIcon} alt="Add" onClick={handleAddDatabase} />
         </div>
-        {databases.map((database, key) => {
-          return (
-            <Chip
-              key={key}
-              label={database.database}
-              variant="outlined"
-              onClick={() => setDatabase(database.database)}
-              onDelete={() =>
-                dispatch({
-                  type: deleteDatabase,
-                  payload: { _id: database._id },
-                })
-              }
-            />
-          );
-        })}
+        <div className={style.div}>
+          {databases.map((database, key) => {
+            return (
+              <Chip
+                style={{
+                  marginRight: "10px",
+                  marginBottom: "10px"
+                }}
+                key={key}
+                label={database.database}
+                variant="outlined"
+                onClick={() => setDatabase(database.database)}
+                onDelete={() => {
+                  dispatch(deleteDatabase({ _id: database._id }));
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div className={style.otherSkills}>
-        <h5>Other Skills</h5>
+      <div className={style.languages}>
+        <h5 className={style.kl}>Other Skills</h5>
         <div className={style.addInput}>
           <input
+            className={style.input}
             type="text"
             value={other}
             placeholder="Leadership,Communication"
@@ -178,19 +200,25 @@ const Skills = () => {
           />
           <img src={AddIcon} alt="Add" onClick={handleAddOtherSkill} />
         </div>
-        {otherSkills?.map((otherSkill, key) => {
-          return (
-            <Chip
-              key={key}
-              label={otherSkill.otherSkill}
-              variant="outlined"
-              onClick={() => setOther(otherSkill.otherSkill)}
-              onDelete={() =>
-                dispatch(deleteOtherSkill({ _id: otherSkill._id }))
-              }
-            />
-          );
-        })}
+        <div className={style.div}>
+          {otherSkills?.map((otherSkill, key) => {
+            return (
+              <Chip
+                style={{
+                  marginRight: "10px",
+                  marginBottom: "10px"
+                }}
+                key={key}
+                label={otherSkill.otherSkill}
+                variant="outlined"
+                onClick={() => setOther(otherSkill.otherSkill)}
+                onDelete={() =>
+                  dispatch(deleteOtherSkill({ _id: otherSkill._id }))
+                }
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

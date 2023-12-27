@@ -48,7 +48,7 @@ const Form = () => {
 
   return (
     <div className={styles.container}>
-      <h3 style={{ textAlign: "center" }}>Resume Details</h3>
+      <h3 style={{ textAlign: "center" }} className={styles.head}>Resume Details</h3>
       <ul>
         {Object.keys(sections).map((section, key) => {
           return (

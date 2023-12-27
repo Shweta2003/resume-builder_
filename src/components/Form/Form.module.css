@@ -1,9 +1,17 @@
 .container {
   border: 2px solid #ccc;
+  padding: 20px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
   width: 40%;
-  height: 100vh;
+  max-height: 90vh;
   overflow-y: auto;
   scroll-behavior: smooth;
+  resize: horizontal;
+  position: relative;
+  background-color: white;
+  padding-bottom: 60px;
 }
 .container::-webkit-scrollbar-thumb {
   background-color: #ccc;
@@ -13,20 +21,38 @@
   width: 5px;
 }
 
+.head{
+  font-size: 40px;
+  letter-spacing: 3px;
+  margin: 20px 0px;
+  width: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  position: relative;
+}
+
 ul {
   display: flex;
   flex-direction: column;
   list-style: none;
-  gap: 1rem;
+  width: 100%;
   cursor: pointer;
+  position: relative;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
 }
 ul li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  margin-bottom: 20px;
 }
 .section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
 }

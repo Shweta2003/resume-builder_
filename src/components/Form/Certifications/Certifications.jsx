@@ -22,12 +22,13 @@ const Certifications = () => {
     );
   };
   return (
-    <div className={style.container}>
-      <h5>Certifications</h5>
+    <div className={style.make}>
       {certificates?.map((certificate, key) => {
         return (
-          <div key={key}>
+          <div className={style.container}>
+            <div key={key} className={style.main}>
             <input
+            className={style.input}
               type="text"
               placeholder="Certificate Name"
               value={certificate.name}
@@ -41,6 +42,7 @@ const Certifications = () => {
               }}
             />
             <input
+              className={style.input}
               type="text"
               placeholder="Certificate Authority"
               value={certificate.authority}
@@ -54,6 +56,7 @@ const Certifications = () => {
               }}
             />
             <input
+            className={style.input}
               type="text"
               placeholder="Certificate Link"
               value={certificate.link}
@@ -66,13 +69,17 @@ const Certifications = () => {
                 );
               }}
             />
+          </div>
+          <div className={style.adjust}>
             <button
+            className={style.delete}
               onClick={() => {
                 dispatch(deleteCertificate({ _id: certificate._id }));
               }}
             >
               Delete
             </button>
+            </div>
           </div>
         );
       })}

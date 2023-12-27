@@ -1,31 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,800&family=Playfair+Display:wght@600&family=Source+Code+Pro:wght@400;600&display=swap");
 
-.resume {
-  min-width: 700px;
-  max-width: 850px;
-  margin: 0 auto;
-  flex: 1.2;
-  height: 100vh;
+.container{
+  width: 55%;
+  margin-top: 5vh;
+  height: 85vh;
+  overflow-y: auto;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
   box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
+
+}
+.resume {
+  flex: 1.2;
+  width: 100%;
   display: flex;
   color: #2e2f52;
   font-family: Inria Sans;
   font-weight: 700;
+  height: max-content;
   word-wrap: break-word;
-  overflow-y: auto;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  
 }
-.resume::-webkit-scrollbar-thumb {
+.container::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 5px;
 }
-.resume::-webkit-scrollbar {
+.container::-webkit-scrollbar {
   width: 5px;
 }
 .icon {
   width: 1.1rem;
   height: 1.1rem;
   padding-right: 10px;
+}
+
+.description{
+  text-align: justify;
+  width: 100%;
 }
 
 .languages,
@@ -37,7 +50,34 @@
   padding: 10px;
 }
 .xp {
+  width: 100%;
   padding: 10px;
+  font-size: 15px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+}
+
+.award{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  margin: 20px 0px;
+}
+
+.comp1{
+  width: 90%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.comp2{
+  margin-left: 10px;
+  margin-bottom: 30px;
+  min-height: 200px;
 }
 .details {
   display: flex;
@@ -47,10 +87,12 @@
   height: fit-content;
 }
 .subtitle {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  width: 100%;
   display: inline;
-  font-weight: bolder;
+  font-size: 18px;
 }
 .language,
 .framework,
@@ -58,28 +100,42 @@
 .database {
   display: inline;
   padding: 0px 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  margin-right: 30px;
+  font-size: 15px;
 }
 .left {
+  flex: 1;
   width: 40%;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: space-around; */
-  height: 145vh;
   background-color: #d7dde6;
+  align-items: stretch;
+  align-self: stretch;
 }
+
+.company{
+  font-weight: bolder;
+  font-size: 17px;
+  word-spacing: 10px;
+}
+
+
 .personalInfo {
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
-
+  justify-content: center;
   flex-direction: column;
   padding-bottom: 30px;
 }
 .info {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   justify-content: space-around;
 }
 .phone,
@@ -87,30 +143,45 @@
 .link {
   display: flex;
   align-items: center;
-  gap: 0.51rem;
+  margin-top: 10px;
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #2e2f52;
 }
 .AboutSection {
   display: flex;
   flex-direction: column;
   padding: 20px 0px;
+  padding-right: 40px;
 }
 .right {
+  flex: 1;
   width: 60%;
-  height: max-content;
+  align-items: stretch;
+  align-self: stretch;
   padding-left: 30px;
   display: flex;
   flex-direction: column;
 }
+
+.back{
+  width: 80%;
+}
+
+.back2{
+  width: 90%;
+}
 .title {
-  /* font-weight: 700; */
   font-family: "Nunito Sans", sans-serif;
-  /* border:2px solid red; */
+  width: 80%;
   font-weight: bold;
   font-size: large;
   width: 100%;
   padding: 10px 0px;
+  background: none;
   letter-spacing: 4.2px;
+  border: none;
+  border-bottom: 2px solid #2e2f52;
 }
 .identity {
   width: 90%;
@@ -138,9 +209,56 @@
   font-family: "Playfair Display", serif;
   font-family: "Source Code Pro", monospace;
 }
+
+.cet, .ceta{
+  display: flex;
+  text-align: justify;
+  align-items: center;
+  flex-direction: column;
+  width: 98%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ceta{
+  align-items: flex-start;
+}
+
+.certificateName{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.issuer{
+  width: 80%;
+  font-weight: 300;
+  margin-left: 20px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
 .edu {
   display: flex;
-  /* border: 2px solid red; */
+  align-items: flex-start;
+  text-align: justify;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.duration{
+  font-weight: 300;
+}
+
+.edu_sub{
+  width: 80%;
+  margin-top: 5px;
+  word-spacing: 10px;
+}
+
+.course{
+  font-weight: 500;
 }
 .education,
 .skills,
@@ -149,6 +267,7 @@
   width: 90%;
 }
 .certificates {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,15 +280,19 @@
 .about {
   min-height: 4rem;
   text-align: justify;
-  color: #575757;
-  font-family: Jaldi;
+  color: #2e2f52;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 20px;
   word-wrap: break-word;
-  width: 90%;
+  width: 97%;
 }
 .dp {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 20px 0px;
 }
 .dp > img {
   width: 50%;
@@ -179,5 +302,73 @@
 }
 .experiences {
   min-height: 20rem;
-  /* border: 2px solid #cbcbd1; */
+  width: 100%;
 }
+
+.project{
+  width: 100%;
+  padding-right: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: 10px;
+  display: flex;
+}
+
+.pro{
+  margin-left: 20px;
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.proc{
+  width: 80%;
+  font-size:15px;
+  margin: 5px 0px;
+  margin-left: 40px;
+}
+
+.prod{
+  width: 83%;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.check{
+  width: 90%;
+  padding-left: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+  margin: 20px 0px;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* @media screen and (min-height : 145vh) {
+    .resume{
+      grid-template-columns: repeat(3,1fr);
+      column-gap: 2rem;
+    }
+} */
+
+@media print {
+  .title{
+    border: none;
+    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  }
+}
+
+

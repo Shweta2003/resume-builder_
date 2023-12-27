@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Header.module.css";
+import styles from "./Header.module.css";
 import { useRef, useState } from "react";
 import fontFamily from "../../assets/font-family.svg";
 import fontSize from "../../assets/font-size.svg";
@@ -16,17 +16,28 @@ import Design1 from "../../assets/Templates/1.png";
 import Design2 from "../../assets/Templates/2.png";
 import Design3 from "../../assets/Templates/3.png";
 import Design4 from "../../assets/Templates/4.png";
+import Design5 from "../../assets/Templates/5.png";
+import Design6 from "../../assets/Templates/6.png";
+import Design7 from "../../assets/Templates/7.png";
+import Design8 from "../../assets/Templates/8.png";
+import Design9 from "../../assets/Templates/9.png";
+import Design10 from "../../assets/Templates/10.png";
 import { getAnswerForTailered } from "../../Designs/Backend";
-import { addAbout, toggleIsSmart } from "../../redux/reducers/resumeSlice";
-import CloseIcon from "@mui/icons-material/Close";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addAbout, addOrUpdateDescription, toggleIsSmart } from "../../redux/reducers/resumeSlice";
+import { useSelector } from "react-redux";
 
 const Header = ({
+
+
   resumeRef,
   setImgUrl,
-  fontSizeOption,
+  pdfRef,
+  onDownload,
   setFontSizeOption,
+  fontSizeOption,
   setFontStyleOption,
+  fontStyleOption,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [fontFamilyMenuOpen, setFontFamilyMenuOpen] = useState(false);
@@ -35,11 +46,11 @@ const Header = ({
   const [open, setOpen] = React.useState(false);
   const [tailorOpen, setTailorOpen] = React.useState(false);
   const [JD, setJD] = useState("");
-
   const handleOpenResumeModal = () => setOpen(true);
   const handleCloseResumeModal = () => setOpen(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const resume = useSelector((state) => state.resume);
   const isSmart = resume.isSmart;
 
@@ -53,30 +64,44 @@ const Header = ({
       setFontFamilyMenuOpen(false);
     }
   };
-
   const handleClose = () => {
     setFontFamilyMenuOpen(false);
     setFontSizeMenuOpen(false);
     setAnchorEl(null);
   };
-
   const handleClickFontStyle = (e) => {
     setFontStyleOption(e.target.innerText);
 
     handleClose();
   };
 
-  const enhanceSection = ["about", "experience", "skills"];
-
   const handleJD = async () => {
     setTailorOpen(false);
-    const enhancedAbout = await getAnswerForTailered(JD, 70, "about");
+    const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
     dispatch(addAbout(enhancedAbout.evaluation));
-    const enhancedExperience = await getAnswerForTailered(
-      JD,
-      100,
-      "experience"
-    );
+
+    console.log(resume)
+
+    resume.experiences.experienceDetails.map(async (e) => {
+      const enhancedExperience = await getAnswerForTailered(
+        JD,
+        e.description,
+        100,
+        "experience"
+      );
+
+      dispatch(
+        addOrUpdateDescription({
+          description: enhancedExperience.evaluation,
+          _id: e._id,
+        })
+      );
+    })
+    // const enhancedExperience = await getAnswerForTailered(
+    //   JD,
+    //   100,
+    //   "experience"
+    // );
   };
 
   const options = ["Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway"];
@@ -85,6 +110,12 @@ const Header = ({
     Design2: Design2,
     Design3: Design3,
     Design4: Design4,
+    Design5: Design5,
+    Design6: Design6,
+    Design7: Design7,
+    Design8: Design8,
+    Design9: Design9,
+    Design10: Design10,
   };
 
   const ITEM_HEIGHT = 48;
@@ -160,14 +191,24 @@ const Header = ({
   };
 
   return (
-    <div className={style.header}>
-      <div className={style.resume}>
+    <div className={styles.header}>
+      <div className={styles.resume}>
         <Button
           onClick={handleOpenResumeModal}
           variant="contained"
-          style={{ fontFamily: "kamra" }}
-        >
-          Select Resume
+          style={{
+            background: "none",
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginLeft: "10px",
+            marginRight: "600px",
+            width: "max-content"
+          }}
+        ><span class="material-symbols-outlined icons">
+            widgets
+          </span>
+          Select Template
         </Button>
         <Modal
           open={open}
@@ -179,27 +220,30 @@ const Header = ({
             alignItems: "center",
             justifyContent: "center",
             height: "100vh",
+            overflowY: "scroll",
             width: "100vw",
+            overflowX: "hidden"
+
           }}
         >
-          <div className={style.modal} onClick={handleCloseResumeModal}>
-            <div className={style.modalTitle}>Select Resume</div>
-            <div className={style.modalContent}>
+          <div className={styles.modal} onClick={handleCloseResumeModal}>
+            <div className={styles.modalTitle}>Select Template</div>
+            <div className={styles.modalContent}>
               {Object.keys(templates).map((template, key) => {
                 return (
                   <div
                     key={key}
-                    className={style.template}
+                    className={styles.template}
                     onClick={() => {
                       navigate(
-                        `/resume/design/${template.charAt(template.length - 1)}`
+                        `/design/${template.charAt(template.length - 1)}`
                       );
                     }}
                   >
                     <img
                       src={templates[template]}
                       alt=""
-                      className={style.templateImage}
+                      className={styles.templateImage}
                     />
                   </div>
                 );
@@ -208,19 +252,36 @@ const Header = ({
           </div>
         </Modal>
       </div>
+
       <div>
         <Button
           variant="contained"
+          style={{
+            background: "none",
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginRight: "20px",
+            width: "max-content"
+          }}
           onClick={() => dispatch(toggleIsSmart(!isSmart))}
         >
           Smart Resume
         </Button>
       </div>
+
       <div>
         <Button
           onClick={() => setTailorOpen(true)}
           variant="contained"
-          style={{ fontFamily: "kamra" }}
+          style={{
+            background: "none",
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginRight: "20px",
+            width: "max-content"
+          }}
         >
           Tailored Resume
         </Button>
@@ -247,14 +308,21 @@ const Header = ({
           >
             <textarea
               placeholder="Enter Job Description here only after you have filled all the details in the form"
-              className={style.textarea}
+              className={styles.textarea2}
               onChange={(e) => setJD(e.target.value)}
             />
             <Button
               disabled={!JD}
               variant="contained"
               onClick={handleJD}
-              style={{ fontFamily: "kamra" }}
+              style={{
+                padding: "8px 20px",
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                border: "1px solid rgba(194, 178, 178, 0.605)",
+                marginRight: "35px",
+                marginTop: "20px",
+                width: "300px"
+              }}
               sx={{ width: "100%" }}
             >
               Done
@@ -355,13 +423,21 @@ const Header = ({
           </RadioGroup>
         </Menu>
       </div> */}
-      <div className={style.buttons}>
+      <div className={styles.buttons}>
         <Button
           component="label"
           variant="contained"
           startIcon={<CloudUploadIcon />}
           onClick={handleUploadClick}
-          style={{ fontFamily: "kamra" }}
+          className={styles.upload}
+          style={{
+            background: "none",
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginRight: "35px",
+            width: "max-content"
+          }}
         >
           Upload photo
         </Button>
@@ -375,8 +451,14 @@ const Header = ({
         <ReactToPrint
           trigger={() => {
             return (
-              <Button variant="contained" style={{ fontFamily: "kamra" }}>
-                Download Resume
+              <Button style={{
+                right: "15px",
+                backgroundColor: "#5d25e7",
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+              }}
+                variant="contained"
+              >
+                <span class="material-symbols-outlined icons">download</span>Download
               </Button>
             );
           }}

@@ -20,11 +20,12 @@ const AdditionalInformation = () => {
 
   return (
     <div className={style.container}>
-      <h5>Honors & Awards</h5>
+      <h5 className={style.kl}>Honors & Awards</h5>
       {awards.map((award, key) => {
         return (
-          <div key={key}>
+          <div key={key} className={style.div}>
             <input
+              className={style.input}
               type="text"
               value={award.award}
               placeholder="Won XYZ Award"
@@ -35,6 +36,7 @@ const AdditionalInformation = () => {
               }
             />
             <button
+            className={style.delete}
               onClick={() =>
                 dispatch(deleteAward({ _id: award._id, award: award.award }))
               }

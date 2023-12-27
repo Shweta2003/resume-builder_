@@ -29,9 +29,10 @@ const Languages = () => {
   }, [languages]);
 
   return (
-    <div>
+    <div className={styles.addInput}>
       <div className={styles.languageInput}>
         <input
+        className={styles.input}
           type="text"
           placeholder="English"
           value={language}
@@ -45,7 +46,7 @@ const Languages = () => {
         {languages?.map((language, key) => {
           return (
             <div key={key} className={styles.language}>
-              <div>{language.language}</div>
+              <div className={styles.mark}>{language.language}</div>
               <DeleteIcon
                 onClick={() =>
                   dispatch(deleteCommunicationLanguage({ _id: language._id }))

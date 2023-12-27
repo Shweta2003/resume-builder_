@@ -1,31 +1,218 @@
-.resume {
-    border: 2px solid #ccc;
-    width: 50%;
-    height: 100vh;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+.body{
+  max-width: 850px;
+  margin: 0 auto;
+  flex: 1.2;
+  width: 100%;
+  margin-top: 5vh;
+  height: 85vh;
+  box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
+  background-color: #FFF3F3;
+  display: flex;
+  color: #2e2f52;
+  font-family: Inria Sans;
+  font-weight: 700;
+  word-wrap: break-word;
+  overflow-y: auto;
+  right: 100px;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: max-content;
+
+}
+
+.pic{
+  width: 260px;
+  height: 370px;
+  background-color: black;
+  object-fit: contain;
+  z-index: 2;
+  margin-top: -705px;
+  position: relative;
+}
+
+.back{
+  background-color: #440008;
+  width: 600px;
+  height: 800px;
+  position: relative;
+  margin-left: -570px;
+  transform: rotate(155.5deg);
+  margin-top: -40px;
+}
+
+.right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+  margin:40px 20px;
+}
+
+.name{
+  font-size: 59px;
+  width: 100%;
+  text-align: left;
+  text-transform: uppercase;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #440008;
+}
+
+.job{
+  font-size: 28px;
+  color: #440008;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.sub{
+  width: 100%;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
+}
+
+.subh{
+  width: 100%;
+  text-align: left;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.det, .det2{
+  text-align: justify;
+  width: 96%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  min-height: 100px;
+  font-size: 15px;
+}
+
+.det2{
+  min-height: 50px;
+}
+
+.general{
+  z-index: 2;
+  margin-top: 30px;
+  width: 100%;
+  margin-left: 90px;
+  color: #FFF3F3;
+  position: relative;
+}
+
+.g1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.c1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: #FFF3F3;
+  width: 10%;
+}
+
+.pro{
+  padding: 0px 40px;
+  margin-top: 180px;
+  position: relative;
+  width: 100%;
+}
+
+.pen{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+.label{
+  width: 50%;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.input{
+  -webkit-appearance: none;
+  accent-color: #440008;
+  outline: none;
+  width: 100px;
+  height: 15px;
+  background-color: #D9D9D9;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 20px;
+}
+
+.input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 20px;
+  background: #440008;
+  cursor: ew-resize;
+  box-shadow: -110px 0 5px 100px #440008;
+  cursor: pointer;
+}
+
+.p{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.cat1{
+  font-size: 18px;
+  word-spacing: 5px;
+}
+
+.cat2{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5px 0px;
+}
+
+.cat3{
+  margin-left: 20px;
+}
+
+.exp{
+  margin-bottom: 20px;
+}
+
+@media print {
+  .sub{
+    page-break-before:auto;
   }
-  .personalInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .name {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-  .phoneEmail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-  .links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-  
+}
