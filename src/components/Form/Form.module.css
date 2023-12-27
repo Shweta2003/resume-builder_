@@ -11,6 +11,7 @@
   resize: horizontal;
   position: relative;
   background-color: white;
+  padding-bottom: 60px;
 }
 .container::-webkit-scrollbar-thumb {
   background-color: #ccc;

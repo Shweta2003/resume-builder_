@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import styles from "./Design1.module.css";
 import { useSelector } from "react-redux";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 import PortfolioIcon from "../../assets/dp.jpg";
-import SchoolIcon from "@mui/icons-material/School";
 import { useOutletContext } from "react-router-dom";
 
 const Design1 = () => {
@@ -15,9 +12,10 @@ const Design1 = () => {
   console.log(resume)
   const [top1, settop1] = useState("AWARDS")
   const [top2, settop2] = useState("SKILLS")
-  const [top3, settop3] = useState("EXPERIENCE")
   const [top4, settop4] = useState("PROJECTS")
   const [resumeRef, imgUrl] = useOutletContext();
+
+  
 
   // certificates component
   const certificateCat = resume.certificates.certificatesDetails.map(
@@ -196,7 +194,8 @@ const Design1 = () => {
   })
 
   return (
-    <div className={styles.resume} ref={resumeRef}>
+    <div className={styles.container}>
+      <div className={styles.resume} ref={resumeRef}>
       <div className={styles.left}>
         <div className={styles.dp}>
           <img src={imgUrl ? imgUrl : PortfolioIcon} />
@@ -333,6 +332,7 @@ const Design1 = () => {
 
         </div>
       </div>
+    </div>
     </div>
   );
 };

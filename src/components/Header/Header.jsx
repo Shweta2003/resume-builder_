@@ -29,7 +29,7 @@ import { useSelector } from "react-redux";
 
 const Header = ({
 
-  
+
   resumeRef,
   setImgUrl,
   pdfRef,
@@ -75,21 +75,19 @@ const Header = ({
     handleClose();
   };
 
-  const enhanceSection = ["about", "experience", "skills"];
-
   const handleJD = async () => {
     setTailorOpen(false);
-    const enhancedAbout = await getAnswerForTailered(JD,resume.personalInformation.about, 70, "profile");
+    const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
     dispatch(addAbout(enhancedAbout.evaluation));
 
     console.log(resume)
 
-    resume.experiences.experienceDetails.map(async(e) => {
+    resume.experiences.experienceDetails.map(async (e) => {
       const enhancedExperience = await getAnswerForTailered(
-          JD,
-          e.description,
-          100,
-          "experience"
+        JD,
+        e.description,
+        100,
+        "experience"
       );
 
       dispatch(
@@ -200,16 +198,16 @@ const Header = ({
           variant="contained"
           style={{
             background: "none",
-  padding: "8px 20px",
-  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  border: "1px solid rgba(194, 178, 178, 0.605)",
-  marginLeft:"10px",
-  marginRight:"600px",
-  width:"max-content"
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginLeft: "10px",
+            marginRight: "600px",
+            width: "max-content"
           }}
         ><span class="material-symbols-outlined icons">
-        widgets
-        </span>
+            widgets
+          </span>
           Select Template
         </Button>
         <Modal
@@ -225,7 +223,7 @@ const Header = ({
             overflowY: "scroll",
             width: "100vw",
             overflowX: "hidden"
-            
+
           }}
         >
           <div className={styles.modal} onClick={handleCloseResumeModal}>
@@ -260,11 +258,11 @@ const Header = ({
           variant="contained"
           style={{
             background: "none",
-  padding: "8px 20px",
-  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  border: "1px solid rgba(194, 178, 178, 0.605)",
-  marginRight: "20px",
-  width:"max-content"
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginRight: "20px",
+            width: "max-content"
           }}
           onClick={() => dispatch(toggleIsSmart(!isSmart))}
         >
@@ -278,11 +276,11 @@ const Header = ({
           variant="contained"
           style={{
             background: "none",
-  padding: "8px 20px",
-  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  border: "1px solid rgba(194, 178, 178, 0.605)",
-  marginRight: "20px",
-  width:"max-content"
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginRight: "20px",
+            width: "max-content"
           }}
         >
           Tailored Resume
@@ -310,14 +308,21 @@ const Header = ({
           >
             <textarea
               placeholder="Enter Job Description here only after you have filled all the details in the form"
-              className={styles.textarea}
+              className={styles.textarea2}
               onChange={(e) => setJD(e.target.value)}
             />
             <Button
               disabled={!JD}
               variant="contained"
               onClick={handleJD}
-              style={{ fontFamily: "kamra" }}
+              style={{
+                padding: "8px 20px",
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                border: "1px solid rgba(194, 178, 178, 0.605)",
+                marginRight: "35px",
+                marginTop: "20px",
+                width: "300px"
+              }}
               sx={{ width: "100%" }}
             >
               Done
@@ -427,11 +432,11 @@ const Header = ({
           className={styles.upload}
           style={{
             background: "none",
-  padding: "8px 20px",
-  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  border: "1px solid rgba(194, 178, 178, 0.605)",
-  marginRight: "35px",
-  width:"max-content"
+            padding: "8px 20px",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            border: "1px solid rgba(194, 178, 178, 0.605)",
+            marginRight: "35px",
+            width: "max-content"
           }}
         >
           Upload photo
@@ -450,9 +455,9 @@ const Header = ({
                 right: "15px",
                 backgroundColor: "#5d25e7",
                 fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-              }} 
-              variant="contained"
->
+              }}
+                variant="contained"
+              >
                 <span class="material-symbols-outlined icons">download</span>Download
               </Button>
             );

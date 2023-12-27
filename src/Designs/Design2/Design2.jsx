@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./Design2.module.css";
 import { useSelector } from "react-redux";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
@@ -71,10 +69,10 @@ const Design2 = () => {
   // skills component
   const skills = <>
     <div className={styles.temp}>
-    {(resume.skills.languages.length > 0)?<span class="material-symbols-outlined icong">circle</span>
-    :<></>
-        }
-      
+      {(resume.skills.languages.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
+        : <></>
+      }
+
       <div className={styles.languages}>
 
         {resume.skills.languages.length > 0 && (
@@ -91,9 +89,9 @@ const Design2 = () => {
       </div>
     </div>
     <div className={styles.temp}>
-    {(resume.skills.frameworks.length > 0)?<span class="material-symbols-outlined icong">circle</span>
-    :<></>
-        }
+      {(resume.skills.frameworks.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
+        : <></>
+      }
       <div className={styles.frameworks}>
         {resume.skills.frameworks.length > 0 && (
           <div className={styles.subtitle}>Frameworks : </div>
@@ -109,9 +107,9 @@ const Design2 = () => {
       </div>
     </div>
     <div className={styles.temp}>
-    {(resume.skills.tools.length > 0)?<span class="material-symbols-outlined icong">circle</span>
-    :<></>
-        }
+      {(resume.skills.tools.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
+        : <></>
+      }
       <div className={styles.tools}>
         {resume.skills.tools.length > 0 && (
           <div className={styles.subtitle}>Tools : </div>
@@ -128,9 +126,9 @@ const Design2 = () => {
     </div>
 
     <div className={styles.temp}>
-    {(resume.skills.databases.length > 0)?<span class="material-symbols-outlined icong">circle</span>
-    :<></>
-        }
+      {(resume.skills.databases.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
+        : <></>
+      }
       <div className={styles.databases}>
         {resume.skills.databases.length > 0 && (
           <div className={styles.subtitle}>Databases : </div>
@@ -147,9 +145,9 @@ const Design2 = () => {
     </div>
 
     <div className={styles.temp}>
-    {(resume.skills.otherSkills.length > 0)?<span class="material-symbols-outlined icong">circle</span>
-    :<></>
-        }
+      {(resume.skills.otherSkills.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
+        : <></>
+      }
       <div className={styles.databases}>
         {resume.skills.otherSkills.length > 0 && (
           <div className={styles.subtitle}>Others : </div>
@@ -204,15 +202,15 @@ const Design2 = () => {
         <div key={key} className={styles.temp}>
           <span class="material-symbols-outlined icong">circle</span>
           <div className={styles.cet}>
-          <a
-            className={styles.certificateName}
-            href={certificateDetail.link}
-          >
-            {certificateDetail.name}
-          </a>
-          <div className={styles.issuer}>
-            {certificateDetail.authority}
-          </div>
+            <a
+              className={styles.certificateName}
+              href={certificateDetail.link}
+            >
+              {certificateDetail.name}
+            </a>
+            <div className={styles.issuer}>
+              {certificateDetail.authority}
+            </div>
           </div>
         </div>
       );
@@ -221,112 +219,114 @@ const Design2 = () => {
 
 
   return (
-    <div className={styles.resume} ref={resumeRef}>
-      <div className={styles.left}>
-        <div className={styles.contacts}>
-          <div className={styles.title}>Contacts</div>
-          <div className={styles.phone}>
-            <span class="material-symbols-outlined icon">phone_in_talk</span>
-            {resume.personalInformation.phone}
-          </div>
-          <div className={styles.phone}>
-            <span class="material-symbols-outlined icon">drafts</span>
-            {resume.personalInformation.email}
-          </div>
-          <div className={styles.links}>
-            {resume.personalInformation.links.map((link) => (
-              <a href={link.url} target="_blank" className={styles.link}>
-                {link.name === "GitHub" ? (
-                  <GitHubIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
-                ) : link.name === "LinkedIn" ? (
-                  <LinkedInIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
-                ) : link.name === "Portfolio" ? (
-                  <CoPresentIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
-                ) : (
-                  ""
-                )}
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className={styles.education}>
-          <div className={styles.title}>Education</div>
-          <div className={styles.part1}>
-            {educationCat}
-          </div>
-        </div>
-        <div className={styles.skills}>
-          <div className={styles.title}>Skills</div>
-          <div className={styles.part1}>
-            {skills}
-          </div>
-        </div>
-        <div className={styles.certifications}>
-          <div className={styles.title}>Certifications</div>
-          <div className={styles.part1}>
-            {certificateCat}
-          </div>
-        </div>
-        <div className={styles.languagesCom}>
-          <div className={styles.title}>Languages</div>
-          <div className={styles.part1}>
-          {resume.languages.languagesDetails.map((languageDetail) => (
-            <div className={styles.languageDetail}>
-              <span class="material-symbols-outlined icong">circle</span>{languageDetail.language}
+    <div className={styles.container}>
+      <div className={styles.resume} ref={resumeRef}>
+        <div className={styles.left}>
+          <div className={styles.contacts}>
+            <div className={styles.title}>Contacts</div>
+            <div className={styles.phone}>
+              <span class="material-symbols-outlined icon">phone_in_talk</span>
+              {resume.personalInformation.phone}
             </div>
-          ))}
+            <div className={styles.phone}>
+              <span class="material-symbols-outlined icon">drafts</span>
+              {resume.personalInformation.email}
+            </div>
+            <div className={styles.links}>
+              {resume.personalInformation.links.map((link) => (
+                <a href={link.url} target="_blank" className={styles.link}>
+                  {link.name === "GitHub" ? (
+                    <GitHubIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
+                  ) : link.name === "LinkedIn" ? (
+                    <LinkedInIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
+                  ) : link.name === "Portfolio" ? (
+                    <CoPresentIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
+                  ) : (
+                    ""
+                  )}
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className={styles.education}>
+            <div className={styles.title}>Education</div>
+            <div className={styles.part1}>
+              {educationCat}
+            </div>
+          </div>
+          <div className={styles.skills}>
+            <div className={styles.title}>Skills</div>
+            <div className={styles.part1}>
+              {skills}
+            </div>
+          </div>
+          <div className={styles.certifications}>
+            <div className={styles.title}>Certifications</div>
+            <div className={styles.part1}>
+              {certificateCat}
+            </div>
+          </div>
+          <div className={styles.languagesCom}>
+            <div className={styles.title}>Languages</div>
+            <div className={styles.part1}>
+              {resume.languages.languagesDetails.map((languageDetail) => (
+                <div className={styles.languageDetail}>
+                  <span class="material-symbols-outlined icong">circle</span>{languageDetail.language}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.personalInfo}>
-          <div className={styles.name}>{resume.personalInformation.name}</div>
-          <div className={styles.jobTitle}>
-            {resume.personalInformation.jobTitle}
+        <div className={styles.right}>
+          <div className={styles.personalInfo}>
+            <div className={styles.name}>{resume.personalInformation.name}</div>
+            <div className={styles.jobTitle}>
+              {resume.personalInformation.jobTitle}
+            </div>
+            <div className={styles.about}>
+              {resume.personalInformation.about}
+            </div>
           </div>
-          <div className={styles.about}>
-            {resume.personalInformation.about}
-          </div>
-        </div>
-        <div className={styles.experiences}>
-          <div className={styles.title} style={{color:"#402b54"}}>Experience</div>
-          {resume.experiences.experienceDetails.map((experienceDetail, key) => {
-            return (
-              <div className={styles.exp} key={key}>
-                <span class="material-symbols-outlined iconl">circle</span>
-                <div className={styles.expDetail}>
+          <div className={styles.experiences}>
+            <div className={styles.title} style={{ color: "#402b54" }}>Experience</div>
+            {resume.experiences.experienceDetails.map((experienceDetail, key) => {
+              return (
+                <div className={styles.exp} key={key}>
+                  <span class="material-symbols-outlined iconl">circle</span>
+                  <div className={styles.expDetail}>
 
-                  <div className={styles.duration}>
-                    {experienceDetail.duration}
-                  </div>
-                  <div className={styles.company}>
-                    {experienceDetail.company}
-                  </div>
-                  <div className={styles.pos}>
-                    {experienceDetail.jobTitle}
-                  </div>
+                    <div className={styles.duration}>
+                      {experienceDetail.duration}
+                    </div>
+                    <div className={styles.company}>
+                      {experienceDetail.company}
+                    </div>
+                    <div className={styles.pos}>
+                      {experienceDetail.jobTitle}
+                    </div>
 
-                  <div className={styles.description}>
-                    {experienceDetail.description}
+                    <div className={styles.description}>
+                      {experienceDetail.description}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <div className={styles.part2}>
-          <select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt2(e.target.value) }}>
-            <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
-            <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
-          </select>
+          <div className={styles.part2}>
+            <select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt2(e.target.value) }}>
+              <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
+              <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+            </select>
 
-          <div className={styles.comp1}>
-            {(opt2 === "PROJECTS") ? projects
-              : (opt2 === "AWARDS") ? awards
+            <div className={styles.comp1}>
+              {(opt2 === "PROJECTS") ? projects
+                : (opt2 === "AWARDS") ? awards
                   : <></>
-            }
+              }
+            </div>
           </div>
         </div>
       </div>

@@ -42,7 +42,6 @@ export const getAnswer = async (prompt, maxTokens) => {
 export const getAnswerForTailered = async (prompt, already, maxTokens, section) => {
   const url = "https://api.openai.com/v1/chat/completions";
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-  // const apiKey = "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";
   const messages = [
     {
       role: "system",
