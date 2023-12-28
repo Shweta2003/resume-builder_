@@ -38,8 +38,12 @@ export const getAnswer = async (prompt, maxTokens) => {
   };
 };
 
-
-export const getAnswerForTailered = async (prompt, already, maxTokens, section) => {
+export const getAnswerForTailered = async (
+  prompt,
+  already,
+  maxTokens,
+  section
+) => {
   const url = "https://api.openai.com/v1/chat/completions";
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
   const messages = [
@@ -82,10 +86,12 @@ export const getAnswerForTailered = async (prompt, already, maxTokens, section) 
 export const getAnswerForExperience = async (prompt, maxTokens) => {
   const url = "https://api.openai.com/v1/chat/completions";
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+  // console.log(apiKey);
   const messages = [
     {
       role: "system",
-      content: `Here is my detail ${prompt} and I want to enhance my details and I want three bullet points to write in my resume job experience section.`,
+      content: `${prompt} Based on the user's responses, please create professional resume bullet points. Each point should begin with a strong action verb, detail a specific task, and highlight a quantifiable impact. The user's key tasks and their impacts are:
+      Ensure that each bullet point succinctly encapsulates the task's essence, the action taken, and the measurable outcome or benefit. Emphasize clarity and brevity, while making sure the points are impactful and results-oriented.`,
     },
   ];
 

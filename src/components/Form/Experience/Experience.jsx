@@ -81,12 +81,12 @@ const Experience = () => {
                   );
                 }}
               />
-
             </div>
             <div className={styles.part2}>
               <input
                 className={styles.inp}
                 type="text"
+                style={{width:"46.5%"}}
                 placeholder="Duration"
                 value={experienceDetail.duration}
                 onChange={(e) => {
@@ -108,7 +108,12 @@ const Experience = () => {
             >
               {isSmart ? (
                 <div>
-                  <div className={styles.question}>Question1</div>
+                  <div className={styles.question}>
+                    <h6>
+                      What are the few most important tasks which you did in the
+                      tenure?
+                    </h6>
+                  </div>
                   <textarea
                     name=""
                     id=""
@@ -116,7 +121,11 @@ const Experience = () => {
                     className={styles.textarea}
                     onChange={(e) => setSmartAnswer1(e.target.value)}
                   ></textarea>
-                  <div className={styles.question}>Question2</div>
+                  <div className={styles.question}>
+                    <h6>
+                      If you could put impact for each of the above tasks?
+                    </h6>
+                  </div>
                   <textarea
                     name=""
                     id=""
@@ -152,9 +161,11 @@ const Experience = () => {
                       100
                     );
                   }}
-
                 >
-                  Enhance <span className="material-symbols-outlined edit">edit_note</span>
+                  Enhance{" "}
+                  <span className="material-symbols-outlined edit">
+                    edit_note
+                  </span>
                 </button>
                 <button
                   className={styles.delete}

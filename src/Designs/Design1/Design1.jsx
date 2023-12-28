@@ -4,18 +4,17 @@ import { useSelector } from "react-redux";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
-import PortfolioIcon from "../../assets/dp.jpg";
+import PortfolioIcon from "../../assets/gentle.png";
 import { useOutletContext } from "react-router-dom";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);
-  console.log(resume.fontFamily)
+
   const [top1, settop1] = useState("AWARDS")
   const [top2, settop2] = useState("SKILLS")
   const [top4, settop4] = useState("PROJECTS")
   const [resumeRef, imgUrl] = useOutletContext();
 
-  
 
   // certificates component
   const certificateCat = resume.certificates.certificatesDetails.map(
@@ -185,7 +184,7 @@ const Design1 = () => {
 
   // languages component
   const languages = resume.languages.languagesDetails.map((item, key) => {
-    console.log(item)
+
     return (
       <div key={key} className={styles.check}>
         {item.language}

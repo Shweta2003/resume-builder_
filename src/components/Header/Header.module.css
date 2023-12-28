@@ -150,7 +150,15 @@
 }
 
 .info{
-  padding: 20px;
+  padding: 10px 20px;
   font-size: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.infHe{
+  font-size: 19px;
+  text-align: center;
+  color: yellow;
+  margin-bottom: 10px;
 }

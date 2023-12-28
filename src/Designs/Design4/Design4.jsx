@@ -12,7 +12,6 @@ import { useState } from "react";
 const Design4 = () => {
 
   const resume = useSelector((state) => state.resume);
-  console.log(resume)
   const [resumeRef] = useOutletContext();
   const [opt1, setopt1] = useState("SKILLS");
   const [opt2, setopt2] = useState("EDUCATION")

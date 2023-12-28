@@ -234,6 +234,35 @@
   margin-top: -10px;
   margin-bottom: 10px;
 }
+
+.cet, .ceta{
+  display: flex;
+  text-align: justify;
+  align-items: center;
+  flex-direction: column;
+  width: 98%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ceta{
+  align-items: flex-start;
+}
+
+.certificateName{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.issuer{
+  width: 80%;
+  font-weight: 300;
+  margin-left: 20px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
 .edu {
   display: flex;
   align-items: flex-start;

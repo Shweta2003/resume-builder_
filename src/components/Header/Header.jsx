@@ -146,11 +146,21 @@ const Header = ({
   };
 
   const info = <div className={styles.info}>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab exercitationem alias aspernatur eligendi, officia et, sint voluptatem itaque voluptatibus culpa hic dolores eaque.
+    <h3 className={styles.infHe}>
+      APPLY WITH SMART RESUME
+    </h3>
+    <p className={styles.para}>
+    Simplifying your resume creation with AI, effortlessly transforming your experiences into compelling, professional points.
+    </p>
   </div>
 
   const tailoredInfo = <div className={styles.info}>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident vitae obcaecati maiores officiis voluptatum debitis dolores cupiditate ex nobis, animi dignissimos soluta sapiente?
+    <h3 className={styles.infHe}>
+      GET YOUR RESUME TAILORED
+    </h3>
+    <p className={styles.para}>
+    Tailor your resume to each job application and get more interview calls
+    </p>
   </div>
 
   const ITEM_HEIGHT = 48;

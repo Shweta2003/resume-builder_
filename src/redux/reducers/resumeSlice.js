@@ -15,35 +15,144 @@ const initialState = {
   },
   education: {
     showDetails: false,
-    educationDetails: [],
+    educationDetails: [
+      {
+        cgpa : "enter cgpa",
+        course : "engineering",
+        degree : "B. E.",
+        endDate : "July, 2025",
+        startDate : "Dec, 2021",
+        institution : "Enter Institution name",
+        _id : "Education_0011"
+      }
+    ],
   },
   experiences: {
     showDetails: false,
-    experienceDetails: [],
+    experienceDetails: [
+      {
+        company : "ABC Solutions",
+        duration : "January 2017 - May 2019",
+        jobTitle : "Junior Developer",
+        description : "Developed and maintained code for client websites, focusing on frontend features using HTML, CSS, and JavaScript.\nAssisted in the development of an internal project management tool that improved team productivity by 15%.\nProvided regular maintenance and updates for client websites, ensuring 99% uptime and rapid bug fixes.",
+        _id : "0012"
+      },
+      {
+        company : "Oswal Tech",
+        duration : "June, 2019 - Present",
+        jobTitle : "Software Engineer",
+        description : "Led a team of 5 engineers in developing a new feature for our client's SAAS project, resulting in a 20% increase in user engagement.\nImplemented efficient code solutions, reducing system load time by 30% and enhancing user experience.\nCollaborated with the UX/UI team to redesign the application interface, improving usability scores by 25%.",
+        _id : "0011"
+      }
+    ],
   },
   skills: {
     showDetails: false,
-    languages: [],
-    frameworks: [],
-    tools: [],
-    databases: [],
-    otherSkills: [],
+    languages: [
+      {
+        language : "C++",
+        _id : "prog_001"
+      },
+      {
+        language : "Python",
+        _id : "prog_002"
+      }
+    ],
+    frameworks: [
+      {
+        framework : "ReactJS",
+        _id : "frame_001"
+      },
+      {
+        framework : "ExpressJS",
+        _id : "frame_002"
+      }
+    ],
+    tools: [
+      {
+        tool : "VS Code",
+        _id : "tool_001"
+      },
+      {
+        tool : "Github",
+        _id : "tool_002"
+      }
+    ],
+    databases: [
+      {
+        database : "MySQL",
+        _id : "DB_001"
+      },{
+        database : "MongoDB",
+        _id : "DB_002"
+      }
+    ],
+    otherSkills: [
+      {
+        otherSkill : "Communication",
+        _id : "OS_001"
+      }
+    ],
   },
   projects: {
     showDetails: false,
-    projectDetails: [],
+    projectDetails: [
+      {
+        description : "We have attempted to create an application for the ease of senior citizens.\nLearned about project lifecycle, market survey and data analysis",
+        github : "https://github.com/Shweta2003/Helper",
+        link : "https://github.com/Shweta2003/Helper",
+        name : "Helper",
+        technologies : "Java | android studio | firebase",
+        _id : "project_001"
+      },
+      {
+        description : "Search for menu from different shops Order food online and then go and pickup food on time displayed to avoid queuing.\nLearned how to do surveys, communicating with stakeholders.",
+        github : "https://github.com/Shweta2003/Street-Treat",
+        link : "https://github.com/Shweta2003/Street-Treat",
+        name : "Street Treat",
+        technologies : "Kotlin | Jetpack Compose | android studio",
+        _id : "project_002"
+      },
+    ],
   },
   certificates: {
     showDetails: false,
-    certificatesDetails: [],
+    certificatesDetails: [
+      {
+        authority : "Enter Authority name",
+        link : "www.google.com",
+        name : "Google Cloud",
+        _id : "certificate_001"
+      },
+      {
+        authority : "Enter Authority name",
+        link : "www.google.com",
+        name : "Cyber Security",
+        _id : "certificate_002"
+      }
+    ],
   },
   languages: {
     showDetails: false,
-    languagesDetails: [],
+    languagesDetails: [
+      {
+        language : "English",
+        _id : "lang_001"
+      },
+      {
+        language : "Hindi",
+        _id : "lang_002"
+      }
+    ],
   },
   additionalInformation: {
     showDetails: false,
-    additionalInformationDetails: [],
+    additionalInformationDetails: [
+      {
+        award : "Enter Award Category/name",
+        _id : "awards_001"
+      }
+    ],
   },
 };
 
