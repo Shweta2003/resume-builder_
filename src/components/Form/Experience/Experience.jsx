@@ -45,7 +45,7 @@ const Experience = () => {
     );
   };
 
-  useEffect(() => { }, [experienceDetails]);
+  useEffect(() => {}, [experienceDetails]);
 
   return (
     <div className={styles.make}>
@@ -81,7 +81,6 @@ const Experience = () => {
                   );
                 }}
               />
-
             </div>
             <div className={styles.part2}>
               <input
@@ -99,16 +98,16 @@ const Experience = () => {
                 }}
               />
             </div>
-            <div
-
-            >
-            </div>
-            <div
-              className={styles.part2}
-            >
+            <div></div>
+            <div className={styles.part2}>
               {isSmart ? (
                 <div>
-                  <div className={styles.question}>Question1</div>
+                  <div className={styles.question}>
+                    <h6>
+                      What are the few most important tasks which you did in the
+                      tenure?
+                    </h6>
+                  </div>
                   <textarea
                     name=""
                     id=""
@@ -116,7 +115,11 @@ const Experience = () => {
                     className={styles.textarea}
                     onChange={(e) => setSmartAnswer1(e.target.value)}
                   ></textarea>
-                  <div className={styles.question}>Question2</div>
+                  <div className={styles.question}>
+                    <h6>
+                      If you could put impact for each of the above tasks?
+                    </h6>
+                  </div>
                   <textarea
                     name=""
                     id=""
@@ -152,9 +155,11 @@ const Experience = () => {
                       100
                     );
                   }}
-
                 >
-                  Enhance <span className="material-symbols-outlined edit">edit_note</span>
+                  Enhance{" "}
+                  <span className="material-symbols-outlined edit">
+                    edit_note
+                  </span>
                 </button>
                 <button
                   className={styles.delete}
@@ -162,8 +167,10 @@ const Experience = () => {
                     dispatch(deleteExperience({ _id: experienceDetail._id }));
                   }}
                 >
-                  Delete<span className={styles.temp}><DeleteIcon>
-                  </DeleteIcon></span>
+                  Delete
+                  <span className={styles.temp}>
+                    <DeleteIcon></DeleteIcon>
+                  </span>
                 </button>
               </div>
             </div>
