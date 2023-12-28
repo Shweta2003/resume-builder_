@@ -41,7 +41,6 @@
 }
 .personalDetails {
   width: 100%;
-  min-height: max-content;
   background-color: #e4f5ec;
   padding: 20px 0px;
   border-bottom: 8px solid #385848;
@@ -128,8 +127,8 @@
   flex-direction: column;
 }
 .details {
-  height: max-content;
   display: flex;
+  height: 100%;
   margin-bottom: 20px;
   padding: 10px 50px;
   justify-content: space-between;
@@ -156,7 +155,8 @@
   flex-direction: column;
   gap: 10px;
   width: 40%;
-  height: 100%;
+  align-items: stretch;
+  align-self: stretch;
   padding-right: 50px;
 }
 
@@ -179,7 +179,8 @@
   display: flex;
   flex-direction: column;
   padding-left: 50px;
-  align-items: center;
+  align-items: stretch;
+  align-self: stretch;
 }
 .edu {
   margin-bottom: 20px;
@@ -194,7 +195,7 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 30px;
-  min-height: 13rem;
+  min-height: 50px;
   color: #385848;
 }
 .certificateName {
@@ -218,12 +219,12 @@
 .experiences {
   color: #385848;
   width: 100%;
-  min-height: 200px;
+  min-height: 50px;
   display: flex;
   flex-direction: column;
 }
 .about {
-  min-height: 80px;
+  min-height: 50px;
   text-align: center;
   /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
@@ -265,7 +266,7 @@
 }
 
 .cet{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .project{
@@ -339,6 +340,11 @@
     appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  }
+
+  @page{
+    margin-top: 30px;
+    height: 100%;
   }
 }
 

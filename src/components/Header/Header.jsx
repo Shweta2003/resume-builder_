@@ -72,7 +72,7 @@ const Header = ({
     setAnchorEl(null);
   };
   const handleClickFontStyle = (e) => {
-    if(e.target.innerText === "Default"){
+    if (e.target.innerText === "Default") {
       setFontStyleOption = ""
       dispatch(
         changeFontFamily({
@@ -80,27 +80,27 @@ const Header = ({
         })
       )
     }
-    else{
+    else {
       dispatch(
         changeFontFamily({
           fontFamily: e.target.innerText,
         })
       );
-    }  
-    
+    }
+
 
     handleClose();
   };
-    
-    useEffect(() => {
-      // Set a timeout to stop blinking after 5 seconds
-      const timeout = setTimeout(() => {
-        setIsBlinking(false);
-      }, 5000);
-  
-      // Clear the timeout when the component unmounts
-      return () => clearTimeout(timeout);
-    }, []); 
+
+  useEffect(() => {
+    // Set a timeout to stop blinking after 5 seconds
+    const timeout = setTimeout(() => {
+      setIsBlinking(false);
+    }, 5000);
+
+    // Clear the timeout when the component unmounts
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleJD = async () => {
     setTailorOpen(false);
@@ -131,7 +131,7 @@ const Header = ({
     // );
   };
 
-  const options = ["Default","Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway", "Arvo", "Jaldi"];
+  const options = ["Default", "Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway", "Arvo", "Jaldi"];
   const templates = {
     Design1: Design1,
     Design2: Design2,
@@ -150,7 +150,7 @@ const Header = ({
       APPLY WITH SMART RESUME
     </h3>
     <p className={styles.para}>
-    Simplifying your resume creation with AI, effortlessly transforming your experiences into compelling, professional points.
+      Simplifying your resume creation with AI, effortlessly transforming your experiences into compelling, professional points.
     </p>
   </div>
 
@@ -159,11 +159,43 @@ const Header = ({
       GET YOUR RESUME TAILORED
     </h3>
     <p className={styles.para}>
-    Tailor your resume to each job application and get more interview calls
+      Tailor your resume to each job application and get more interview calls
     </p>
   </div>
 
   const ITEM_HEIGHT = 48;
+
+  const handlePrint = () => {
+    const component = resumeRef.current;
+    const contentHeight = component.clientHeight;
+    console.log(contentHeight)
+    const pageHeight = 1090; // Adjust this value based on your desired page height
+
+    let currentPage = 0;
+    let yOffset = 0;
+
+    while (yOffset < contentHeight) {
+      const newPage = document.createElement('div');
+      newPage.style.pageBreakAfter = 'always';
+      newPage.style.height = `${pageHeight}px`;
+
+      const contentClone = component.cloneNode(true);
+      contentClone.style.transform = `translate(0, -${yOffset}px)`;
+      newPage.appendChild(contentClone);
+
+      document.body.appendChild(newPage);
+      yOffset += pageHeight;
+      currentPage++;
+    }
+
+    // Now print the pages
+    window.print();
+
+    // Clean up the added pages after printing
+    for (let i = 0; i < currentPage; i++) {
+      document.body.removeChild(document.body.lastChild);
+    }
+  };
 
   const BpIcon = styled("span")(({ theme }) => ({
     borderRadius: "50%",
@@ -221,6 +253,7 @@ const Header = ({
       />
     );
   }
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -300,45 +333,45 @@ const Header = ({
 
       <div>
         <Tooltip title={info}>
-        {
-          (isBlinking === true)?<button className={styles.blinking}>Smart Resume</button>
-          :<Button
-          variant="contained"
-          style={{
-            background: "none",
-            padding: "8px 20px",
-            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            border: "1px solid rgba(194, 178, 178, 0.605)",
-            marginRight: "20px",
-            width: "max-content",
-          }}
-          onClick={() => dispatch(toggleIsSmart(!isSmart))}
-        >
-          Smart Resume
-        </Button>
-        }
+          {
+            (isBlinking === true) ? <button className={styles.blinking}>Smart Resume</button>
+              : <Button
+                variant="contained"
+                style={{
+                  background: "none",
+                  padding: "8px 20px",
+                  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                  border: "1px solid rgba(194, 178, 178, 0.605)",
+                  marginRight: "20px",
+                  width: "max-content",
+                }}
+                onClick={() => dispatch(toggleIsSmart(!isSmart))}
+              >
+                Smart Resume
+              </Button>
+          }
         </Tooltip>
 
-        
-     
+
+
       </div>
 
       <div>
         <Tooltip title={tailoredInfo}>
-        <Button
-          onClick={() => setTailorOpen(true)}
-          variant="contained"
-          style={{
-            background: "none",
-            padding: "8px 20px",
-            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            border: "1px solid rgba(194, 178, 178, 0.605)",
-            marginRight: "20px",
-            width: "max-content"
-          }}
-        >
-          Tailored Resume
-        </Button>
+          <Button
+            onClick={() => setTailorOpen(true)}
+            variant="contained"
+            style={{
+              background: "none",
+              padding: "8px 20px",
+              fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+              border: "1px solid rgba(194, 178, 178, 0.605)",
+              marginRight: "20px",
+              width: "max-content"
+            }}
+          >
+            Tailored Resume
+          </Button>
         </Tooltip>
         <Modal
           open={tailorOpen}
@@ -385,7 +418,7 @@ const Header = ({
           </div>
         </Modal>
       </div>
-      <div className={styles.iconContainer} style={{marginRight:"20px"}}>
+      <div className={styles.iconContainer} style={{ marginRight: "20px" }}>
         <Tooltip title="Font Family" placement="bottom">
           <img
             src={fontFamily}
@@ -408,8 +441,8 @@ const Header = ({
               width: "20ch",
             },
           }}
-          //   value={fontStyleOption}
-          //   onChange={(e) => setFontStyleOption(e.target.value)}
+        //   value={fontStyleOption}
+        //   onChange={(e) => setFontStyleOption(e.target.value)}
         >
           {options.map((option) => (
             <MenuItem
@@ -518,6 +551,7 @@ const Header = ({
             );
           }}
           content={() => resumeRef.current}
+
         />
       </div>
     </div>

@@ -6,9 +6,11 @@
   background-color: rgb(0, 0, 0);
   height: 10vh;
 }
+
 .buttons {
   display: flex;
 }
+
 .iconContainer {
   display: flex;
   justify-content: center;
@@ -19,11 +21,13 @@
   padding: 8px 20px;
   border-radius: 4px;
 }
+
 .icon {
   cursor: pointer;
   height: fit-content;
   color: white;
 }
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -33,13 +37,13 @@
   width: 100vw;
 }
 
-.modalTitle{
+.modalTitle {
   width: 100%;
   margin-bottom: -250px;
   font-size: 50px;
   margin-top: 1750px;
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: white;
   text-transform: uppercase;
   font-weight: bolder;
@@ -68,7 +72,8 @@
   margin-bottom: 60px;
 }
 
-.textarea, .textarea2 {
+.textarea,
+.textarea2 {
   padding: 1rem;
   width: 55rem;
   height: 25rem;
@@ -81,12 +86,13 @@
   position: relative;
 }
 
-.textarea2{
+.textarea2 {
   padding: 30px;
   border-radius: 4px;
   width: 600px;
   height: 300px;
 }
+
 .closeIcon {
   position: absolute;
   cursor: pointer;
@@ -94,7 +100,7 @@
   right: 50%;
 }
 
-.download{
+.download {
   right: 15px;
   background-color: #5d25e7;
   padding: 0px 10px;
@@ -105,11 +111,12 @@
   text-transform: uppercase;
 }
 
-.download:hover{
+.download:hover {
   background-color: #703eef;
 }
 
-.upload, .tailor{
+.upload,
+.tailor {
   background: none;
   padding: 8px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -117,7 +124,7 @@
   margin-left: -20px;
 }
 
-.tailor{
+.tailor {
   margin-right: -100px;
 }
 
@@ -132,7 +139,7 @@
   padding: 8px 20px;
   border-radius: 4px;
   color: yellow;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-right: 16px;
   width: max-content;
 }
@@ -141,22 +148,24 @@
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
-.info{
+.info {
   padding: 10px 20px;
   font-size: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
 }
 
-.infHe{
+.infHe {
   font-size: 19px;
   text-align: center;
   color: yellow;
