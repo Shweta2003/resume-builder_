@@ -1,4 +1,4 @@
-.container{
+.container {
   width: 55%;
   margin-top: 5vh;
   height: 85vh;
@@ -15,7 +15,6 @@
   width: 100%;
   height: max-content;
   color: #2e2f52;
-  font-family: Inria Sans;
   font-weight: 700;
   word-wrap: break-word;
   align-items: center;
@@ -28,6 +27,7 @@
 .container::-webkit-scrollbar {
   width: 5px;
 }
+
 .left {
   flex: 1;
   background-color: #402b54;
@@ -42,41 +42,45 @@
   align-items: stretch;
   align-self: stretch;
 }
+
 .right {
   display: flex;
   flex-direction: column;
-  font-family: Krub;
   width: 70%;
-  min-height: 120vh;
+  align-items: stretch;
+  align-self: stretch;
   padding: 30px 50px;
   background-color: #fff;
   color: #575757;
 }
+
 .contacts {
   margin-bottom: 50px;
   font-weight: 400;
 }
 
-.pos{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.pos {
   color: #955dca;
 }
 
-.company{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.company {
   font-size: 15px;
   padding: 5px 0px;
   padding-bottom: 0px;
 }
+
 .education {
-  min-height: 10rem;
+  min-height: 50px;
 }
+
 .skills {
-  min-height: 10rem;
+  min-height: 50px;
 }
+
 .certifications {
-  min-height: 10rem;
+  min-height: 50px;
 }
+
 .languages,
 .frameworks,
 .tools,
@@ -87,16 +91,17 @@
   padding-top: 0px;
   padding-left: 0px;
 }
-.title, .title2 {
+
+.title,
+.title2 {
   font-size: 30px;
   padding-bottom: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   border-bottom: 2px solid;
   margin-bottom: 1rem;
 }
+
 .subtitle {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
   margin-bottom: 10px;
   width: 100%;
@@ -104,11 +109,13 @@
   font-size: 20px;
   align-items: center;
 }
+
 .icon {
   width: 0.1rem;
   height: 0.1rem;
   margin-right: 0.5rem;
 }
+
 .certificateDetaillink {
   display: flex;
   align-items: center;
@@ -117,14 +124,12 @@
   font-weight: bold;
   color: #ffffff;
 }
-
-.award{
+.award {
   width: 90%;
   display: flex;
   align-items: center;
   text-align: justify;
   font-size: 17px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   color: #402b54;
 }
@@ -135,20 +140,20 @@
   display: flex;
   align-items: center;
   font-size: 17px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   gap: 0.5rem;
   color: #ffffff;
 }
+
 .name {
   margin-top: 30px;
   color: #402b54;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 4px;
   font-size: 60px;
   font-weight: 700;
 }
-.about{
-  min-height: 150px;
+.about {
+  min-height: 50px;
   margin: 10px 0px;
   display: flex;
   text-align: justify;
@@ -156,8 +161,8 @@
   margin-bottom: 40px;
   font-size: 17px;
   font-weight: 500;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .exp {
   display: flex;
   width: 100%;
@@ -167,10 +172,10 @@
 
 .duration {
   word-wrap: break-word;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
   font-size: 15px;
 }
+
 .expDetail {
   color: #575757;
   border-left: 2px solid #402b54;
@@ -178,8 +183,7 @@
   margin-left: -8px;
   margin-top: 10px;
 }
-
-.btn{
+.btn {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -187,21 +191,22 @@
   margin: 20px;
   margin-left: 0px;
 }
+
 .jobTitle {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 7.7px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #a36bd6;
   word-wrap: break-word;
 }
+
 .cgpa {
   color: #b378e9;
 }
+
 .description {
   font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
   text-align: justify;
   font-weight: 500;
@@ -210,13 +215,12 @@
   padding-bottom: 10px;
 
 }
-
-.part2{
+.part2 {
   width: 100%;
   margin: 30px 0px;
 }
 
-.title2{
+.title2 {
   width: 100%;
   border: none;
   border-bottom: 2px solid #402b54;
@@ -229,96 +233,90 @@
   display: flex;
   align-items: flex-start;
   text-align: justify;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
   margin-bottom: 20px;
 }
-
-.edu_sub{
+.edu_sub {
   width: 100%;
   margin-top: 5px;
   word-spacing: 5px;
 }
 
-.duration{
+.duration {
   font-weight: 300;
 }
 
-.course{
+.course {
   font-weight: 400;
 }
 
-.part1{
+.part1 {
   width: 90%;
   margin-bottom: 40px;
 }
 
-.language, .framework, .tool, .database{
+.language,
+.framework,
+.tool,
+.database {
   display: inline;
   padding: 0px 2px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 300;
   margin-right: 20px;
   margin-bottom: 6px;
   font-size: 15px;
 }
 
-.cet, .ceta{
+.cet,
+.ceta {
   display: flex;
   text-align: justify;
   align-items: flex-start;
   color: white;
   flex-direction: column;
   width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
   font-weight: 300;
   margin-bottom: 25px;
 }
 
-.ceta{
+.ceta {
   align-items: flex-start;
   display: flex;
   text-align: justify;
   flex-direction: column;
   width: 98%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
   font-weight: 500;
 }
-
-.temp{
+.temp {
   display: flex;
   align-items: flex-start;
 }
-
-.certificateName{
+.certificateName {
   color: white;
   font-weight: 600;
   font-size: 20px;
 }
-
-.languageDetail{
+.languageDetail {
   width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 17px;
   font-weight: 400;
   margin: 15px 0px;
-
 }
 
-.project{
+.project {
   width: 100%;
   padding-right: 50px;
   font-size: 25px;
   font-weight: 700;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-top: 10px;
   padding-left: 20px;
   display: flex;
 }
 
-.pro{
+.pro {
   margin-left: 20px;
   padding-right: 30px;
   display: flex;
@@ -326,14 +324,14 @@
   font-size: 15px;
 }
 
-.proc{
+.proc {
   width: 80%;
-  font-size:15px;
+  font-size: 15px;
   margin-left: 55px;
   color: #402b54
 }
 
-.prod{
+.prod {
   width: 90%;
   margin-top: 3px;
   margin-left: 55px;
@@ -343,9 +341,14 @@
 }
 
 @media print {
-  .title2{
+  .title2 {
     appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  @page {
+    margin-top: 30px;
+    height: 100%;
   }
 }

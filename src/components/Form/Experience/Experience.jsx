@@ -45,7 +45,7 @@ const Experience = () => {
     );
   };
 
-  useEffect(() => {}, [experienceDetails]);
+  useEffect(() => { }, [experienceDetails]);
 
   return (
     <div className={styles.make}>
@@ -86,6 +86,7 @@ const Experience = () => {
               <input
                 className={styles.inp}
                 type="text"
+                style={{width:"46.5%"}}
                 placeholder="Duration"
                 value={experienceDetail.duration}
                 onChange={(e) => {
@@ -98,8 +99,13 @@ const Experience = () => {
                 }}
               />
             </div>
-            <div></div>
-            <div className={styles.part2}>
+            <div
+
+            >
+            </div>
+            <div
+              className={styles.part2}
+            >
               {isSmart ? (
                 <div>
                   <div className={styles.question}>
@@ -167,10 +173,8 @@ const Experience = () => {
                     dispatch(deleteExperience({ _id: experienceDetail._id }));
                   }}
                 >
-                  Delete
-                  <span className={styles.temp}>
-                    <DeleteIcon></DeleteIcon>
-                  </span>
+                  Delete<span className={styles.temp}><DeleteIcon>
+                  </DeleteIcon></span>
                 </button>
               </div>
             </div>

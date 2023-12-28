@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./Design2.module.css";
 import { useSelector } from "react-redux";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -11,37 +11,48 @@ import { useOutletContext } from "react-router-dom";
 const Design2 = () => {
   const resume = useSelector((state) => state.resume);
   const [opt2, setopt2] = useState("PROJECTS")
-  const ref = useRef();
   const [resumeRef] = useOutletContext();
-  const handleDownload = () => {
-    const input = ref.current;
+  const [maxheight, setheight] = useState(1090)
 
-    const scale = window.devicePixelRatio || 1;
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+
+  useEffect(() => {
+    console.log(resumeRef.current.clientHeight)
+
+    const handleResize = (entries) => {
+      if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
+        setheight(maxheight + 1090)
+      }
+      else if (leftRef.current.clientHeight < (maxheight - 1090) && rightRef.current.clientHeight < (maxheight - 1090)) {
+        setheight(maxheight - 1090)
+      }
+    };
+
+    const resizeObserverLeft = new ResizeObserver(handleResize);
+    const resizeObserverRight = new ResizeObserver(handleResize);
+
+    // Observe the target element (div)
+    if (rightRef.current) {
+      resizeObserverRight.observe(rightRef.current);
+    }
+    // Observe the target element (div)
+    else if (leftRef.current) {
+      resizeObserverLeft.observe(rightRef.current);
+    }
+
+    // Cleanup when the component is unmounted
+    return () => {
+      if (rightRef.current) {
+        resizeObserverRight.unobserve(rightRef.current);
+      }
+      else if (leftRef.current) {
+        resizeObserverLeft.unobserve(leftRef.current)
+      }
+    };
 
 
-
-    html2canvas(input, {
-      scale: scale,
-      useCORS: true, // Enable CORS to load images from external sources
-      scrollY: -window.scrollY,
-      windowWidth: document.documentElement.offsetWidth,
-      windowHeight: document.documentElement.offsetHeight,
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/jpeg", 1.0); // Adjust the image quality (0.0 - 1.0)
-      const pdf = new jsPDF("p", "mm", "a4");
-
-      // Calculate the width and height based on the page size
-      const pdfWidth = pdf.internal.pageSize.getWidth() + 10;
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-
-      // Add the image to the PDF with the correct dimensions
-      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-
-      // Save the PDF with the desired filename
-      pdf.save("download.pdf");
-    });
-  };
-
+  }, [resumeRef, maxheight, leftRef, rightRef]);
   // education component
   const educationCat = resume.education.educationDetails.map((educationDetail, key) => {
     return (
@@ -220,112 +231,116 @@ const Design2 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resume} ref={resumeRef}>
-        <div className={styles.left}>
-          <div className={styles.contacts}>
-            <div className={styles.title}>Contacts</div>
-            <div className={styles.phone}>
-              <span class="material-symbols-outlined icon">phone_in_talk</span>
-              {resume.personalInformation.phone}
+      <div className={styles.resume} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`, height: `${maxheight}px` }} ref={resumeRef}>
+        <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
+          <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
+            <div className={styles.contacts}>
+              <div className={styles.title}>Contacts</div>
+              <div className={styles.phone}>
+                <span class="material-symbols-outlined icon">phone_in_talk</span>
+                {resume.personalInformation.phone}
+              </div>
+              <div className={styles.phone}>
+                <span class="material-symbols-outlined icon">drafts</span>
+                {resume.personalInformation.email}
+              </div>
+              <div className={styles.links}>
+                {resume.personalInformation.links.map((link) => (
+                  <a href={link.url} target="_blank" className={styles.link}>
+                    {link.name === "GitHub" ? (
+                      <GitHubIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
+                    ) : link.name === "LinkedIn" ? (
+                      <LinkedInIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
+                    ) : link.name === "Portfolio" ? (
+                      <CoPresentIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
+                    ) : (
+                      ""
+                    )}
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className={styles.phone}>
-              <span class="material-symbols-outlined icon">drafts</span>
-              {resume.personalInformation.email}
+            <div className={styles.education}>
+              <div className={styles.title}>Education</div>
+              <div className={styles.part1}>
+                {educationCat}
+              </div>
             </div>
-            <div className={styles.links}>
-              {resume.personalInformation.links.map((link) => (
-                <a href={link.url} target="_blank" className={styles.link}>
-                  {link.name === "GitHub" ? (
-                    <GitHubIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
-                  ) : link.name === "LinkedIn" ? (
-                    <LinkedInIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
-                  ) : link.name === "Portfolio" ? (
-                    <CoPresentIcon sx={{ height: "30px" }} style={{ marginTop: "10px", marginRight: "20px" }} />
-                  ) : (
-                    ""
-                  )}
-                  {link.name}
-                </a>
-              ))}
+            <div className={styles.skills}>
+              <div className={styles.title}>Skills</div>
+              <div className={styles.part1}>
+                {skills}
+              </div>
             </div>
-          </div>
-          <div className={styles.education}>
-            <div className={styles.title}>Education</div>
-            <div className={styles.part1}>
-              {educationCat}
+            <div className={styles.certifications}>
+              <div className={styles.title}>Certifications</div>
+              <div className={styles.part1}>
+                {certificateCat}
+              </div>
             </div>
-          </div>
-          <div className={styles.skills}>
-            <div className={styles.title}>Skills</div>
-            <div className={styles.part1}>
-              {skills}
-            </div>
-          </div>
-          <div className={styles.certifications}>
-            <div className={styles.title}>Certifications</div>
-            <div className={styles.part1}>
-              {certificateCat}
-            </div>
-          </div>
-          <div className={styles.languagesCom}>
-            <div className={styles.title}>Languages</div>
-            <div className={styles.part1}>
-              {resume.languages.languagesDetails.map((languageDetail) => (
-                <div className={styles.languageDetail}>
-                  <span class="material-symbols-outlined icong">circle</span>{languageDetail.language}
-                </div>
-              ))}
+            <div className={styles.languagesCom}>
+              <div className={styles.title}>Languages</div>
+              <div className={styles.part1}>
+                {resume.languages.languagesDetails.map((languageDetail) => (
+                  <div className={styles.languageDetail}>
+                    <span class="material-symbols-outlined icong">circle</span>{languageDetail.language}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        <div className={styles.right}>
-          <div className={styles.personalInfo}>
-            <div className={styles.name}>{resume.personalInformation.name}</div>
-            <div className={styles.jobTitle}>
-              {resume.personalInformation.jobTitle}
+        <div className={styles.right} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
+          <div className={styles.subright} style={{ height: "max-content" }} ref={rightRef}>
+            <div className={styles.personalInfo}>
+              <div className={styles.name}>{resume.personalInformation.name}</div>
+              <div className={styles.jobTitle}>
+                {resume.personalInformation.jobTitle}
+              </div>
+              <div className={styles.about}>
+                {resume.personalInformation.about}
+              </div>
             </div>
-            <div className={styles.about}>
-              {resume.personalInformation.about}
-            </div>
-          </div>
-          <div className={styles.experiences}>
-            <div className={styles.title} style={{ color: "#402b54" }}>Experience</div>
-            {resume.experiences.experienceDetails.map((experienceDetail, key) => {
-              return (
-                <div className={styles.exp} key={key}>
-                  <span class="material-symbols-outlined iconl">circle</span>
-                  <div className={styles.expDetail}>
+            <div className={styles.experiences}>
+              <div className={styles.title} style={{ color: "#402b54" }}>Experience</div>
+              {resume.experiences.experienceDetails.map((experienceDetail, key) => {
+                return (
+                  <div className={styles.exp} key={key}>
+                    <span class="material-symbols-outlined iconl">circle</span>
+                    <div className={styles.expDetail}>
 
-                    <div className={styles.duration}>
-                      {experienceDetail.duration}
-                    </div>
-                    <div className={styles.company}>
-                      {experienceDetail.company}
-                    </div>
-                    <div className={styles.pos}>
-                      {experienceDetail.jobTitle}
-                    </div>
+                      <div className={styles.duration}>
+                        {experienceDetail.duration}
+                      </div>
+                      <div className={styles.company}>
+                        {experienceDetail.company}
+                      </div>
+                      <div className={styles.pos}>
+                        {experienceDetail.jobTitle}
+                      </div>
 
-                    <div className={styles.description}>
-                      {experienceDetail.description}
+                      <div className={styles.description}>
+                        {experienceDetail.description}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
 
-          <div className={styles.part2}>
-            <select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt2(e.target.value) }}>
-              <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
-              <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
-            </select>
+            <div className={styles.part2}>
+              <select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt2(e.target.value) }}>
+                <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
+                <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+              </select>
 
-            <div className={styles.comp1}>
-              {(opt2 === "PROJECTS") ? projects
-                : (opt2 === "AWARDS") ? awards
-                  : <></>
-              }
+              <div className={styles.comp1}>
+                {(opt2 === "PROJECTS") ? projects
+                  : (opt2 === "AWARDS") ? awards
+                    : <></>
+                }
+              </div>
             </div>
           </div>
         </div>

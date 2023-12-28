@@ -1,21 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Design1.module.css";
 import { useSelector } from "react-redux";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
-import PortfolioIcon from "../../assets/dp.jpg";
+import PortfolioIcon from "../../assets/gentle.png";
 import { useOutletContext } from "react-router-dom";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);
-  console.log(resume)
   const [top1, settop1] = useState("AWARDS")
   const [top2, settop2] = useState("SKILLS")
   const [top4, settop4] = useState("PROJECTS")
   const [resumeRef, imgUrl] = useOutletContext();
+  const [maxheight, setheight] = useState(1090)
 
-  
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+
+  useEffect(() => {
+    console.log(resumeRef.current.clientHeight)
+
+    const handleResize = (entries) => {
+      if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
+        setheight(maxheight + 1090)
+      }
+      else if (leftRef.current.clientHeight < (maxheight - 1090) && rightRef.current.clientHeight < (maxheight - 1090)) {
+        setheight(maxheight - 1090)
+      }
+    };
+
+    const resizeObserverLeft = new ResizeObserver(handleResize);
+    const resizeObserverRight = new ResizeObserver(handleResize);
+
+
+    // Observe the target element (div)
+    if (rightRef.current) {
+      resizeObserverRight.observe(rightRef.current);
+    }
+    // Observe the target element (div)
+    else if (leftRef.current) {
+      resizeObserverLeft.observe(rightRef.current);
+    }
+
+    // Cleanup when the component is unmounted
+    return () => {
+      if (rightRef.current) {
+        resizeObserverRight.unobserve(rightRef.current);
+      }
+      else if (leftRef.current) {
+        resizeObserverLeft.unobserve(leftRef.current)
+      }
+    };
+
+
+  }, [resumeRef, maxheight, leftRef, rightRef]);
 
   // certificates component
   const certificateCat = resume.certificates.certificatesDetails.map(
@@ -42,7 +81,7 @@ const Design1 = () => {
     return (
       <div key={key} className={styles.award}>
         <span class="material-symbols-outlined icon">bookmark
-            </span>{language.award}{" "}
+        </span>{language.award}{" "}
       </div>
     );
   })
@@ -162,7 +201,7 @@ const Design1 = () => {
           <div className={styles.duration}>
             {educationDetail.startDate} - {educationDetail.endDate}
           </div>
-          
+
         </div>
       </div>
     );
@@ -185,7 +224,7 @@ const Design1 = () => {
 
   // languages component
   const languages = resume.languages.languagesDetails.map((item, key) => {
-    console.log(item)
+
     return (
       <div key={key} className={styles.check}>
         {item.language}
@@ -193,99 +232,103 @@ const Design1 = () => {
     );
   })
 
+
   return (
     <div className={styles.container}>
-      <div className={styles.resume} ref={resumeRef}>
-      <div className={styles.left}>
-        <div className={styles.dp}>
-          <img src={imgUrl ? imgUrl : PortfolioIcon} />
-        </div>
-        <div className={styles.details}>
-          <div className={styles.personalInfo}>
-            <div className={styles.info}>
-              <div className={styles.phone}>
-              <span class="material-symbols-outlined iconk">phone_in_talk</span>
-                {resume.personalInformation.phone}
-              </div>
-              <div className={styles.email}>
-                <span class="material-symbols-outlined iconk">drafts</span>
-                {resume.personalInformation.email}
-              </div>
-              <div className={styles.links}>
-                {resume.personalInformation.links.map((link) => (
-                  <a href={link.url} target="_blank" className={styles.link}>
-                    {link.name === "GitHub" ? (
-                      <GitHubIcon sx={{ height: "30px" }} style={{ marginLeft: "20px", marginRight: "30px" }} />
-                    ) : link.name === "LinkedIn" ? (
-                      <LinkedInIcon sx={{ height: "30px" }} style={{ marginLeft: "20px", marginRight: "30px" }} />
-                    ) : link.name === "Portfolio" ? (
-                      <CoPresentIcon sx={{ height: "30px" }} style={{ marginLeft: "20px", marginRight: "30px" }} />
-                    ) : (
-                      ""
-                    )}
-                    {link.url}
-                  </a>
-                ))}
-              </div>
+      <div className={styles.resume} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`, height: `${maxheight}px` }} ref={resumeRef}>
+        <div className={styles.left} >
+          <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
+            <div className={styles.dp}>
+              <img src={imgUrl ? imgUrl : PortfolioIcon} />
             </div>
-          </div>
-          <div className={`${styles.certificates} ${styles.certificates_break}`}>
-            {/* get first component */}
-            {/* <div className={styles.title}>CERTIFICATES</div> */}
-            <div className={styles.back}>
-              <select className={styles.title} defaultValue={"AWARDS"} onChange={(e) => { settop1(e.target.value) }}>
-                <option className={styles.check} value={"AWARDS"} name="AWARDS" >AWARDS</option>
-                <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
-                <option className={styles.check} value={"EDUCATION"} name="EDUCATION" >EDUCATION</option>
-              </select>
-            </div>
-            <div className={styles.comp1}>
-              {(top1 === "AWARDS") ? awards
-                : (top1 === "CERTIFICATION") ? certificateCat
-                  : (top1 === "EDUCATION") ? education
-                    : <></>
-              }
-            </div>
-          </div>
-          <div className={`${styles.certificates} ${styles.eduction_break}`}>
+            <div className={styles.details}>
+              <div className={styles.personalInfo}>
+                <div className={styles.info}>
+                  <div className={styles.phone}>
+                    <span class="material-symbols-outlined iconk">phone_in_talk</span>
+                    {resume.personalInformation.phone}
+                  </div>
+                  <div className={styles.email}>
+                    <span class="material-symbols-outlined iconk">drafts</span>
+                    {resume.personalInformation.email}
+                  </div>
+                  <div className={styles.links}>
+                    {resume.personalInformation.links.map((link) => (
+                      <a href={link.url} target="_blank" className={styles.link}>
+                        {link.name === "GitHub" ? (
+                          <GitHubIcon sx={{ height: "30px" }} style={{ marginLeft: "20px", marginRight: "30px" }} />
+                        ) : link.name === "LinkedIn" ? (
+                          <LinkedInIcon sx={{ height: "30px" }} style={{ marginLeft: "20px", marginRight: "30px" }} />
+                        ) : link.name === "Portfolio" ? (
+                          <CoPresentIcon sx={{ height: "30px" }} style={{ marginLeft: "20px", marginRight: "30px" }} />
+                        ) : (
+                          ""
+                        )}
+                        {link.url}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className={`${styles.certificates} ${styles.certificates_break}`}>
+                {/* get first component */}
+                {/* <div className={styles.title}>CERTIFICATES</div> */}
+                <div className={styles.back}>
+                  <select className={styles.title} defaultValue={"AWARDS"} onChange={(e) => { settop1(e.target.value) }}>
+                    <option className={styles.check} value={"AWARDS"} name="AWARDS" >AWARDS</option>
+                    <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
+                    <option className={styles.check} value={"EDUCATION"} name="EDUCATION" >EDUCATION</option>
+                  </select>
+                </div>
+                <div className={styles.comp1}>
+                  {(top1 === "AWARDS") ? awards
+                    : (top1 === "CERTIFICATION") ? certificateCat
+                      : (top1 === "EDUCATION") ? education
+                        : <></>
+                  }
+                </div>
+              </div>
+              <div className={`${styles.certificates} ${styles.eduction_break}`}>
 
-            {/* get second component */}
-            {/* <div className={styles.title}>EDUCATION</div> */}
-            <div className={styles.back}>
-              <select className={styles.title} defaultValue={"SKILLS"} onChange={(e) => { settop2(e.target.value) }}>
-              <option className={styles.check} value="SKILLS" name="SKILLS">SKILLS</option>
-              <option className={styles.check} value="LANGUAGES" name="LANGUAGES">LANGUAGES</option>
-              <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">CERTIFICATION</option>
-              </select>
+                {/* get second component */}
+                {/* <div className={styles.title}>EDUCATION</div> */}
+                <div className={styles.back}>
+                  <select className={styles.title} defaultValue={"SKILLS"} onChange={(e) => { settop2(e.target.value) }}>
+                    <option className={styles.check} value="SKILLS" name="SKILLS">SKILLS</option>
+                    <option className={styles.check} value="LANGUAGES" name="LANGUAGES">LANGUAGES</option>
+                    <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">CERTIFICATION</option>
+                  </select>
+                </div>
+                <div className={styles.comp1}>
+                  {(top2 === "CERTIFICATION") ? certificateCat
+                    : (top2 === "SKILLS") ? skills
+                      : (top2 === "LANGUAGES") ? languages
+                        : <></>
+                  }
+                </div>
+              </div>
             </div>
-            <div className={styles.comp1}>
-              {(top2 === "CERTIFICATION") ? certificateCat
-                      : (top2 === "SKILLS") ? skills
-                        : (top2 === "LANGUAGES") ? languages
-                            : <></>
-              }
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.subright} style={{ height: "max-content" }} ref={rightRef}>
+            <div className={styles.identity}>
+              <div className={styles.name} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`, height: { maxheight } }}>
+                {resume.personalInformation.name.toUpperCase()}
+              </div>
+              <div className={styles.jobTitle} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
+                {resume.personalInformation.jobTitle.toUpperCase()}
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.identity}>
-          <div className={styles.name}>
-            {resume.personalInformation.name.toUpperCase()}
-          </div>
-          <div className={styles.jobTitle}>
-            {resume.personalInformation.jobTitle.toUpperCase()}
-          </div>
-        </div>
-        <div className={styles.AboutSection}>
-          <div className={styles.title}>PROFILE</div>
-          <div className={styles.about}>{resume.personalInformation.about}</div>
-        </div>
-        <div className={`${styles.AboutSection} ${styles.experiences_break}`}>
-          {/* set third component */}
-          <div className={styles.title}>EXPERIENCE</div>
-          {/* <div className={styles.back2}> */}
-          {/* <select className={styles.title} defaultValue={"EXPERIENCE"} onChange={(e) => { settop3(e.target.value) }}>
+            <div className={styles.AboutSection}>
+              <div className={styles.title}>PROFILE</div>
+              <div className={styles.about}>{resume.personalInformation.about}</div>
+            </div>
+            <div className={`${styles.AboutSection} ${styles.experiences_break}`}>
+              {/* set third component */}
+              <div className={styles.title}>EXPERIENCE</div>
+              {/* <div className={styles.back2}> */}
+              {/* <select className={styles.title} defaultValue={"EXPERIENCE"} onChange={(e) => { settop3(e.target.value) }}>
               {
                 options.map((e, key) => {
                   return <option className={styles.check} value={e} name={e} key={key}>{e}</option>
@@ -294,8 +337,8 @@ const Design1 = () => {
             </select>
           </div> */}
 
-          <div className={styles.comp2}>
-            {/* {(top3 === "AWARDS") ? awards
+              <div className={styles.comp2}>
+                {/* {(top3 === "AWARDS") ? awards
               : (top3 === "CERTIFICATES") ? certificateCat
                   : (top3 === "EDUCATION") ? education
                     : (top3 === "EXPERIENCE") ? experience
@@ -304,30 +347,33 @@ const Design1 = () => {
                           : (top3 === "PROJECTS") ? projects
                             : <></>
             } */}
-            {
-              experience
-            }
-          </div>
+                {
+                  experience
+                }
+              </div>
 
-        </div>
-        <div className={`${styles.experiences} ${styles.skills_break}`}>
+            </div>
+            <div className={`${styles.experiences} ${styles.skills_break}`}>
 
-          {/* component 4 */}
-          {/* <div className={styles.title}>SKILLS</div> */}
-          <div className={styles.back2}>
-            <select className={styles.title} defaultValue={"PROJECTS"} onChange={(e) => { settop4(e.target.value) }}>
-            <option className={styles.check} value="PROJECTS" name="PROJECTS">PROJECTS</option>
-            <option className={styles.check} value="EDUCATION" name="EDUCATION">EDUCATION</option>
-            <option className={styles.check} value="SKILLS" name="SKILLS">SKILLS</option>
-            </select>
-          </div>
+              {/* component 4 */}
+              {/* <div className={styles.title}>SKILLS</div> */}
+              <div className={styles.back2}>
+                <select className={styles.title} defaultValue={"PROJECTS"} onChange={(e) => { settop4(e.target.value) }}>
+                  <option className={styles.check} value="PROJECTS" name="PROJECTS">PROJECTS</option>
+                  <option className={styles.check} value="EDUCATION" name="EDUCATION">EDUCATION</option>
+                  <option className={styles.check} value="SKILLS" name="SKILLS">SKILLS</option>
+                </select>
+              </div>
 
-          <div className={styles.comp2}>
-            {(top4 === "EDUCATION") ? education
-                    : (top4 === "SKILLS") ? skills
-                        : (top4 === "PROJECTS") ? projects
-                          : <></>
-            }
+              <div className={styles.comp2}>
+                {(top4 === "EDUCATION") ? education
+                  : (top4 === "SKILLS") ? skills
+                    : (top4 === "PROJECTS") ? projects
+                      : <></>
+                }
+              </div>
+
+            </div>
           </div>
 
         </div>

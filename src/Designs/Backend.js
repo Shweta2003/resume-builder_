@@ -24,7 +24,6 @@ export const getAnswer = async (prompt, maxTokens) => {
 
   const response = await fetch(url, options);
   const data = await response.json();
-  console.log(data);
   const messagesFromAssistant = data.choices[0].message.content.split("\n");
   const assistantResponses = messagesFromAssistant.filter(
     (msg) => msg.trim() !== ""

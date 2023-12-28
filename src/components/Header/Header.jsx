@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Header.module.css";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import fontFamily from "../../assets/font-family.svg";
 import fontSize from "../../assets/font-size.svg";
 import Button from "@mui/material/Button";
@@ -24,8 +24,9 @@ import Design9 from "../../assets/Templates/9.png";
 import Design10 from "../../assets/Templates/10.png";
 import { getAnswerForTailered } from "../../Designs/Backend";
 import { useDispatch } from "react-redux";
-import { addAbout, addOrUpdateDescription, toggleIsSmart } from "../../redux/reducers/resumeSlice";
+import { addAbout, addOrUpdateDescription, toggleIsSmart, changeFontFamily } from "../../redux/reducers/resumeSlice";
 import { useSelector } from "react-redux";
+import { Tooltip, Menu, MenuItem } from "@mui/material";
 
 const Header = ({
 
@@ -42,6 +43,7 @@ const Header = ({
   const [anchorEl, setAnchorEl] = useState(null);
   const [fontFamilyMenuOpen, setFontFamilyMenuOpen] = useState(false);
   const [fontSizeMenuOpen, setFontSizeMenuOpen] = useState(false);
+  const [isBlinking, setIsBlinking] = useState(true);
   const fileInputRef = useRef(null);
   const [open, setOpen] = React.useState(false);
   const [tailorOpen, setTailorOpen] = React.useState(false);
@@ -70,11 +72,35 @@ const Header = ({
     setAnchorEl(null);
   };
   const handleClickFontStyle = (e) => {
-    setFontStyleOption(e.target.innerText);
+    if (e.target.innerText === "Default") {
+      setFontStyleOption = ""
+      dispatch(
+        changeFontFamily({
+          fontFamily: "",
+        })
+      )
+    }
+    else {
+      dispatch(
+        changeFontFamily({
+          fontFamily: e.target.innerText,
+        })
+      );
+    }
+
 
     handleClose();
   };
 
+  useEffect(() => {
+    // Set a timeout to stop blinking after 5 seconds
+    const timeout = setTimeout(() => {
+      setIsBlinking(false);
+    }, 5000);
+
+    // Clear the timeout when the component unmounts
+    return () => clearTimeout(timeout);
+  }, []);
   const handleJD = async () => {
     setTailorOpen(false);
     const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
@@ -97,14 +123,9 @@ const Header = ({
         })
       );
     })
-    // const enhancedExperience = await getAnswerForTailered(
-    //   JD,
-    //   100,
-    //   "experience"
-    // );
   };
 
-  const options = ["Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway"];
+  const options = ["Default", "Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway", "Arvo", "Jaldi"];
   const templates = {
     Design1: Design1,
     Design2: Design2,
@@ -118,7 +139,57 @@ const Header = ({
     Design10: Design10,
   };
 
+  const info = <div className={styles.info}>
+    <h3 className={styles.infHe}>
+      APPLY WITH SMART RESUME
+    </h3>
+    <p className={styles.para}>
+      Simplifying your resume creation with AI, effortlessly transforming your experiences into compelling, professional points.
+    </p>
+  </div>
+
+  const tailoredInfo = <div className={styles.info}>
+    <h3 className={styles.infHe}>
+      GET YOUR RESUME TAILORED
+    </h3>
+    <p className={styles.para}>
+      Tailor your resume to each job application and get more interview calls
+    </p>
+  </div>
+
   const ITEM_HEIGHT = 48;
+
+  const handlePrint = () => {
+    const component = resumeRef.current;
+    const contentHeight = component.clientHeight;
+    console.log(contentHeight)
+    const pageHeight = 1090; // Adjust this value based on your desired page height
+
+    let currentPage = 0;
+    let yOffset = 0;
+
+    while (yOffset < contentHeight) {
+      const newPage = document.createElement('div');
+      newPage.style.pageBreakAfter = 'always';
+      newPage.style.height = `${pageHeight}px`;
+
+      const contentClone = component.cloneNode(true);
+      contentClone.style.transform = `translate(0, -${yOffset}px)`;
+      newPage.appendChild(contentClone);
+
+      document.body.appendChild(newPage);
+      yOffset += pageHeight;
+      currentPage++;
+    }
+
+    // Now print the pages
+    window.print();
+
+    // Clean up the added pages after printing
+    for (let i = 0; i < currentPage; i++) {
+      document.body.removeChild(document.body.lastChild);
+    }
+  };
 
   const BpIcon = styled("span")(({ theme }) => ({
     borderRadius: "50%",
@@ -177,6 +248,7 @@ const Header = ({
     );
   }
 
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -202,7 +274,7 @@ const Header = ({
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
             border: "1px solid rgba(194, 178, 178, 0.605)",
             marginLeft: "10px",
-            marginRight: "600px",
+            marginRight: "520px",
             width: "max-content"
           }}
         ><span class="material-symbols-outlined icons">
@@ -254,37 +326,44 @@ const Header = ({
       </div>
 
       <div>
-        <Button
-          variant="contained"
-          style={{
-            background: "none",
-            padding: "8px 20px",
-            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            border: "1px solid rgba(194, 178, 178, 0.605)",
-            marginRight: "20px",
-            width: "max-content"
-          }}
-          onClick={() => dispatch(toggleIsSmart(!isSmart))}
-        >
-          Smart Resume
-        </Button>
+        <Tooltip title={info}>
+          {
+            (isBlinking === true) ? <button className={styles.blinking}>Smart Resume</button>
+              : <Button
+                variant="contained"
+                style={{
+                  background: "none",
+                  padding: "8px 20px",
+                  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                  border: "1px solid rgba(194, 178, 178, 0.605)",
+                  marginRight: "20px",
+                  width: "max-content",
+                }}
+                onClick={() => dispatch(toggleIsSmart(!isSmart))}
+              >
+                Smart Resume
+              </Button>
+          }
+        </Tooltip>
       </div>
 
       <div>
-        <Button
-          onClick={() => setTailorOpen(true)}
-          variant="contained"
-          style={{
-            background: "none",
-            padding: "8px 20px",
-            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            border: "1px solid rgba(194, 178, 178, 0.605)",
-            marginRight: "20px",
-            width: "max-content"
-          }}
-        >
-          Tailored Resume
-        </Button>
+        <Tooltip title={tailoredInfo}>
+          <Button
+            onClick={() => setTailorOpen(true)}
+            variant="contained"
+            style={{
+              background: "none",
+              padding: "8px 20px",
+              fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+              border: "1px solid rgba(194, 178, 178, 0.605)",
+              marginRight: "20px",
+              width: "max-content"
+            }}
+          >
+            Tailored Resume
+          </Button>
+        </Tooltip>
         <Modal
           open={tailorOpen}
           onClose={() => setTailorOpen(false)}
@@ -325,17 +404,17 @@ const Header = ({
               }}
               sx={{ width: "100%" }}
             >
-              Done
+              Generate Tailored Resume
             </Button>
           </div>
         </Modal>
       </div>
-      {/* <div className={style.iconContainer}>
+      <div className={styles.iconContainer} style={{ marginRight: "20px" }}>
         <Tooltip title="Font Family" placement="bottom">
           <img
             src={fontFamily}
             alt=""
-            className={style.icon}
+            className={styles.icon}
             onClick={(e) => handleClick(e, "fontFamily")}
           />
         </Tooltip>
@@ -353,8 +432,6 @@ const Header = ({
               width: "20ch",
             },
           }}
-          //   value={fontStyleOption}
-          //   onChange={(e) => setFontStyleOption(e.target.value)}
         >
           {options.map((option) => (
             <MenuItem
@@ -367,11 +444,11 @@ const Header = ({
           ))}
         </Menu>
 
-        <Tooltip title="Font Size" placement="bottom">
+        {/* <Tooltip title="Font Size" placement="bottom">
           <img
             src={fontSize}
             alt=""
-            className={style.icon}
+            className={styles.icon}
             onClick={(e) => handleClick(e, "fontSize")}
           />
         </Tooltip>
@@ -421,8 +498,8 @@ const Header = ({
               onClick={handleClose}
             />
           </RadioGroup>
-        </Menu>
-      </div> */}
+        </Menu> */}
+      </div>
       <div className={styles.buttons}>
         <Button
           component="label"
@@ -463,6 +540,7 @@ const Header = ({
             );
           }}
           content={() => resumeRef.current}
+
         />
       </div>
     </div>

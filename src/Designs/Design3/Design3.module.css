@@ -14,7 +14,6 @@
   flex: 1.2;
   height: max-content;
   flex-direction: column;
-  font-family: 'Arvo', serif;
   width: 100%;
   display: flex;
   word-wrap: break-word;
@@ -41,7 +40,6 @@
 }
 .personalDetails {
   width: 100%;
-  min-height: max-content;
   background-color: #e4f5ec;
   padding: 20px 0px;
   border-bottom: 8px solid #385848;
@@ -59,7 +57,6 @@
   flex-direction: column;
   font-weight: 500;
   font-size: 1.3rem;
-  font-family: 'Arvo', serif;
   letter-spacing: 3.2px;
   padding-bottom: 13px;
   word-wrap: break-word;
@@ -121,21 +118,19 @@
   padding: 10px 0px;
   line-height: 23px;
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
 }
 .personalInfo {
   display: flex;
   flex-direction: column;
 }
 .details {
-  height: max-content;
   display: flex;
+  height: 100%;
   margin-bottom: 20px;
   padding: 10px 50px;
   justify-content: space-between;
 }
 .subtitle {
-  font-family: 'Jaldi', sans-serif;
   font-weight: 700;
   width: 100%;
   display: flex;
@@ -144,7 +139,6 @@
 }
 .language, .framework, .tool, .database{
   display: inline;
-  font-family: 'Jaldi', sans-serif;
   font-weight: 300;
   margin-right: 20px;
   margin-bottom: 6px;
@@ -156,7 +150,8 @@
   flex-direction: column;
   gap: 10px;
   width: 40%;
-  height: 100%;
+  align-items: stretch;
+  align-self: stretch;
   padding-right: 50px;
 }
 
@@ -179,13 +174,13 @@
   display: flex;
   flex-direction: column;
   padding-left: 50px;
-  align-items: center;
+  align-items: stretch;
+  align-self: stretch;
 }
 .edu {
   margin-bottom: 20px;
   line-height: 20px;
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
 }
 .education,
 .skills,
@@ -194,7 +189,7 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 30px;
-  min-height: 13rem;
+  min-height: 50px;
   color: #385848;
 }
 .certificateName {
@@ -207,7 +202,6 @@
   color: #385848;
   text-align: justify;
   margin-bottom: 7px;
-  font-family: 'Jaldi', sans-serif;
 }
 .institute {
   font-weight: 700;
@@ -218,14 +212,13 @@
 .experiences {
   color: #385848;
   width: 100%;
-  min-height: 200px;
+  min-height: 50px;
   display: flex;
   flex-direction: column;
 }
 .about {
-  min-height: 80px;
+  min-height: 50px;
   text-align: center;
-  font-family: 'Jaldi', sans-serif;
   margin-top: 10px;
   margin-bottom: 20px;
   color: #575757;
@@ -257,7 +250,7 @@
   text-align: justify;
   flex-direction: column;
   width: 98%;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   font-size: 17px;
   line-height: 20px;
   font-weight: 300;
@@ -265,14 +258,14 @@
 }
 
 .cet{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .project{
   width: 100%;
   font-size: 25px;
   font-weight: 700;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
   display: flex;
 }
@@ -305,7 +298,7 @@
 
 .issuer{
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   line-height: 20px;
   
 
@@ -314,14 +307,12 @@
 .check{
   font-size: 20px;
 }
-
 .award{
   width: 90%;
   display: flex;
   align-items: center;
   text-align: justify;
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
   font-weight: 500;
   color: #402b54;
 }
@@ -339,6 +330,10 @@
     appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  }
+  @page{
+    margin-top: 30px;
+    height: 100%;
   }
 }
 

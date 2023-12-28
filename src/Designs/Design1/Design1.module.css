@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,800&family=Playfair+Display:wght@600&family=Source+Code+Pro:wght@400;600&display=swap");
 
-.container{
+.container {
   width: 55%;
   margin-top: 5vh;
   height: 85vh;
@@ -15,13 +15,11 @@
   width: 100%;
   display: flex;
   color: #2e2f52;
-  font-family: Inria Sans;
   font-weight: 700;
   height: max-content;
   word-wrap: break-word;
   align-items: center;
   justify-content: center;
-  
 }
 .container::-webkit-scrollbar-thumb {
   background-color: #ccc;
@@ -35,8 +33,7 @@
   height: 1.1rem;
   padding-right: 10px;
 }
-
-.description{
+.description {
   text-align: justify;
   width: 100%;
 }
@@ -49,35 +46,32 @@
   flex-wrap: wrap;
   padding: 10px;
 }
+
 .xp {
   width: 100%;
   padding: 10px;
   font-size: 15px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
 }
 
-.award{
+.award {
   width: 90%;
   display: flex;
   align-items: center;
   text-align: justify;
   font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   margin: 20px 0px;
 }
-
-.comp1{
+.comp1 {
   width: 90%;
   margin-left: 20px;
   margin-bottom: 30px;
 }
-
-.comp2{
+.comp2 {
   margin-left: 10px;
   margin-bottom: 30px;
-  min-height: 200px;
+  min-height: 50px;
 }
 .details {
   display: flex;
@@ -86,8 +80,8 @@
   width: 100%;
   height: fit-content;
 }
+
 .subtitle {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
   margin-bottom: 10px;
   width: 100%;
@@ -100,29 +94,25 @@
 .database {
   display: inline;
   padding: 0px 2px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   margin-right: 30px;
   font-size: 15px;
 }
+
 .left {
   flex: 1;
   width: 40%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: space-around; */
   background-color: #d7dde6;
   align-items: stretch;
   align-self: stretch;
 }
-
-.company{
+.company {
   font-weight: bolder;
   font-size: 17px;
   word-spacing: 10px;
 }
-
 
 .personalInfo {
   width: 100%;
@@ -132,12 +122,14 @@
   flex-direction: column;
   padding-bottom: 30px;
 }
+
 .info {
   display: flex;
   flex-direction: column;
   width: 80%;
   justify-content: space-around;
 }
+
 .phone,
 .email,
 .link {
@@ -145,15 +137,16 @@
   align-items: center;
   margin-top: 10px;
   font-size: 16px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #2e2f52;
 }
+
 .AboutSection {
   display: flex;
   flex-direction: column;
   padding: 20px 0px;
   padding-right: 40px;
 }
+
 .right {
   flex: 1;
   width: 60%;
@@ -163,16 +156,15 @@
   display: flex;
   flex-direction: column;
 }
-
-.back{
+.back {
   width: 80%;
 }
 
-.back2{
+.back2 {
   width: 90%;
 }
+
 .title {
-  font-family: "Nunito Sans", sans-serif;
   width: 80%;
   font-weight: bold;
   font-size: large;
@@ -183,6 +175,7 @@
   border: none;
   border-bottom: 2px solid #2e2f52;
 }
+
 .identity {
   width: 90%;
   border-bottom: 2px solid #cbcbd1;
@@ -192,25 +185,48 @@
   font-weight: 700;
   letter-spacing: 8.1px;
 }
+
 .email,
 .phone {
   display: flex;
   align-items: center;
 }
+
 .name {
-  font-family: "Nunito Sans", sans-serif;
-  font-family: "Playfair Display", serif;
   font-size: 54px;
   font-weight: 600;
-  font-family: "Source Code Pro", monospace;
 }
-.jobTitle {
-  font-family: "Nunito Sans", sans-serif;
-  font-family: "Playfair Display", serif;
-  font-family: "Source Code Pro", monospace;
+.cet,
+.ceta {
+  display: flex;
+  text-align: justify;
+  align-items: center;
+  flex-direction: column;
+  width: 98%;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.cet, .ceta{
+.ceta {
+  align-items: flex-start;
+}
+
+.certificateName {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.issuer {
+  width: 80%;
+  font-weight: 300;
+  margin-left: 20px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.cet,
+.ceta {
   display: flex;
   text-align: justify;
   align-items: center;
@@ -221,17 +237,16 @@
   font-weight: 500;
 }
 
-.ceta{
+.ceta {
   align-items: flex-start;
 }
 
-.certificateName{
+.certificateName {
   width: 100%;
   display: flex;
   align-items: center;
 }
-
-.issuer{
+.issuer {
   width: 80%;
   font-weight: 300;
   margin-left: 20px;
@@ -242,80 +257,83 @@
   display: flex;
   align-items: flex-start;
   text-align: justify;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
   margin-bottom: 20px;
 }
-
-.duration{
+.duration {
   font-weight: 300;
 }
 
-.edu_sub{
+.edu_sub {
   width: 80%;
   margin-top: 5px;
   word-spacing: 10px;
 }
 
-.course{
+.course {
   font-weight: 500;
 }
+
 .education,
 .skills,
 .certificates {
-  min-height: 13rem;
+  min-height: 30px;
   width: 90%;
 }
+
 .certificates {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .certificate {
   display: flex;
   width: 100%;
   padding-bottom: 10px;
 }
+
 .about {
-  min-height: 4rem;
+  min-height: 30px;
   text-align: justify;
   color: #2e2f52;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   font-size: 15px;
   margin-top: 20px;
   word-wrap: break-word;
   width: 97%;
 }
+
 .dp {
   width: 100%;
   display: flex;
   justify-content: center;
   margin: 20px 0px;
 }
-.dp > img {
+
+.dp>img {
   width: 50%;
   height: 100%;
   border-radius: 100%;
   object-fit: cover;
 }
+
 .experiences {
-  min-height: 20rem;
+  min-height: 50px;
   width: 100%;
 }
 
-.project{
+.project {
   width: 100%;
   padding-right: 50px;
   font-size: 15px;
   font-weight: 700;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-top: 10px;
   display: flex;
 }
 
-.pro{
+.pro {
   margin-left: 20px;
   padding-right: 30px;
   display: flex;
@@ -323,52 +341,39 @@
   font-size: 14px;
 }
 
-.proc{
+.proc {
   width: 80%;
-  font-size:15px;
+  font-size: 15px;
   margin: 5px 0px;
   margin-left: 40px;
 }
 
-.prod{
+.prod {
   width: 83%;
   margin-left: 40px;
   margin-bottom: 30px;
 }
 
-.check{
+.check {
   width: 90%;
   padding-left: 40px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 17px;
   margin: 20px 0px;
   font-weight: 500;
 }
 
 
-
-
-
-
-
-
-
-
-
-/* @media screen and (min-height : 145vh) {
-    .resume{
-      grid-template-columns: repeat(3,1fr);
-      column-gap: 2rem;
-    }
-} */
-
 @media print {
-  .title{
+  .title {
     border: none;
     appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
+
+  @page {
+    margin-top: 30px;
+    height: 100%;
+  }
+
 }
-
-

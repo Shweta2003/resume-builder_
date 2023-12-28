@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.container{
+.container {
   width: 55%;
   margin-top: 5vh;
   height: 85vh;
@@ -16,20 +16,17 @@
   flex: 1.2;
   height: max-content;
   flex-direction: column;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
-  border: 2px solid #160230cc;
   display: flex;
   word-wrap: break-word;
   padding: 60px 50px;
 }
 
-.pro{
+.pro {
   display: flex;
   align-items: center;
   word-wrap: break-word;
 }
-
 .container::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 5px;
@@ -37,11 +34,13 @@
 .container::-webkit-scrollbar {
   width: 5px;
 }
+
 .personalInfo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
 .name {
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 55px;
@@ -50,27 +49,28 @@
   letter-spacing: 0.48px;
   word-wrap: break-word;
 }
+
 .currentJob {
   color: #279ce0;
   font-size: 25px;
   margin: 6px 0px;
   margin-bottom: -15px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
   letter-spacing: 2px;
   word-wrap: break-word;
 }
+
 .about {
   text-align: justify;
   color: #575757;
   font-size: 17px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   margin-bottom: 20px;
   word-wrap: break-word;
   margin-top: 10px;
 
 }
+
 .contacts {
   background-color: #160230cc;
   border-radius: 10px;
@@ -83,8 +83,10 @@
   padding: 30px 20px;
 
 }
+
 .phone,
-.email, .link {
+.email,
+.link {
   display: flex;
   align-items: center;
   padding-left: 40px;
@@ -96,11 +98,10 @@
   height: max-content;
 }
 
-
-.title, .title2 {
+.title,
+.title2 {
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   align-items: center;
   font-weight: 700;
@@ -109,8 +110,7 @@
   margin-top: 20px;
   margin-bottom: 15px;
 }
-
-.title2{
+.title2 {
   width: 99%;
   border: none;
   border-bottom: 2px solid #0379bc;
@@ -121,36 +121,38 @@
 .subtitle {
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 25px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   line-height: 25px;
   width: 170px;
 }
+
 .skills {
   color: #575757;
   font-size: 19px;
-  font-family: Rubik;
   font-weight: 500;
   line-height: 54px;
   word-wrap: break-word;
-  min-height: 10rem;
+  min-height: 50px;
 }
 
-.skillHeading{
+.skillHeading {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-.language, .framework, .tool, .database{
+.language,
+.framework,
+.tool,
+.database {
   margin-right: 20px;
 }
 .skills {
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .frameworks,
 .tools,
 .languages,
@@ -160,26 +162,31 @@
   align-items: flex-start;
   margin-bottom: 15px;
 }
+
 .horLine {
   display: flex;
   width: 100%;
   margin-top: 30px;
 }
+
 .purple {
   background-color: #160230cc;
   width: 33%;
   height: 4px;
 }
+
 .blue {
   background-color: #0379bc;
   width: 34%;
   height: 4px;
 }
+
 .sky {
   background-color: #94ceef;
   width: 33%;
   height: 4px;
 }
+
 .exp {
   display: flex;
   width: 100%;
@@ -193,39 +200,41 @@
   word-wrap: break-word;
   line-height: 23px;
 }
+
 .experiences {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-height: 10rem;
+  min-height: 50px;
 }
-.expDetail, .expDetail1 {
+
+.expDetail,
+.expDetail1 {
   color: #575757;
-  border-left: 3px solid  rgba(22, 2, 48, 0.50);
+  border-left: 3px solid rgba(22, 2, 48, 0.50);
   padding-left: 30px;
   margin-left: -8.5px;
   padding-bottom: 20px;
 }
 
-.expDetail1{
+.expDetail1 {
   padding-bottom: 20px;
 }
-.company, .play{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.company,
+.play {
   font-size: 15px;
   color: #0379bc;
   word-spacing: 5px;
   font-weight: 700;
 }
-
-.play{
+.play {
   font-size: 17px;
   font-weight: 500;
   line-height: normal;
 }
-
-.pos, .pos1{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.pos,
+.pos1 {
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 20px;
   font-weight: 700;
@@ -235,23 +244,24 @@
 .jobTitle {
   color: #575757;
   font-size: 24px;
-  font-family: Rubik;
   font-weight: 800;
   word-wrap: break-word;
 }
+
 .duration {
   word-wrap: break-word;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
   font-size: 15px;
 }
+
 .cgpa {
   font-size: 0.8rem;
   font-weight: 600;
 }
-.description, .desc {
+
+.description,
+.desc {
   font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15px;
   width: 97%;
   text-align: justify;
@@ -262,21 +272,21 @@
 
 }
 
-.desc{
+.desc {
   line-height: normal;
   display: flex;
   width: 100%;
   flex-direction: column;
 }
 
-.img{
+.img {
   padding: 2px;
   background-color: #160230cc;
   border-radius: 50%;
   margin-right: 20px;
 }
 
-.div2{
+.div2 {
   width: 78%;
   display: flex;
   align-items: center;
@@ -285,7 +295,7 @@
   line-height: 25px;
 }
 
-.temp{
+.temp {
   display: flex;
   word-wrap: break-word;
   align-items: flex-start;
@@ -293,7 +303,7 @@
   margin-bottom: -10px;
 }
 
-.award{
+.award {
   width: 50%;
   display: flex;
   align-items: flex-start;
@@ -302,34 +312,34 @@
   margin-bottom: 30px;
   margin-top: -10px;
   font-size: 20px;
-  font-family: 'Jaldi', sans-serif;
   font-weight: 700;
   color: #402b54;
   line-height: 23px;
 }
 
-.cet, .ceta, .cetak{
+.cet,
+.ceta,
+.cetak {
   align-items: flex-start;
   display: flex;
   text-align: justify;
   flex-direction: column;
   width: 98%;
-  font-family: 'Jaldi', sans-serif;
   font-size: 20px;
   line-height: 20px;
   font-weight: 300;
   word-break: break-all;
 }
 
-.cet{
+.cet {
   margin-bottom: 20px;
 }
 
-.check{
+.check {
   font-size: 20px;
 }
 
-.loop{
+.loop {
   width: 97%;
   padding-left: 60px;
   display: flex;
@@ -339,11 +349,15 @@
 }
 
 @media print {
-  .title2{
+  .title2 {
     border: none;
     appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  @page{
+    margin-top: 30px;
+    height: 100%;
   }
 }
-
