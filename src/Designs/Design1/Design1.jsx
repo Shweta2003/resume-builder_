@@ -9,7 +9,6 @@ import { useOutletContext } from "react-router-dom";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);
-
   const [top1, settop1] = useState("AWARDS")
   const [top2, settop2] = useState("SKILLS")
   const [top4, settop4] = useState("PROJECTS")
@@ -376,8 +375,10 @@ const Design1 = () => {
 
             </div>
           </div>
+
         </div>
       </div>
+    </div>
     </div>
   );
 };

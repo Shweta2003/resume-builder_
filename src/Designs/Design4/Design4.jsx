@@ -12,49 +12,11 @@ import { useState } from "react";
 const Design4 = () => {
 
   const resume = useSelector((state) => state.resume);
+  console.log(resume)
   const [resumeRef] = useOutletContext();
   const [opt1, setopt1] = useState("SKILLS");
   const [opt2, setopt2] = useState("EDUCATION")
   const [opt3, setopt3] = useState("PROJECTS")
-
-
-  // useEffect(() => {
-  //   console.log(resumeRef.current.clientHeight)
-
-  //   const handleResize = (entries) => {
-  //     if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
-  //       setheight(maxheight + 1090)
-  //     }
-  //     else if (leftRef.current.clientHeight < (maxheight - 1090) && rightRef.current.clientHeight < (maxheight - 1090)) {
-  //       setheight(maxheight - 1090)
-  //     }
-  //   };
-
-  //   const resizeObserverLeft = new ResizeObserver(handleResize);
-  //   const resizeObserverRight = new ResizeObserver(handleResize);
-
-
-  //   // Observe the target element (div)
-  //   if (rightRef.current) {
-  //     resizeObserverRight.observe(rightRef.current);
-  //   }
-  //   // Observe the target element (div)
-  //   else if (leftRef.current) {
-  //     resizeObserverLeft.observe(rightRef.current);
-  //   }
-
-  //   // Cleanup when the component is unmounted
-  //   return () => {
-  //     if (rightRef.current) {
-  //       resizeObserverRight.unobserve(rightRef.current);
-  //     }
-  //     else if (leftRef.current) {
-  //       resizeObserverLeft.unobserve(leftRef.current)
-  //     }
-  //   };
-
-
-  // }, [resumeRef, maxheight, leftRef, rightRef]);
 
   const skills = <>
     <div className={styles.languages} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
@@ -318,7 +280,6 @@ const Design4 = () => {
           <div className={styles.blue}></div>
           <div className={styles.sky}></div>
         </div>
-
         <div className={styles.skills} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
           <div className={styles.skillHeading}>
             {/* <img src={VectorIcon} alt="Vector" /> */}

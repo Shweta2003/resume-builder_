@@ -244,7 +244,6 @@ const Design3 = () => {
 
   // languages component
   const languages = resume.languages.languagesDetails.map((item, key) => {
-
     return (
 
       <div key={key} className={styles.temp}>

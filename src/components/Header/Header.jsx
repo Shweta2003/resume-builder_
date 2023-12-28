@@ -101,7 +101,6 @@ const Header = ({
     // Clear the timeout when the component unmounts
     return () => clearTimeout(timeout);
   }, []);
-
   const handleJD = async () => {
     setTailorOpen(false);
     const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
@@ -124,11 +123,6 @@ const Header = ({
         })
       );
     })
-    // const enhancedExperience = await getAnswerForTailered(
-    //   JD,
-    //   100,
-    //   "experience"
-    // );
   };
 
   const options = ["Default", "Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway", "Arvo", "Jaldi"];
@@ -351,9 +345,6 @@ const Header = ({
               </Button>
           }
         </Tooltip>
-
-
-
       </div>
 
       <div>
@@ -441,8 +432,6 @@ const Header = ({
               width: "20ch",
             },
           }}
-        //   value={fontStyleOption}
-        //   onChange={(e) => setFontStyleOption(e.target.value)}
         >
           {options.map((option) => (
             <MenuItem

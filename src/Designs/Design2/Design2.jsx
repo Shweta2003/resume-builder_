@@ -32,7 +32,6 @@ const Design2 = () => {
     const resizeObserverLeft = new ResizeObserver(handleResize);
     const resizeObserverRight = new ResizeObserver(handleResize);
 
-
     // Observe the target element (div)
     if (rightRef.current) {
       resizeObserverRight.observe(rightRef.current);
