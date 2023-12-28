@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  fontFamily: "",
   isSmart: false,
   personalInformation: {
     showDetails: true,
@@ -50,6 +51,17 @@ const resumeSlice = createSlice({
   name: "resume",
   initialState,
   reducers: {
+    changeFontFamily: (state, action) => {
+      if(action.payload.fontFamily === "Arvo"){
+        state.fontFamily = "'Arvo', serif";
+      }
+      else if(action.payload.fontFamily === "Jaldi"){
+        state.fontFamily = "'Jaldi', sans-serif";
+      }
+      else{
+        state.fontFamily = action.payload.fontFamily;
+      }
+    },
     toggleIsSmart: (state, action) => {
       state.isSmart = !state.isSmart;
     },
@@ -378,6 +390,7 @@ export const {
   addAward,
   addOrUpdateAward,
   deleteAward,
+  changeFontFamily,
   addCommunicationLanguage,
   deleteCommunicationLanguage,
 } = resumeSlice.actions;

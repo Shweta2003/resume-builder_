@@ -13,11 +13,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  border: 1px solid rgba(194, 178, 178, 0.605);
+  background-color: rgb(255, 255, 255);
+  gap: 20px;
+  padding: 8px 20px;
+  border-radius: 4px;
 }
 .icon {
   cursor: pointer;
   height: fit-content;
+  color: white;
 }
 .modal {
   display: flex;
@@ -114,4 +119,38 @@
 
 .tailor{
   margin-right: -100px;
+}
+
+
+.blinking {
+  animation: blink-animation 0.6s infinite;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 1px solid yellow;
+  background: none;
+  font-size: 16px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  color: yellow;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-right: 16px;
+  width: max-content;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.info{
+  padding: 20px;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

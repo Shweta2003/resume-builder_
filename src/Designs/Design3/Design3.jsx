@@ -218,8 +218,8 @@ const Design3 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resume} ref={resumeRef}>
-        <div className={styles.personalDetails}>
+      <div className={styles.resume} style={{fontFamily:`${(resume.fontFamily === "")? "'Arvo', serif" : resume.fontFamily}`}} ref={resumeRef}>
+        <div className={styles.personalDetails} style={{fontFamily:`${(resume.fontFamily === "")? "'Arvo', serif" : resume.fontFamily}`}}>
           <div className={styles.designation}>
             <div className={styles.name}>
               {resume.personalInformation.name.toUpperCase()}
@@ -256,12 +256,12 @@ const Design3 = () => {
           </div>
         </div>
 
-        <div className={styles.aboutSection}>
+        <div className={styles.aboutSection} style={{fontFamily:`${(resume.fontFamily === "")? "'Arvo', serif" : resume.fontFamily}`}}>
           <div className={styles.title2}>PROFILE</div>
           <div className={styles.about}>{resume.personalInformation.about}</div>
         </div>
         <div className={styles.details}>
-          <div className={styles.left}>
+          <div className={styles.left} style={{fontFamily:`${(resume.fontFamily === "")? "'Arvo', serif" : resume.fontFamily}`}}>
             <div className={styles.education}>
               {/* <div className={styles.title}>EDUCATION</div> */}
               <div className={styles.back}>
@@ -314,7 +314,7 @@ const Design3 = () => {
             </div>
           </div>
           <div className={styles.line}></div>
-          <div className={styles.right}>
+          <div className={styles.right} style={{fontFamily:`${(resume.fontFamily === "")? "'Arvo', serif" : resume.fontFamily}`}}>
             <div className={styles.experiences}>
               <div className={styles.title}>EXPERIENCE</div>
               {resume.experiences.experienceDetails.map(

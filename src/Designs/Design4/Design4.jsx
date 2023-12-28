@@ -19,7 +19,7 @@ const Design4 = () => {
   const [opt3, setopt3] = useState("PROJECTS")
 
   const skills = <>
-    <div className={styles.languages}>
+    <div className={styles.languages} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
       {resume.skills.languages.length > 0 && (
         <div className={styles.subtitle}>Languages : </div>
       )}
@@ -101,7 +101,7 @@ const Design4 = () => {
   // awards component
   const awards = resume.additionalInformation.additionalInformationDetails.map((language, key) => {
     return (
-      <div key={key} className={styles.award}>
+      <div key={key} className={styles.award} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
         <span class="material-symbols-outlined icon">bookmark
         </span>{language.award}{" "}
       </div>
@@ -111,7 +111,7 @@ const Design4 = () => {
   // certificate component
   const certificates = resume.certificates.certificatesDetails.map((item, key) => {
     return (
-      <div className={styles.exp} key={key}>
+      <div className={styles.exp} key={key} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
         <span class="material-symbols-outlined icona">circle</span>
         <div className={styles.expDetail1}>
           <a href={item.link} className={styles.pos}>
@@ -128,7 +128,7 @@ const Design4 = () => {
   // education component
   const education = resume.education.educationDetails.map((item, key) => {
     return (
-      <div className={styles.exp} key={key}>
+      <div className={styles.exp} key={key} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
         <span class="material-symbols-outlined icona">circle</span>
         <div className={styles.expDetail1}>
         <a
@@ -155,7 +155,7 @@ const Design4 = () => {
   // projects component
   const projects = resume.projects.projectDetails.map((item, key) => {
     return (
-      <div className={styles.exp} key={key}>
+      <div className={styles.exp} key={key} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
         <span class="material-symbols-outlined icona">circle</span>
         <div className={styles.expDetail1}>
         <a
@@ -183,7 +183,7 @@ const Design4 = () => {
   const languages = resume.languages.languagesDetails.map((item, key) => {
     return (
 
-      <div key={key} className={styles.temp}>
+      <div key={key} className={styles.temp} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
         <span class="material-symbols-outlined icongh">circle</span>
         <div className={styles.cet}>
           <div key={key} className={styles.check}>
@@ -196,7 +196,7 @@ const Design4 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resume} ref={resumeRef}>
+      <div className={styles.resume} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}} ref={resumeRef}>
         <div className={styles.personalInfo}>
           <div className={styles.name}>{resume.personalInformation.name}</div>
           <div className={styles.currentJob}>
@@ -228,18 +228,18 @@ const Design4 = () => {
             </a>
           ))}
         </div>
-        <div className={styles.skills}>
+        <div className={styles.skills} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
           <div className={styles.skillHeading}>
             {/* <img src={VectorIcon} alt="Vector" /> */}
             {/* <div className={styles.title}><img src={skill} alt="" className={styles.img} /> SKILLS</div> */}
-            <img src={skill} alt="" className={styles.img} /><select className={styles.title2} defaultValue={"SKILLS"} onChange={(e) => { setopt1(e.target.value) }}>
+            <img src={skill} alt="" className={styles.img} /><select className={styles.title2} defaultValue={"SKILLS"} onChange={(e) => { setopt1(e.target.value) }} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             <option className={styles.check} value="AWARDS" name="AWARDS">AWARDS</option>
             <option className={styles.check} value="SKILLS" name="SKILLS">SKILLS</option>
             <option className={styles.check} value="LANGUAGES" name="LANGUAGES">LANGUAGES</option>
           </select>
           </div>
 
-          <div className={styles.comp1}>
+          <div className={styles.comp1} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             {(opt1 === "AWARDS") ? <div className={styles.loop}>{awards}</div>
             :(opt1 === "LANGUAGES") ? <div className={styles.loop}>{languages}</div>
               : (opt1 === "SKILLS") ? skills
@@ -252,7 +252,7 @@ const Design4 = () => {
           <div className={styles.blue}></div>
           <div className={styles.sky}></div>
         </div>
-        <div className={styles.experiences}>
+        <div className={styles.experiences} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
           <div className={styles.title} style={{ marginBottom: "20px" }}><span class="material-symbols-outlined iconw">work</span>WORK EXPERIENCE</div>
           {resume.experiences.experienceDetails.map((experienceDetail, key) => {
             return (
@@ -281,19 +281,19 @@ const Design4 = () => {
           <div className={styles.sky}></div>
         </div>
 
-        <div className={styles.skills}>
+        <div className={styles.skills} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
           <div className={styles.skillHeading}>
             {/* <img src={VectorIcon} alt="Vector" /> */}
             {/* <div className={styles.title}><img src={skill} alt="" className={styles.img} /> SKILLS</div> */}
             <span class="material-symbols-outlined iconw">hub</span>
-            <select className={styles.title2} defaultValue={"EDUCATION"} onChange={(e) => { setopt2(e.target.value) }}>
+            <select className={styles.title2} defaultValue={"EDUCATION"} onChange={(e) => { setopt2(e.target.value) }} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             <option className={styles.check} value="EDUCATION" name="EDUCATION">EDUCATION</option>
             <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">CERTIFICATION</option>
             <option className={styles.check} value="PROJECTS" name="PROJECTS">PROJECTS</option>
           </select>
           </div>
 
-          <div className={styles.comp1}>
+          <div className={styles.comp1} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             {(opt2 === "CERTIFICATION") ?certificates
             :(opt2 === "EDUCATION") ?education
               : (opt2 === "PROJECTS") ? projects
@@ -308,18 +308,18 @@ const Design4 = () => {
           <div className={styles.sky}></div>
         </div>
 
-        <div className={styles.skills}>
+        <div className={styles.skills} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
           <div className={styles.skillHeading}>
             {/* <img src={VectorIcon} alt="Vector" /> */}
             {/* <div className={styles.title}><img src={skill} alt="" className={styles.img} /> SKILLS</div> */}
-            <span class="material-symbols-outlined iconw">history_edu</span><select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt3(e.target.value) }}>
+            <span class="material-symbols-outlined iconw">history_edu</span><select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt3(e.target.value) }} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             <option className={styles.check} value="EDUCATION" name="EDUCATION">EDUCATION</option>
             <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">CERTIFICATION</option>
             <option className={styles.check} value="PROJECTS" name="PROJECTS">PROJECTS</option>
           </select>
           </div>
 
-          <div className={styles.comp1}>
+          <div className={styles.comp1} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             {(opt3 === "CERTIFICATION") ?certificates
             :(opt3 === "EDUCATION") ?education
               : (opt3 === "PROJECTS") ? projects

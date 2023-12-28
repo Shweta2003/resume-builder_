@@ -14,7 +14,7 @@
   flex: 1.2;
   height: max-content;
   flex-direction: column;
-  font-family: 'Arvo', serif;
+  /* font-family: 'Arvo', serif; */
   width: 100%;
   display: flex;
   word-wrap: break-word;
@@ -59,7 +59,7 @@
   flex-direction: column;
   font-weight: 500;
   font-size: 1.3rem;
-  font-family: 'Arvo', serif;
+  /* font-family: 'Arvo', serif; */
   letter-spacing: 3.2px;
   padding-bottom: 13px;
   word-wrap: break-word;
@@ -121,7 +121,7 @@
   padding: 10px 0px;
   line-height: 23px;
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
 }
 .personalInfo {
   display: flex;
@@ -135,7 +135,7 @@
   justify-content: space-between;
 }
 .subtitle {
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 700;
   width: 100%;
   display: flex;
@@ -144,7 +144,7 @@
 }
 .language, .framework, .tool, .database{
   display: inline;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 300;
   margin-right: 20px;
   margin-bottom: 6px;
@@ -185,7 +185,7 @@
   margin-bottom: 20px;
   line-height: 20px;
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
 }
 .education,
 .skills,
@@ -207,7 +207,7 @@
   color: #385848;
   text-align: justify;
   margin-bottom: 7px;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
 }
 .institute {
   font-weight: 700;
@@ -225,7 +225,7 @@
 .about {
   min-height: 80px;
   text-align: center;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
   margin-bottom: 20px;
   color: #575757;
@@ -257,7 +257,7 @@
   text-align: justify;
   flex-direction: column;
   width: 98%;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   font-size: 17px;
   line-height: 20px;
   font-weight: 300;
@@ -272,7 +272,7 @@
   width: 100%;
   font-size: 25px;
   font-weight: 700;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
   display: flex;
 }
@@ -305,7 +305,7 @@
 
 .issuer{
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   line-height: 20px;
   
 
@@ -321,7 +321,7 @@
   align-items: center;
   text-align: justify;
   font-size: 17px;
-  font-family: 'Jaldi', sans-serif;
+  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 500;
   color: #402b54;
 }

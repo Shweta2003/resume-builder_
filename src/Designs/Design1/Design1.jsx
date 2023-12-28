@@ -9,7 +9,7 @@ import { useOutletContext } from "react-router-dom";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);
-  console.log(resume)
+  console.log(resume.fontFamily)
   const [top1, settop1] = useState("AWARDS")
   const [top2, settop2] = useState("SKILLS")
   const [top4, settop4] = useState("PROJECTS")
@@ -195,7 +195,7 @@ const Design1 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resume} ref={resumeRef}>
+      <div className={styles.resume} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}} ref={resumeRef}>
       <div className={styles.left}>
         <div className={styles.dp}>
           <img src={imgUrl ? imgUrl : PortfolioIcon} />
@@ -270,10 +270,10 @@ const Design1 = () => {
       </div>
       <div className={styles.right}>
         <div className={styles.identity}>
-          <div className={styles.name}>
+          <div className={styles.name} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             {resume.personalInformation.name.toUpperCase()}
           </div>
-          <div className={styles.jobTitle}>
+          <div className={styles.jobTitle} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
             {resume.personalInformation.jobTitle.toUpperCase()}
           </div>
         </div>

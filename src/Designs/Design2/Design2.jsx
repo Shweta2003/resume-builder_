@@ -220,8 +220,8 @@ const Design2 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.resume} ref={resumeRef}>
-        <div className={styles.left}>
+      <div className={styles.resume} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}} ref={resumeRef}>
+        <div className={styles.left} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
           <div className={styles.contacts}>
             <div className={styles.title}>Contacts</div>
             <div className={styles.phone}>
@@ -278,7 +278,7 @@ const Design2 = () => {
             </div>
           </div>
         </div>
-        <div className={styles.right}>
+        <div className={styles.right} style={{fontFamily:`${(resume.fontFamily === "")? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`}}>
           <div className={styles.personalInfo}>
             <div className={styles.name}>{resume.personalInformation.name}</div>
             <div className={styles.jobTitle}>
