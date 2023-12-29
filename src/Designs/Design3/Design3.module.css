@@ -89,7 +89,7 @@
   word-wrap: break-word;
 }
 .description {
-  text-align: justify;
+  text-align: left;
 }
 
 .jump{
@@ -201,7 +201,7 @@
   line-height: 20px;
   word-wrap: break-word;
   color: #385848;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 7px;
 }
 .institute {
@@ -248,7 +248,7 @@
 .cet, .ceta, .cetak{
   align-items: flex-start;
   display: flex;
-  text-align: justify;
+  text-align: left;
   flex-direction: column;
   width: 100%;
   /* font-family: 'Jaldi', sans-serif; */
@@ -278,6 +278,7 @@
   align-items: center;
   font-size: 15px;
   word-wrap: break-word;
+  color: #385848;
 }
 
 .proc{
@@ -293,8 +294,8 @@
   margin-top: 3px;
   margin-left: 35px;
   font-weight: 400;
-  text-align: justify;
-  color: black;
+  text-align: left;
+  color: #385848;
   margin-bottom: 10px;
 }
 
@@ -313,7 +314,7 @@
   width: 90%;
   display: flex;
   align-items: center;
-  text-align: justify;
+  text-align: left;
   font-size: 17px;
   font-weight: 500;
   color: #402b54;

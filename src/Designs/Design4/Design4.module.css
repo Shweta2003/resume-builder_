@@ -66,7 +66,7 @@
 }
 
 .about {
-  text-align: justify;
+  text-align: left;
   color: #575757;
   font-size: 17px;
   font-weight: 500;
@@ -273,7 +273,7 @@
 .desc {
   font-size: 15px;
   width: 97%;
-  text-align: justify;
+  text-align: left;
   font-weight: 500;
   height: max-content;
   padding-bottom: 10px;
@@ -317,7 +317,7 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 30px;
   margin-top: -10px;
   font-size: 20px;
@@ -331,7 +331,7 @@
 .cetak {
   align-items: flex-start;
   display: flex;
-  text-align: justify;
+  text-align: left;
   flex-direction: column;
   width: 98%;
   font-size: 20px;
