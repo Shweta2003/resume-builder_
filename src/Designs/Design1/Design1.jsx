@@ -114,11 +114,11 @@ const Design1 = () => {
       <div className={styles.languages}>
         {resume.skills.languages.map((language, key) => {
           return (
-            <div style={{display:"flex", width:"50%",wordWrap:"break-word", alignItems:"center", paddingLeft:"5px"}}>
+            <div style={{ display: "flex", width: "50%", wordWrap: "break-word", alignItems: "center", paddingLeft: "5px" }}>
               <li></li><div key={key} className={styles.language}>
-              {language.language}{" "}
-              {key === resume.skills.languages.length - 1 ? "" : " "}
-            </div>
+                {language.language}{" "}
+                {key === resume.skills.languages.length - 1 ? "" : " "}
+              </div>
             </div>
           );
         })}
@@ -160,12 +160,12 @@ const Design1 = () => {
           <div className={styles.duration}>{experienceDetail.duration}</div>
           <div className={styles.description}>
             {/* {experienceDetail.description} */}
-              {
-                experienceDetail.description.split("\n").map((e) => {
-                  return <div className={styles.jump}><li className={styles.companyl}></li>
+            {
+              experienceDetail.description.split("\n").map((e) => {
+                return <div className={styles.jump}><li className={styles.companyl}></li>
                   <p>{e}</p></div>
-                })
-              }
+              })
+            }
           </div>
         </div>
       );
@@ -186,26 +186,8 @@ const Design1 = () => {
       <div className={styles.resume} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`, height: `${maxheight}px` }} ref={resumeRef}>
         <div className={styles.left} >
           <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
-      <div
-        className={styles.resume}
-        style={{
-          fontFamily: `${
-            resume.fontFamily === ""
-              ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-              : resume.fontFamily
-          }`,
-          height: `${maxheight}px`,
-        }}
-        ref={resumeRef}
-      >
-        <div className={styles.left}>
-          <div
-            className={styles.subleft}
-            ref={leftRef}
-            style={{ height: "max-content" }}
-          >
             <div className={styles.dp}>
-              <img src={imgUrl ? imgUrl : PortfolioIcon} alt="" className={styles.img}/>
+              <img src={imgUrl ? imgUrl : PortfolioIcon} alt="" className={styles.img} />
             </div>
             <div className={styles.details}>
               <div className={styles.personalInfo}>
@@ -360,11 +342,10 @@ const Design1 = () => {
               <div
                 className={styles.name}
                 style={{
-                  fontFamily: `${
-                    resume.fontFamily === ""
-                      ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-                      : resume.fontFamily
-                  }`,
+                  fontFamily: `${resume.fontFamily === ""
+                    ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                    : resume.fontFamily
+                    }`,
                   height: { maxheight },
                 }}
               >
@@ -373,11 +354,10 @@ const Design1 = () => {
               <div
                 className={styles.jobTitle}
                 style={{
-                  fontFamily: `${
-                    resume.fontFamily === ""
-                      ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-                      : resume.fontFamily
-                  }`,
+                  fontFamily: `${resume.fontFamily === ""
+                    ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                    : resume.fontFamily
+                    }`,
                 }}
               >
                 {resume.personalInformation.jobTitle.toUpperCase()}
@@ -464,7 +444,7 @@ const Design1 = () => {
         </div>
       </div>
     </div>
-  );
+        );
 };
 
-export default Design1;
+        export default Design1;
