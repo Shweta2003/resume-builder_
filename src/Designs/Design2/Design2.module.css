@@ -20,12 +20,10 @@
   align-items: center;
   justify-content: center;
 }
-
 .container::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 5px;
 }
-
 .container::-webkit-scrollbar {
   width: 5px;
 }
@@ -52,8 +50,13 @@
   align-items: stretch;
   align-self: stretch;
   padding: 30px 50px;
+  padding-top: 0px;
   background-color: #fff;
   color: #575757;
+}
+
+.jump{
+  display: flex;
 }
 
 .contacts {
@@ -62,12 +65,10 @@
 }
 
 .pos {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   color: #955dca;
 }
 
 .company {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 15px;
   padding: 5px 0px;
   padding-bottom: 0px;
@@ -85,11 +86,10 @@
   min-height: 50px;
 }
 
-.languages,
-.frameworks,
-.tools,
-.databases {
+.languages{
   display: flex;
+  width: 100%;
+  word-wrap: break-word;
   flex-wrap: wrap;
   padding: 10px;
   padding-top: 0px;
@@ -100,14 +100,12 @@
 .title2 {
   font-size: 30px;
   padding-bottom: 10px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: bold;
   border-bottom: 2px solid;
   margin-bottom: 1rem;
 }
 
 .subtitle {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 700;
   margin-bottom: 10px;
   width: 100%;
@@ -130,14 +128,12 @@
   font-weight: bold;
   color: #ffffff;
 }
-
 .award {
   width: 90%;
   display: flex;
   align-items: center;
   text-align: justify;
   font-size: 17px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 500;
   color: #402b54;
 }
@@ -148,7 +144,6 @@
   display: flex;
   align-items: center;
   font-size: 17px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   gap: 0.5rem;
   color: #ffffff;
 }
@@ -161,7 +156,6 @@
   font-size: 60px;
   font-weight: 700;
 }
-
 .about {
   min-height: 50px;
   margin: 10px 0px;
@@ -171,7 +165,6 @@
   margin-bottom: 40px;
   font-size: 17px;
   font-weight: 500;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 
 .exp {
@@ -183,7 +176,6 @@
 
 .duration {
   word-wrap: break-word;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 400;
   font-size: 15px;
 }
@@ -195,7 +187,6 @@
   margin-left: -8px;
   margin-top: 10px;
 }
-
 .btn {
   width: 20px;
   height: 20px;
@@ -210,7 +201,6 @@
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 7.7px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   color: #a36bd6;
   word-wrap: break-word;
 }
@@ -221,16 +211,13 @@
 
 .description {
   font-size: 15px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 15px;
   text-align: justify;
   font-weight: 500;
-  display: flex;
   height: max-content;
   padding-bottom: 10px;
 
 }
-
 .part2 {
   width: 100%;
   margin: 30px 0px;
@@ -249,11 +236,9 @@
   display: flex;
   align-items: flex-start;
   text-align: justify;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 15px;
   margin-bottom: 20px;
 }
-
 .edu_sub {
   width: 100%;
   margin-top: 5px;
@@ -273,13 +258,11 @@
   margin-bottom: 40px;
 }
 
-.language,
-.framework,
-.tool,
-.database {
+.language{
   display: inline;
   padding: 0px 2px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  width: 100%;
+  word-wrap: break-word;
   font-weight: 300;
   margin-right: 20px;
   margin-bottom: 6px;
@@ -294,7 +277,6 @@
   color: white;
   flex-direction: column;
   width: 100%;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 15px;
   font-weight: 300;
   margin-bottom: 25px;
@@ -306,29 +288,23 @@
   text-align: justify;
   flex-direction: column;
   width: 98%;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 15px;
   font-weight: 500;
 }
-
 .temp {
   display: flex;
   align-items: flex-start;
 }
-
 .certificateName {
   color: white;
   font-weight: 600;
   font-size: 20px;
 }
-
 .languageDetail {
   width: 100%;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 17px;
   font-weight: 400;
   margin: 15px 0px;
-
 }
 
 .project {

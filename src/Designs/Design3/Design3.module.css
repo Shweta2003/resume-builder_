@@ -14,7 +14,6 @@
   flex: 1.2;
   height: max-content;
   flex-direction: column;
-  /* font-family: 'Arvo', serif; */
   width: 100%;
   display: flex;
   word-wrap: break-word;
@@ -91,9 +90,11 @@
   word-wrap: break-word;
 }
 .description {
-  display: flex;
   text-align: justify;
-  padding-left: 15px;
+}
+
+.jump{
+  display: flex;
 }
 
 .designation{
@@ -106,10 +107,7 @@
   margin: 30px 0px;
 }
 
-.languages,
-.frameworks,
-.tools,
-.databases {
+.languages{
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
@@ -119,8 +117,7 @@
 .xp {
   padding: 10px 0px;
   line-height: 23px;
-  font-size: 17px;
-  /* font-family: 'Jaldi', sans-serif; */
+  font-size: 15px;
 }
 .personalInfo {
   display: flex;
@@ -134,21 +131,21 @@
   justify-content: space-between;
 }
 .subtitle {
-  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 700;
   width: 100%;
   display: flex;
-  font-size: 20px;
+  font-size: 17px;
   align-items: center;
 }
-.language, .framework, .tool, .database{
+.language{
   display: inline;
-  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 300;
+  word-wrap: break-word;
+  width: 100%;
   margin-right: 20px;
   margin-bottom: 6px;
   line-height: 20px;
-  font-size: 17px;
+  font-size: 15px;
 }
 .left {
   display: flex;
@@ -185,8 +182,7 @@
 .edu {
   margin-bottom: 20px;
   line-height: 20px;
-  font-size: 17px;
-  /* font-family: 'Jaldi', sans-serif; */
+  font-size: 15px;
 }
 .education,
 .skills,
@@ -199,7 +195,7 @@
   color: #385848;
 }
 .certificateName {
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
   font-weight: 600;
   letter-spacing: 0.91px;
@@ -208,12 +204,11 @@
   color: #385848;
   text-align: justify;
   margin-bottom: 7px;
-  /* font-family: 'Jaldi', sans-serif; */
 }
 .institute {
   font-weight: 700;
   line-height: 23px;
-  font-size: 20px;
+  font-size: 17px;
   word-wrap: break-word;
 }
 .experiences {
@@ -226,7 +221,6 @@
 .about {
   min-height: 50px;
   text-align: center;
-  /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
   margin-bottom: 20px;
   color: #575757;
@@ -257,9 +251,9 @@
   display: flex;
   text-align: justify;
   flex-direction: column;
-  width: 98%;
+  width: 100%;
   /* font-family: 'Jaldi', sans-serif; */
-  font-size: 17px;
+  font-size: 15px;
   line-height: 20px;
   font-weight: 300;
   word-break: break-all;
@@ -271,7 +265,8 @@
 
 .project{
   width: 100%;
-  font-size: 25px;
+  font-size: 20px;
+  color: #385848;
   font-weight: 700;
   /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
@@ -288,14 +283,14 @@
 
 .proc{
   width: 80%;
-  font-size:17px;
+  font-size:15px;
   font-weight: 600;
   margin-left: 35px;
   color: #385848
 }
 
 .prod{
-  width: 85%;
+  width: 90%;
   margin-top: 3px;
   margin-left: 35px;
   font-weight: 400;
@@ -315,14 +310,12 @@
 .check{
   font-size: 20px;
 }
-
 .award{
   width: 90%;
   display: flex;
   align-items: center;
   text-align: justify;
   font-size: 17px;
-  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 500;
   color: #402b54;
 }
@@ -341,7 +334,6 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   }
-
   @page{
     margin-top: 30px;
     height: 100%;

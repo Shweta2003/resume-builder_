@@ -12,15 +12,19 @@
   box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
+.ddd{
+  width: 100%;
+  word-wrap: break-word;
+}
+
 .resume {
   flex: 1.2;
   height: max-content;
   flex-direction: column;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   width: 100%;
   display: flex;
   word-wrap: break-word;
-  padding: 60px 50px;
+  padding: 30px 50px;
 }
 
 .pro {
@@ -28,12 +32,10 @@
   align-items: center;
   word-wrap: break-word;
 }
-
 .container::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 5px;
 }
-
 .container::-webkit-scrollbar {
   width: 5px;
 }
@@ -58,7 +60,6 @@
   font-size: 25px;
   margin: 6px 0px;
   margin-bottom: -15px;
-  /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 700;
   letter-spacing: 2px;
   word-wrap: break-word;
@@ -68,7 +69,6 @@
   text-align: justify;
   color: #575757;
   font-size: 17px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 500;
   margin-bottom: 20px;
   word-wrap: break-word;
@@ -103,12 +103,10 @@
   height: max-content;
 }
 
-
 .title,
 .title2 {
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 30px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   display: flex;
   align-items: center;
   font-weight: 700;
@@ -117,7 +115,6 @@
   margin-top: 20px;
   margin-bottom: 15px;
 }
-
 .title2 {
   width: 99%;
   border: none;
@@ -129,7 +126,6 @@
 .subtitle {
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 25px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 500;
   line-height: 25px;
   width: 170px;
@@ -138,7 +134,6 @@
 .skills {
   color: #575757;
   font-size: 19px;
-  /* font-family: Rubik; */
   font-weight: 500;
   line-height: 54px;
   word-wrap: break-word;
@@ -151,28 +146,26 @@
   align-items: center;
 }
 
-.language,
-.framework,
-.tool,
-.database {
+.language{
+  width: 90%;
+  font-size: 17px;
+  word-wrap: break-word;
   margin-right: 20px;
 }
-
 .skills {
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 
-.frameworks,
-.tools,
-.languages,
-.databases {
-  width: 100%;
+.languages{
+  width: 95%;
   display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
   align-items: flex-start;
-  margin-bottom: 15px;
+  line-height: normal;
+  margin-left: 40px;
 }
 
 .horLine {
@@ -208,6 +201,10 @@
 
 }
 
+.jump{
+  display: flex;
+}
+
 .duration {
   word-wrap: break-word;
   line-height: 23px;
@@ -230,27 +227,24 @@
 }
 
 .expDetail1 {
+  width: 100%;
   padding-bottom: 20px;
 }
 
 .company,
 .play {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-size: 15px;
   color: #0379bc;
   word-spacing: 5px;
   font-weight: 700;
 }
-
 .play {
   font-size: 17px;
   font-weight: 500;
   line-height: normal;
 }
-
 .pos,
 .pos1 {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   color: rgba(22.39, 2.09, 48.22, 0.8);
   font-size: 20px;
   font-weight: 700;
@@ -260,14 +254,12 @@
 .jobTitle {
   color: #575757;
   font-size: 24px;
-  /* font-family: Rubik; */
   font-weight: 800;
   word-wrap: break-word;
 }
 
 .duration {
   word-wrap: break-word;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-weight: 400;
   font-size: 15px;
 }
@@ -280,12 +272,9 @@
 .description,
 .desc {
   font-size: 15px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-  margin-left: 15px;
   width: 97%;
   text-align: justify;
   font-weight: 500;
-  display: flex;
   height: max-content;
   padding-bottom: 10px;
 
@@ -293,8 +282,9 @@
 
 .desc {
   line-height: normal;
+  margin-left: 15px;
   display: flex;
-  width: 100%;
+  width: 98%;
   flex-direction: column;
 }
 
@@ -331,7 +321,6 @@
   margin-bottom: 30px;
   margin-top: -10px;
   font-size: 20px;
-  /* font-family: 'Jaldi', sans-serif; */
   font-weight: 700;
   color: #402b54;
   line-height: 23px;
@@ -345,7 +334,6 @@
   text-align: justify;
   flex-direction: column;
   width: 98%;
-  /* font-family: 'Jaldi', sans-serif; */
   font-size: 20px;
   line-height: 20px;
   font-weight: 300;
@@ -357,7 +345,8 @@
 }
 
 .check {
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .loop {

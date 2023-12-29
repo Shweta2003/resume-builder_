@@ -101,7 +101,6 @@ const Header = ({
     // Clear the timeout when the component unmounts
     return () => clearTimeout(timeout);
   }, []);
-
   const handleJD = async () => {
     setTailorOpen(false);
     const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
@@ -124,11 +123,6 @@ const Header = ({
         })
       );
     })
-    // const enhancedExperience = await getAnswerForTailered(
-    //   JD,
-    //   100,
-    //   "experience"
-    // );
   };
 
   const options = ["Default", "Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway", "Arvo", "Jaldi"];
@@ -338,7 +332,8 @@ const Header = ({
               : <Button
                 variant="contained"
                 style={{
-                  background: "none",
+                  background: `${(isSmart === true)?"white":"none"}`,
+                  color:`${(isSmart === true)?"black" : "white"}`,
                   padding: "8px 20px",
                   fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
                   border: "1px solid rgba(194, 178, 178, 0.605)",
@@ -351,9 +346,6 @@ const Header = ({
               </Button>
           }
         </Tooltip>
-
-
-
       </div>
 
       <div>
@@ -441,8 +433,6 @@ const Header = ({
               width: "20ch",
             },
           }}
-        //   value={fontStyleOption}
-        //   onChange={(e) => setFontStyleOption(e.target.value)}
         >
           {options.map((option) => (
             <MenuItem
@@ -522,7 +512,7 @@ const Header = ({
             background: "none",
             padding: "8px 20px",
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            border: "1px solid rgba(194, 178, 178, 0.605)",
+            border: `1px solid rgba(194, 178, 178, 0.605)`,
             marginRight: "35px",
             width: "max-content"
           }}

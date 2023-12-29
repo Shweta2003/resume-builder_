@@ -12,129 +12,27 @@ import { useState } from "react";
 const Design4 = () => {
 
   const resume = useSelector((state) => state.resume);
+  console.log(resume)
   const [resumeRef] = useOutletContext();
   const [opt1, setopt1] = useState("SKILLS");
   const [opt2, setopt2] = useState("EDUCATION")
   const [opt3, setopt3] = useState("PROJECTS")
 
-
-  // useEffect(() => {
-  //   console.log(resumeRef.current.clientHeight)
-
-  //   const handleResize = (entries) => {
-  //     if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
-  //       setheight(maxheight + 1090)
-  //     }
-  //     else if (leftRef.current.clientHeight < (maxheight - 1090) && rightRef.current.clientHeight < (maxheight - 1090)) {
-  //       setheight(maxheight - 1090)
-  //     }
-  //   };
-
-  //   const resizeObserverLeft = new ResizeObserver(handleResize);
-  //   const resizeObserverRight = new ResizeObserver(handleResize);
-
-
-  //   // Observe the target element (div)
-  //   if (rightRef.current) {
-  //     resizeObserverRight.observe(rightRef.current);
-  //   }
-  //   // Observe the target element (div)
-  //   else if (leftRef.current) {
-  //     resizeObserverLeft.observe(rightRef.current);
-  //   }
-
-  //   // Cleanup when the component is unmounted
-  //   return () => {
-  //     if (rightRef.current) {
-  //       resizeObserverRight.unobserve(rightRef.current);
-  //     }
-  //     else if (leftRef.current) {
-  //       resizeObserverLeft.unobserve(leftRef.current)
-  //     }
-  //   };
-
-
-  // }, [resumeRef, maxheight, leftRef, rightRef]);
-
+  // skills component
   const skills = <>
-    <div className={styles.languages} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
-      {resume.skills.languages.length > 0 && (
-        <div className={styles.subtitle}>Languages : </div>
-      )}
-      <div className={styles.div2}>
-        {resume.skills.languages.map((language, key) => {
-          return (
-            <div key={key} className={styles.language}>
-              {language.language}
-              {key === resume.skills.languages.length - 1 ? "" : ", "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className={styles.frameworks}>
-      {resume.skills.frameworks.length > 0 && (
-        <div className={styles.subtitle}>Frameworks : </div>
-      )}
-      <div className={styles.div2}>
-        {resume.skills.frameworks.map((framework, key) => {
-          return (
-            <div key={key} className={styles.framework}>
-              {framework.framework}
-              {key === resume.skills.frameworks.length - 1 ? "" : ", "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className={styles.tools}>
-      {resume.skills.tools.length > 0 && (
-        <div className={styles.subtitle}>Tools : </div>
-      )}
-      <div className={styles.div2}>
-        {resume.skills.tools.map((tool, key) => {
-          return (
-            <div key={key} className={styles.tool}>
-              {tool.tool}
-              {key === resume.skills.tools.length - 1 ? "" : ", "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className={styles.databases}>
-      {resume.skills.databases.length > 0 && (
-        <div className={styles.subtitle}>Databases : </div>
-      )}
-      <div className={styles.div2}>
-        {resume.skills.databases.map((database, key) => {
-          return (
-            <div key={key} className={styles.database}>
-              {database.database}
-              {key === resume.skills.databases.length - 1 ? "" : ", "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className={styles.languages}>
-      {resume.skills.otherSkills.length > 0 && (
-        <div className={styles.subtitle}>Others : </div>
-      )}
-      <div className={styles.div2}>
-        {resume.skills.otherSkills.map((language, key) => {
-          return (
-            <div key={key} className={styles.language}>
-              {language.otherSkill}
-              {key === resume.skills.otherSkills.length - 1 ? "" : ", "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </>
+  <div className={styles.languages}>
+    {resume.skills.languages.map((language, key) => {
+      return (
+        <div style={{display:"flex", width:"50%",wordWrap:"break-word", alignItems:"center", paddingLeft:"5px", marginBottom:"2px"}}>
+          <li></li><div key={key} className={styles.language}>
+          {language.language}{" "}
+          {key === resume.skills.languages.length - 1 ? "" : " "}
+        </div>
+        </div>
+      );
+    })}
+  </div>
+</>
 
   // awards component
   const awards = resume.additionalInformation.additionalInformationDetails.map((language, key) => {
@@ -306,7 +204,13 @@ const Design4 = () => {
 
 
                   <div className={styles.description}>
-                    {experienceDetail.description}
+                    {/* {experienceDetail.description} */}
+                    {
+                          experienceDetail.description.split("\n").map((e) => {
+                            return <div className={styles.jump}><li className={styles.companyl}></li>
+                              <p>{e}</p></div>
+                          })
+                        }
                   </div>
                 </div>
               </div>
@@ -318,7 +222,6 @@ const Design4 = () => {
           <div className={styles.blue}></div>
           <div className={styles.sky}></div>
         </div>
-
         <div className={styles.skills} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
           <div className={styles.skillHeading}>
             {/* <img src={VectorIcon} alt="Vector" /> */}

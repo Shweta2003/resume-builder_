@@ -23,7 +23,7 @@ const Design3 = () => {
       if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
         setheight(maxheight + 1090)
       }
-      else if ((leftRef.current.clientHeight + 222) < (maxheight - 1090) && (rightRef.current.clientHeight + 222) <(maxheight - 1090)) {
+      else if ((leftRef.current.clientHeight + 222) < (maxheight - 1090) && (rightRef.current.clientHeight + 222) < (maxheight - 1090)) {
         setheight(maxheight - 1090)
       }
     };
@@ -63,7 +63,7 @@ const Design3 = () => {
   const certificateCat = resume.certificates.certificatesDetails.map(
     (certificateDetail, key) => {
       return (
-        <div key={key} className={styles.temp}>
+        <div key={key} className={styles.temp} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
           <span class="material-symbols-outlined icongh">circle</span>
           <div className={styles.cet}>
             <a
@@ -114,101 +114,19 @@ const Design3 = () => {
 
   // skills component
   const skills = <>
-    <div className={styles.temp}>
-      {(resume.skills.languages.length > 0) ? <span class="material-symbols-outlined icongh">circle</span>
-        : <></>
-      }
-
-      <div className={styles.languages}>
-
-        {resume.skills.languages.length > 0 && (
-          <div className={styles.subtitle}>Languages : </div>
-        )}
-        {resume.skills.languages.map((language, key) => {
-          return (
-            <div key={key} className={styles.language}>
-              {language.language}{" "}
-              {key === resume.skills.languages.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className={styles.temp}>
-      {(resume.skills.frameworks.length > 0) ? <span class="material-symbols-outlined icongh">circle</span>
-        : <></>
-      }
-      <div className={styles.frameworks}>
-        {resume.skills.frameworks.length > 0 && (
-          <div className={styles.subtitle}>Frameworks : </div>
-        )}
-        {resume.skills.frameworks.map((framework, key) => {
-          return (
-            <div key={key} className={styles.framework}>
-              {framework.framework}{" "}
-              {key === resume.skills.frameworks.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className={styles.temp}>
-      {(resume.skills.tools.length > 0) ? <span class="material-symbols-outlined icongh">circle</span>
-        : <></>
-      }
-      <div className={styles.tools}>
-        {resume.skills.tools.length > 0 && (
-          <div className={styles.subtitle}>Tools : </div>
-        )}
-        {resume.skills.tools.map((tool, key) => {
-          return (
-            <div key={key} className={styles.tool}>
-              {tool.tool}{" "}
-              {key === resume.skills.tools.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className={styles.temp}>
-      {(resume.skills.databases.length > 0) ? <span class="material-symbols-outlined icongh">circle</span>
-        : <></>
-      }
-      <div className={styles.databases}>
-        {resume.skills.databases.length > 0 && (
-          <div className={styles.subtitle}>Databases : </div>
-        )}
-        {resume.skills.databases.map((database, key) => {
-          return (
-            <div key={key} className={styles.database}>
-              {database.database}{" "}
-              {key === resume.skills.databases.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className={styles.temp}>
-      {(resume.skills.otherSkills.length > 0) ? <span class="material-symbols-outlined icongh">circle</span>
-        : <></>
-      }
-      <div className={styles.databases}>
-        {resume.skills.otherSkills.length > 0 && (
-          <div className={styles.subtitle}>Others : </div>
-        )}
-        {resume.skills.otherSkills.map((database, key) => {
-          return (
-            <div key={key} className={styles.database}>
-              {database.otherSkill}{" "}
-              {key === resume.skills.otherSkills.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </>
+  <div className={styles.languages}>
+    {resume.skills.languages.map((language, key) => {
+      return (
+        <div style={{display:"flex", width:"100%",wordWrap:"break-word", alignItems:"center", paddingLeft:"5px"}}>
+          <li></li><div key={key} className={styles.language}>
+          {language.language}{" "}
+          {key === resume.skills.languages.length - 1 ? "" : " "}
+        </div>
+        </div>
+      );
+    })}
+  </div>
+</>
 
   // education component
   const educationCat = resume.education.educationDetails.map((educationDetail, key) => {
@@ -244,7 +162,6 @@ const Design3 = () => {
 
   // languages component
   const languages = resume.languages.languagesDetails.map((item, key) => {
-
     return (
 
       <div key={key} className={styles.temp}>
@@ -303,12 +220,12 @@ const Design3 = () => {
           <div className={styles.about}>{resume.personalInformation.about}</div>
         </div>
         <div className={styles.details}>
-          <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}`}}>
+          <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
             <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
               <div className={styles.education}>
                 {/* <div className={styles.title}>EDUCATION</div> */}
                 <div className={styles.back}>
-                  <select className={styles.title3} defaultValue={"EDUCATION"} onChange={(e) => { setopt1(e.target.value) }}>
+                  <select className={styles.title3} defaultValue={"EDUCATION"} onChange={(e) => { setopt1(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
                     <option className={styles.check} value={"PROJECTS"} name="PROJECTS" >PROJECTS</option>
                     <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
                     <option className={styles.check} value={"EDUCATION"} name="EDUCATION" >EDUCATION</option>
@@ -323,10 +240,10 @@ const Design3 = () => {
                 </>
 
               </div>
-              <div className={styles.skills}>
+              <div className={styles.skills} >
                 {/* <div className={styles.title}>SKILLS</div> */}
                 <div className={styles.back}>
-                  <select className={styles.title3} defaultValue={"SKILLS"} onChange={(e) => { setopt2(e.target.value) }}>
+                  <select className={styles.title3} defaultValue={"SKILLS"} onChange={(e) => { setopt2(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
                     <option className={styles.check} value={"SKILLS"} name="SKILLS" >SKILLS</option>
                     <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
                     <option className={styles.check} value={"LANGUAGES"} name="LANGUAGES" >LANGUAGES</option>
@@ -343,7 +260,7 @@ const Design3 = () => {
               <div className={styles.certificates}>
                 {/* <div className={styles.title}>CERTIFICATES</div> */}
                 <div className={styles.back}>
-                  <select className={styles.title3} defaultValue={"CERTIFICATION"} onChange={(e) => { setopt3(e.target.value) }}>
+                  <select className={styles.title3} defaultValue={"CERTIFICATION"} onChange={(e) => { setopt3(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
                     <option className={styles.check} value={"AWARDS"} name="AWARDS" >AWARDS</option>
                     <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
                   </select>
@@ -357,7 +274,7 @@ const Design3 = () => {
               </div>
             </div>
           </div>
-          <div className={styles.line} style={{height:"100%"}}></div>
+          <div className={styles.line} style={{ height: "100%" }}></div>
           <div className={styles.right} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
             <div className={styles.subright} style={{ height: "max-content" }} ref={rightRef}>
               <div className={styles.experiences}>
@@ -373,7 +290,13 @@ const Design3 = () => {
                           {experienceDetail.company} | {experienceDetail.duration}
                         </div>
                         <div className={styles.description}>
-                          {experienceDetail.description}
+                          {/* {experienceDetail.description} */}
+                          {
+                            experienceDetail.description.split("\n").map((e) => {
+                              return <div className={styles.jump}><li className={styles.companyl}></li>
+                                <p>{e}</p></div>
+                            })
+                          }
                         </div>
                       </div>
                     );
@@ -384,7 +307,7 @@ const Design3 = () => {
               <div className={styles.experiences}>
                 {/* <div className={styles.title}>CERTIFICATES</div> */}
                 <div className={styles.back}>
-                  <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt4(e.target.value) }}>
+                  <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt4(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
                     <option className={styles.check} value={"PROJECTS"} name="PROJECTS" >PROJECTS</option>
                     <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
                     <option className={styles.check} value={"AWARDS"} name="AWARDS" >AWARDS</option>
