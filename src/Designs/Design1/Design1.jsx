@@ -183,6 +183,9 @@ const Design1 = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.resume} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`, height: `${maxheight}px` }} ref={resumeRef}>
+        <div className={styles.left} >
+          <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
       <div
         className={styles.resume}
         style={{

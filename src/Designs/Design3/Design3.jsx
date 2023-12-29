@@ -220,7 +220,7 @@ const Design3 = () => {
           <div className={styles.about}>{resume.personalInformation.about}</div>
         </div>
         <div className={styles.details}>
-          <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
+          <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}`}}>
             <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
               <div className={styles.education}>
                 {/* <div className={styles.title}>EDUCATION</div> */}
