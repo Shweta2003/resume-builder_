@@ -71,7 +71,7 @@
   color: #385848;
   font-size: 2.5rem;
   word-spacing: 10px;
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 0px 8px;
   border-bottom: 2px solid #385848;
   margin-bottom: 10px;
@@ -89,9 +89,11 @@
   word-wrap: break-word;
 }
 .description {
+  text-align: left;
+}
+
+.jump{
   display: flex;
-  text-align: justify;
-  padding-left: 15px;
 }
 
 .designation{
@@ -104,10 +106,7 @@
   margin: 30px 0px;
 }
 
-.languages,
-.frameworks,
-.tools,
-.databases {
+.languages{
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
@@ -117,7 +116,7 @@
 .xp {
   padding: 10px 0px;
   line-height: 23px;
-  font-size: 17px;
+  font-size: 15px;
 }
 .personalInfo {
   display: flex;
@@ -134,16 +133,18 @@
   font-weight: 700;
   width: 100%;
   display: flex;
-  font-size: 20px;
+  font-size: 17px;
   align-items: center;
 }
-.language, .framework, .tool, .database{
+.language{
   display: inline;
   font-weight: 300;
+  word-wrap: break-word;
+  width: 100%;
   margin-right: 20px;
   margin-bottom: 6px;
   line-height: 20px;
-  font-size: 17px;
+  font-size: 15px;
 }
 .left {
   display: flex;
@@ -180,7 +181,7 @@
 .edu {
   margin-bottom: 20px;
   line-height: 20px;
-  font-size: 17px;
+  font-size: 15px;
 }
 .education,
 .skills,
@@ -193,20 +194,20 @@
   color: #385848;
 }
 .certificateName {
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
   font-weight: 600;
   letter-spacing: 0.91px;
   line-height: 20px;
   word-wrap: break-word;
   color: #385848;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 7px;
 }
 .institute {
   font-weight: 700;
   line-height: 23px;
-  font-size: 20px;
+  font-size: 17px;
   word-wrap: break-word;
 }
 .experiences {
@@ -247,11 +248,11 @@
 .cet, .ceta, .cetak{
   align-items: flex-start;
   display: flex;
-  text-align: justify;
+  text-align: left;
   flex-direction: column;
-  width: 98%;
+  width: 100%;
   /* font-family: 'Jaldi', sans-serif; */
-  font-size: 17px;
+  font-size: 15px;
   line-height: 20px;
   font-weight: 300;
   word-break: break-all;
@@ -263,7 +264,8 @@
 
 .project{
   width: 100%;
-  font-size: 25px;
+  font-size: 20px;
+  color: #385848;
   font-weight: 700;
   /* font-family: 'Jaldi', sans-serif; */
   margin-top: 10px;
@@ -276,23 +278,24 @@
   align-items: center;
   font-size: 15px;
   word-wrap: break-word;
+  color: #385848;
 }
 
 .proc{
   width: 80%;
-  font-size:17px;
+  font-size:15px;
   font-weight: 600;
   margin-left: 35px;
   color: #385848
 }
 
 .prod{
-  width: 85%;
+  width: 90%;
   margin-top: 3px;
   margin-left: 35px;
   font-weight: 400;
-  text-align: justify;
-  color: black;
+  text-align: left;
+  color: #385848;
   margin-bottom: 10px;
 }
 
@@ -311,7 +314,7 @@
   width: 90%;
   display: flex;
   align-items: center;
-  text-align: justify;
+  text-align: left;
   font-size: 17px;
   font-weight: 500;
   color: #402b54;

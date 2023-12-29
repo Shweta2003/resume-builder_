@@ -332,7 +332,8 @@ const Header = ({
               : <Button
                 variant="contained"
                 style={{
-                  background: "none",
+                  background: `${(isSmart === true)?"white":"none"}`,
+                  color:`${(isSmart === true)?"black" : "white"}`,
                   padding: "8px 20px",
                   fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
                   border: "1px solid rgba(194, 178, 178, 0.605)",
@@ -511,7 +512,7 @@ const Header = ({
             background: "none",
             padding: "8px 20px",
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            border: "1px solid rgba(194, 178, 178, 0.605)",
+            border: `1px solid rgba(194, 178, 178, 0.605)`,
             marginRight: "35px",
             width: "max-content"
           }}

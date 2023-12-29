@@ -12,6 +12,11 @@
   box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
+.ddd{
+  width: 100%;
+  word-wrap: break-word;
+}
+
 .resume {
   flex: 1.2;
   height: max-content;
@@ -19,7 +24,7 @@
   width: 100%;
   display: flex;
   word-wrap: break-word;
-  padding: 60px 50px;
+  padding: 30px 50px;
 }
 
 .pro {
@@ -61,7 +66,7 @@
 }
 
 .about {
-  text-align: justify;
+  text-align: left;
   color: #575757;
   font-size: 17px;
   font-weight: 500;
@@ -141,10 +146,10 @@
   align-items: center;
 }
 
-.language,
-.framework,
-.tool,
-.database {
+.language{
+  width: 90%;
+  font-size: 17px;
+  word-wrap: break-word;
   margin-right: 20px;
 }
 .skills {
@@ -153,14 +158,14 @@
   width: 100%;
 }
 
-.frameworks,
-.tools,
-.languages,
-.databases {
-  width: 100%;
+.languages{
+  width: 95%;
   display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
   align-items: flex-start;
-  margin-bottom: 15px;
+  line-height: normal;
+  margin-left: 40px;
 }
 
 .horLine {
@@ -196,6 +201,10 @@
 
 }
 
+.jump{
+  display: flex;
+}
+
 .duration {
   word-wrap: break-word;
   line-height: 23px;
@@ -218,6 +227,7 @@
 }
 
 .expDetail1 {
+  width: 100%;
   padding-bottom: 20px;
 }
 
@@ -262,11 +272,9 @@
 .description,
 .desc {
   font-size: 15px;
-  margin-left: 15px;
   width: 97%;
-  text-align: justify;
+  text-align: left;
   font-weight: 500;
-  display: flex;
   height: max-content;
   padding-bottom: 10px;
 
@@ -274,8 +282,9 @@
 
 .desc {
   line-height: normal;
+  margin-left: 15px;
   display: flex;
-  width: 100%;
+  width: 98%;
   flex-direction: column;
 }
 
@@ -308,7 +317,7 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  text-align: justify;
+  text-align: left;
   margin-bottom: 30px;
   margin-top: -10px;
   font-size: 20px;
@@ -322,7 +331,7 @@
 .cetak {
   align-items: flex-start;
   display: flex;
-  text-align: justify;
+  text-align: left;
   flex-direction: column;
   width: 98%;
   font-size: 20px;
@@ -336,7 +345,8 @@
 }
 
 .check {
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .loop {

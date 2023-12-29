@@ -50,8 +50,13 @@
   align-items: stretch;
   align-self: stretch;
   padding: 30px 50px;
+  padding-top: 0px;
   background-color: #fff;
   color: #575757;
+}
+
+.jump{
+  display: flex;
 }
 
 .contacts {
@@ -81,11 +86,10 @@
   min-height: 50px;
 }
 
-.languages,
-.frameworks,
-.tools,
-.databases {
+.languages{
   display: flex;
+  width: 100%;
+  word-wrap: break-word;
   flex-wrap: wrap;
   padding: 10px;
   padding-top: 0px;
@@ -128,7 +132,7 @@
   width: 90%;
   display: flex;
   align-items: center;
-  text-align: justify;
+  text-align: left;
   font-size: 17px;
   font-weight: 500;
   color: #402b54;
@@ -156,7 +160,7 @@
   min-height: 50px;
   margin: 10px 0px;
   display: flex;
-  text-align: justify;
+  text-align: left;
   width: 100%;
   margin-bottom: 40px;
   font-size: 17px;
@@ -208,9 +212,8 @@
 .description {
   font-size: 15px;
   font-size: 15px;
-  text-align: justify;
+  text-align: left;
   font-weight: 500;
-  display: flex;
   height: max-content;
   padding-bottom: 10px;
 
@@ -226,13 +229,13 @@
   border-bottom: 2px solid #402b54;
   color: #402b54;
   background: none;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .edu {
   display: flex;
   align-items: flex-start;
-  text-align: justify;
+  text-align: left;
   font-size: 15px;
   margin-bottom: 20px;
 }
@@ -255,12 +258,11 @@
   margin-bottom: 40px;
 }
 
-.language,
-.framework,
-.tool,
-.database {
+.language{
   display: inline;
   padding: 0px 2px;
+  width: 100%;
+  word-wrap: break-word;
   font-weight: 300;
   margin-right: 20px;
   margin-bottom: 6px;
@@ -270,7 +272,7 @@
 .cet,
 .ceta {
   display: flex;
-  text-align: justify;
+  text-align: left;
   align-items: flex-start;
   color: white;
   flex-direction: column;
@@ -283,10 +285,11 @@
 .ceta {
   align-items: flex-start;
   display: flex;
-  text-align: justify;
+  text-align: left;
   flex-direction: column;
   width: 98%;
   font-size: 15px;
+  margin-bottom: 10px;
   font-weight: 500;
 }
 .temp {
@@ -336,7 +339,7 @@
   margin-top: 3px;
   margin-left: 55px;
   font-weight: 400;
-  text-align: justify;
+  text-align: left;
   color: #402b54;
 }
 

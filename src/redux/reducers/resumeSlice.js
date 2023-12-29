@@ -58,41 +58,6 @@ const initialState = {
         _id : "prog_002"
       }
     ],
-    frameworks: [
-      {
-        framework : "ReactJS",
-        _id : "frame_001"
-      },
-      {
-        framework : "ExpressJS",
-        _id : "frame_002"
-      }
-    ],
-    tools: [
-      {
-        tool : "VS Code",
-        _id : "tool_001"
-      },
-      {
-        tool : "Github",
-        _id : "tool_002"
-      }
-    ],
-    databases: [
-      {
-        database : "MySQL",
-        _id : "DB_001"
-      },{
-        database : "MongoDB",
-        _id : "DB_002"
-      }
-    ],
-    otherSkills: [
-      {
-        otherSkill : "Communication",
-        _id : "OS_001"
-      }
-    ],
   },
   projects: {
     showDetails: false,
@@ -311,38 +276,6 @@ const resumeSlice = createSlice({
         (language) => language._id !== action.payload._id
       );
     },
-    addFramework: (state, action) => {
-      state.skills.frameworks.push(action.payload);
-    },
-    deleteFramework: (state, action) => {
-      state.skills.frameworks = state.skills.frameworks.filter(
-        (framework) => framework._id !== action.payload._id
-      );
-    },
-    addTool: (state, action) => {
-      state.skills.tools.push(action.payload);
-    },
-    deleteTool: (state, action) => {
-      state.skills.tools = state.skills.tools.filter(
-        (tool) => tool._id !== action.payload._id
-      );
-    },
-    addDatabase: (state, action) => {
-      state.skills.databases.push(action.payload);
-    },
-    deleteDatabase: (state, action) => {
-      state.skills.databases = state.skills.databases.filter(
-        (database) => database._id !== action.payload._id
-      );
-    },
-    addOtherSkill: (state, action) => {
-      state.skills.otherSkills.push(action.payload);
-    },
-    deleteOtherSkill: (state, action) => {
-      state.skills.otherSkills = state.skills.otherSkills.filter(
-        (otherSkill) => otherSkill._id !== action.payload._id
-      );
-    },
     addProject: (state, action) => {
       state.projects.projectDetails.push(action.payload);
     },
@@ -476,14 +409,6 @@ export const {
   deleteExperience,
   addLanguage,
   deleteLanguage,
-  addFramework,
-  deleteFramework,
-  addTool,
-  deleteTool,
-  addDatabase,
-  deleteDatabase,
-  addOtherSkill,
-  deleteOtherSkill,
   addProject,
   addOrUpdateProjectName,
   addOrUpdateProjectTechnologies,

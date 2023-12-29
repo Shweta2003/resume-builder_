@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import { useOutletContext } from "react-router-dom";
 
 const Design2 = () => {
@@ -79,101 +77,19 @@ const Design2 = () => {
 
   // skills component
   const skills = <>
-    <div className={styles.temp}>
-      {(resume.skills.languages.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
-        : <></>
-      }
-
-      <div className={styles.languages}>
-
-        {resume.skills.languages.length > 0 && (
-          <div className={styles.subtitle}>Languages : </div>
-        )}
-        {resume.skills.languages.map((language, key) => {
-          return (
-            <div key={key} className={styles.language}>
-              {language.language}{" "}
-              {key === resume.skills.languages.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className={styles.temp}>
-      {(resume.skills.frameworks.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
-        : <></>
-      }
-      <div className={styles.frameworks}>
-        {resume.skills.frameworks.length > 0 && (
-          <div className={styles.subtitle}>Frameworks : </div>
-        )}
-        {resume.skills.frameworks.map((framework, key) => {
-          return (
-            <div key={key} className={styles.framework}>
-              {framework.framework}{" "}
-              {key === resume.skills.frameworks.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className={styles.temp}>
-      {(resume.skills.tools.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
-        : <></>
-      }
-      <div className={styles.tools}>
-        {resume.skills.tools.length > 0 && (
-          <div className={styles.subtitle}>Tools : </div>
-        )}
-        {resume.skills.tools.map((tool, key) => {
-          return (
-            <div key={key} className={styles.tool}>
-              {tool.tool}{" "}
-              {key === resume.skills.tools.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className={styles.temp}>
-      {(resume.skills.databases.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
-        : <></>
-      }
-      <div className={styles.databases}>
-        {resume.skills.databases.length > 0 && (
-          <div className={styles.subtitle}>Databases : </div>
-        )}
-        {resume.skills.databases.map((database, key) => {
-          return (
-            <div key={key} className={styles.database}>
-              {database.database}{" "}
-              {key === resume.skills.databases.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-
-    <div className={styles.temp}>
-      {(resume.skills.otherSkills.length > 0) ? <span class="material-symbols-outlined icong">circle</span>
-        : <></>
-      }
-      <div className={styles.databases}>
-        {resume.skills.otherSkills.length > 0 && (
-          <div className={styles.subtitle}>Others : </div>
-        )}
-        {resume.skills.otherSkills.map((database, key) => {
-          return (
-            <div key={key} className={styles.database}>
-              {database.otherSkill}{" "}
-              {key === resume.skills.otherSkills.length - 1 ? "" : " "}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </>
+  <div className={styles.languages}>
+    {resume.skills.languages.map((language, key) => {
+      return (
+        <div style={{display:"flex", width:"100%",wordWrap:"break-word", alignItems:"center", paddingLeft:"5px"}}>
+          <li></li><div key={key} className={styles.language}>
+          {language.language}{" "}
+          {key === resume.skills.languages.length - 1 ? "" : " "}
+        </div>
+        </div>
+      );
+    })}
+  </div>
+</>
 
   // project component
   const projects = resume.projects.projectDetails.map(
@@ -321,7 +237,13 @@ const Design2 = () => {
                       </div>
 
                       <div className={styles.description}>
-                        {experienceDetail.description}
+                        {/* {experienceDetail.description} */}
+                        {
+                          experienceDetail.description.split("\n").map((e) => {
+                            return <div className={styles.jump}><li className={styles.companyl}></li>
+                              <p>{e}</p></div>
+                          })
+                        }
                       </div>
                     </div>
                   </div>
