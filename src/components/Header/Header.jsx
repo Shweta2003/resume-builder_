@@ -274,7 +274,7 @@ const Header = ({
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
             border: "1px solid rgba(194, 178, 178, 0.605)",
             marginLeft: "10px",
-            marginRight: "520px",
+            marginRight: "510px",
             width: "max-content"
           }}
         ><span class="material-symbols-outlined icons">

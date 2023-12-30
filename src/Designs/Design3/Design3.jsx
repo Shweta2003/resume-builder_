@@ -23,7 +23,7 @@ const Design3 = () => {
       if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
         setheight(maxheight + 1090)
       }
-      else if ((leftRef.current.clientHeight + 222) < (maxheight - 1090) && (rightRef.current.clientHeight + 222) < (maxheight - 1090)) {
+      else if ((leftRef.current.clientHeight + 400) < (maxheight - 1090) && (rightRef.current.clientHeight + 400) < (maxheight - 1090)) {
         setheight(maxheight - 1090)
       }
     };
@@ -106,7 +106,15 @@ const Design3 = () => {
           </a>
           <div className={styles.proc}>{"( "}{item.technologies}{" )"}
           </div>
-          <div className={styles.prod}>{item.description}</div>
+          <div className={styles.prod}>
+            {/* {item.description} */}
+            {
+              item.description.split("\n").map((e) => {
+                return <div className={styles.jump}><li className={styles.companyl}></li>
+                  <p>{e}</p></div>
+              })
+            }
+          </div>
         </div>
       );
     }
@@ -114,19 +122,19 @@ const Design3 = () => {
 
   // skills component
   const skills = <>
-  <div className={styles.languages}>
-    {resume.skills.languages.map((language, key) => {
-      return (
-        <div style={{display:"flex", width:"100%",wordWrap:"break-word", alignItems:"center", paddingLeft:"5px"}}>
-          <li></li><div key={key} className={styles.language}>
-          {language.language}{" "}
-          {key === resume.skills.languages.length - 1 ? "" : " "}
-        </div>
-        </div>
-      );
-    })}
-  </div>
-</>
+    <div className={styles.languages}>
+      {resume.skills.languages.map((language, key) => {
+        return (
+          <div style={{ display: "flex", width: "100%", wordWrap: "break-word", alignItems: "center", paddingLeft: "5px" }}>
+            <li></li><div key={key} className={styles.language}>
+              {language.language}{" "}
+              {key === resume.skills.languages.length - 1 ? "" : " "}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </>
 
   // education component
   const educationCat = resume.education.educationDetails.map((educationDetail, key) => {
@@ -220,7 +228,7 @@ const Design3 = () => {
           <div className={styles.about}>{resume.personalInformation.about}</div>
         </div>
         <div className={styles.details}>
-          <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}`}}>
+          <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
             <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
               <div className={styles.education}>
                 {/* <div className={styles.title}>EDUCATION</div> */}

@@ -70,7 +70,7 @@
   color: #575757;
   font-size: 17px;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   word-wrap: break-word;
   margin-top: 10px;
 
@@ -120,7 +120,7 @@
   border: none;
   border-bottom: 2px solid #0379bc;
   background: none;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .subtitle {
@@ -223,12 +223,12 @@
   border-left: 3px solid rgba(22, 2, 48, 0.50);
   padding-left: 30px;
   margin-left: -8.5px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .expDetail1 {
   width: 100%;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .company,
@@ -318,7 +318,7 @@
   align-items: flex-start;
   width: 100%;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: -10px;
   font-size: 20px;
   font-weight: 700;
@@ -341,7 +341,7 @@
 }
 
 .cet {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .check {

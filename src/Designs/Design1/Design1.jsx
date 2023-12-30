@@ -96,14 +96,22 @@ const Design1 = () => {
             sx={{ height: "30px" }}
             style={{ marginLeft: "20px", marginRight: "10px" }}
           />
-          {item.github}
+          <span style={{width:"92%",wordWrap:"break-word"}}>{item.github}</span>
         </a>
         <div className={styles.proc}>
           {"("}
           {item.technologies}
           {")"}
         </div>
-        <div className={styles.prod}>{item.description}</div>
+        <div className={styles.prod}>
+          {/* {item.description} */}
+          {
+              item.description.split("\n").map((e) => {
+                return <div className={styles.jump}><li className={styles.companyl}></li>
+                  <p>{e}</p></div>
+              })
+            }
+        </div>
       </div>
     );
   });
@@ -241,7 +249,7 @@ const Design1 = () => {
                 <div className={styles.back}>
                   <select
                     className={styles.title}
-                    defaultValue={"AWARDS"}
+                    defaultValue={"CERTIFICATION"}
                     onChange={(e) => {
                       settop1(e.target.value);
                     }}
@@ -262,6 +270,13 @@ const Design1 = () => {
                     </option>
                     <option
                       className={styles.check}
+                      value={"PROJECTS"}
+                      name="PROJECTS"
+                    >
+                      PROJECTS
+                    </option>
+                    <option
+                      className={styles.check}
                       value={"EDUCATION"}
                       name="EDUCATION"
                     >
@@ -276,6 +291,8 @@ const Design1 = () => {
                     certificateCat
                   ) : top1 === "EDUCATION" ? (
                     education
+                  ) : top1 === "PROJECTS" ? (
+                    projects
                   ) : (
                     <></>
                   )}
