@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  focus: false,
   fontFamily: "",
   isSmart: false,
   personalInformation: {
@@ -135,6 +136,9 @@ const resumeSlice = createSlice({
       else{
         state.fontFamily = action.payload.fontFamily;
       }
+    },
+    toggleFocus: (state, action) => {
+      state.focus = !state.focus;
     },
     toggleIsSmart: (state, action) => {
       state.isSmart = !state.isSmart;
@@ -427,6 +431,7 @@ export const {
   changeFontFamily,
   addCommunicationLanguage,
   deleteCommunicationLanguage,
+  toggleFocus
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;

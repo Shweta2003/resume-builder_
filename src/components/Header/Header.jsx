@@ -24,7 +24,7 @@ import Design9 from "../../assets/Templates/9.png";
 import Design10 from "../../assets/Templates/10.png";
 import { getAnswerForTailered } from "../../Designs/Backend";
 import { useDispatch } from "react-redux";
-import { addAbout, addOrUpdateDescription, toggleIsSmart, changeFontFamily } from "../../redux/reducers/resumeSlice";
+import { addAbout, addOrUpdateDescription, toggleIsSmart, changeFontFamily, toggleFocus } from "../../redux/reducers/resumeSlice";
 import { useSelector } from "react-redux";
 import { Tooltip, Menu, MenuItem } from "@mui/material";
 
@@ -52,6 +52,7 @@ const Header = ({
   const handleCloseResumeModal = () => setOpen(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [prompt, setpromt] = useState(false);
 
   const resume = useSelector((state) => state.resume);
   const isSmart = resume.isSmart;
@@ -101,6 +102,26 @@ const Header = ({
     // Clear the timeout when the component unmounts
     return () => clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    // Function to toggle the button state
+    const toggleButton = () => {
+      setpromt((prev) => !prev);
+    };
+
+    // Set up the interval to toggle the button every 30 seconds
+    const toggleInterval = setInterval(toggleButton, 30000);
+
+    // After 3 seconds, turn off the button
+    const turnOffTimeout = setTimeout(() => setpromt(false), 3000);
+
+    // Clean up the intervals and timeouts when the component is unmounted
+    return () => {
+      clearInterval(toggleInterval);
+      clearTimeout(turnOffTimeout);
+    };
+  }, []);
+
   const handleJD = async () => {
     setTailorOpen(false);
     const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
@@ -158,38 +179,6 @@ const Header = ({
   </div>
 
   const ITEM_HEIGHT = 48;
-
-  const handlePrint = () => {
-    const component = resumeRef.current;
-    const contentHeight = component.clientHeight;
-    console.log(contentHeight)
-    const pageHeight = 1090; // Adjust this value based on your desired page height
-
-    let currentPage = 0;
-    let yOffset = 0;
-
-    while (yOffset < contentHeight) {
-      const newPage = document.createElement('div');
-      newPage.style.pageBreakAfter = 'always';
-      newPage.style.height = `${pageHeight}px`;
-
-      const contentClone = component.cloneNode(true);
-      contentClone.style.transform = `translate(0, -${yOffset}px)`;
-      newPage.appendChild(contentClone);
-
-      document.body.appendChild(newPage);
-      yOffset += pageHeight;
-      currentPage++;
-    }
-
-    // Now print the pages
-    window.print();
-
-    // Clean up the added pages after printing
-    for (let i = 0; i < currentPage; i++) {
-      document.body.removeChild(document.body.lastChild);
-    }
-  };
 
   const BpIcon = styled("span")(({ theme }) => ({
     borderRadius: "50%",
@@ -262,6 +251,11 @@ const Header = ({
     console.log(fileInputRef);
   };
 
+  const handleSmart = () => {
+    dispatch(toggleIsSmart(!isSmart))
+    dispatch(toggleFocus(!resume.focus))
+  }
+
   return (
     <div className={styles.header}>
       <div className={styles.resume}>
@@ -332,15 +326,15 @@ const Header = ({
               : <Button
                 variant="contained"
                 style={{
-                  background: `${(isSmart === true)?"white":"none"}`,
-                  color:`${(isSmart === true)?"black" : "white"}`,
+                  background: `${(isSmart === true) ? "white" : "none"}`,
+                  color: `${(isSmart === true) ? "black" : "white"}`,
                   padding: "8px 20px",
                   fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
                   border: "1px solid rgba(194, 178, 178, 0.605)",
                   marginRight: "20px",
                   width: "max-content",
                 }}
-                onClick={() => dispatch(toggleIsSmart(!isSmart))}
+                onClick={() => handleSmart()}
               >
                 Smart Resume
               </Button>
