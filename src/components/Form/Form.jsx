@@ -76,7 +76,9 @@ const Form = () => {
 
   const handleToggleDetails = (sectionComponent) => {
     dispatch(toggleDetails(sectionComponent));
-    dispatch(toggleFocus(!resume.focus));
+    if(sectionComponent === "experiences" && resume.focus === true){
+      dispatch(toggleFocus(!resume.focus));
+    }
   };
 
   return (

@@ -8,6 +8,34 @@
   box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
+.check{
+  color: black;
+}
+
+.projectp{
+  color: #b378e9;
+}
+
+.procp{
+  width: 95%;
+  word-wrap: break-word;
+}
+
+.prodp{
+  font-weight: 300;
+  width: 96%;
+  word-wrap: break-word;
+}
+
+.prop{
+  width: 190px;
+  margin-right: 20px;
+  color: white;
+  font-weight: 300;
+  word-wrap: break-word;
+  display: flex;
+}
+
 
 .resume {
   flex: 1.2;
@@ -46,7 +74,7 @@
 .right {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 65%;
   align-items: stretch;
   align-self: stretch;
   padding: 30px 50px;
@@ -62,6 +90,9 @@
 .contacts {
   margin-bottom: 20px;
   font-weight: 400;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .pos {
@@ -97,7 +128,7 @@
 }
 
 .title,
-.title2 {
+.title2, .title3 {
   font-size: 30px;
   padding-bottom: 10px;
   font-weight: bold;
@@ -128,7 +159,7 @@
   font-weight: bold;
   color: #ffffff;
 }
-.award {
+.award, .awardl{
   width: 90%;
   display: flex;
   align-items: center;
@@ -138,13 +169,20 @@
   color: #402b54;
 }
 
-.phone,
-.email,
-.link {
+.awardl{
+  color: white;
+  font-weight: 400;
+  margin-bottom: 8px;
+  width: 95%;
+}
+
+.phone, .link{
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
   font-size: 17px;
-  gap: 0.5rem;
+  width: 100%;
+  word-wrap: break-word;
   color: #ffffff;
 }
 
@@ -223,7 +261,7 @@
   margin: 30px 0px;
 }
 
-.title2 {
+.title2, .title3 {
   width: 100%;
   border: none;
   border-bottom: 2px solid #402b54;
@@ -288,6 +326,7 @@
   text-align: left;
   flex-direction: column;
   width: 98%;
+  word-wrap: break-word;
   font-size: 15px;
   margin-bottom: 10px;
   font-weight: 500;
@@ -325,13 +364,14 @@
   display: flex;
   align-items: center;
   font-size: 15px;
+  color: #5b3b7a;
 }
 
 .proc {
   width: 80%;
   font-size: 15px;
   margin-left: 55px;
-  color: #402b54
+  color: #402b54;
 }
 
 .prod {
@@ -343,15 +383,15 @@
   color: #402b54;
 }
 
+.title3{
+  color: white;
+  border-color: white;
+}
+
 @media print {
-  .title2 {
+  .title2, .title3 {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-  }
-
-  @page {
-    margin-top: 30px;
-    height: 100%;
   }
 }

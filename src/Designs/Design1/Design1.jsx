@@ -9,11 +9,11 @@ import { useOutletContext } from "react-router-dom";
 
 const Design1 = () => {
   const resume = useSelector((state) => state.resume);
-  const [top1, settop1] = useState("AWARDS");
+  const [top1, settop1] = useState("PROJECTS");
   const [top2, settop2] = useState("SKILLS");
-  const [top4, settop4] = useState("PROJECTS");
+  const [top4, settop4] = useState("CERTIFICATION");
   const [resumeRef, imgUrl] = useOutletContext();
-  const [maxheight, setheight] = useState(1090);
+  const [maxheight, setheight] = useState(1120);
 
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -94,7 +94,7 @@ const Design1 = () => {
         <a className={styles.pro} href={item.github}>
           <GitHubIcon
             sx={{ height: "30px" }}
-            style={{ marginLeft: "20px", marginRight: "10px" }}
+            style={{ marginLeft: "10px", marginRight: "10px" }}
           />
           <span style={{width:"92%",wordWrap:"break-word"}}>{item.github}</span>
         </a>
@@ -249,7 +249,7 @@ const Design1 = () => {
                 <div className={styles.back}>
                   <select
                     className={styles.title}
-                    defaultValue={"CERTIFICATION"}
+                    defaultValue={"PROJECTS"}
                     onChange={(e) => {
                       settop1(e.target.value);
                     }}
@@ -420,7 +420,7 @@ const Design1 = () => {
               <div className={styles.back2}>
                 <select
                   className={styles.title}
-                  defaultValue={"PROJECTS"}
+                  defaultValue={"CERTIFICATION"}
                   onChange={(e) => {
                     settop4(e.target.value);
                   }}
@@ -439,6 +439,22 @@ const Design1 = () => {
                   >
                     EDUCATION
                   </option>
+
+                  <option
+                    className={styles.check}
+                    value="AWARDS"
+                    name="AWARDS"
+                  >
+                    AWARDS
+                  </option>
+
+                  <option
+                    className={styles.check}
+                    value="CERTIFICATION"
+                    name="CERTIFICATION"
+                  >
+                    CERTIFICATION
+                  </option>
                   <option className={styles.check} value="SKILLS" name="SKILLS">
                     SKILLS
                   </option>
@@ -450,6 +466,10 @@ const Design1 = () => {
                   education
                 ) : top4 === "SKILLS" ? (
                   skills
+                  ) : top4 === "AWARDS" ? (
+                    awards
+                    ) : top4 === "CERTIFICATION" ? (
+                      certificateCat
                 ) : top4 === "PROJECTS" ? (
                   projects
                 ) : (

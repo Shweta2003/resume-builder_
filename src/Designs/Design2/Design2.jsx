@@ -8,9 +8,10 @@ import { useOutletContext } from "react-router-dom";
 
 const Design2 = () => {
   const resume = useSelector((state) => state.resume);
-  const [opt2, setopt2] = useState("PROJECTS")
+  const [opt2, setopt2] = useState("EDUCATION")
+  const [opt1, setopt1] = useState("PROJECTS")
   const [resumeRef] = useOutletContext();
-  const [maxheight, setheight] = useState(1090)
+  const [maxheight, setheight] = useState(1120)
 
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -120,10 +121,49 @@ const Design2 = () => {
     }
   )
 
+    // projectLeft component
+    const projectLeft = resume.projects.projectDetails.map(
+      (item, key) => {
+        return (
+          <div key={key} className={styles.ceta}>
+            <a
+              className={styles.projectp} href={item.link}>
+              {item.name}
+            </a>
+            <a
+              className={styles.prop} href={item.github}>
+              <GitHubIcon sx={{ height: "20px" }} style={{ marginTop: "5px", marginRight:"7px"}} /><span style={{wordWrap:"break-word", width:"87%"}}>{item.github}</span>
+            </a>
+            <div className={styles.procp}>{"( "}{item.technologies}{" )"}
+            </div>
+            <div className={styles.prodp}>
+              {/* {item.description} */}
+              {
+                item.description.split("\n").map((e) => {
+                  return <div className={styles.jump}><li className={styles.companyl}></li>
+                    <p>{e}</p></div>
+                })
+              }
+            </div>
+          </div>
+        );
+      }
+    )
+
   // awards component
   const awards = resume.additionalInformation.additionalInformationDetails.map((language, key) => {
     return (
       <div key={key} className={styles.award}>
+        <span class="material-symbols-outlined icon">bookmark
+        </span>{language.award}{" "}
+      </div>
+    );
+  })
+
+  // awardLeft component
+  const awardLeft = resume.additionalInformation.additionalInformationDetails.map((language, key) => {
+    return (
+      <div key={key} className={styles.awardl}>
         <span class="material-symbols-outlined icon">bookmark
         </span>{language.award}{" "}
       </div>
@@ -157,16 +197,16 @@ const Design2 = () => {
     <div className={styles.container}>
       <div className={styles.resume} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}`, height: `${maxheight}px` }} ref={resumeRef}>
         <div className={styles.left} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
-          <div className={styles.subleft} ref={leftRef} style={{ height: "max-content" }}>
+          <div className={styles.subleft} ref={leftRef} style={{ height: "max-content", width:"100%" }}>
             <div className={styles.contacts}>
               <div className={styles.title}>Contacts</div>
               <div className={styles.phone}>
                 <span class="material-symbols-outlined icon">phone_in_talk</span>
-                {resume.personalInformation.phone}
+                <span style={{width:"78%"}}>{resume.personalInformation.phone}</span>
               </div>
               <div className={styles.phone}>
                 <span class="material-symbols-outlined icon">drafts</span>
-                {resume.personalInformation.email}
+                <span style={{width:"78%"}}>{resume.personalInformation.email}</span>
               </div>
               <div className={styles.links}>
                 {resume.personalInformation.links.map((link) => (
@@ -185,10 +225,19 @@ const Design2 = () => {
                 ))}
               </div>
             </div>
-            <div className={styles.education}>
-              <div className={styles.title}>Education</div>
-              <div className={styles.part1}>
-                {educationCat}
+            <div className={styles.sk}>
+              <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt1(e.target.value) }}>
+                <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
+                <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+                <option className={styles.check} value="EDUCATION" name="EDUCATION">Education</option>
+              </select>
+
+              <div className={styles.comp1} style={{width:"100%"}}>
+                {(opt1 === "PROJECTS") ? projectLeft
+                :(opt1 === "EDUCATION")? educationCat
+                  : (opt1 === "AWARDS") ? awardLeft
+                    : <></>
+                }
               </div>
             </div>
             <div className={styles.skills}>
@@ -216,7 +265,7 @@ const Design2 = () => {
           </div>
         </div>
         <div className={styles.right} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : resume.fontFamily}` }}>
-          <div className={styles.subright} style={{ height: "max-content" }} ref={rightRef}>
+          <div className={styles.subright} style={{ height: "max-content", width:"100%" }} ref={rightRef}>
             <div className={styles.personalInfo}>
               <div className={styles.name}>{resume.personalInformation.name}</div>
               <div className={styles.jobTitle}>
@@ -260,14 +309,16 @@ const Design2 = () => {
             </div>
 
             <div className={styles.part2}>
-              <select className={styles.title2} defaultValue={"PROJECTS"} onChange={(e) => { setopt2(e.target.value) }}>
+              <select className={styles.title2} defaultValue={"EDUCATION"} onChange={(e) => { setopt2(e.target.value) }}>
                 <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
                 <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+                <option className={styles.check} value="EDUCATION" name="EDUCATION">Education</option>
               </select>
 
               <div className={styles.comp1}>
                 {(opt2 === "PROJECTS") ? projects
                   : (opt2 === "AWARDS") ? awards
+                  : (opt2 === "EDUCATION") ? educationCat
                     : <></>
                 }
               </div>

@@ -365,9 +365,4 @@
     -webkit-appearance: none;
     -moz-appearance: none;
   }
-
-  @page{
-    margin-top: 30px;
-    height: 100%;
-  }
 }

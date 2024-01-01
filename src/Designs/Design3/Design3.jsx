@@ -11,7 +11,7 @@ import { useOutletContext } from "react-router-dom";
 const Design3 = () => {
   const resume = useSelector((state) => state.resume);
   const [resumeRef] = useOutletContext();
-  const [maxheight, setheight] = useState(1090)
+  const [maxheight, setheight] = useState(1120)
 
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -23,7 +23,7 @@ const Design3 = () => {
       if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
         setheight(maxheight + 1090)
       }
-      else if ((leftRef.current.clientHeight + 400) < (maxheight - 1090) && (rightRef.current.clientHeight + 400) < (maxheight - 1090)) {
+      else if ((leftRef.current.clientHeight + 370) < (maxheight - 1090) && (rightRef.current.clientHeight + 370) < (maxheight - 1090)) {
         setheight(maxheight - 1090)
       }
     };
@@ -54,10 +54,10 @@ const Design3 = () => {
 
   }, [resumeRef, maxheight, leftRef, rightRef]);
 
-  const [opt1, setopt1] = useState("EDUCATION")
+  const [opt1, setopt1] = useState("PROJECTS")
   const [opt2, setopt2] = useState("SKILLS")
   const [opt3, setopt3] = useState("CERTIFICATION")
-  const [opt4, setopt4] = useState("PROJECTS")
+  const [opt4, setopt4] = useState("EDUCATION")
 
   // certificates component
   const certificateCat = resume.certificates.certificatesDetails.map(
@@ -233,7 +233,7 @@ const Design3 = () => {
               <div className={styles.education}>
                 {/* <div className={styles.title}>EDUCATION</div> */}
                 <div className={styles.back}>
-                  <select className={styles.title3} defaultValue={"EDUCATION"} onChange={(e) => { setopt1(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
+                  <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt1(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
                     <option className={styles.check} value={"PROJECTS"} name="PROJECTS" >PROJECTS</option>
                     <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
                     <option className={styles.check} value={"EDUCATION"} name="EDUCATION" >EDUCATION</option>
@@ -315,17 +315,19 @@ const Design3 = () => {
               <div className={styles.experiences}>
                 {/* <div className={styles.title}>CERTIFICATES</div> */}
                 <div className={styles.back}>
-                  <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt4(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
+                  <select className={styles.title3} defaultValue={"EDUCATION"} onChange={(e) => { setopt4(e.target.value) }} style={{ fontFamily: `${(resume.fontFamily === "") ? "'Arvo', serif" : resume.fontFamily}` }}>
                     <option className={styles.check} value={"PROJECTS"} name="PROJECTS" >PROJECTS</option>
                     <option className={styles.check} value={"CERTIFICATION"} name="CERTIFICATION" >CERTIFICATION</option>
                     <option className={styles.check} value={"AWARDS"} name="AWARDS" >AWARDS</option>
+                    <option className={styles.check} value={"EDUCATION"} name="EDUCATION" >EDUCATION</option>
                   </select>
                 </div>
                 <>
                   {(opt4 === "PROJECTS") ? projects
                     : (opt4 === "CERTIFICATION") ? certificateCat
-                      : (opt4 === "AWARDS") ? awards
-                        : <></>
+                      : (opt4 === "EDUCATION") ? educationCat
+                        : (opt4 === "AWARDS") ? awards
+                          : <></>
                   }
                 </>
               </div>
