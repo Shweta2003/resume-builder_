@@ -20,19 +20,19 @@ const Design4 = () => {
 
   // skills component
   const skills = <>
-  <div className={styles.languages}>
-    {resume.skills.languages.map((language, key) => {
-      return (
-        <div style={{display:"flex", width:"50%",wordWrap:"break-word", alignItems:"center", paddingLeft:"5px", marginBottom:"2px"}}>
-          <li></li><div key={key} className={styles.language}>
-          {language.language}{" "}
-          {key === resume.skills.languages.length - 1 ? "" : " "}
-        </div>
-        </div>
-      );
-    })}
-  </div>
-</>
+    <div className={styles.languages}>
+      {resume.skills.languages.map((language, key) => {
+        return (
+          <div style={{ display: "flex", width: "50%", wordWrap: "break-word", alignItems: "center", paddingLeft: "5px", marginBottom: "2px" }}>
+            <li></li><div key={key} className={styles.language}>
+              {language.language}{" "}
+              {key === resume.skills.languages.length - 1 ? "" : " "}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </>
 
   // awards component
   const awards = resume.additionalInformation.additionalInformationDetails.map((language, key) => {
@@ -103,7 +103,13 @@ const Design4 = () => {
           </div>
           <div className={styles.desc}>
             <div className={styles.ddd}>
-              {item.description}
+              {/* {item.description} */}
+              {
+                item.description.split("\n").map((e) => {
+                  return <div className={styles.jump}><li className={styles.companyl}></li>
+                    <p>{e}</p></div>
+                })
+              }
             </div>
             <a
               className={styles.pro} href={item.github}>
@@ -206,11 +212,11 @@ const Design4 = () => {
                   <div className={styles.description}>
                     {/* {experienceDetail.description} */}
                     {
-                          experienceDetail.description.split("\n").map((e) => {
-                            return <div className={styles.jump}><li className={styles.companyl}></li>
-                              <p>{e}</p></div>
-                          })
-                        }
+                      experienceDetail.description.split("\n").map((e) => {
+                        return <div className={styles.jump}><li className={styles.companyl}></li>
+                          <p>{e}</p></div>
+                      })
+                    }
                   </div>
                 </div>
               </div>

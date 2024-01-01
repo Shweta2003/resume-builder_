@@ -97,7 +97,7 @@
 }
 
 .designation{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .contacts {
@@ -125,7 +125,7 @@
 .details {
   display: flex;
   height: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px 50px;
   justify-content: space-between;
 }
@@ -179,7 +179,7 @@
   align-self: stretch;
 }
 .edu {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 20px;
   font-size: 15px;
 }
@@ -189,7 +189,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   min-height: 50px;
   color: #385848;
 }
@@ -221,7 +221,7 @@
   min-height: 50px;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom:10px;
   color: #575757;
   font-weight: 400;
   width: 100%;
@@ -333,10 +333,6 @@
     appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  }
-  @page{
-    margin-top: 30px;
-    height: 100%;
   }
 }
 

@@ -74,11 +74,11 @@
 .comp1 {
   width: 90%;
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .comp2 {
   margin-left: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   min-height: 50px;
 }
 .details {
@@ -273,7 +273,7 @@
   align-items: flex-start;
   text-align: left;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .duration {
   font-weight: 300;
@@ -359,6 +359,8 @@
   margin-left: 20px;
   padding-right: 30px;
   display: flex;
+  word-wrap: break-word;
+  width: 87%;
   margin-top: -20px;
   align-items: center;
   font-size: 14px;
@@ -372,9 +374,9 @@
 }
 
 .prod {
-  width: 83%;
+  width: 80%;
   margin-left: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .check {
@@ -394,9 +396,13 @@
     -moz-appearance: none;
   }
 
+  @page :first {
+    margin: 0px 0px 0px 0px;
+  }
+  
+  /* Set margins for subsequent pages */
   @page {
-    margin-top: 30px;
-    height: 100%;
+    margin: 30px 0px 0px 0px;
   }
 
 }
