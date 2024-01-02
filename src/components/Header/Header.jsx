@@ -252,8 +252,14 @@ const Header = ({
   };
 
   const handleSmart = () => {
-    dispatch(toggleIsSmart(!isSmart))
-    dispatch(toggleFocus(!resume.focus))
+    if(isSmart === true){
+      dispatch(toggleIsSmart(false))
+    }
+    else{
+      dispatch(toggleIsSmart(!isSmart))
+      dispatch(toggleFocus(true))
+    }
+    
   }
 
   return (

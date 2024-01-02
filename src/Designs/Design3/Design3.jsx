@@ -17,13 +17,11 @@ const Design3 = () => {
   const rightRef = useRef(null);
 
   useEffect(() => {
-    console.log(leftRef.current.clientHeight)
-
     const handleResize = (entries) => {
-      if (resumeRef.current.scrollHeight > resumeRef.current.clientHeight) {
+      if (resumeRef.current?.scrollHeight > resumeRef.current?.clientHeight) {
         setheight(maxheight + 1090)
       }
-      else if ((leftRef.current.clientHeight + 370) < (maxheight - 1090) && (rightRef.current.clientHeight + 370) < (maxheight - 1090)) {
+      else if ((leftRef.current?.clientHeight + 370) < (maxheight - 1090) && (rightRef.current?.clientHeight + 370) < (maxheight - 1090)) {
         setheight(maxheight - 1090)
       }
     };
