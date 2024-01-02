@@ -36,9 +36,9 @@ const PersonalInformation = () => {
       const enhancedInput = await getAnswer(inputState, maxTokens);
 
       dispatch(
-        addAbout({
-          description: enhancedInput.evaluation,
-        })
+        addAbout(
+          enhancedInput.evaluation,
+        )
       );
     } finally {
       setIsLoading(false);
@@ -142,13 +142,13 @@ const PersonalInformation = () => {
             onClick={() => {
               handleEnhance(resume.personalInformation.about, 100);
             }}
-            className={`${styles.enhance} ${(isLoading === true)?styles.load : ""}`}
+            className={`${styles.enhance} ${(isLoading === true) ? styles.load : ""}`}
           >
             {isLoading ? (
               <>Loading...
-              <span class="material-symbols-outlined editl">
-progress_activity
-</span></>
+                <span class="material-symbols-outlined editl">
+                  progress_activity
+                </span></>
             ) : (
               <>
                 Enhance{" "}

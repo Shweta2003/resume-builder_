@@ -49,7 +49,6 @@ const Experience = () => {
     try {
       setIsLoading(true);
       setfocus(inputStateId)
-
       const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
 
       dispatch(
@@ -176,7 +175,7 @@ const Experience = () => {
                     handleEnhance(
                       experienceDetail._id,
                       resume.experiences.experienceDetails.description,
-                      100
+                      200
                     );
                   }}
                 >
