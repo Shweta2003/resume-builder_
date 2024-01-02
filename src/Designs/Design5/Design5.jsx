@@ -1,6 +1,6 @@
 import classes from "./Design5.module.css";
 import { useSelector } from "react-redux";
-import pic from '../../assets/Templates/mypic.png'
+import pic from '../../assets/gentle.png'
 import { useState } from "react";
 
 const Design5 = () => {

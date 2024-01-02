@@ -1,6 +1,6 @@
 import styles from "./PersonalInformation.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   addEmail,
   addJobTitle,
@@ -22,13 +22,27 @@ const PersonalInformation = () => {
   const dispatch = useDispatch();
   const links = resume.personalInformation.links;
 
+  const [isLoading, setIsLoading] = useState(false);
   const handleAddLink = () => {
     dispatch(addLink({ _id: uuidv4(), name: "", url: "" }));
   };
 
   const handleEnhance = async (inputState, maxTokens) => {
-    const enhancedInput = await getAnswer(inputState, maxTokens);
-    dispatch(addAbout(enhancedInput.evaluation));
+    // const enhancedInput = await getAnswer(inputState, maxTokens);
+    // dispatch(addAbout(enhancedInput.evaluation));
+    try {
+      setIsLoading(true);
+
+      const enhancedInput = await getAnswer(inputState, maxTokens);
+
+      dispatch(
+        addAbout({
+          description: enhancedInput.evaluation,
+        })
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => { }, [links]);
@@ -124,14 +138,24 @@ const PersonalInformation = () => {
           {resume.personalInformation.about}
         </textarea>
         <div className={styles.adjust}>
-        <button
-          onClick={() => {
-            handleEnhance(resume.personalInformation.about, 100);
-          }}
-          className={styles.enhance}
-        >
-          Enhance
-        </button>
+          <button
+            onClick={() => {
+              handleEnhance(resume.personalInformation.about, 100);
+            }}
+            className={`${styles.enhance} ${(isLoading === true)?styles.load : ""}`}
+          >
+            {isLoading ? (
+              <>Loading...
+              <span class="material-symbols-outlined editl">
+progress_activity
+</span></>
+            ) : (
+              <>
+                Enhance{" "}
+                <span className="material-symbols-outlined edit">edit_note</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>
