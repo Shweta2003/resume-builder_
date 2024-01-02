@@ -17,6 +17,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const Experience = () => {
   const [smartAnswer1, setSmartAnswer1] = useState("");
   const [smartAnswer2, setSmartAnswer2] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [focused, setfocus] = useState(null);
 
   const dispatch = useDispatch();
   const resume = useSelector((state) => state.resume);
@@ -36,13 +38,29 @@ const Experience = () => {
   };
 
   const handleEnhance = async (inputStateId, inputState, maxTokens) => {
-    const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
-    dispatch(
-      addOrUpdateDescription({
-        description: enhancedInput.evaluation,
-        _id: inputStateId,
-      })
-    );
+    // const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
+    // dispatch(
+    //   addOrUpdateDescription({
+    //     description: enhancedInput.evaluation,
+    //     _id: inputStateId,
+    //   })
+    // );
+
+    try {
+      setIsLoading(true);
+      setfocus(inputStateId)
+
+      const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
+
+      dispatch(
+        addOrUpdateDescription({
+          description: enhancedInput.evaluation,
+          _id: inputStateId,
+        })
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => { }, [experienceDetails]);
@@ -86,7 +104,7 @@ const Experience = () => {
               <input
                 className={styles.inp}
                 type="text"
-                style={{width:"46.5%"}}
+                style={{ width: "46.5%" }}
                 placeholder="Duration"
                 value={experienceDetail.duration}
                 onChange={(e) => {
@@ -153,7 +171,7 @@ const Experience = () => {
 
               <div className={styles.adjust}>
                 <button
-                  className={styles.enhance}
+                  className={`${styles.enhance} ${(isLoading && focused === experienceDetail._id) ? styles.load : ""}`}
                   onClick={() => {
                     handleEnhance(
                       experienceDetail._id,
@@ -162,10 +180,17 @@ const Experience = () => {
                     );
                   }}
                 >
-                  Enhance{" "}
-                  <span className="material-symbols-outlined edit">
-                    edit_note
-                  </span>
+                  {(isLoading && focused === experienceDetail._id) ? (
+                    <>Loading...
+                      <span class="material-symbols-outlined editl">
+                        progress_activity
+                      </span></>
+                  ) : (
+                    <>
+                      Enhance{" "}
+                      <span className="material-symbols-outlined edit">edit_note</span>
+                    </>
+                  )}
                 </button>
                 <button
                   className={styles.delete}

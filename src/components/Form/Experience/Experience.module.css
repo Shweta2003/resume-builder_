@@ -75,6 +75,12 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
+  width: 150px;
+  cursor: pointer;
+}
+
+.load{
+  background-color: #8cb7e2;
 }
 
 .inp{

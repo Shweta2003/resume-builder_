@@ -56,7 +56,7 @@ body{
     margin-top: 0px;
 }
 
-.edit{
+.edit, .editl{
     margin-left: 10px;
     height: 28px;
 }
@@ -70,3 +70,20 @@ body{
     border-radius: 50%;
     color: white;
 }
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .editl{
+    animation: rotate 1s linear infinite;
+    width: 28px;
+    height: 24px;
+    margin: 2px 0px;
+    margin-left: 8px;
+  }
