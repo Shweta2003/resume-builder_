@@ -12,6 +12,7 @@ const Design1 = () => {
   const [top1, settop1] = useState("PROJECTS");
   const [top2, settop2] = useState("SKILLS");
   const [top4, settop4] = useState("CERTIFICATION");
+  const [top3, settop3] = useState("EDUCATION")
   const [resumeRef, imgUrl] = useOutletContext();
   const [maxheight, setheight] = useState(1120);
 
@@ -84,16 +85,10 @@ const Design1 = () => {
     return (
       <div key={key} className={styles.ceta}>
         <a className={styles.project} href={item.link}>
-          <span class="material-symbols-outlined icon">
-            radio_button_partial
-          </span>
           {item.name}
         </a>
         <a className={styles.pro} href={item.github}>
-          <GitHubIcon
-            sx={{ height: "30px" }}
-            style={{ marginLeft: "10px", marginRight: "10px" }}
-          />
+          <span class="material-symbols-outlined icon" >link</span>
           <span style={{width:"92%",wordWrap:"break-word"}}>{item.github}</span>
         </a>
         <div className={styles.proc}>
@@ -206,7 +201,7 @@ const Design1 = () => {
                   </div>
                   <div className={styles.email}>
                     <span class="material-symbols-outlined iconk">drafts</span>
-                    {resume.personalInformation.email}
+                    <span style={{width:"85%", wordWrap:"break-word"}}>{resume.personalInformation.email}</span>
                   </div>
                   <div className={styles.links}>
                     {resume.personalInformation.links.map((link) => (
@@ -218,27 +213,86 @@ const Design1 = () => {
                         {link.name === "GitHub" ? (
                           <GitHubIcon
                             sx={{ height: "30px" }}
-                            style={{ marginLeft: "20px", marginRight: "30px" }}
+                            style={{marginRight: "30px" }}
                           />
                         ) : link.name === "LinkedIn" ? (
                           <LinkedInIcon
                             sx={{ height: "30px" }}
-                            style={{ marginLeft: "20px", marginRight: "30px" }}
+                            style={{ marginRight: "30px" }}
                           />
                         ) : link.name === "Portfolio" ? (
                           <CoPresentIcon
                             sx={{ height: "30px" }}
-                            style={{ marginLeft: "20px", marginRight: "30px" }}
+                            style={{ marginRight: "30px" }}
                           />
                         ) : (
                           ""
                         )}
-                        {link.url}
+                        <span style={{width:"85%", wordWrap:"break-word"}}>{link.url}</span>
                       </a>
                     ))}
                   </div>
                 </div>
               </div>
+
+              <div
+                className={`${styles.certificates} ${styles.certificates_break}`}
+              >
+                {/* get first component */}
+                {/* <div className={styles.title}>EDUCATION</div> */}
+                <div className={styles.back}>
+                  <select
+                    className={styles.title}
+                    defaultValue={"EDUCATION"}
+                    onChange={(e) => {
+                      settop3(e.target.value);
+                    }}
+                  >
+                    <option
+                      className={styles.check}
+                      value={"AWARDS"}
+                      name="AWARDS"
+                    >
+                      AWARDS
+                    </option>
+                    <option
+                      className={styles.check}
+                      value={"CERTIFICATION"}
+                      name="CERTIFICATION"
+                    >
+                      CERTIFICATION
+                    </option>
+                    <option
+                      className={styles.check}
+                      value={"PROJECTS"}
+                      name="PROJECTS"
+                    >
+                      PROJECTS
+                    </option>
+                    <option
+                      className={styles.check}
+                      value={"EDUCATION"}
+                      name="EDUCATION"
+                    >
+                      EDUCATION
+                    </option>
+                  </select>
+                </div>
+                <div className={styles.comp1}>
+                  {top3 === "AWARDS" ? (
+                    awards
+                  ) : top3 === "CERTIFICATION" ? (
+                    certificateCat
+                  ) : top3 === "EDUCATION" ? (
+                    education
+                  ) : top3 === "PROJECTS" ? (
+                    projects
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+
               <div
                 className={`${styles.certificates} ${styles.certificates_break}`}
               >
