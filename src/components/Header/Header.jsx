@@ -252,6 +252,9 @@ const Header = ({
   };
 
   const handleSmart = () => {
+    if(isBlinking === true){
+      setIsBlinking(false)
+    }
     if(isSmart === true){
       dispatch(toggleIsSmart(false))
     }
@@ -328,7 +331,7 @@ const Header = ({
       <div>
         <Tooltip title={info}>
           {
-            (isBlinking === true) ? <button className={styles.blinking}>Smart Resume</button>
+            (isBlinking === true) ? <button className={styles.blinking} onClick={() => handleSmart()}>Smart Resume</button>
               : <Button
                 variant="contained"
                 style={{
