@@ -48,7 +48,9 @@ export const getAnswerForTailered = async (
     {
       role: "system",
 
-      content: `Give the response in professional language. I want to apply for the ${prompt} position. Give brief and consice response, to modify the ${section} section in my resume. The destails provided are ${already}. Help me enhance it according to the job description. Give me brief description about this JD in not more than ${maxTokens}.`,
+      // content: `Give the response in professional language. I want to apply for the ${prompt} position. Give brief and consice response, to modify the ${section} section in my resume. The destails provided are ${already}. Help me enhance it according to the job description. Give me brief description about this JD in not more than ${maxTokens}.`,
+
+      content: `Based on the user's resume and the provided job description, create a tailored resume. Adjust the user's experiences, and skills to align closely with the requirements and preferences stated in the job description. Ensure that the tailored resume is coherent, professionally formatted, and emphasizes the most relevant aspects of the user's background in relation to the job in maximum ${maxTokens} number of words. Please modify the ${section} section of resume from ${already} for the position of ${prompt}`
     },
   ];
 

@@ -71,14 +71,6 @@ const initialState = {
         technologies : "Java | android studio | firebase",
         _id : "project_001"
       },
-      {
-        description : "Search for menu from different shops Order food online and then go and pickup food on time displayed to avoid queuing.\nLearned how to do surveys, communicating with stakeholders.",
-        github : "https://github.com/Shweta2003/Street-Treat",
-        link : "https://github.com/Shweta2003/Street-Treat",
-        name : "Street Treat",
-        technologies : "Kotlin | Jetpack Compose | android studio",
-        _id : "project_002"
-      },
     ],
   },
   certificates: {

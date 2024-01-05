@@ -59,7 +59,6 @@
   color: #279ce0;
   font-size: 25px;
   margin: 6px 0px;
-  margin-bottom: -15px;
   font-weight: 700;
   letter-spacing: 2px;
   word-wrap: break-word;
@@ -72,7 +71,7 @@
   font-weight: 500;
   margin-bottom: 10px;
   word-wrap: break-word;
-  margin-top: 10px;
+  margin-top: -3px;
 
 }
 

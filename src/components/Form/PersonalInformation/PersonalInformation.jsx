@@ -129,14 +129,11 @@ const PersonalInformation = () => {
           className={styles.textarea}
           onChange={(e) => dispatch(addAbout(e.target.value))}
           name=""
-          value={resume.personalInformation.about}
           id=""
           cols="40"
           rows="10"
           placeholder="Dedicated software engineer with [X years] of experience in designing and implementing scalable and efficient solutions.Proficient in JavaScript and passionate about leveraging innovative technologies to solve complex problems. Committed to continuous learning to deliver high-quality software solutions."
-        >
-          {resume.personalInformation.about}
-        </textarea>
+        />
         <div className={styles.adjust}>
           <button
             onClick={() => {

@@ -8,8 +8,10 @@ import { useOutletContext } from "react-router-dom";
 
 const Design2 = () => {
   const resume = useSelector((state) => state.resume);
-  const [opt2, setopt2] = useState("EDUCATION")
-  const [opt1, setopt1] = useState("PROJECTS")
+  const [opt2, setopt2] = useState("CERTIFICATION")
+  const [opt3, setopt3] = useState("PROJECTS")
+  const [opt1, setopt1] = useState("EDUCATION")
+  const [opt4, setopt4] = useState("SKILLS")
   const [resumeRef] = useOutletContext();
   const [maxheight, setheight] = useState(1120)
 
@@ -190,6 +192,28 @@ const Design2 = () => {
     }
   )
 
+      // certificatesleft component
+  const certificateLeft = resume.certificates.certificatesDetails.map(
+    (certificateDetail, key) => {
+      return (
+        <div key={key} className={styles.temp}>
+          <span class="material-symbols-outlined icong" style={{fontSize:"15px"}}>circle</span>
+          <div className={styles.cet} >
+            <a
+              className={styles.certificateName} style={{color:"black"}}
+              href={certificateDetail.link}
+            >
+              {certificateDetail.name}
+            </a>
+            <div className={styles.issuer}>
+              {certificateDetail.authority}
+            </div>
+          </div>
+        </div>
+      );
+    }
+  )
+
 
   return (
     <div className={styles.container}>
@@ -223,33 +247,77 @@ const Design2 = () => {
                 ))}
               </div>
             </div>
-            <div className={styles.sk}>
-              <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt1(e.target.value) }}>
+            <div className={styles.sk} style={{marginBottom:"20px"}}>
+              <select className={styles.title3} defaultValue={"EDUCATION"} onChange={(e) => { setopt1(e.target.value) }}>
                 <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
                 <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
                 <option className={styles.check} value="EDUCATION" name="EDUCATION">Education</option>
+                <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">Certifications</option>
               </select>
 
               <div className={styles.comp1} style={{width:"100%"}}>
                 {(opt1 === "PROJECTS") ? projectLeft
                 :(opt1 === "EDUCATION")? educationCat
                   : (opt1 === "AWARDS") ? awardLeft
+                  : (opt1 === "CERTIFICATION") ? certificateCat
                     : <></>
                 }
               </div>
             </div>
-            <div className={styles.skills}>
+            {/* <div className={styles.skills}>
               <div className={styles.title}>Skills</div>
               <div className={styles.part1}>
                 {skills}
               </div>
+            </div> */}
+
+<div className={styles.sk}>
+              <select className={styles.title3} defaultValue={"PROJECTS"} onChange={(e) => { setopt3(e.target.value) }}>
+                <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
+                <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+                <option className={styles.check} value="EDUCATION" name="EDUCATION">Education</option>
+                <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">Certification</option>
+                <option className={styles.check} value="SKILLS" name="SKILLS">Skills</option>
+              </select>
+
+              <div className={styles.comp1} style={{width:"100%"}}>
+                {(opt3 === "PROJECTS") ? projectLeft
+                :(opt3 === "EDUCATION")? educationCat
+                  : (opt3 === "AWARDS") ? awardLeft
+                  : (opt3 === "SKILLS") ? certificateCat
+                  : (opt3 === "SKILLS") ? skills
+                    : <></>
+                }
+              </div>
             </div>
-            <div className={styles.certifications}>
+
+            {/* <div className={styles.certifications}>
               <div className={styles.title}>Certifications</div>
               <div className={styles.part1}>
                 {certificateCat}
               </div>
+            </div> */}
+
+<div className={styles.sk}>
+              <select className={styles.title3} defaultValue={"SKILLS"} onChange={(e) => { setopt4(e.target.value) }}>
+                <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
+                <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+                <option className={styles.check} value="EDUCATION" name="EDUCATION">Education</option>
+                <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">Certification</option>
+                <option className={styles.check} value="SKILLS" name="SKILLS">Skills</option>
+              </select>
+
+              <div className={styles.comp1} style={{width:"100%"}}>
+                {(opt4 === "PROJECTS") ? projectLeft
+                :(opt4 === "EDUCATION")? educationCat
+                : (opt4 === "SKILLS") ? certificateCat
+                  : (opt4 === "AWARDS") ? awardLeft
+                  : (opt4 === "SKILLS") ? skills
+                    : <></>
+                }
+              </div>
             </div>
+
             <div className={styles.languagesCom}>
               <div className={styles.title}>Languages</div>
               <div className={styles.part1}>
@@ -307,9 +375,11 @@ const Design2 = () => {
             </div>
 
             <div className={styles.part2}>
-              <select className={styles.title2} defaultValue={"EDUCATION"} onChange={(e) => { setopt2(e.target.value) }}>
+              <select className={styles.title2} defaultValue={"CERTIFICATION"} onChange={(e) => { setopt2(e.target.value) }}>
                 <option className={styles.check} value="PROJECTS" name="PROJECTS">Projects</option>
                 <option className={styles.check} value="AWARDS" name="AWARDS">Awards</option>
+                <option className={styles.check} value="SKILLS" name="SKILLS">Skills</option>
+                <option className={styles.check} value="CERTIFICATION" name="CERTIFICATION">Certifications</option>
                 <option className={styles.check} value="EDUCATION" name="EDUCATION">Education</option>
               </select>
 
@@ -317,6 +387,8 @@ const Design2 = () => {
                 {(opt2 === "PROJECTS") ? projects
                   : (opt2 === "AWARDS") ? awards
                   : (opt2 === "EDUCATION") ? educationCat
+                  : (opt2 === "CERTIFICATION") ? certificateLeft
+                  : (opt2 === "SKILLS") ? skills
                     : <></>
                 }
               </div>
