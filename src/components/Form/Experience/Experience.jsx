@@ -37,7 +37,7 @@ const Experience = () => {
     );
   };
 
-  const handleEnhance = async (inputStateId, inputState, maxTokens) => {
+  const handleEnhance = async (inputStateId, inputState) => {
     // const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
     // dispatch(
     //   addOrUpdateDescription({
@@ -49,7 +49,14 @@ const Experience = () => {
     try {
       setIsLoading(true);
       setfocus(inputStateId)
-      const enhancedInput = await getAnswerForExperience(inputState, maxTokens);
+      let enhancedInput = "";
+      if (isSmart === true) {
+        const inp = "Most important tasks which I did in the tenure : " + smartAnswer1 + "\nImpact of each of the above tasks : " + smartAnswer2;
+        enhancedInput = await getAnswerForExperience(inp);
+      }
+      else {
+        enhancedInput = await getAnswerForExperience(inputState);
+      }
 
       dispatch(
         addOrUpdateDescription({
@@ -174,8 +181,7 @@ const Experience = () => {
                   onClick={() => {
                     handleEnhance(
                       experienceDetail._id,
-                      resume.experiences.experienceDetails.description,
-                      200
+                      experienceDetail.description,
                     );
                   }}
                 >

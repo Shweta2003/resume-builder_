@@ -53,6 +53,7 @@ const Header = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [prompt, setpromt] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const resume = useSelector((state) => state.resume);
   const isSmart = resume.isSmart;
@@ -123,27 +124,29 @@ const Header = ({
   }, []);
 
   const handleJD = async () => {
-    setTailorOpen(false);
-    const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, 70, "profile");
-    dispatch(addAbout(enhancedAbout.evaluation));
-
-    console.log(resume)
-
-    resume.experiences.experienceDetails.map(async (e) => {
-      const enhancedExperience = await getAnswerForTailered(
-        JD,
-        e.description,
-        100,
-        "experience"
-      );
-
-      dispatch(
-        addOrUpdateDescription({
-          description: enhancedExperience.evaluation,
-          _id: e._id,
+    try {
+      setTailorOpen(false);
+      setLoading(true);
+      const enhancedAbout = await getAnswerForTailered(JD, resume.personalInformation.about, resume.personalInformation.jobTitle);
+      dispatch(addAbout(enhancedAbout.evaluation));
+      await Promise.all(
+        resume.experiences.experienceDetails.map(async (e) => {
+          const enhancedExperience = await getAnswerForTailered(
+            JD,
+            e.description,
+            e.jobTitle
+          );
+          dispatch(
+            addOrUpdateDescription({
+              description: enhancedExperience.evaluation,
+              _id: e._id,
+            })
+          );
         })
-      );
-    })
+      )
+    } finally {
+      setLoading(false)
+    }
   };
 
   const options = ["Default", "Roboto", "Ubuntu", "Nunito", "Poppins", "Raleway", "Arvo", "Jaldi"];
@@ -242,31 +245,36 @@ const Header = ({
     const file = e.target.files[0];
     if (file) {
       setImgUrl(URL.createObjectURL(file));
-      console.log(URL.createObjectURL(file));
     }
   };
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
-    console.log(fileInputRef);
   };
 
   const handleSmart = () => {
-    if(isBlinking === true){
+    if (isBlinking === true) {
       setIsBlinking(false)
     }
-    if(isSmart === true){
+    if (isSmart === true) {
       dispatch(toggleIsSmart(false))
     }
-    else{
+    else {
       dispatch(toggleIsSmart(!isSmart))
       dispatch(toggleFocus(true))
     }
-    
+
   }
 
   return (
     <div className={styles.header}>
+      {
+        (loading === true) ? <div className={styles.loading}>
+        <span class="material-symbols-outlined editk">
+          progress_activity
+        </span></div>
+          : <></>
+      }
       <div className={styles.resume}>
         <Button
           onClick={handleOpenResumeModal}

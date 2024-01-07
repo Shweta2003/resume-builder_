@@ -137,7 +137,7 @@ const PersonalInformation = () => {
         <div className={styles.adjust}>
           <button
             onClick={() => {
-              handleEnhance(resume.personalInformation.about, 100);
+              handleEnhance(resume.personalInformation.about, "about");
             }}
             className={`${styles.enhance} ${(isLoading === true) ? styles.load : ""}`}
           >
