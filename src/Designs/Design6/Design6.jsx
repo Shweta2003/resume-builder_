@@ -1,531 +1,372 @@
-import style from "./Design6.module.css";
-import phone from "../../assets/phone.svg";
-import email from "../../assets/email.svg";
-import address from "../../assets/address.svg";
-import { useRef, useState, useEffect } from "react";
-import Slider from "@mui/material/Slider";
-import Box from "@mui/material/Box";
-import { getAnswer } from "../Backend";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useRef } from "react";
+import { useSelector } from "react-redux";
+import styles from "./Design6.module.css";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
+import { useOutletContext } from "react-router-dom";
 
 const Design6 = () => {
-  const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const pdfRef = useRef();
-  const [img, setImg] = useState(null);
-  const [fontSizeOption, setFontSizeOption] = useState("medium");
-  const [fontStyleOption, setFontStyleOption] = useState("normal");
-  const [contentEditable, setContentEditable] = useState(false);
+  const resume = useSelector((state) => state.resume);
+  const [opt2, setopt2] = useState("EDUCATION");
+  const [opt1, setopt1] = useState("PROJECTS");
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  const [resumeRef] = useOutletContext();
+  const [maxheight, setheight] = useState(1120);
 
-  const dispatch = useDispatch();
-
-  const fontSizeInput = {
-    fontSize:
-      fontSizeOption === "small"
-        ? "12px"
-        : fontSizeOption === "large"
-        ? "24px"
-        : "20px",
-  };
-  const fontSizeName = {
-    fontSize:
-      fontSizeOption === "small"
-        ? "25px"
-        : fontSizeOption === "large"
-        ? "40px"
-        : "35px",
-  };
-  const fontSizeHeading = {
-    fontSize:
-      fontSizeOption === "small"
-        ? "12px"
-        : fontSizeOption === "large"
-        ? "24px"
-        : "16px",
-  };
-  const fontStyleInput = {
-    fontFamily:
-      fontStyleOption === "Ubuntu"
-        ? "Ubuntu"
-        : fontStyleOption === "Nunito"
-        ? "Nunito"
-        : fontStyleOption === "Poppins"
-        ? "Poppins"
-        : fontStyleOption === "Raleway"
-        ? "Raleway"
-        : "Roboto",
-  };
-
-  const [data, setData] = useState({
-    name: "SAMIRA HADID",
-    title: "Graphic Designer",
-    phone: "123-456-7890",
-    address: "123 Anywhere St., Any City",
-    email: "hello@reallygreatsite.com",
-    education: "Education".toUpperCase(),
-    educationDetails: [
-      {
-        year: "2014",
-        college: "Borcelle University",
-        degree: "Bachelor of Arts in Graphic Design",
-      },
-      {
-        year: "2018",
-        college: "Fradel and Spies Academy",
-        degree: "Bachelor of Arts in Graphic Design",
-      },
-    ],
-    skills: "SKILLS",
-    skillsDetails: [
-      {
-        skill: "JavaScript",
-      },
-      {
-        skill: "Css",
-      },
-      {
-        skill: "React",
-      },
-      {
-        skill: "Machine Learning",
-      },
-      {
-        skill: "Python",
-      },
-    ],
-    about:
-      "As a computer science engineering student, I am passionate about solving complex problems through technology. I possess a strong foundation in programming and a drive to continuously learn and adapt in this ever-evolving field.",
-    workExperience: "WORK EXPERIENCE",
-    workExperiences: [
-      {
-        year: "2014-2016",
-        company: "ABC Company",
-        position: "Graphic Designer",
-        description: "I am a software engineer ",
-      },
-      {
-        year: "2014-2016",
-        company: "ABC Company",
-        position: "Graphic Designer",
-        description: "I am a cab driver",
-      },
-    ],
-  });
-
-  const enhanceSection = async (key, inputState, index, maxTokens) => {
-    const enhancedInput = await getAnswer(inputState, maxTokens);
-    setProgress((prevProgress) =>
-      prevProgress > 100 ? 0 : prevProgress + 33.33333333333333
-    );
-
-    if (key === "about") {
-      setData((prevData) => ({
-        ...prevData,
-        [key]: enhancedInput.evaluation,
-      }));
-    }
-    if (key === "workExperiences") {
-      const newWorkExperiences = [...data.workExperiences];
-      newWorkExperiences[index].description = enhancedInput.evaluation;
-      setData((prevData) => ({
-        ...prevData,
-        [key]: newWorkExperiences,
-      }));
-    }
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 0 : prevProgress + 1
-      );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <div className={style.container}>
-      {/* <Header
-        pdfRef={pdfRef.current}
-        setImg={setImg}
-        setFontSizeOption={setFontSizeOption}
-        fontSizeOption={fontSizeOption}
-        setFontStyleOption={setFontStyleOption}
-        fontStyleOption={fontStyleOption}
-      /> */}
-      <div className={style.resume}>
-        <div
-          className={style.design}
-          id="res"
-          ref={pdfRef}
-          style={fontStyleInput}
-        >
-          <div className={style.left}>
-            <div className={style.name}>
-              <input
-                type="text"
-                rows={2}
-                name="title"
-                value={data.name}
-                onChange={(e) =>
-                  dispatch({
-                    type: "setPersonalDetails",
-                    payload: e.target.value,
-                  })
-                }
-                style={{
-                  ...fontSizeName,
-                  ...fontStyleInput,
-                  width: "20rem",
-                  height: "3rem",
-                }}
-              />
-            </div>
-            <div className={style.title}>
-              <input
-                type="text"
-                name="title"
-                value={data.title}
-                onChange={(e) => setData({ ...data, title: e.target.value })}
-                style={{ ...fontSizeHeading, ...fontStyleInput }}
-              />
-            </div>
-            <div className={style.details}>
-              <div className={style.phone}>
-                <img src={phone} alt="" />
-                <input
-                  type="text"
-                  name="phone"
-                  value={data.phone}
-                  onChange={(e) => setData({ ...data, phone: e.target.value })}
-                  style={{ ...fontSizeInput, ...fontStyleInput }}
-                />
-              </div>
-              <div className={style.email}>
-                <img src={email} alt="" />
-                <input
-                  type="email"
-                  name="email"
-                  value={data.email}
-                  onChange={(e) => {
-                    setData({ ...data, email: e.target.value });
-                  }}
-                  style={{ ...fontSizeInput, ...fontStyleInput }}
-                />
-              </div>
-              <div className={style.address}>
-                <img src={address} alt="" />
-                <input
-                  type="text"
-                  name="address"
-                  value={data.address}
-                  onChange={(e) => {
-                    setData({ ...data, address: e.target.value });
-                  }}
-                  style={{ ...fontSizeInput, ...fontStyleInput }}
-                />
-              </div>
-            </div>
-            <div className={style.education}>
-              <div className={style.educationHeading}>
-                <input
-                  type="text"
-                  name="education"
-                  value={data.education}
-                  onChange={(e) =>
-                    setData({
-                      ...data,
-                      education: e.target.value.toUpperCase(),
-                    })
-                  }
-                  style={{ ...fontSizeHeading, ...fontStyleInput }}
-                />
-              </div>
-              <div className={style.educationDetails}>
-                {data.educationDetails.map((educationDetail, index) => (
-                  <div key={index} className={style.educationDetail}>
-                    <input
-                      type="text"
-                      name="educationDetails"
-                      value={data.educationDetails[index].year}
-                      onChange={(e) => {
-                        const newEducationDetails = [...data.educationDetails];
-                        newEducationDetails[index].year = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [educationDetail]: newEducationDetails,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                    <input
-                      type="text"
-                      name="educationDetails"
-                      value={data.educationDetails[index].college}
-                      onChange={(e) => {
-                        const newEducationDetails = [...data.educationDetails];
-                        newEducationDetails[index].college = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [educationDetail]: newEducationDetails,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                    <input
-                      type="text"
-                      name="educationDetails"
-                      value={data.educationDetails[index].degree}
-                      onChange={(e) => {
-                        const newEducationDetails = [...data.educationDetails];
-                        newEducationDetails[index].degree = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [educationDetail]: newEducationDetails,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={style.skills}>
-              <div className={style.skillHeading}>
-                <input
-                  type="text"
-                  name="skills"
-                  value={data.skills}
-                  onChange={(e) =>
-                    setData({ ...data, skills: e.target.value.toUpperCase() })
-                  }
-                  style={{ ...fontSizeHeading, ...fontStyleInput }}
-                />
-              </div>
-              <div className={style.skillDetails}>
-                {data.skillsDetails.map((skill, index) => (
-                  <div key={index} className={style.skill}>
-                    <input
-                      type="text"
-                      name="skillsDetails"
-                      value={data.skillsDetails[index].skill}
-                      onChange={(e) => {
-                        const newSkillDetails = [...data.skillsDetails];
-                        newSkillDetails[index].skill = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [skill]: newSkillDetails,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                    <Box sx={{ width: 100 }}>
-                      <Slider
-                        aria-label="Temperature"
-                        defaultValue={30}
-                        size="small"
-                        valueLabelDisplay="auto"
-                        step={10}
-                        min={0}
-                        max={100}
-                        sx={{ color: "grey", height: 4 }}
-                      />
-                    </Box>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={style.divider}>
-            <div className={style.line}></div>
-            <div className={style.circle}></div>
-            <div className={style.line}></div>
-            <div className={style.circle}></div>
-            <div className={style.line}></div>
-          </div>
-          <div className={style.right}>
-            {/* <div className={style.background}></div> */}
-            <div className={style.picture}>
-              {img ? (
-                <div>
-                  <img
-                    src={img}
-                    alt="Uploaded"
-                    style={{
-                      width: "10rem",
-                      borderRadius: "50%",
-                      height: "10rem",
-                    }}
-                  />
-                </div>
-              ) : (
-                <img
-                  src="https://media-public.canva.com/e4VII/MAEnbbe4VII/1/tl.jpg"
-                  alt=""
-                  style={{
-                    width: "10rem",
-                    borderRadius: "50%",
-                    height: "10rem",
-                  }}
-                />
-              )}
-            </div>
-            <div className={style.about}>
-              {!contentEditable ? (
-                <div
-                  style={{
-                    ...fontSizeInput,
-                    ...fontStyleInput,
-                    // width: "20rem",
-                    // width: "15rem",
-                  }}
-                  onClick={() => {
-                    setContentEditable(true);
-                  }}
-                >
-                  {data.about}
-                </div>
-              ) : (
-                <div
-                  contentEditable={true}
-                  type="text"
-                  name="about"
-                  value={data.about}
-                  onChange={(e) => {
-                    setData({ ...data, about: e.target.value });
-                  }}
-                  style={{
-                    ...fontSizeInput,
-                    ...fontStyleInput,
-                    // width: "20rem",
-                  }}
-                >
-                  {data.about}
-                </div>
-              )}
+  // education component
+  const educationCat = resume.education.educationDetails.map(
+    (educationDetail, key) => {
+      return (
+        <div className={styles.edu} key={key}>
+          <div className={styles.edu_sub}>
+            <div className={styles.duration}>
+              {educationDetail.startDate} - {educationDetail.endDate}
             </div>
 
-            <div className={style.workExperiences}>
-              <div className={style.workExperienceHeading}>
-                <input
-                  type="text"
-                  name="workExperience"
-                  value={data.workExperience}
-                  onChange={(e) => setData({ ...data, about: e.target.value })}
-                  style={{ ...fontSizeHeading, ...fontStyleInput }}
-                />
-              </div>
-              <div className={style.workExperience} style={fontSizeInput}>
-                {data.workExperiences.map((workExperience, index) => (
-                  <div
-                    key={index}
-                    className={style.workExperienceDetails}
-                    style={{ ...fontSizeInput, ...fontStyleInput }}
-                  >
-                    <input
-                      type="text"
-                      name="workExperiences"
-                      value={data.workExperiences[index].year}
-                      onChange={(e) => {
-                        const newWorkExperiences = [...data.workExperiences];
-                        newWorkExperiences[index].year = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [workExperience]: newWorkExperiences,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                    <input
-                      type="text"
-                      name="workExperiences"
-                      value={data.workExperiences[index].company}
-                      onChange={(e) => {
-                        const newWorkExperiences = [...data.workExperiences];
-                        newWorkExperiences[index].company = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [workExperience]: newWorkExperiences,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                    <input
-                      type="text"
-                      name="workExperiences"
-                      value={data.workExperiences[index].position}
-                      onChange={(e) => {
-                        const newWorkExperiences = [...data.workExperiences];
-                        newWorkExperiences[index].position = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [workExperience]: newWorkExperiences,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                    <textarea
-                      type="text"
-                      rows={5}
-                      name="workExperiences"
-                      value={data.workExperiences[index].description}
-                      maxLength="420"
-                      onChange={(e) => {
-                        const newWorkExperiences = [...data.workExperiences];
-                        newWorkExperiences[index].description = e.target.value;
-                        setData((prevData) => ({
-                          ...prevData,
-                          [workExperience]: newWorkExperiences,
-                        }));
-                      }}
-                      style={{ ...fontSizeInput, ...fontStyleInput }}
-                    />
-                  </div>
-                ))}
-              </div>
+            {/* <div className={`${styles.course} ${styles.cgpa}`}>CGPA : {educationDetail.cgpa}</div> */}
+            <div className={styles.ins}>
+              {educationDetail.institution} | {educationDetail.degree}
+            </div>
+            <div className={styles.edu_sub}>
+              <div className={styles.course}>{educationDetail.course}</div>
             </div>
           </div>
         </div>
-        <div className={style.enhanceButtons}>
-          <div className={style.aboutEnhanceButton}>
-            <button
-              onClick={() => {
-                enhanceSection("about", data.about, 0, 85);
+      );
+    }
+  );
+
+  // skills component
+  const skills = (
+    <>
+      <div className={styles.languages}>
+        {resume.skills.languages.map((language, key) => {
+          return (
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                wordWrap: "break-word",
+                alignItems: "center",
+                paddingLeft: "5px",
               }}
             >
-              Enhance
-            </button>
-          </div>
-          <div className={style.workExperiencesEnhanceButtons}>
-            <div className={style.workExperiencesEnhanceButton}>
-              <button
-                onClick={() => {
-                  enhanceSection(
-                    "workExperiences",
-                    data.workExperiences[0].description,
-                    0,
-                    120
-                  );
-                }}
-              >
-                Enhance
-              </button>
+              <li></li>
+              <div key={key} className={styles.language}>
+                {language.language}{" "}
+                {key === resume.skills.languages.length - 1 ? "" : " "}
+              </div>
             </div>
-            <div className={style.workExperiencesEnhanceButton}>
-              <button
-                onClick={(prevData) => {
-                  enhanceSection(
-                    "workExperiences",
-                    data.workExperiences[1].description,
-                    1,
-                    120
+          );
+        })}
+      </div>
+    </>
+  );
+
+  // project component
+  const projects = resume.projects.projectDetails.map((item, key) => {
+    return (
+      <div key={key} className={styles.ceta}>
+        <a className={styles.project} href={item.link}>
+          {item.name}
+        </a>
+        <a className={styles.pro} href={item.github}>
+          <GitHubIcon
+            sx={{ height: "25px" }}
+            style={{ marginTop: "5px", marginRight: "10px" }}
+          />
+          {item.github}
+        </a>
+        <div className={styles.proc}>
+          {"( "}
+          {item.technologies}
+          {" )"}
+        </div>
+        <div className={styles.prod}>
+          {/* {item.description} */}
+          {item.description.split("\n").map((e) => {
+            return (
+              <div className={styles.jump}>
+                <li className={styles.companyl}></li>
+                <p>{e}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  });
+
+  // projectLeft component
+  const projectLeft = resume.projects.projectDetails.map((item, key) => {
+    return (
+      <div key={key} className={styles.ceta}>
+        <a className={styles.projectp} href={item.link}>
+          {item.name}
+        </a>
+        <a className={styles.prop} href={item.github}>
+          <GitHubIcon
+            sx={{ height: "20px" }}
+            style={{ marginTop: "5px", marginRight: "7px" }}
+          />
+          <span style={{ wordWrap: "break-word", width: "87%" }}>
+            {item.github}
+          </span>
+        </a>
+        <div className={styles.procp}>
+          {"( "}
+          {item.technologies}
+          {" )"}
+        </div>
+        <div className={styles.prodp}>
+          {/* {item.description} */}
+          {item.description.split("\n").map((e) => {
+            return (
+              <div className={styles.jump}>
+                <li className={styles.companyl}></li>
+                <p>{e}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  });
+
+  // awards component
+  const awards = resume.additionalInformation.additionalInformationDetails.map(
+    (language, key) => {
+      return (
+        <div key={key} className={styles.award}>
+          <span class="material-symbols-outlined icon">bookmark</span>
+          {language.award}{" "}
+        </div>
+      );
+    }
+  );
+
+  // awardLeft component
+  const awardLeft =
+    resume.additionalInformation.additionalInformationDetails.map(
+      (language, key) => {
+        return (
+          <div key={key} className={styles.awardl}>
+            <span class="material-symbols-outlined icon">bookmark</span>
+            {language.award}{" "}
+          </div>
+        );
+      }
+    );
+
+  // certificates component
+  const certificateCat = resume.certificates.certificatesDetails.map(
+    (certificateDetail, key) => {
+      return (
+        <div key={key} className={styles.temp}>
+          <span class="material-symbols-outlined icong">circle</span>
+          <div className={styles.cet}>
+            <a className={styles.certificateName} href={certificateDetail.link}>
+              {certificateDetail.name}
+            </a>
+            <div className={styles.issuer}>{certificateDetail.authority}</div>
+          </div>
+        </div>
+      );
+    }
+  );
+
+  return (
+    <div className={styles.container}>
+      <div
+        className={styles.resume}
+        style={{
+          fontFamily: `${
+            resume.fontFamily === ""
+              ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+              : resume.fontFamily
+          }`,
+          height: `${maxheight}px`,
+        }}
+        ref={resumeRef}
+      >
+        <div
+          className={styles.left}
+          style={{
+            fontFamily: `${
+              resume.fontFamily === ""
+                ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                : resume.fontFamily
+            }`,
+          }}
+        >
+          <div
+            className={styles.subleft}
+            style={{ height: "max-content", width: "100%" }}
+            ref={leftRef}
+          >
+            <div className={styles.personalInfo}>
+              <div className={styles.name}>
+                {resume.personalInformation.name}
+              </div>
+              <div className={styles.jobTitle}>
+                {resume.personalInformation.jobTitle}
+              </div>
+              <div className={styles.about}>
+                {resume.personalInformation.about}
+              </div>
+            </div>
+            <div className={styles.experiences}>
+              <div className={styles.title} style={{ color: "#10565b" }}>
+                Work Experience
+              </div>
+              {resume.experiences.experienceDetails.map(
+                (experienceDetail, key) => {
+                  return (
+                    <div className={styles.exp} key={key}>
+                      <span class="material-symbols-outlined iconl">
+                        circle
+                      </span>
+                      <div className={styles.expDetail}>
+                        <div className={styles.pos}>
+                          {experienceDetail.jobTitle}
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <div className={styles.company}>
+                            {experienceDetail.company}
+                          </div>
+                          <div className={styles.duration}>
+                            {experienceDetail.duration}
+                          </div>
+                        </div>
+
+                        <div className={styles.description}>
+                          {/* {experienceDetail.description} */}
+                          {experienceDetail.description.split("\n").map((e) => {
+                            return (
+                              <div className={styles.jump}>
+                                <li className={styles.companyl}></li>
+                                <p>{e}</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
                   );
+                }
+              )}
+            </div>
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div
+            className={styles.subright}
+            ref={rightRef}
+            style={{ height: "max-content", width: "100%" }}
+          >
+            <div className={styles.contacts}>
+              <div className={styles.phone}>
+                <span class="material-symbols-outlined icon">
+                  phone_in_talk
+                </span>
+                <span style={{ width: "78%" }}>
+                  {resume.personalInformation.phone}
+                </span>
+              </div>
+              <div className={styles.phone}>
+                <span class="material-symbols-outlined icon">drafts</span>
+                <span style={{ width: "78%" }}>
+                  {resume.personalInformation.email}
+                </span>
+              </div>
+              <div className={styles.links}>
+                {resume.personalInformation.links.map((link) => (
+                  <a href={link.url} target="_blank" className={styles.link}>
+                    {link.name === "GitHub" ? (
+                      <GitHubIcon
+                        sx={{ height: "30px" }}
+                        style={{ marginTop: "10px", marginRight: "20px" }}
+                      />
+                    ) : link.name === "LinkedIn" ? (
+                      <LinkedInIcon
+                        sx={{ height: "30px" }}
+                        style={{ marginTop: "10px", marginRight: "20px" }}
+                      />
+                    ) : link.name === "Portfolio" ? (
+                      <CoPresentIcon
+                        sx={{ height: "30px" }}
+                        style={{ marginTop: "10px", marginRight: "20px" }}
+                      />
+                    ) : (
+                      ""
+                    )}
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              backgroundColor: "#10565b",
+              borderRadius: "10px",
+              color: "white",
+              paddingLeft: "10px",
+            }}
+          >
+            <div className={styles.part2}>
+              <select
+                className={styles.title2}
+                defaultValue={"EDUCATION"}
+                onChange={(e) => {
+                  setopt2(e.target.value);
                 }}
               >
-                Enhance
-              </button>
+                <option
+                  className={styles.check}
+                  value="PROJECTS"
+                  name="PROJECTS"
+                >
+                  Projects
+                </option>
+                <option className={styles.check} value="AWARDS" name="AWARDS">
+                  Awards
+                </option>
+                <option
+                  className={styles.check}
+                  value="EDUCATION"
+                  name="EDUCATION"
+                >
+                  Education
+                </option>
+              </select>
+
+              <div className={styles.comp1}>
+                {opt2 === "PROJECTS" ? (
+                  projects
+                ) : opt2 === "AWARDS" ? (
+                  awards
+                ) : opt2 === "EDUCATION" ? (
+                  educationCat
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
+            <div className={styles.skills}>
+              <div className={styles.title}>Skills</div>
+              <div className={styles.part1}>{skills}</div>
+            </div>
+            <div className={styles.certifications}>
+              <div className={styles.title}>Certifications</div>
+              <div className={styles.part1}>{certificateCat}</div>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import Design6 from "./Designs/Design6/Design6";
 import Layout from "./Layout";
 import { useRef } from "react";
 import Header from "./components/Header/Header";
+import Design7 from "./Designs/Design7/Design7";
 
 const App = () => {
   const resumeRef = useRef();
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/design/4" element={<Design4 />} />
           <Route path="/design/5" element={<Design5 />} />
           <Route path="/design/6" element={<Design6 />} />
+          <Route path="/design/7" element={<Design7 />} />
         </Route>
       </>
     )

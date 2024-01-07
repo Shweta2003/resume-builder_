@@ -1,0 +1,402 @@
+.container {
+  width: 55%;
+  margin-top: 5vh;
+  height: 85vh;
+  overflow-y: auto;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
+}
+
+.check {
+  color: black;
+}
+
+.projectp {
+  color: #b378e9;
+}
+
+.procp {
+  width: 95%;
+  word-wrap: break-word;
+}
+
+.prodp {
+  font-weight: 300;
+  width: 96%;
+  word-wrap: break-word;
+}
+
+.prop {
+  width: 190px;
+  margin-right: 20px;
+  color: white;
+  font-weight: 300;
+  word-wrap: break-word;
+  display: flex;
+}
+
+.resume {
+  flex: 1.2;
+  display: flex;
+  width: 100%;
+  height: max-content;
+  color: #10565b;
+  font-weight: 700;
+  word-wrap: break-word;
+  align-items: center;
+  justify-content: center;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-top: 20px;
+  padding-left: 40px;
+  color: #10565b;
+  padding-bottom: 60px;
+  align-items: stretch;
+  align-self: stretch;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: stretch;
+  align-self: stretch;
+  padding: 30px 50px;
+  padding-top: 20px;
+  background-color: #fff;
+  color: #575757;
+}
+
+.jump {
+  display: flex;
+}
+
+.contacts {
+  background-color: #10565b;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 400;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.pos {
+  font-weight: 800;
+}
+
+.company {
+  font-size: 15px;
+  padding: 5px 0px;
+  padding-bottom: 0px;
+}
+
+.education {
+  min-height: 50px;
+}
+
+.skills {
+  min-height: 50px;
+}
+
+.certifications {
+  min-height: 50px;
+}
+
+.languages {
+  display: flex;
+  width: 100%;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  padding: 10px;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+
+.title,
+.title2,
+.title3 {
+  font-size: 30px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+}
+
+.icon {
+  width: 0.1rem;
+  height: 0.1rem;
+  margin-right: 0.5rem;
+}
+
+.certificateDetaillink {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  gap: 0.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.award,
+.awardl {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 500;
+  /* color: #402b54; */
+}
+
+.awardl {
+  color: white;
+  font-weight: 400;
+  margin-bottom: 8px;
+  width: 95%;
+}
+
+.phone,
+.link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 17px;
+  width: 100%;
+  word-wrap: break-word;
+  color: #ffffff;
+}
+
+.name {
+  margin-top: 30px;
+  /* color: #402b54; */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 4px;
+  font-size: 60px;
+  font-weight: 700;
+}
+.about {
+  min-height: 50px;
+  margin: 10px 0px;
+  display: flex;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #575757;
+}
+
+.exp {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.duration {
+  word-wrap: break-word;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.expDetail {
+  color: #575757;
+  border-left: 2px solid #10565b;
+  padding-left: 30px;
+  margin-left: -8px;
+  margin-top: 10px;
+}
+.btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+  margin: 20px;
+  margin-left: 0px;
+}
+
+.jobTitle {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 7.7px;
+  color: #575757;
+  word-wrap: break-word;
+}
+
+.cgpa {
+  /* color: #b378e9; */
+}
+
+.description {
+  font-size: 15px;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 500;
+  height: max-content;
+  padding-bottom: 10px;
+}
+.part2 {
+  width: 100%;
+  margin: 30px 0px;
+}
+
+.title2,
+.title3 {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  background: none;
+  margin-bottom: 10px;
+}
+
+.edu {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.edu_sub {
+  width: 100%;
+  margin-top: 5px;
+  word-spacing: 5px;
+}
+
+.duration {
+  font-weight: 300;
+}
+
+.course {
+  font-weight: 400;
+}
+
+.part1 {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.language {
+  display: inline;
+  padding: 0px 2px;
+  width: 100%;
+  word-wrap: break-word;
+  font-weight: 300;
+  margin-right: 20px;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.cet,
+.ceta {
+  display: flex;
+  text-align: left;
+  align-items: flex-start;
+  color: white;
+  flex-direction: column;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.ceta {
+  align-items: flex-start;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  width: 98%;
+  word-wrap: break-word;
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.temp {
+  display: flex;
+  align-items: flex-start;
+}
+.certificateName {
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+.languageDetail {
+  width: 100%;
+  font-size: 17px;
+  font-weight: 400;
+  margin: 15px 0px;
+}
+
+.project {
+  width: 100%;
+  padding-right: 50px;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 10px;
+  padding-left: 20px;
+  display: flex;
+}
+
+.pro {
+  margin-left: 20px;
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #5b3b7a;
+}
+
+.proc {
+  width: 80%;
+  font-size: 15px;
+  margin-left: 55px;
+  color: #402b54;
+}
+
+.prod {
+  width: 90%;
+  margin-top: 3px;
+  margin-left: 55px;
+  font-weight: 400;
+  text-align: left;
+  color: #402b54;
+}
+
+.title3 {
+  color: white;
+  border-color: white;
+}
+
+@media print {
+  .title2,
+  .title3 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
